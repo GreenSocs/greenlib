@@ -2,6 +2,8 @@
 ###################
 # test the examples
 ###################
+SYSTEMC ?= $(SYSTEMC_HOME)
+GREENMESSAGE ?= ../../include
 
 ALL_EXAMPLES = $(wildcard */expected_output.txt)
 

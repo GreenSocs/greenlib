@@ -1,5 +1,5 @@
-SYSTEMC ?= /home/bartho/greensocs/gspm/OSCI/systemc/2.2/gcc4.0
-GREENMESSAGE ?= ../..
+GREENMESSAGE ?= ../../include
+SYSTEMC ?= $(SYSTEMC_HOME)
 
 EXE = system
 SRCS = system.cpp
