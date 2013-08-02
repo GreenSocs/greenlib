@@ -224,6 +224,22 @@ install(DIRECTORY greenmessage/docs/
 	DESTINATION docs/greenmessage
 )
 
+# Greenscript
+
+set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenscript/include/)
+
+install(DIRECTORY greenscript/include/
+        DESTINATION include
+)
+
+install(DIRECTORY greenscript/examples/
+        DESTINATION examples/greenscript
+)
+
+install(DIRECTORY greenscript/docs/
+        DESTINATION docs/greenscript
+)
+
 # Greensocs Library include directory (for example).
 include_directories(${GreenSocs_INCLUDE_DIRS})
 # CXX flags for example or library compilation.
