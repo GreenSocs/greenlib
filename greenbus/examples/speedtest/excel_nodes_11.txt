@@ -1,0 +1,29 @@
+
+GS_CONFIG: Reading configuration from file speedtest_simplebus_nodes_ba.cfg
+GS_CONFIG: Configuring value of param [number_of_masters] in module [top] to [10]
+GS_CONFIG: Configuring value of param [number_of_slaves] in module [top] to [1]
+
+Speedtest running until end of simulation
+
+top.m8: write (# transactions, bytes, us, cycles), 100000, 1024, 5821876, 5071.28
+top.m1: write (# transactions, bytes, us, cycles), 100000, 1024, 5835624, 5074.62
+top.m6: write (# transactions, bytes, us, cycles), 100000, 1024, 5829002, 5074.85
+top.m4: write (# transactions, bytes, us, cycles), 100000, 1024, 5834303, 5077.1
+top.m3: write (# transactions, bytes, us, cycles), 100000, 1024, 5837347, 5078.7
+top.m2: write (# transactions, bytes, us, cycles), 100000, 1024, 5842223, 5082.52
+top.m5: write (# transactions, bytes, us, cycles), 100000, 1024, 5840367, 5085.21
+top.m9: write (# transactions, bytes, us, cycles), 100000, 1024, 5835084, 5086.05
+top.m0: write (# transactions, bytes, us, cycles), 100000, 1024, 5849617, 5088.62
+top.m7: write (# transactions, bytes, us, cycles), 100000, 1024, 5856291, 5115.64
+top.m0: read (# transactions, bytes, us, cycles), 100000, 1024, 3805607, 6666.9
+top.m1: read (# transactions, bytes, us, cycles), 100000, 1024, 3913853, 6848.87
+top.m2: read (# transactions, bytes, us, cycles), 100000, 1024, 4066283, 7126.06
+top.m3: read (# transactions, bytes, us, cycles), 100000, 1024, 4296469, 7545.43
+top.m4: read (# transactions, bytes, us, cycles), 100000, 1024, 4582519, 8116.62
+top.m5: read (# transactions, bytes, us, cycles), 100000, 1024, 4975937, 9026.4
+top.m6: read (# transactions, bytes, us, cycles), 100000, 1024, 5453692, 10324.3
+top.m7: read (# transactions, bytes, us, cycles), 100000, 1024, 5875049, 11917.9
+top.m8: read (# transactions, bytes, us, cycles), 100000, 1024, 6144630, 13272
+top.m9: read (# transactions, bytes, us, cycles), 100000, 1024, 6189408, 13922.9
+SystemC: simulation stopped by user.
+top.SimpleBus_scheduler: Queue was in use 8808338990 ns time. This is a bus workload of 46.3378%

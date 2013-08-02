@@ -1,0 +1,26 @@
+% (c) GreenSocs Ltd
+% author: Christian Schroeder <schroeder@eis.cs.tu-bs.de>
+
+\chapter{Introduction}
+
+This is the User's Guide of the PCI Express (PCIe) implementation for GreenBus. This documentation expects the reader to be familiar with SystemC and GreenBus. GreenBus is the universal bus implementation by GreenSocs. 
+
+The GreenBus PCIe implementation allows the user to model a PCIe topology at the programmer's view (PV) abstraction level.
+
+The documentation is related to the GreenBus / PCIe version TODO.
+
+\section{Terms, Acronyms, Documentation and Implementation Conventions}
+
+\begin{tabular}{l l}
+  \textsf{PCIe} & PCI Express \\
+  \textsf{TLP} Transaction & Layer Packet which is modeled with a PCIe Transaction \\
+  \textsf{PCIe Transaction} & One PCIe TLP or several TLPs (correlated Request, Completions) \\
+\end{tabular}
+
+The implementation of all not-user classes according PCIe are located in the \emph{namespace tlm::PCIe}.
+
+
+\section{PCI Express}
+
+This PCIe implementation is based on the \emph{PCI Express Base Specification Revision 2.0} and related documents.
+

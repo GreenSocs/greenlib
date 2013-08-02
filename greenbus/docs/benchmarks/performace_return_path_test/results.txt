@@ -1,0 +1,62 @@
+Results
+with user processor time:
+-------------------------
+ not ENABLE_PERF_TRACE
+ AMOUNT_TRANSACTIONS = 1 000 000
+
+2007-08-27
+
+ AMOUNT_PEQ_CONCATENATIONS 1
+  without return path:     user    0m0.662s
+  with return path:        user    0m0.326s
+
+ AMOUNT_PEQ_CONCATENATIONS 2
+  without return path:     user    0m1.211s
+  with return path:        user    0m0.411s
+
+ AMOUNT_PEQ_CONCATENATIONS 3
+  without return path:     user    0m1.696s
+  with return path:        user    0m0.531s
+
+ AMOUNT_PEQ_CONCATENATIONS 4
+  without return path:     user    0m2.192s
+  with return path:        user    0m0.620s
+
+ AMOUNT_PEQ_CONCATENATIONS 5
+  without return path:     user    0m2.655s
+  with return path:        user    0m0.696s
+
+ AMOUNT_PEQ_CONCATENATIONS 6
+  without return path:     user    0m3.083s
+  with return path:        user    0m0.774s
+
+ AMOUNT_PEQ_CONCATENATIONS 7
+  without return path:     user    0m3.769s
+  with return path:        user    0m0.800s
+
+ AMOUNT_PEQ_CONCATENATIONS 8
+  without return path:     user    0m4.447s
+  with return path:        user    0m0.884s
+
+ AMOUNT_PEQ_CONCATENATIONS 9
+  without return path:     user    0m4.668s
+  with return path:        user    0m0.992s
+
+ AMOUNT_PEQ_CONCATENATIONS 10
+  without return path:     user    0m5.316s
+  with return path:        user    0m1.094s
+
+
+ AMOUNT_PEQ_CONCATENATIONS 20
+  without return path:     user    0m10.188s
+  with return path:        user    0m2.183s
+
+
+ AMOUNT_PEQ_CONCATENATIONS 30
+  without return path:     user    0m15.481s
+  with return path:        user    0m3.245s
+    
+ AMOUNT_PEQ_CONCATENATIONS 200
+  without return path:     user    1m42.220s
+  with return path:        user    0m20.980s
+    

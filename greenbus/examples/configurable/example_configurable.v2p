@@ -1,0 +1,23 @@
+ProjectName example_configurable
+Files {
+	 Sources {/home/klingauf/svndev/greenbus/trunk/gstlm/usercode/example_simplebus2/ddr_ram.cpp /home/klingauf/svndev/greenbus/trunk/gstlm/usercode/example_simplebus2/ddr_speedtest.cpp /home/klingauf/svndev/greenbus/trunk/gstlm/usercode/example_simplebus2/pseudo_master_simplebus.cpp} 
+	 {Public Headers} {/home/klingauf/svndev/greenbus/trunk/gstlm/usercode/example_simplebus2/ddr_ram.h /home/klingauf/svndev/greenbus/trunk/gstlm/usercode/example_simplebus2/ddr_speedtest.h /home/klingauf/svndev/greenbus/trunk/gstlm/usercode/example_simplebus2/pseudo_master_simplebus.h} 
+	 Documentation {} 
+}
+Folders {
+	 Sources {*.c *.cpp} 
+	 {Public Headers} *.h* 
+	 Documentation {*.txt *.doc} 
+}
+IncludePaths {/home/klingauf/svndev/greenbus/trunk/gstlm/gstlm
+	/home/klingauf/svndev/sc_dust/trunk/src/systemc}
+GeneralCompilationOptions {-Wall  -DNO_GZSTREAM}
+AlwaysCompileInCPPMode 1
+LinkDependencies dust
+LinkPackages SCV
+ProjectLibraryPath {$PRJDIR/$PRJNAME/build/lib}
+IsUseDefaultLibraryPath 0
+ProjectWorkingDirectory {$PRJDIR/$PRJNAME/build}
+HasTLMSupport 0
+CompiledWithTLMSupport 0
+IsUsePathVariables 1

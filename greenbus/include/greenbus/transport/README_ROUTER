@@ -1,0 +1,129 @@
+-------------------------------------------------------------------------------
+The GreenBus GenericRouter bus fabric
+-------------------------------------------------------------------------------
+
+1. Getting started
+
+ +-------------+
+ | TLM Masters |
+ +-------------+            +-----------+
+       | |            +-----|  Protocol |
++---------------+     |     +-----------+
+| GenericRouter |-----+
++---------------+     |     +-----------+
+       | |            +-----| Scheduler |
+ +-------------+            +-----------+
+ | TLM Slaves  |
+ +-------------+
+
+
+The GreenBus GenericRouter bus fabric allows for the composition of 
+application-specific busses in a flexible and easy-to-use manner. 
+To set up a bus simulation environment, chose a protocol plus the 
+desired scheduler from the protocol and scheduler directories 
+(or implement your own) and connect them to the GenericRouter. 
+
+Here is an example using the "SimpleBusProtocol" with the fixed-priority
+scheduling scheme:
+
+  SimpleBusProtocol<GenericTransaction, GenericPhase> p("Protocol", sc_time(10, SC_NS));
+  FixedPriorityScheduler<GenericTransaction, GenericPhase> s("Scheduler");
+  GenericRouter<GenericTransaction, GenericPhase, GenericRouterAccess> r("Router");
+
+  r.protocol_port(p);
+  p.router_port(r);
+  p.scheduler_port(s);
+
+Then, connect your master and slave modules to the bus:
+
+  simplemaster m1("master1",0x4010, "",true);
+  sillysort    m2("master2",0x00ff, "foo");
+
+  simplememory s1("slave0",1);
+  s1.setAddress(0x4000, 0x4050);
+  simplememory s2("slave1",19);
+  s2.setAddress(0xffffff00, 0xffffffff);
+
+That's it. Now you can run the SystemC simulation. 
+
+The GenericRouter is capable of processing blocking and non-blocking 
+transaction at all of the following levels of abstraction:
+
+ [PV]  "Programmers View"       - untimed "transaction" view
+ [PVT] "Programmers View Timed" - timed "bus phase" view (often also called bus-accurate, BA)
+ [CC]  "Cycle-Callable"         - timed "bus attribute" view
+
+The implementation splits up into three main parts: 
+
+ (1) the GenericRouter, which owns the initiator and target multi-ports 
+ (2) a protocol implementation, and
+ (3) a scheduler implementation.
+
+Template parameters enable you to specify
+ (1) the Transaction type 
+ (2) the Phases that reside inside the Transaction
+
+Usually, GenericTransaction and GenericPhase will be sufficient. 
+However, for busses with special features extensions may be needed.
+
+Currently, the following bus implementations are available:
+
+ (1) SimpleBusProtocol - a bus with one data and one address line that
+      can handle burst-read and burst-write transactions.
+
+ (2) PLBProtocol - an IBM CoreConnect Processor Local Bus implementation
+     
+
+Available scheduling schemes:
+      
+ (1) FixedPriorityScheduler - a simple scheduler that 
+      uses the master ID as a fixed sorting criterium.
+
+ (2) DynamicPriorityScheduler - a scheduler that supports
+      dynamic priority (useful in combination with the PLB protocol)
+
+
+2. A view inside
+
+The GenericRouter framework is built on top of the GreenBus TLM fabric, which 
+defines a set of PV/PVT access methods. It acts as a base for building
+transaction containers by specifying a standard set of attributes (quarks) 
+of which transactions can be composed. In order to reflect the semantics
+of bus-accurate (PVT) level of abstraction, these attributes are grouped 
+into phases. 
+
+The GenericRouter's communication architecture is completely event-based. 
+Data is transferred as a payload of these events. This enables both
+blocking and non-blocking communication using the same underlying
+fabric. Depending on the user's decision, master and slave modules
+can behave at PV, PVT, or CC abstraction level, using SC_METHODs with
+non-blocking or SC_THREADs with blocking or non-blocking transactions.
+See the examples for proposed implementation concepts.
+
+The forwarding (routing) of master and slave events to the target
+modules takes place in the GenericRouter. Incoming master requests are 
+propagated to the GenericScheduler, which enqueues them in the request storage. 
+The queuing policy is controlled by the scheduler implementation.
+
+When a request is ready to be processed, it is promoted to the protocol
+implementation. If the bus is currently in use by another request,
+the protocol implementation can delay the new request until the channel 
+is idle again. Furthermore, the protocol implementation can register
+itself to listen to master and slave communication events in order to take care
+that the bus is accessed in the correct manner. 
+
+Once a connection between a master and a slave has been set up, the data
+exchange for each transaction phase takes place without further notice of 
+the bus fabric. Thus, a maximum simulation performance can be achieved.
+If both master and slave behave at PVT or above, no simulation time is
+consumed at all, because the data has already arrived with the phase event
+as its payload. Hence, one can think of the GenericRouter as a means
+for setting up virtual point-to-point connections between communicating
+masters and slaves.
+
+In order to access multiple slaves, an address map is created in 
+the GenericProtocol after end of elaboration.  Address decoding is done
+using the tlm_slave_if interface that has to be implemented by the slaves.
+
+
+-Wolfgang Klingauf 2006-06-28-

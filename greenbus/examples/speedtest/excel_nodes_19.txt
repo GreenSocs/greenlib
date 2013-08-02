@@ -1,0 +1,45 @@
+
+GS_CONFIG: Reading configuration from file speedtest_simplebus_nodes_ba.cfg
+GS_CONFIG: Configuring value of param [number_of_masters] in module [top] to [18]
+GS_CONFIG: Configuring value of param [number_of_slaves] in module [top] to [1]
+
+Speedtest running until end of simulation
+
+top.m1: write (# transactions, bytes, us, cycles), 100000, 1024, 10936959, 5072.42
+top.m7: write (# transactions, bytes, us, cycles), 100000, 1024, 10930869, 5073.39
+top.m6: write (# transactions, bytes, us, cycles), 100000, 1024, 10937724, 5076.11
+top.m11: write (# transactions, bytes, us, cycles), 100000, 1024, 10931451, 5076.92
+top.m10: write (# transactions, bytes, us, cycles), 100000, 1024, 10936664, 5078.98
+top.m2: write (# transactions, bytes, us, cycles), 100000, 1024, 10951725, 5080.76
+top.m9: write (# transactions, bytes, us, cycles), 100000, 1024, 10946525, 5085.03
+top.m5: write (# transactions, bytes, us, cycles), 100000, 1024, 10956603, 5088.11
+top.m0: write (# transactions, bytes, us, cycles), 100000, 1024, 10963664, 5088.36
+top.m8: write (# transactions, bytes, us, cycles), 100000, 1024, 10956485, 5093.04
+top.m3: write (# transactions, bytes, us, cycles), 100000, 1024, 10967433, 5098.19
+top.m4: write (# transactions, bytes, us, cycles), 100000, 1024, 10971890, 5106.96
+top.m0: read (# transactions, bytes, us, cycles), 100000, 1024, 3834594, 6652.64
+top.m1: read (# transactions, bytes, us, cycles), 100000, 1024, 3952926, 6829.99
+top.m2: read (# transactions, bytes, us, cycles), 100000, 1024, 4105537, 7115.03
+top.m3: read (# transactions, bytes, us, cycles), 100000, 1024, 4333304, 7520.49
+top.m15: write (# transactions, bytes, us, cycles), 100000, 1024, 15328876, 12694.7
+top.m13: write (# transactions, bytes, us, cycles), 100000, 1024, 15374609, 12766.5
+top.m12: write (# transactions, bytes, us, cycles), 100000, 1024, 15395328, 12799.6
+top.m4: read (# transactions, bytes, us, cycles), 100000, 1024, 4689273, 8131.23
+top.m5: read (# transactions, bytes, us, cycles), 100000, 1024, 5243608, 9083.01
+top.m14: write (# transactions, bytes, us, cycles), 100000, 1024, 16312636, 14387.6
+top.m6: read (# transactions, bytes, us, cycles), 100000, 1024, 6030949, 10427.3
+top.m16: write (# transactions, bytes, us, cycles), 100000, 1024, 17420235, 16312.5
+top.m7: read (# transactions, bytes, us, cycles), 100000, 1024, 7044657, 12179.3
+top.m17: write (# transactions, bytes, us, cycles), 100000, 1024, 18146953, 17575.3
+top.m8: read (# transactions, bytes, us, cycles), 100000, 1024, 7908390, 13708.6
+top.m9: read (# transactions, bytes, us, cycles), 100000, 1024, 8427459, 14612.2
+top.m10: read (# transactions, bytes, us, cycles), 100000, 1024, 8857043, 15367
+top.m11: read (# transactions, bytes, us, cycles), 100000, 1024, 9327419, 16229.6
+top.m12: read (# transactions, bytes, us, cycles), 100000, 1024, 5404335, 9596.17
+top.m13: read (# transactions, bytes, us, cycles), 100000, 1024, 5931406, 10797.6
+top.m14: read (# transactions, bytes, us, cycles), 100000, 1024, 5430084, 10388.6
+top.m15: read (# transactions, bytes, us, cycles), 100000, 1024, 6713221, 13187.7
+top.m16: read (# transactions, bytes, us, cycles), 100000, 1024, 4788948, 10507.1
+top.m17: read (# transactions, bytes, us, cycles), 100000, 1024, 4126232, 9981.49
+SystemC: simulation stopped by user.
+top.SimpleBus_scheduler: Queue was in use 17870074190 ns time. This is a bus workload of 64.8482%

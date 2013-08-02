@@ -1,0 +1,25 @@
+
+GS_CONFIG: Reading configuration from file speedtest_simplebus_nodes_ba.cfg
+GS_CONFIG: Configuring value of param [number_of_masters] in module [top] to [8]
+GS_CONFIG: Configuring value of param [number_of_slaves] in module [top] to [1]
+
+Speedtest running until end of simulation
+
+top.m3: write (# transactions, bytes, us, cycles), 100000, 1024, 4632780, 5066.39
+top.m0: write (# transactions, bytes, us, cycles), 100000, 1024, 4639723, 5069.88
+top.m4: write (# transactions, bytes, us, cycles), 100000, 1024, 4636445, 5072.18
+top.m1: write (# transactions, bytes, us, cycles), 100000, 1024, 4642084, 5074.01
+top.m2: write (# transactions, bytes, us, cycles), 100000, 1024, 4643128, 5077.19
+top.m7: write (# transactions, bytes, us, cycles), 100000, 1024, 4646717, 5092.76
+top.m5: write (# transactions, bytes, us, cycles), 100000, 1024, 4650967, 5095.11
+top.m6: write (# transactions, bytes, us, cycles), 100000, 1024, 4650010, 5095.72
+top.m0: read (# transactions, bytes, us, cycles), 100000, 1024, 3733349, 6663.29
+top.m1: read (# transactions, bytes, us, cycles), 100000, 1024, 3824388, 6833.79
+top.m2: read (# transactions, bytes, us, cycles), 100000, 1024, 3957224, 7102.32
+top.m3: read (# transactions, bytes, us, cycles), 100000, 1024, 4129187, 7487.09
+top.m4: read (# transactions, bytes, us, cycles), 100000, 1024, 4333925, 8055.26
+top.m5: read (# transactions, bytes, us, cycles), 100000, 1024, 4551634, 8881.64
+top.m6: read (# transactions, bytes, us, cycles), 100000, 1024, 4770427, 10097.9
+top.m7: read (# transactions, bytes, us, cycles), 100000, 1024, 4906327, 11626.4
+SystemC: simulation stopped by user.
+top.SimpleBus_scheduler: Queue was in use 7130671360 ns time. This is a bus workload of 42.6496%

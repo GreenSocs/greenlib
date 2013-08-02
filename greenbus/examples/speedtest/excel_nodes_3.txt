@@ -1,0 +1,13 @@
+
+GS_CONFIG: Reading configuration from file speedtest_simplebus_nodes_ba.cfg
+GS_CONFIG: Configuring value of param [number_of_masters] in module [top] to [2]
+GS_CONFIG: Configuring value of param [number_of_slaves] in module [top] to [1]
+
+Speedtest running until end of simulation
+
+top.m0: write (# transactions, bytes, us, cycles), 100000, 1024, 1061295, 5049.24
+top.m1: write (# transactions, bytes, us, cycles), 100000, 1024, 1065902, 5079.18
+top.m0: read (# transactions, bytes, us, cycles), 100000, 1024, 1116015, 6208.22
+top.m1: read (# transactions, bytes, us, cycles), 100000, 1024, 1113016, 6210.54
+SystemC: simulation stopped by user.
+top.SimpleBus_scheduler: Queue was in use 221731130 ns time. This is a bus workload of 1.96401%

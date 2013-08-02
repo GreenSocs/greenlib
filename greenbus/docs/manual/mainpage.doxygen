@@ -1,0 +1,31 @@
+/** \mainpage
+
+\section intro_sec Introduction
+
+GreenBus is not a bus! GreenBus is a versatile SystemC framework with
+which to model busses, aiming at simulation models of complex on-chip
+communication architectures. In addition to the bus fabric itself,
+GreenBus also provides other related services such as logging and
+configuration.
+
+There are 3 parts to GreenBus Fabric:
+
+   1. A bus core protocol definition. We call this TAQ see below. This
+      includes both the data types that are transported across the bus
+      (byte lane enables, lock, read not write, etc) and the
+      representation of arbitrary timing and arbitration
+      protocols. GreenBus comes complete with a set of data types data
+      types that minimise the "conversion" required.
+
+   2. A user API layer which enables users to define their own bus
+      independent API.
+
+   3. A communication router which is bus and user API
+      independent. The router takes the application-specific protocol
+      definition and provides a well implemented fast communication
+      router which works at several abstraction levels.
+
+This is the designer manual. To use GreenBus, please read more
+information in the user manual.
+
+*/

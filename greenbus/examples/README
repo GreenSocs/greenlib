@@ -1,0 +1,26 @@
+When using the Makefiles, you can use the following switches:
+
+Compile with USE_STATIC_CASTS:
+> make STATIC=yes
+
+Compile with an extended transaction type:
+> make EXTENSION=PLB
+
+(this example uses the PLB transaction container)
+
+
+For example, if you want to compile the simplebus example with static cast
+class hierarchy and PLB transactions, type:
+
+> cd examples/simplebus
+> make STATIC=yes EXTENSION=PLB
+
+Note that the EXTENSION macro will overwrite #include "transport/GP/GP.h". 
+In the GP.h file then the correct extended transaction definition will
+be included (e.g. transport/PLB/PLB.h).
+
+Thus, in your sourcecode you can always include GP.h and then overwrite
+it by giving the define at make time
+
+Cheers
+Wolfgang

@@ -1,0 +1,120 @@
+
+GS_CONFIG: Reading configuration from file speedtest_ct.cfg
+GS_CONFIG: Executing command CONNECT(master.out,memoryport,)
+GS_CONFIG: Binding initiator to target: master.out(memoryport)
+GS_CONFIG: Configuring value of param [size] in module [memory] to [0x200000]
+GS_CONFIG: Configuring value of param [clk_period] in module [memory] to [10]
+GS_CONFIG: Configuring value of param [write_ws] in module [memory] to [7]
+GS_CONFIG: Configuring value of param [read_ws] in module [memory] to [11]
+GS_CONFIG: Configuring value of param [simulation_mode] in module [memory] to [1]
+GS_CONFIG: Configuring value of param [init_size] in module [master] to [0x100000]
+GS_CONFIG: Configuring value of param [write_size] in module [master] to [0]
+GS_CONFIG: Configuring value of param [read_size] in module [master] to [0]
+GS_CONFIG: Configuring value of param [write_inc] in module [master] to [1024]
+GS_CONFIG: Configuring value of param [read_inc] in module [master] to [1024]
+GS_CONFIG: Configuring value of param [write_count] in module [master] to [100000]
+GS_CONFIG: Configuring value of param [read_count] in module [master] to [0]
+GS_CONFIG: Configuring value of param [loops] in module [master] to [100]
+
+Speedtest running forever
+
+write (# transactions, bytes, us, cycles), 100000, 0, 270684, 1
+write (# transactions, bytes, us, cycles), 100000, 1024, 2034238, 72
+write (# transactions, bytes, us, cycles), 100000, 2048, 3725372, 136
+write (# transactions, bytes, us, cycles), 100000, 3072, 5414435, 200
+write (# transactions, bytes, us, cycles), 100000, 4096, 7152547, 264
+write (# transactions, bytes, us, cycles), 100000, 5120, 8845389, 328
+write (# transactions, bytes, us, cycles), 100000, 6144, 10547792, 392
+write (# transactions, bytes, us, cycles), 100000, 7168, 12176873, 456
+write (# transactions, bytes, us, cycles), 100000, 8192, 13871872, 520
+write (# transactions, bytes, us, cycles), 100000, 9216, 15571042, 584
+write (# transactions, bytes, us, cycles), 100000, 10240, 17336360, 648
+write (# transactions, bytes, us, cycles), 100000, 11264, 19120445, 712
+write (# transactions, bytes, us, cycles), 100000, 12288, 20692459, 776
+write (# transactions, bytes, us, cycles), 100000, 13312, 22382791, 840
+write (# transactions, bytes, us, cycles), 100000, 14336, 24076413, 904
+write (# transactions, bytes, us, cycles), 100000, 15360, 25790229, 968
+write (# transactions, bytes, us, cycles), 100000, 16384, 27642083, 1032
+write (# transactions, bytes, us, cycles), 100000, 17408, 29228981, 1096
+write (# transactions, bytes, us, cycles), 100000, 18432, 30937462, 1160
+write (# transactions, bytes, us, cycles), 100000, 19456, 32636634, 1224
+write (# transactions, bytes, us, cycles), 100000, 20480, 34301406, 1288
+write (# transactions, bytes, us, cycles), 100000, 21504, 35976419, 1352
+write (# transactions, bytes, us, cycles), 100000, 22528, 37664301, 1416
+write (# transactions, bytes, us, cycles), 100000, 23552, 39296099, 1480
+write (# transactions, bytes, us, cycles), 100000, 24576, 40994464, 1544
+write (# transactions, bytes, us, cycles), 100000, 25600, 42829682, 1608
+write (# transactions, bytes, us, cycles), 100000, 26624, 44497105, 1672
+write (# transactions, bytes, us, cycles), 100000, 27648, 46158503, 1736
+write (# transactions, bytes, us, cycles), 100000, 28672, 47880762, 1800
+write (# transactions, bytes, us, cycles), 100000, 29696, 49579949, 1864
+write (# transactions, bytes, us, cycles), 100000, 30720, 51285640, 1928
+write (# transactions, bytes, us, cycles), 100000, 31744, 53009888, 1992
+write (# transactions, bytes, us, cycles), 100000, 32768, 55149501, 2056
+write (# transactions, bytes, us, cycles), 100000, 33792, 56938496, 2120
+write (# transactions, bytes, us, cycles), 100000, 34816, 58518646, 2184
+write (# transactions, bytes, us, cycles), 100000, 35840, 60197917, 2248
+write (# transactions, bytes, us, cycles), 100000, 36864, 62507890, 2312
+write (# transactions, bytes, us, cycles), 100000, 37888, 64504070, 2376
+write (# transactions, bytes, us, cycles), 100000, 38912, 65190746, 2440
+write (# transactions, bytes, us, cycles), 100000, 39936, 66811242, 2504
+write (# transactions, bytes, us, cycles), 100000, 40960, 68801006, 2568
+write (# transactions, bytes, us, cycles), 100000, 41984, 70139130, 2632
+write (# transactions, bytes, us, cycles), 100000, 43008, 71875582, 2696
+write (# transactions, bytes, us, cycles), 100000, 44032, 74958980, 2760
+write (# transactions, bytes, us, cycles), 100000, 45056, 76507985, 2824
+write (# transactions, bytes, us, cycles), 100000, 46080, 78648695, 2888
+write (# transactions, bytes, us, cycles), 100000, 47104, 79233240, 2952
+write (# transactions, bytes, us, cycles), 100000, 48128, 80946836, 3016
+write (# transactions, bytes, us, cycles), 100000, 49152, 83618383, 3080
+write (# transactions, bytes, us, cycles), 100000, 50176, 86413780, 3144
+write (# transactions, bytes, us, cycles), 100000, 51200, 86639824, 3208
+write (# transactions, bytes, us, cycles), 100000, 52224, 89082940, 3272
+write (# transactions, bytes, us, cycles), 100000, 53248, 89451186, 3336
+write (# transactions, bytes, us, cycles), 100000, 54272, 90836010, 3400
+write (# transactions, bytes, us, cycles), 100000, 55296, 92162569, 3464
+write (# transactions, bytes, us, cycles), 100000, 56320, 93790440, 3528
+write (# transactions, bytes, us, cycles), 100000, 57344, 95598222, 3592
+write (# transactions, bytes, us, cycles), 100000, 58368, 97304914, 3656
+write (# transactions, bytes, us, cycles), 100000, 59392, 99008603, 3720
+write (# transactions, bytes, us, cycles), 100000, 60416, 101100364, 3784
+write (# transactions, bytes, us, cycles), 100000, 61440, 102416198, 3848
+write (# transactions, bytes, us, cycles), 100000, 62464, 104414651, 3912
+write (# transactions, bytes, us, cycles), 100000, 63488, 105987098, 3976
+write (# transactions, bytes, us, cycles), 100000, 64512, 107379399, 4040
+write (# transactions, bytes, us, cycles), 100000, 65536, 109510818, 4104
+write (# transactions, bytes, us, cycles), 100000, 66560, 110988353, 4168
+write (# transactions, bytes, us, cycles), 100000, 67584, 112697344, 4232
+write (# transactions, bytes, us, cycles), 100000, 68608, 114562048, 4296
+write (# transactions, bytes, us, cycles), 100000, 69632, 116194730, 4360
+write (# transactions, bytes, us, cycles), 100000, 70656, 117820549, 4424
+write (# transactions, bytes, us, cycles), 100000, 71680, 119799129, 4488
+write (# transactions, bytes, us, cycles), 100000, 72704, 121024396, 4552
+write (# transactions, bytes, us, cycles), 100000, 73728, 122917615, 4616
+write (# transactions, bytes, us, cycles), 100000, 74752, 124601730, 4680
+write (# transactions, bytes, us, cycles), 100000, 75776, 126351695, 4744
+write (# transactions, bytes, us, cycles), 100000, 76800, 127879820, 4808
+write (# transactions, bytes, us, cycles), 100000, 77824, 129961101, 4872
+write (# transactions, bytes, us, cycles), 100000, 78848, 131684404, 4936
+write (# transactions, bytes, us, cycles), 100000, 79872, 133383292, 5000
+write (# transactions, bytes, us, cycles), 100000, 80896, 135035931, 5064
+write (# transactions, bytes, us, cycles), 100000, 81920, 136684997, 5128
+write (# transactions, bytes, us, cycles), 100000, 82944, 139028713, 5192
+write (# transactions, bytes, us, cycles), 100000, 83968, 140125251, 5256
+write (# transactions, bytes, us, cycles), 100000, 84992, 141911977, 5320
+write (# transactions, bytes, us, cycles), 100000, 86016, 143338699, 5384
+write (# transactions, bytes, us, cycles), 100000, 87040, 144850469, 5448
+write (# transactions, bytes, us, cycles), 100000, 88064, 146560490, 5512
+write (# transactions, bytes, us, cycles), 100000, 89088, 148643353, 5576
+write (# transactions, bytes, us, cycles), 100000, 90112, 150021859, 5640
+write (# transactions, bytes, us, cycles), 100000, 91136, 151682429, 5704
+write (# transactions, bytes, us, cycles), 100000, 92160, 153395033, 5768
+write (# transactions, bytes, us, cycles), 100000, 93184, 155209324, 5832
+write (# transactions, bytes, us, cycles), 100000, 94208, 156920972, 5896
+write (# transactions, bytes, us, cycles), 100000, 95232, 158464286, 5960
+write (# transactions, bytes, us, cycles), 100000, 96256, 160171727, 6024
+write (# transactions, bytes, us, cycles), 100000, 97280, 161875170, 6088
+write (# transactions, bytes, us, cycles), 100000, 98304, 163497989, 6152
+write (# transactions, bytes, us, cycles), 100000, 99328, 165302459, 6216
+write (# transactions, bytes, us, cycles), 100000, 100352, 166992623, 6280
+write (# transactions, bytes, us, cycles), 100000, 101376, 168685327, 6344

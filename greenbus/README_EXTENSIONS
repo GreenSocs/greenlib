@@ -1,0 +1,23 @@
+You can extend the generic protocol by creating a new transaction container
+calss and putting it into the /transport directory tree.
+
+Please see /transport/PLB/PLB.h for an example.
+
+Note that your extended transaction definition header must have exactly
+the same name than the transport/subdirectory name. Then you can compile
+with
+
+> make EXTENSION=MyTransaction
+
+whereby MyTransaction is defined in the file
+
+/greenbus/transport/MyTransaction/MyTransaction.h.
+
+In your models, no changes are necessary as long as they do a
+
+#include "greenbus/transport/GP/GP.h"
+
+Have fun.
+
+The GreenBus development team @ TU Braunschweig, E.I.S. 
+

@@ -1,0 +1,67 @@
+## Your SystemC installation path
+SYSTEMC = /cad/tools/systemc
+
+## Your compiler
+CC = g++
+
+## set some directories 
+GSTLM_DIR = /home/klingauf/mydev
+DUST_DIR = /home/klingauf/mydev/sc_dust/trunk/src/systemc
+GS_CONTROL_DIR = /home/schroede/mydev
+HPC_DIR = /home/klingauf/mydev/hpc
+SCV_INCLUDE = /cad/tools/systemc-scv/include
+SCV_LIB = /cad/tools/systemc-scv/lib-$(TARGET_ARCH)
+BOOST_DIR = /cad/tools/boost
+
+## Static or dynamic cast class hierarchy
+#ifdef STATIC
+## Note: dynamic cast variant of the generic protocol is deprecated. So always use static casts.
+STATIC_DEFINE=-DUSE_STATIC_CASTS
+#endif
+
+## Generic Protocol Extensions
+ifdef EXTENSION
+EXT_TR_DEFINE=-DEXTENDED_TRANSACTION=$(EXTENSION)
+endif
+
+DEFFLAGS = $(EXT_TR_DEFINE) $(STATIC_DEFINE)
+
+
+## muldefs should be avoided in the source code, not by the linker
+##LDFLAGS = -Wl,-zmuldefs
+LDFLAGS =
+
+INCDIR = -I$(GSTLM_DIR) -I$(DUST_DIR) -I$(GS_CONTROL_DIR) -I$(HPC_DIR) -I$(SCV_INCLUDE) -I. -I.. -I$(SYSTEMC)/include -I$(BOOST_DIR)
+LIBDIR = -L$(DUST_DIR) -L$(SCV_LIB) -L. -L.. -L$(SYSTEMC)/lib-$(TARGET_ARCH)
+
+## use this line if you want to link against dust
+#LIBS   =  -lscv -ldust -lsystemc -lm $(EXTRA_LIBS)
+
+## use this line if you dont need dust
+LIBS   =  -lsystemc -lm $(EXTRA_LIBS) 
+
+
+EXE    = $(MODULE).x
+
+.SUFFIXES: .cc .cpp .o .x
+
+$(EXE): $(OBJS) $(SYSTEMC)/lib-$(TARGET_ARCH)/libsystemc.a 
+	$(CC) $(CFLAGS) $(DEFFLAGS) $(LDFLAGS) $(INCDIR) $(LIBDIR) -o $@ $(OBJS) $(LIBS) 2>&1 | c++filt
+#	strip $(EXE)
+
+.cpp.o:
+	$(CC) $(CFLAGS) $(DEFFLAGS) $(INCDIR) -c $<
+
+.cc.o:
+	$(CC) $(CFLAGS) $(DEFFLAGS) $(INCDIR) -c $<
+
+clean::
+	rm -f $(OBJS) *~ $(EXE) core
+
+ultraclean: clean
+	rm -f Makefile.deps
+
+Makefile.deps:
+#	$(CC) $(CFLAGS) $(DEFFLAGS) $(INCDIR) -M $(SRCS) >> Makefile.deps
+
+#include Makefile.deps
