@@ -1,0 +1,1348 @@
+\documentclass[12pt,oneside]{gsbook}
+\usepackage{greensocs}
+
+\usepackage{ulem} % allow strikeout/strikethrough text with \sout{}
+
+%\usepackage{array}
+%\usepackage{xspace}
+%\usepackage{fancyvrb}
+
+%%% To make it work with Drupal:
+%%% 1) Delete this package listings references below
+\usepackage{listings}
+\lstset{
+  language=Python,
+  breaklines=true,
+  captionpos=b
+  aboveskip=15pt,
+  basicstyle=\ttfamily \small,
+  stepnumber=5,
+  numbersep=5pt,
+  frame=trbl
+}
+%%% 2) replace text: ``lstlisting'' with ``verbatim''
+%%% 3) remove line that begins with \lstset
+
+
+\def\example#1{\begin{center}\colorbox{lightgrey}{\begin{tabular}{|p{0.6\paperwidth}|}\hline\\#1\\ \\ \hline\end{tabular}}\end{center}}
+
+\newsavebox{\examplebox}
+\newenvironment{exampleenv}{\begin{lrbox}{\examplebox}\begin{minipage}{0.6\paperwidth}}{\end{minipage}\end{lrbox}\example{\usebox{\examplebox}}}
+\newcommand{\tick}{$\sqrt{}$}
+
+\author{Copyright GreenSocs Ltd 2008}
+\title{GreenScript User Manual}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+
+\chapter{Introduction}
+\label{INTRO}
+
+System-level hardware modeling becomes more important each day. A lot
+of effort is done nowadays to leverage the abstraction level and
+simplify the architecture exploration. The GreenScript project aims in
+this direction, by making legacy SystemC models to interoperate with
+higher abstraction level models done in scripting languages.
+
+The motivation is to be able to explore the advantages of a
+dynamically-typed language with garbage-collection in the context of
+systems modeling, recognizing that model development time is often
+more important than model run time, especially for system architecture
+exploration. GreenScript simulations are expected to run much slower
+than SystemC simulations and this is considered acceptable.  The idea
+is that GreenScript can be used when a model is needed very quickly or
+for coding parts of a model that are activated very infrequently and
+thus have no significant impact on the overall simulation speed.
+
+The syntax provided to the user will remain as close as possible to
+SystemC, and semantics of events, threads, scheduling, delta cycles
+and so on should be the same in GreenScript and SystemC. The user
+interface is composed by classes and functions under the module
+\texttt{gs}.
+
+At the time of this writing, only the Python interface is
+available. This project is in beta stage. There may be changes in the
+interfaces described in this document to accommodate particularities
+of other scripting languages like Perl, TCL, etc.
+
+For examples how to use this interface, please take a look at the
+examples directory. To run, import the example inside python or use
+\texttt{python example.py}. The embedded examples have to be compiled
+and run outside Python.
+
+
+
+
+\chapter{Using GreenScript}
+\label{MODES}
+
+GreenScript can be used in two modes. One is the so-called
+\textit{standalone mode}, where the system modules are implemented by
+Python scripts and the top-level file is also a Python script. This
+mode doesn't need a compilation step, as the scripts are directly run
+in the Python interpreter.
+
+The other mode is called \textit{embedded mode}, where the system
+designer is free to implement some parts of the system in Python and
+others in SystemC. The top-level file must be SystemC in this
+case. The C++ files are compiled into an executable binary and the
+Python scripts are dynamically loaded into the embedded Python
+interpreter.
+
+\section{Coding with GreenScript}
+
+The GreenScript framework does not enforce the user to create hardware
+modules in Python. A system can be made of group of threads without a
+hierarchy, for example. But the use of modules makes it possible to
+instantiate the same code more then once. The concept becomes closer
+to the way SystemC operates.
+
+The example below shows a piece of code for a valid design in
+GreenScript. It is a thread to write to an output signal the double of
+what is read from an input signal, whenever this input signal
+changes. The code defines all resources in top-level, without any
+hierarchy.
+
+\begin{lstlisting}
+import gs                # Load GreenScript definitions
+
+# Global signals
+input = gs.signal()
+output = gs.signal()
+
+# Global thread
+def double():
+    while(True):
+        gs.wait(input.write_event())
+        output.write(input.read() * 2)
+
+gs.spawn(double)         # Start global thread
+
+# Other thread should be defined to drive the input signal (...)
+\end{lstlisting}
+
+This last example suites well for small designs. For bigger systems,
+it may be better to group functionality in modules. This has some
+advantages, like better reusability and higher abstraction level.
+
+The following example is equivalent to the last one, but now it
+embraces the thread in a class, thus defining a module. The module
+input and output can be parametrized by using module ports, so the
+module can be instanciated more then once when required. (note that it
+was impossible in the last example because all threads would change
+the same set of signals).
+
+\begin{lstlisting}
+# Load GreenScript definitions
+import gs
+
+# Declare the module
+class doubler:
+
+    def double(self):
+        while(True):
+            gs.wait(self.input.write_event())
+            self.output.write(self.input.read() * 2)
+
+    def __init__(self, input=None, output=None):
+        self.input = input
+        self.output = output
+        gs.spawn(self.double)
+
+
+# Describe the system (in possibly other file)
+
+s1 = gs.signal()
+s2 = gs.signal()
+
+# Instantiate module
+# option 1: positional port binding
+     my_doubler = doubler(s1, s2)
+# option 2: named port binding
+     my_doubler = doubler()
+     my_doubler.input = s1
+     my_doubler.output = s2
+
+# Other module to drive input for doubler (...)
+\end{lstlisting}
+
+
+\section{Standalone mode}
+
+The standalone mode means that the whole simulation runs inside the
+Python interpreter (virtual machine). All files describing the system are
+Python scripts and thus they don't need a separate compilation step.
+Just start the Python interpeter and load the necessary files to run
+the simulation.
+
+Standalone mode is limited in that it is inconvenient and non-portable to
+accelerate the simulation using SystemC C++ code.  Where high simulation
+speed is needed, it is recommended to code the heavily-used parts of
+the simulation model natively in SystemC.  This pretty-much requires the
+GreenScript Python code to be used in its embedded mode.
+
+\section{Embedded mode}
+
+The embedded mode can run the same scripts as the standalone mode,
+but normally some minor changes are done to allow the communication
+with the SystemC world. In this mode, GreenScript modules are loaded
+by the top-level SystemC file, inside the sc\_main function.
+
+Some things may differ between the execution of Python code in
+embedded and standalone modes.
+\begin{itemize}
+\item module naming, as used by configuration and messaging, will
+have no hierarchy (other than that created by the user) in standalone
+mode.  In embedded mode the SystemC hierarchical naming is used.
+\item the function gs.interpreter\_name() returns an empty string in
+standalone mode.
+\item in standalone mode, at least one Python script must start the
+simulation, whereas this is done by the sc\_main function in
+embedded mode.
+\end{itemize}
+
+In order to instantiate a GreenScript module, the designer first
+instantiates a container module, then loads scripts to this
+container. The GreenScript module can be thought of as a virtual
+machine.  Any number of GreenScript modules may be instantiated and all
+will run independently of each other (except that they are able to
+communicate using all the mechanisms below).  The GreenScript module may
+interpret one single Python script, or, from SystemC, user code is able
+to load further scripts and run Python commands.  This is done in
+the following code:
+
+\lstset{language=C++}
+\begin{lstlisting}
+#include <systemc>
+#include <greenscript.h>
+(...)
+
+int sc_main(int argc, char *argv[])
+{
+  // Declare interfaces (signals, fifos, etc.)
+  sc_signal<int> in1("in1"), in2("in2"), out1("out1");
+
+  // Instanciate a container module to load Python scripts
+  GreenScriptModule gs_module("gs_module");
+
+  // Load desired scripts that defines modules
+  gs_module.load("adder.py");
+
+  // Instantiate Module in Python code (and do port binding)
+  gs_module.run("my_adder = adder('in1','in2','out1')");
+
+  // Note that all three of these steps can be performed in one, by
+  // passing the script name "adder.py" as a second parameter to the
+  // gs_module constructor, and including the instantiation in adder.py.
+
+  //Instantiate other modules (either SystemC or GreenScript)
+  //  to drive signals named in1 and in2.
+  (...)
+
+  sc_start(sc_time(100,SC_NS));
+
+  return 0;
+}
+\end{lstlisting}
+\lstset{language=Python}
+
+Note that the interfaces (signals, fifos, etc.) that will be acessed
+in GreenScript must be named explicitly, or else SystemC will generate
+a random name for them and GreenScript will have no way to find
+them. The communication between SystemC and GreenScript in this last
+example is done with the signals named \textit{in1}, \textit{in2} and
+\textit{out1}. The first two are connected as input and the third as
+output to the \textit{adder} GreenScript module. They can also be
+connected to SystemC modules in order to drive the inputs and read the
+output.
+
+Only sc\_signal$<$int$>$ and sc\_fifo$<$int$>$ are recognized for
+now. More interfaces and user-defined interfaces are work for future
+GreenScript versions.  The GreenScript module should use the classes
+\textit{gs.sc\_signal} and \textit{gs.sc\_fifo} to allow the
+communication with SystemC modules. Please refer to Chapter
+\ref{PYTHON} for more information on these classes.
+
+The \textit{GreenScriptModule} creates its own Python namespace which it uses
+as the \textit{globals()} for all Python code it executes, thus ensuring
+that multiple \textit{gs\_module} instances can coexist without any risk
+of variable name clashes and so on.  The \textit{load} function and
+equivalently any script name passed to the constructor are not imported
+in the Python sense, but simply executed.
+
+Nevertheless the environment variable \textit{PYTHONPATH} is used by
+the \textit{load} function to search for Python source files.  However if the
+filename given as parameter to \textit{load} is absolute or relative to
+the current working directory (it starts with a dot), the \textit{PYTHONPATH}
+is ignored.  Thus the user can ensure the exact version of a Python
+source file to execute either by calling
+\lstset{language=C++}
+\begin{lstlisting}
+  gs_module.load("./py/adder.py");
+\end{lstlisting}
+or by calling
+\begin{lstlisting}
+  gs_module.load("/home/user/simulations/py/adder.py");
+\end{lstlisting}
+\lstset{language=Python}
+
+\section{Installation}
+
+To use the greenscript, please follow the given steps below:
+
+\begin{itemize}
+\item Check out the required package from the svn location https://svn.greensocs.com/public/packages/greenscript using svn co (check out) command.
+\item Update the Makefile.defs file located in the root directory of greenscript. Update the paths for variables like SYSTEMC, PYTHON\_VERSION, GREENMESSAGE, GREENBUS, GREENCONTROL, BOOST, LUA and others to reflect the valid directories in your system.
+\item Then run the make command. If everything goes right the greenscript library file is built in the lib directory.
+\item Set the PYTHONPATH to the directory where the greenscript is installed using export command.
+\item To run an example, go into any example (like embedded-adder) directory, run make. If every thing goes fine, an executable with the name 'system' will appear in the directory. Run system to see the result. 
+\end{itemize}
+
+\section{Example}
+
+In this section we will look at the embedded-adder example available in the example directory of the greenscript project. In this example there are three modules
+
+\begin{enumerate}
+ \item First is the gen module, which have a variable with the name val. This value is initialized using the config.lua file. At every positive edge of the clock cycle, gen module increments the val by one and writes it on the out signal.
+ \item Second is adder.py. This module is implemented in python using the greenscript methodology. It adds the values of two incoming signal and outputs the added value on the out signal.
+ \item Third is the disp module which displays the value of the input signal.
+\end{enumerate}
+
+These three modules are binded together in the top level file that is system.cpp. In system.cpp, two gen module are instantiated and the out signal of each gen module is binded to the input signal of the adder module. The out signal of the adder is binded to the in signal of the disp module. The adder adds the signals generated by two gen module and passes it to the disp module. This simulation lasts for 100 ns.
+
+
+\chapter{Python interface reference}
+\label{PYTHON}
+
+Each script that will describe a part of the system should import the
+main GreenScript library module, using \texttt{import gs}. This
+defines the classes and functions described in the following sections.
+
+
+\section{Classes}
+
+\newcommand{\class}[2]{\par\noindent \textbf{#1}\par\vspace{5pt}\indent\parbox{16.5cm}{#2}\par}
+\newenvironment{methods}{\vspace{5pt}\indent Methods:\vspace{10pt}\par\begin{tabular}{@{}p{4cm}p{12cm}}}{\end{tabular}\vspace{25pt}}
+\newenvironment{members}{\vspace{5pt}\indent Members:\vspace{10pt}\par\begin{tabular}{@{}p{4cm}p{12cm}}}{\end{tabular}\vspace{25pt}}
+\newcommand{\method}[2]{\texttt{#1} & #2 \\}
+\newcommand{\member}[2]{\texttt{#1} & #2 \\}
+
+
+
+\class {gs.event} { The event class. The objects of this class have
+corresponding \texttt{sc\_event} objects in the SystemC world.
+
+User GreenScript code should not use the constructor arguments for
+this class.  It has 2 optional constructor arguments, used
+internally. Without any argument, creates a new \texttt{sc\_event} in
+the SystemC world and binds it to this new event. The first argument
+is a Python object that corresponds to a \texttt{sc\_object}, in this
+case the new event will be bound to the default event of this
+object. The second argument is a constant to select which sort of
+SystemC event to bind to: \texttt{gs.EVENT\_CHANGED} (the default),
+\texttt{gs.EVENT\_READ}, \texttt{gs.EVENT\_WRITE}, \texttt{gs.EVENT\_WRITEIF}.}
+
+\begin{methods}
+
+\method {notify()} {Notify immediate}
+
+\method {notify(0)} {Notify after one delta}
+
+\method {notify(time, unit)} {Notify after time. The \texttt{unit} is
+an optional constant and can be one of \texttt{gs.FS},
+\texttt{gs.PS}, \texttt{gs.NS} (the default),
+\texttt{gs.US}, \texttt{gs.MS}, \texttt{gs.SEC}.}
+
+\method {wait()} {Wait for this event}
+
+\end{methods}
+
+
+
+\class {gs.event\_tree} {This class cannot be directly
+instantiated. Objects of this class are created automatically when
+using event expressions with \texttt{and} and \texttt{or} operators,
+eg:
+
+\texttt{e1 = gs.event()}
+
+\texttt{e2 = gs.event()}
+
+\texttt{e3 = gs.event()}
+
+\texttt{my\_tree = (e1 \& e2) | e3}
+}
+
+\begin{methods}
+
+\method {wait()} {Wait for this event tree expression}
+
+\end{methods}
+
+
+
+\newpage
+\class {gs.primitive\_channel} {A base class for creating new
+primitive channels.  The user may derive a class from the
+\texttt{gs.primitive\_channel}.  The derived class may call
+\texttt{self.request\_update()} provided it provides a \texttt{update()}
+method.  Unlike SystemC, in GreenScript
+primitive channels can be created and deleted during the simulation
+run. The \texttt{gs.signal} and \texttt{gs.fifo} classes are examples
+of channels derived from this class.}
+
+Constructor arguments are \texttt{debug}, \texttt{name} and \texttt{time\_unit}
+which all have defaults and may be ignored.  The parameter \texttt{debug} is a boolean
+requesting that callbacks into user code (the \texttt{update} method) be
+debuggable.  The other two parameters are used to set the debugger prompt.
+
+\begin{methods}
+
+\method {request\_update()} {Method to be called by the derived class when it
+wants to be called back (using the \texttt{update()} method) between the
+current and the next delta cycles.}
+
+\end{methods}
+
+
+
+\class {gs.signal} {Derived from \texttt{gs.primitive\_channel}.  The
+\texttt{gs.signal} behaves like an \texttt{sc\_signal} except that
+\texttt{gs.signal} can be instantiated and deleted during simulation
+run, not only at elaboration time.
+
+It has one constructor argument, the initial value, which defaults to
+False.  It also inherits all the constructor parameters from
+\texttt{gs.primitive\_channel}.
+
+A \texttt{gs.signal} can be set to any Python object and there is no
+restriction on the type, which can change during the simulation.
+
+This class does not comunicate with SystemC directly. Use
+\texttt{gs.sc\_signal} for this purpose.}
+
+\begin{methods}
+
+\method {read()} {Returns the value}
+
+\method {write(object)} {Stores any Python object as the signal value}
+
+\method {write\_event()} {Returns an \texttt{gs.event} triggered when
+this signal is written to}
+
+\end{methods}
+
+
+
+\class {gs.sc\_signal} {The \texttt{gs.sc\_signal} class wraps
+directly a SystemC \texttt{sc\_signal} object. The corresponding
+\texttt{sc\_signal} object is searched for in the SystemC object hierarchy
+by its name, so the \texttt{sc\_signal} must be
+instantiated earlier in the SystemC world.
+
+Objects of this class can be instantiated and destructed during elaboration or
+simulation run, as long as the corresponding \texttt{sc\_signal}
+exists.
+
+It has one constructor argument, the name of the \texttt{sc\_signal}
+to capture. It differs from gs.signal because the initial value is not
+an argument for this class.
+
+The type of the object that is written to the gs.\texttt{sc\_signal}
+must be compatible with the original type of the \texttt{sc\_signal}.}
+
+\begin{methods}
+
+\method {read()} {Returns the value}
+
+\method {write(object)} {Stores the object as the signal value, the
+type must be convertible to the internal \texttt{sc\_signal} type}
+
+\method {write\_event()} {Returns an \texttt{gs.event} triggered when
+this signal is written to}
+
+\end{methods}
+
+
+
+\newpage
+\class {gs.fifo} {Derived from \texttt{gs.primitive\_channel}.  The
+\texttt{gs.fifo} behaves like an \texttt{sc\_fifo} except that
+\texttt{gs.fifo} can be instantiated and deleted during simulation
+run, not only at elaboration time (it is also possible that the
+delta-cycle behaviour of \texttt{num\_available()} and \texttt{num\_free()}
+differs).
+
+One constructor argument, the FIFO size, which defaults to 0, meaning
+infinite size.  It also inherits all the constructor parameters from
+\texttt{gs.primitive\_channel}.
+
+A \texttt{gs.fifo} can contain up to ``size'' Python objects and there
+is no restriction on the object types or mixture of types.
+
+This class does not comunicate with SystemC directly. Use
+\texttt{gs.sc\_fifo} for this purpose.}
+
+\begin{methods}
+
+\method{read()}{Blocking read. Remove and return the first value from the
+queue}
+
+\method {nb\_read()} {Non-blocking read. Returns a tuple of 2 objects, firstly
+a bool indicating success of the read, and secondly the read value, if
+successful.}
+
+\method{peek()}{Blocking peek. Just return the first value from the queue
+without removing}
+
+\method{nb\_peek()}{Non-blocking peek. Returns a tuple of 2 objects, firstly
+a bool indicating success of the peek, and secondly the peeked value, if
+successful.}
+
+\method{num\_available()}{The number of visible objects in the queue}
+
+\method{write(object)}{Blocking write. Stores any Python object at the
+end of the queue}
+
+\method{nb\_write(object)}{Non-blocking write. Returns a bool to
+indicate success or failure of the write}
+
+\method{num\_free()}{The number of free positions visible in the queue,
+defaults to 1 for a FIFO of unlimited size}
+
+\method{write\_event()}{Returns an \texttt{gs.event} triggered when
+this fifo is written to}
+
+\method{read\_event()}{Returns an \texttt{gs.event} triggered when
+this fifo is read from}
+
+\end{methods}
+
+
+
+\class {gs.sc\_fifo} {The \texttt{gs.sc\_fifo} class wraps directly a
+SystemC \texttt{sc\_fifo} object. The corresponding \texttt{sc\_fifo}
+object is searched for in the SystemC object hierarchy by its name, so
+the \texttt{sc\_fifo} must be instantiated earlier in
+the SystemC world.
+
+Objects of this class can be instantiated and destructed during elaboration or
+simulation run, as long as the corresponding \texttt{sc\_fifo} exists.
+
+It has one constructor argument, the name of the \texttt{sc\_fifo} to
+capture. It differs from \texttt{gs.fifo} because the size of the
+queue is not a argument for this class.
+
+The type of the object that is written to the \texttt{gs.sc\_fifo}
+must be compatible with the original type of the \texttt{sc\_fifo}.
+
+It doesn't have \texttt{peek} and \texttt{nb\_peek} like
+\texttt{gs.fifo}, because \texttt{sc\_fifo} does not support these
+methods.}
+
+\begin{methods}
+
+\method{read()}{Blocking read. Remove and return the first value from
+the queue}
+
+\method {nb\_read()} {Non-blocking read. Returns a tuple (bool, value)
+where the first value shows success or failure of the read}
+
+\method{num\_available()}{The number of objects in the queue}
+
+\method{write(object)}{Blocking write. Stores the object in the end of
+the queue. The type must be convertible to the internal
+\texttt{sc\_fifo} type}
+
+\method{nb\_write(object)}{Non-blocking write. Returns a bool to
+indicate success or failure of the write}
+
+\method{num\_free()}{The number of free positions in the queue}
+
+\method{write\_event()}{Returns an \texttt{gs.event} triggered when
+this fifo is written to}
+
+\method{read\_event()}{Returns an \texttt{gs.event} triggered when
+this fifo is read from}
+
+\end{methods}
+
+
+
+\class {gs.spawn} { The user creates processes in GreenScript using
+\texttt{gs.spawn}.  There is no distinction between threads and
+methods (everything is a thread).  Processes may be created at any
+time; during elaboration or during the simulation.
+
+Constructor arguments: \texttt{runnable}, \texttt{name},
+\texttt{debug}, \texttt{time\_unit}, \texttt{name\_base},
+\texttt{interpreter\_name}, \texttt{args}, \texttt{keyargs},
+\texttt{completed\_event}
+
+\texttt{runnable} must be something the Python interpreter can
+``execute'', eg. a function or an object of a class
+with an overwritten \texttt{\_\_call\_\_} method (note that arguments
+can be added using \texttt{args} and \texttt{keyargs} and the
+number/type of the arguments must correspond to the capabilities
+of the \texttt{runnable}).
+
+All the other constructor arguments are optional.
+
+\texttt{name} should be a string (defaults \texttt{runnable.func\_name} where
+possible). \texttt{debug} is a boolean, default
+False, that specifies that the \texttt{runnable} should be executed
+within the Python debugger \texttt{pdb}.  \texttt{time\_unit} is
+used to set the \texttt{pdb} debugger's prompt and for no other purpose:
+it should be set to \texttt{NS}, \texttt{MS}, or similar.  The
+\texttt{pdb} prompt will contain the thread name, the name of the
+SystemC GreenScript module from which the thread originates (if in
+embedded mode), and the current simulation time.
+\texttt{name\_base} is a string used to generate unique names for
+spawns where no name is provided and no \texttt{runnable.func\_name}
+exists.
+\texttt{interpreter\_name} is a string specifying the interpreter
+name (the name of the GreenScriptModule in SystemC) if the user
+wishes to override the default.  The default is inherited from the
+interpreter name of the thread that called spawn(), and normally
+user code would not change this.  The example case is where a
+spawn is called from within a writeif\_base or a primitive channel
+derivative's update() method, where the name of the interpreter that
+created that object may be preferred to the name of the interpreter
+that called the method.
+
+\texttt{args} and \texttt{keyargs} allow the user to apply arguments
+to the \texttt{runnable} when it is called.  \texttt{args} is a
+list or tuple of ordered arguments.  \texttt{keyargs} is a dictionary
+of named arguments.
+
+\texttt{completed\_event} is an optional event (instantiated by the
+caller) which spawn will notify when the process completes.
+
+When a spawn object is instantiated in Python, execution continues
+as normal until the current process yields.  The SystemC kernel will
+then, when possible, create a new process and call the runnable from
+within it.  If the runnable returns \texttt{gs.REPEAT\_SPAWN}, it is
+immediately called again.  If the runnable returns anything else or
+is killed, the process exits.
+}
+
+\begin{methods}
+
+\method {is\_spawn()} {spawn derives from a base class \texttt{callback}
+which contains this method in order to distinguish spawn callbacks from
+other sorts of callback.  Returns True.}
+
+\method {reset()} {Cause the process to start again from the
+beginning, as soon as its current \texttt{wait()} }
+
+\method {kill()} {Cause the process to stop and be deleted}
+
+\method {pause()} {Cause the process to stall}
+
+\method {resume()} {Cause a previously paused process to resume.  Note
+that the process was in a \texttt{wait()} when it was paused and this
+\texttt{wait()} will in all cases complete as originally specified.
+There is no way to abort a \texttt{wait()}.}
+
+\method {{\em important note}} {{\em It is possible that a thread originating in
+Python calls into C++ code and enters a wait() there.  None of the
+methods reset/kill/pause/resume will take effect until control
+returns to Python.  Therefore any C++ code after the wait() will
+always be executed.  It is also theoretically possible
+that the stack of a thread passes from Python to C++ and thence back
+to Python, where it enters a \texttt{wait()}.  A new \texttt{callback}
+object is created in Python for this higher level of the stack.  When
+pause/kill/resume/reset is called, it will not
+take effect until control returns to the original spawn object.  It
+is technically feasible to extend the effect of kill/pause/reset/resume
+to all levels of the stack {\em managed by Python} but this is not
+yet implemented.}}
+
+\end{methods}
+
+\begin{members}
+\member {started} { Boolean member variable indicating whether the
+runnable has been called }
+\member {complete} { Boolean member variable indicating whether the
+spawn has stopped trying to call the runnable.  This happens on a
+kill, or when runnable returns something other than REPEAT\_SPAWN,
+or when there is an exception raised within runnable. }
+\member {success} { Boolean member variable indicating whether the
+runnable exited cleanly.  Is set to False until the spawn is complete,
+then set to True if there was no exception raised within runnable.  A
+kill of a spawn does not make the spawn unsuccessful. }
+\member {return\_value} { Member variable containing the Python
+object returned by runnable, or None. }
+\end{members}
+
+
+\class {gs.fork} {An object of class gs.fork is a collection of
+processes (spawn objects) that are run in parallel.  The constructor
+of gs.fork is blocking and will return control to the calling
+thread only when a sufficient number of its spawn objects have
+finished.
+
+Only one constructor argument is compulsory: \texttt{runnable\_list},
+which is a list of runnables.  A list of \texttt{spawn} objects is
+created from this, one for each runnable.
+
+Optional constructor arguments are:
+\texttt{wait\_for}, an integer indicating the number of the spawns
+that have to finish before the constructor returns.  Default is $-1$,
+meaining ``wait for all''.
+\texttt{kill}, a boolean specifying that all unfinished spawns should
+be killed when the fork constructor returns.  Default is False.
+\texttt{name}, a string used to form the base for the spawn names.
+\texttt{args} and \texttt{keyargs}, two lists, the same length as the
+list of runnables, containing parameters to be applied to the
+runnables.  Elements of \texttt{args} are lists or tuples.  Elements
+of \texttt{keyargs} are dictionaries.
+
+Other constructor arguments of spawn may be added to the constructor
+of fork, such as \texttt{debug}.  These are passed to the constructors
+of all spawned processes.
+}
+
+\begin{members}
+\member {spawns} {The list of spawn objects, one for each runnable.
+The elements of this list can be used to identify the state of
+the processes, or to recover their return values, or to kill/reset/etc
+them.  This member is certain to exist before the fork constructor
+yields to the SystemC kernel.}
+\end{members}
+
+
+\class {gs.param} { Create a configuration parameter. This uses
+GreenConfig to create parameters that can access the GreenConfig database.
+
+The GreenConfig database stores all parameters as strings.  In SystemC,
+parameter objects are typed and a conversion from string to the type is
+made when they are read.  In Python a parameter object the string is
+evaluated to a Python object by using the \texttt{\_\_call\_\_()}
+operator.  The user also has the
+option of specifying that a parameterbe treated as a string.
+
+Parameter objects may be simple scalars, an ordered list of values, or
+a hierarchical collection of named parameters.  Type restrictions are
+only those imposed by the GreenConfig database structure.  In SystemC
+there are three different classes for these three types.  In Python there
+is just one class, and its type is determined by how it is used.  Parameters
+remain uninitialised until user Python code accesses them in a way that is
+specific to one of the types (scalar, list or dictionary).  Once a
+parameter's type has been fixed, it can not be changed.  Attempts to access
+a parameter in a way impossible for its type (for example trying to set the
+value of a scalar parameter to a list object) will cause a
+\texttt{BadParamAccess} exception.
+
+gs.param has only one compulsory constructor argument, the local name of the
+parameter.
+
+Please see Chapter \ref{PARAM} for a important note on how the full
+name of the parameters, to be used in configure files, differs in
+standalone mode and embedded mode.}
+
+There are three optional constructor parameters for the user.  \texttt{default} is a Python
+object which will be used to provide default values if possible.  It is
+typically a scalar, a list or tuple, or a dictionary, depending on the type
+of the parameter.  \texttt{size} should be an integer.  It forces the
+parameter to be an ordered list and forces the size to be exactly the
+specified size.  A value of zero has no effect.  \texttt{force\_string}
+is a boolean which suppresses the use of \texttt{eval} when reading the
+value of this or any sub-parameter.
+
+\begin{methods}
+
+\method {\_\_call\_\_(new\_val=None)} {This method forces the parameter to be
+a scalar, and either reads it or writes it, depending on the presence of
+\texttt{new\_val}.}
+
+\method {\_\_int\_\_(), \_\_long\_\_(), \_\_float\_\_(), \_\_complex\_\_()} {
+These casting operators are implemented and also force the parameter to be
+a scalar.}
+
+\method {iterkeys} {Normal method for iterating over a dictionary's keys.  This
+forces the parameter to be a hierarchical dictionary structure.}
+
+\method {iteritems} {Normal method for iterating over a dictionary's (key, value)
+pairs.  This forces the parameter to be a hierarchical dictionary structure.}
+
+\method {keys} {Normal method for getting a list of a dictionary's keys.  This
+forces the parameter to be a hierarchical dictionary structure.}
+
+\method {items} {Normal method for getting a list of a dictionary's (keys, value)
+pairs.  This
+forces the parameter to be a hierarchical dictionary structure.}
+
+\method {has\_key} {Normal method for testing if a key exists in a dictionary.  This
+forces the parameter to be a hierarchical dictionary structure.}
+
+\method {\_\_len\_\_} {Normal method for getting the length of a list.  This
+forces the parameter to be an ordered list.}
+
+\method {resize(new\_len)} {Method to force the parameter to be an ordered list,
+if required, and to set its length.}
+
+\method {\_\_iter\_\_} {Normal method to get an iterator over a Python structure,
+allowing code like \texttt{for x in object:  print x}.  Forces the parameter to
+be an ordered list.}
+
+\method {\_\_contains\_\_(val)} {Normal method used by the \texttt{in} operator
+to test whether a value is present in a container.  Forces the parameter to be
+an ordered list.}
+
+\method {\_\_getitem\_\_(key)} {Normal method used to enable code like
+\texttt{x = my\_param["sub\_param\_name"]}.  This is important for the gs.param
+class because this method is the principal way of creating and accessing
+sub-parameters.  If the key is an integer, the parameter is forced to be an
+ordered list.  Otherwise the parameter is forced to be a hierarchical dictionary.
+In both cases the returned value is also a \texttt{gs.param}, but may be an
+uninitialised one.  The new parameter is not initialised until in its turn it is
+accessed by a function that forces it to one of the three types.  For example a
+sub-parameter of an ordered array may be created by \texttt{sub = main\_param[3]}
+and then converted into a scalar via the \texttt{\_\_call\_\_} method like
+this: \texttt{x = sub()}.  A parameter keeps references to its sub-parameters.}
+
+\method {\_\_setitem\_\_(key, new\_val)} {Equivalent method to \texttt{\_\_getitem\_\_}
+for setting a sub-parameter instead of reading one.  All the comments for
+\texttt{\_\_getitem\_\_} also apply.  In addition, the type of the new value
+will determine the type of the sub-parameter being created.  A dictionary will
+create a hierarchical dictionary, a list will create an ordered list, and
+anything else will attempt to create a scalar.}
+
+\method {write(value)} {Set the value of the parameter to the value, setting the
+type of the parameter if required.}
+
+\method {\_\_str\_\_} {The normal method for providing a string representation
+of an object.  This allows parameters to be printed.  Uninitialised parameters
+are left uninitialised when printed.}
+
+\end{methods}
+
+
+
+\newpage
+\class {gs.av.output} { This is part of GreenAV, the Analysis and
+Visibility project. One functionality of this project is to monitor
+some parameters for changes. This class creates an output descriptor
+that will contain the changes in the registered parameters along time.
+
+Many types of output files are supported. Please consult the GreenAV
+users guide for more information
+
+It has two constructor arguments: the first is the type of the output
+to be created (\texttt{gs.av.NULL}, \texttt{gs.av.FILE},
+\texttt{gs.av.STDOUT}, \texttt{gs.av.CSV} or \texttt{gs.av.SCV}) and
+the second the name of the file to output.}
+
+\begin{methods}
+
+\method {add(param\_name)} {Add the given parameter (by name) to the
+list of parameters that are monitored for changes.  When this
+parameter changes, the output will be updated.  Note that this will not
+work for parameters that have not been initialised to a scalar (see above).}
+
+\method {add(gs\_param\_obj)} {Add the given parameter (by reference) to
+the list of parameters that are monitored for changes.  When this
+parameter changes, the output will be updated.  Note that this will not
+work for parameters that have not been initialised to a scalar (see above).}
+
+\method {add\_all()} {Add all existing parameters to the list of
+parameters that are monitored for changes.}
+
+\method {remove(param\_name)} {Remove the given parameter (by name)
+from the list of parameters that are monitored for changes.}
+
+\method {remove(gs\_param\_obj)} {Remove the given parameter (by
+reference) from the list of parameters that are monitored for
+changes.}
+
+\method {pause()} {Pause the output. The parameters won't be
+monitored.}
+
+\method {pause(time, unit)} {Pause the output for the given amount of
+time. \texttt{time} is a floating-point number and \texttt{unit} is an
+optional constant that can be one of \texttt{gs.FS},
+\texttt{gs.PS}, \texttt{gs.NS} (the default),
+\texttt{gs.US}, \texttt{gs.MS}, \texttt{gs.SEC}.}
+
+\method {pause(event)} {Pause the output until the given
+\texttt{gs.event} fires. Currently it does not accept
+\texttt{gs.event\_tree}.}
+
+\method {resume()} {Resume the output when it is paused. The
+parameters will be monitored and changes outputed again.}
+
+\end{methods}
+
+
+
+\class {gs.message} { This class interfaces with the GreenMessage
+  project. It is a wrapper around gs::msg::Message.
+
+One optional constructor argument, which can be either a list or
+tuple or a comma-separated list of \texttt{name=value}
+pairs (a Python \texttt{**args} parameter) to initialise the message.
+If it is a list or tuple, the constructor will set element names to
+be the integers $0$ to Length$-1$.
+
+The interface to this class is similar to the interface of a Python
+dictionary. All the usual constructs that use indexed access work.
+For example:
+
+\texttt{msg = gs.message(command='start', repeat=3, cache.size=10)}
+
+\texttt{msg['cache.type'] = 'wb'}
+
+\texttt{print msg['command']}
+
+\texttt{for k,v in msg.items(): print k,'=',v}
+
+\texttt{if 'repeat' in msg: print 'repeat is set to', msg["repeat"]}
+
+\texttt{del msg["command"]}
+
+Hierarchical access can be done either through use of dots in the
+key, or through repeated lookup, for example:
+
+\texttt{x = my\_message["cpu"]["l2\_cache"]["nr\_lines"]}
+
+\texttt{x = my\_message["cpu.l2\_cache.nr\_lines"]}
+
+
+Hierarchical construction of messages is supported,
+for example:
+
+\texttt{msg1 = gs.message(command='start', repeat=3, cache.size=10)}
+
+\texttt{msg2 = gs.message(type='command', info = msg1)}
+
+There is in fact a second class, \texttt{message\_ref}.  Hierarchical
+message objects obtained using attribute lookup are returned as
+message references, allowing code like this to work:
+
+\texttt{x = my\_message["cpu.l2\_cache"]}
+
+\texttt{x["nr\_lines"] = 357  \# changes my\_message \#}
+
+Message references have exactly the same user interface as messages.
+
+The use of references to parts of other messages imposes some limitations
+on what can be changed without risk of segmentation faults.  The
+\texttt{KeyError} exception may be raised if the user attempts to
+do something unsafe, for example:
+
+\texttt{x = my\_message["cpu.l2\_cache"]}
+
+\texttt{x["nr\_lines"] = 357}
+
+\texttt{my\_message["cpu"] = 3.14159  \# KeyError: would delete x if allowed \#}
+
+}
+
+\begin{methods}
+
+\method {items()} {Similar to dict items(). Builds a new list of pairs
+  (key,value) for iteration. It returns all the hierarchy.}
+
+\method {keys()} {Similar to dict keys(). Builds a new list with the
+  keys present in the message. It returns all the hierarchy.}
+
+\method {values()} {Similar to dict values(). Builds a new list with the
+  values present in the message. It returns all the hierarchy.}
+
+\method {\_\_len\_\_()} {Provides the number of keys at the top level
+of the hierarchy.}
+
+\method{update(dictionary)} {Adds the elements of a dictionary to
+the message.  The dictionary can be either a dictionary object or
+a list of comma-separated \texttt{name = value} pairs.}
+
+\method {force\_string()} {Returns a reference to the same message, but
+with a flag set to indicate that the leaf values should be returned to
+Python as strings and not passed through Python's \texttt{eval()}
+function.  Usage is for example:
+
+\texttt{msg = gs.message{a = "20 + 10"}}
+
+\texttt{print msg["a"]  \# prints "30" \#}
+
+\texttt{print msg.force\_string()["a"]  \# prints "20 + 10" \#}
+}
+
+\method {length\_as\_array()} {Returns the same thing as the same
+method in SystemC:  0 unless the keys are the non-negative integers
+$0$ to $N-1$, in which case $N$.}
+
+\method {copy()} {Returns a deep copy of the message.}
+
+\end{methods}
+
+
+
+\class {gs.writeif} { This class interfaces with the GreenMessage
+  project. It is a wrapper around gs::msg::WriteIf. It is not meant to
+  be instantiated directly by the user. It is returned by the function
+  \texttt{gs.findReceiver()} and a message can be sent with the
+  write() method. }
+
+\begin{methods}
+
+\method {write(msg)} {Write a message to the receiver referenced by
+  this class.}
+
+\method {nb\_write(msg)} {Write a message to the receiver referenced by
+  this class, with possibility of rejection.  Returns a boolean to
+  indicate success or rejection.}
+
+\method {num\_free()} {Find out how many spaces are available in the
+  receiver endpoint.  Should be a good indication of whether an
+  immediate \texttt{nb\_write} will succeed.}
+
+\method {data\_read\_event()} {Return an event which will be triggered
+  when space is created in the receiver endpoint.  If an
+  \texttt{nb\_write} is rejected or \texttt{num\_free} returns 0, there
+  is no sense in trying again until after a notification of this
+  event.}
+
+\end{methods}
+
+
+
+\class {gs.msgfifo} { This class interfaces with the GreenMessage
+  project.  It is derived from both \texttt{gs.fifo} and
+  \texttt{gs.writeif\_base}.  Therefore it provides a complete
+  FIFO which is visible as a GreenMessage endpoint from SystemC.
+  Any SystemC or GreenScript component can look up a \texttt{gs.msgfifo}
+  by name and then write messages into it using the normal FIFO write
+  interface.
+
+  The entire user interface (input and output) of \texttt{gs.fifo} is
+  available to the Python code.  Typicially only the output (read)
+  side is used, the input side being reserved for remote sources of
+  messages.
+
+  The constructor takes 2 parameters, both optional.
+  \texttt{name\_end}, which is appended to the interpreter name to
+  create the full name of the FIFO, used by other components to find it.
+  Default is to generate a unique name, which can be obtained through
+  the method \texttt{name()}.
+  \texttt{size}, which is directly passed to the \texttt{gs.fifo}
+  constructor.  Default value is 16.
+  }
+
+
+\class {gs.writeif\_base} { This class and its derivatives are provided
+to allow the Python script
+to add its own alternative implementations of a message FIFO.  For example a FIFO
+can implement the \texttt{write} method to do something directly thus avoiding the
+need for a process to \texttt{read} the FIFO.  This provides a basis for direct
+blocking and non-blocking callbacks between SystemC and GreenScript.
+
+There is one functional constructor argument, the FIFO's name, used by other modules and processes
+to find it.  The name is prefixed with the name of the \texttt{gs\_module} if
+in embedded mode (the \texttt{interpreter\_name()}).  If the user's class,
+derived from \texttt{writeif\_base}, has
+a constructor \texttt{\_\_init\_\_(self,...)} then this needs to call the constructor
+of the base class, providing the name:  \texttt{writeif\_base.\_\_init\_\_(self,name)}.
+
+The constructor has two other arguments, \texttt{debug} and \texttt{time\_unit}
+which have the same meanings as for \texttt{gs.spawn}.
+
+Unlike \texttt{gs.msgfifo}, objects of this class can be created and deleted at any
+time during the simulation.  However the Python reference counting will not prevent
+deletion even if
+other Python or SystemC components have used \texttt{findReceiver} to get a reference
+to it.  Therefore the user must be careful not to let such objects disappear unless it is
+certain nothing will try to write to them.
+
+The derived class must provide the methods \texttt{write(message)} and
+\texttt{nb\_write(message)}.  It may also override the methods
+\texttt{num\_free()} and \texttt{data\_read\_event()} but defaults for these
+are provided.
+}
+
+\begin{methods}
+\method {string name()} {Returns the full name of the object, the name
+through which it can be found in the GreenMessage registry.}
+
+\method {integer num\_free()} {Returns 1.}
+
+\method {event data\_read\_event()} {Returns the member \texttt{m\_data\_read\_event} unless
+overwritten by the derived class.  The derived class should notify this event
+when it thinks appropriate, normally when space for a new write to the
+object is created.}
+\end{methods}
+
+\class {gs.writeif\_base\_blocking} {This class is derived from
+\texttt{writeif\_base}.  It adds a default implementation for the
+method \texttt{nb\_write()}.  A user class derived from this need provide
+only a definition of \texttt{write(message)}.  In general this
+\texttt{write} method is blocking --- it may sometimes call \texttt{wait()}.
+
+The \texttt{nb\_write} provided by the base class will return \texttt{True}
+immediately and execute a \texttt{write} in a new spawned thread.  \texttt{num\_free}
+always returns 1, to indicate that a non-blocking
+write will be successful.  Writes (whether blocking or non-blocking) are
+guaranteed to be called to the derived class's
+\texttt{write} function in the order they are received by the base class.}
+
+\class {gs.writeif\_base\_nonblocking} {This class is derived from
+\texttt{writeif\_base}.  It adds a default implementation for the
+method \texttt{write()}.  A user class derived from this must provide
+a definition of \texttt{nb\_write(message)} and ought to override the
+default \texttt{num\_free()}.  The class is used as a base when the
+\texttt{nb\_write} method can fail as well as succeed (return True or
+False).  \texttt{num\_free()} should return 0 if \texttt{nb\_write()}
+is likely to return False.
+
+The base class \texttt{write()} method repeatedly calls \texttt{nb\_write()}
+until it returns True, using the \texttt{m\_data\_read\_event} to pace its
+polling.
+}
+
+\class {gs.writeif\_base\_always} {This class is derived from
+\texttt{writeif\_base}.  It adds a default implementation for the
+method \texttt{write()}.  A user class derived from this must provide
+a definition of \texttt{nb\_write(message)} which always returns True.
+This is the simplest case.  The class is used as a base when the
+\texttt{nb\_write} method always succeeds and therefore there are
+no special ordering management issues to deal with.
+
+The base class \texttt{write()} method simply calls \texttt{nb\_write()}
+which returns True.  It raises an exception if True is not
+returned.  \texttt{num\_free()} returns 1.
+}
+
+\begin{lstlisting}
+import gs
+
+class case_one_example(gs.writeif_base_always):
+  # simple non-blocking callback into GreenScript
+  def nb_write(self, message):
+    print "hey I got a message with fish =", message["fish"]
+    return True
+
+class case_two_example(gs.writeif_base_nonblocking):
+  # user-defined FIFO class, writeable from outside GreenScript
+  def nb_write(self, message):
+    if self.num_free() > 0:
+      print "hey I got a message with fish =", message["fish"]
+      self.nf -= 1
+      self.nu += 1
+      return True
+    else:
+      return False
+  def num_free(self):  return self.nf
+  def pop(self):
+    while True:
+      gs.wait(1.0,gs.NS)
+      if self.nu > 0:
+        self.nu -= 1
+        self.nf += 1
+        self.m_data_read_event.notify()
+  def __init__(self, name):
+    gs.writeif_base.__init__(self,name)
+    self.nf = 2
+    self.nu = 0
+    gs.spawn(self.pop)
+
+class case_three_example(gs.writeif_base_blocking):
+  # simple blocking callback into GreenScript
+  def write(self, message):
+    gs.wait(1,gs.NS)
+    print "hey I got a message with fish =", message["fish"]
+
+\end{lstlisting}
+
+
+\section{Functions}
+
+
+\newcommand{\func}[2]{\par\vspace{10pt}\noindent
+\textbf{#1}\par\vspace{5pt}\indent\parbox{16.5cm}{#2}\par}
+
+\func {gs.interpreter\_name()} {Get the name of the \texttt{GreenScriptModule}
+from which the currently active Python code was called.  Returns an
+empty string if in standalone mode.}
+
+\func {gs.simulation\_time(unit)} {Get the simulation time. The
+\texttt{unit} is an optional constant and can be one of
+\texttt{gs.FS}, \texttt{gs.PS}, \texttt{gs.NS} (the
+default), \texttt{gs.US}, \texttt{gs.MS},
+\texttt{gs.SEC}.}
+
+\func {get\_current\_callback()} {Get a reference to the current
+callback object.  This object may be a \texttt{spawn} object (see
+above) or a wrapper around a call from SystemC into Python, for
+example through the \texttt{write} method of a class derived from
+\texttt{writeif\_base}.  Callback objects may be killed, reset,
+paused and resumed, although depending on the function of their
+runnable, this may be an error.  Methods and member variables of
+callback objects are the same as for \texttt{spawn} objects as
+documented above.}
+
+\func {gs.wait(time, unit)} {Wait for a given time. \texttt{time} is a
+floating-point number and \texttt{unit} is an optional constant that can be
+one of \texttt{gs.FS}, \texttt{gs.PS}, \texttt{gs.NS} (the
+default), \texttt{gs.US}, \texttt{gs.MS},
+\texttt{gs.SEC}. Only call from a process or a blocking callback.}
+
+\func {gs.wait(event)} {Argument is a \texttt{gs.event} or a
+\texttt{gs.event\_tree}. Returns when the event fires.  Only call from
+a process or a blocking callback.}
+
+\newpage
+
+\func {gs.use\_winpdb()} {Replace the calls to \texttt{pdb}, Python's
+default debugger, with calls to \texttt{WinPdb}.  WinPdb permits
+debugging to be done in a separate window or even on a separate
+machine, and has a GUI available.  Only use this if you have WinPdb
+installed.  For further information see \texttt{www.winpdb.org}.}
+
+\func {gs.start(time, unit)} {Start the simulation and run it for a
+certain time or until no more events left. \texttt{time} is a
+floating-point number that defaults to 0, which means infinite
+time. \texttt{unit} is an optional constant that can be one of
+\texttt{gs.FS}, \texttt{gs.PS}, \texttt{gs.NS} (the
+default), \texttt{gs.US}, \texttt{gs.MS}, \texttt{gs.SEC}.
+
+This function should not be called when GreenScript is embedded in a SystemC
+simulation.  The \texttt{sc\_start()} function takes precedence.}
+
+\func {gs.stop()} {Stop the simulation.  Only call from a process.}
+
+\func {gs.create\_thread(runnable, name)} {Legacy support based on
+SystemC-2.0.1, which does not support dynamic creation of processes.
+
+STRONGLY DEPRECATED}
+
+\func {gs.delta\_count()} {Return the delta cycle count.}
+
+\func {gs.time(unit)} {Show a message with simulation time and delta
+cycle count. \texttt{unit} is an optional constant that can be one of
+\texttt{gs.FS}, \texttt{gs.PS}, \texttt{gs.NS} (the
+default), \texttt{gs.US}, \texttt{gs.MS},
+\texttt{gs.SEC}. The format of the output is \texttt{time=XX
+(delta=YY)}.}
+
+\func {gs.findReceiver(name)} {This function interfaces with the
+  GreenMessage project. Return an object of the \texttt{gs.writeif} class that
+  references the receiver object with the given name.  The receiver
+  could be a Python object or a C++ object, or potentially in any
+  other language.}
+
+\func {gs.end\_of\_elaboration(runnable, debug=False, time\_unit=NS,
+args=(), keyargs=dict())} {This function allows the Python
+script to register a callback for execution at end-of-elaboration.}
+
+\func {gs.start\_of\_simulation(runnable, debug=False, time\_unit=NS,
+args=(), dict())} {This function allows the Python
+script to register a callback for execution at start-of-simulation.}
+
+\func {gs.end\_of\_simulation(runnable, debug=False, time\_unit=NS,
+args=(), dict())} {This function allows the Python
+script to register a callback for execution at end-of-simulation.}
+
+\func {read\_param(name)} {This function allows the user's Python code to read a parameter
+directly from the GreenConfig database, without creating a parameter object.
+The name to be supplied is the full hierarchical name of the parameter.  The
+returned value is a string.  If the parameter does not exist, the
+\texttt{GSParamNonExistent} exception is raised.}
+
+\func {param\_exists(name)} {This function allows the user's Python code to poll
+directly the GreenConfig database to find out is a parameter exists, without
+creating a parameter object.
+The name to be supplied is the full hierarchical name of the parameter.}
+
+\func {write\_param(name, value)} {This function allows the user's Python code to
+create an entry directly in the GreenConfig database, without
+creating a parameter object.
+The name to be supplied is the full hierarchical name of the parameter.  The value
+may be any Python object that can be converted to a string.  Normal string
+conversion is done before writing to the database, except for booleans which
+are replaced by ''0'' and ''1'' for compatibility with SystemC and other
+languages.}
+
+\func {read\_param\_as\_list(name)} {This function allows the user's Python code to read an
+ordered list of parameters
+directly from the GreenConfig database, without creating a parameter object.
+The name to be supplied is the full hierarchical name of the parameter.  The
+returned value is a list of strings.  If the parameter does not exist, an
+empty list is returned.}
+
+\func {write\_param\_from\_list(name, values)} {Takes a Python list and uses
+it to create a number of entries in the GreenConfig database. The name to be
+supplied is the full hierarchical name of the parameter.}
+
+\func {read\_param\_as\_dict(name)} {This function allows the user's Python code to read a
+hierarchical structure directly from the GreenConfig database, without creating a parameter object.
+The name to be supplied is the full hierarchical name of the parameter.  The
+returned value is a dictionary whose keys are (sub) parameter names and whose
+values are strings, or hierarchical lists and dictionaries.  If the parameter does not exist, an
+empty dictionary is returned.}
+
+\func {write\_param\_from\_dict(name, values)} {Takes a Python dictionary and uses
+it to create a number of entries in the GreenConfig database. The name to be
+supplied is the full hierarchical name of the parameter.  Keys must be strings
+and values must be strings or further similar dictionaries or lists.}
+
+
+\func {ismessage(object)} {Returns True if the object is a \texttt{gs.message}
+or a reference to one.  Useful when iterating over hierarchical
+messages to test for the bottom of the hierarchy.}
+
+\chapter{Using parameters with the configure framework}
+\label{PARAM}
+
+The configure framework used in GreenScript is provided by
+GreenControl. This chapter shows only the concepts that relates to
+GreenScript. For more information on GreenConfig, please consult
+the GreenControl Users's Manual.
+
+The entry point to use parameters to configure a GreenScript module is
+to instantiate a \texttt{gs.param} class. The name of the parameter
+must be given as the constructor argument. For example:
+
+\begin{lstlisting}
+my_param = gs.param("my_param")
+other = gs.param("other")
+\end{lstlisting}
+
+When in standlone mode, the full name of the parameter to use in
+configuration files is only this local name. But when in embedded
+mode, the full name includes the hierarchical name of the
+GreenScriptModule. So if in your \texttt{system.cpp} file you have:
+
+\begin{lstlisting}
+GreenScriptModule gs_module("name_of_gs_module", "adder.py");
+gs_module.run("my_adder = adder('A','B','C')");
+\end{lstlisting}
+
+A parameter named \texttt{foo} in module \texttt{adder} will have a
+full name of \texttt{name\_of\_gs\_module.foo} to be used in
+configuration files. Of course in this example the name would be
+better if using the same name of the instance \texttt{my\_adder}, so
+the parameter would be called \texttt{my\_adder.foo}.
+
+The value of the parameter is treated internally as a C++
+std::string. When reading the parameter, the internal string is evaluated
+to a Python object. If the
+parameter is not set, then the object read is the empty string. If the
+string is a valid integer, float, and so forth, the object returned
+will be of the evaluated type. It recognizes all the types that the
+build-in Python \texttt{eval()} function recognizes. If something goes
+wrong with \texttt{eval()}, the original string is returned.
+
+When writing to a parameter method,
+the Python object given is first converted to string using
+\texttt{str(object)}, then written to the internal std::string.  AN exception
+is made for boolean values, which are converted to the strings ''0'' and
+''1'' (for ''True'' and ''False'' respectively) for compatibility with
+SystemC and other languages.
+
+
+\end{document}
