@@ -249,6 +249,21 @@ install(DIRECTORY greenmessage/docs/
 	DESTINATION docs/greenmessage
 )
 
+# Greenscript
+
+set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenscript/include/)
+
+install(DIRECTORY greenscript/include/
+        DESTINATION include
+)
+
+install(DIRECTORY greenscript/examples/
+        DESTINATION examples/greenscript
+)
+
+install(DIRECTORY greenscript/docs/
+        DESTINATION docs/greenscript
+)
 
 # Greensocs Library include directory (for example).
 include_directories(${GreenSocs_INCLUDE_DIRS})
@@ -262,6 +277,9 @@ add_subdirectory(greenrouter EXCLUDE_FROM_ALL)
 
 # Compile greenreg library.
 add_subdirectory(greenreg)
+
+# Compile greenscript library
+add_subdirectory(greenscript)
 
 # build a CPack driven installer package
 include (InstallRequiredSystemLibraries)
