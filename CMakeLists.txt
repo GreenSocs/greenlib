@@ -252,6 +252,22 @@ install(DIRECTORY greenscript/docs/
         DESTINATION docs/greenscript
 )
 
+# Greenbus
+
+set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenbus/include/)
+
+install(DIRECTORY greenbus/include/
+	DESTINATION include
+)
+
+install(DIRECTORY greenbus/examples/
+	DESTINATION examples/greenbus
+)
+
+install(DIRECTORY greenbus/docs/
+	DESTINATION docs/greenbus
+)
+
 # Greensocs Library include directory (for example).
 include_directories(${GreenSocs_INCLUDE_DIRS})
 # CXX flags for example or library compilation.
