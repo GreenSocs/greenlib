@@ -1,0 +1,72 @@
+####################
+# Required tools
+####################
+
+# SystemC
+SYSTEMC ?= $(HOME)/greensocs/gspm/OSCI/systemc/2.2/gcc4.0
+DEFINES_SYSTEMC = -DSC_INCLUDE_DYNAMIC_PROCESSES
+
+# Python
+PYTHON_VERSION = 2.4
+
+# Default Python include and library directories
+PYTHON_$(PYTHON_VERSION)_INC = /usr/include/python$(PYTHON_VERSION)
+PYTHON_$(PYTHON_VERSION)_LIB = ### (nothing) use system default paths only
+
+# You may change the include and lib for a version as the example bellow
+#PYTHON_2.5_INC = /usr/local/include/python2.5
+#PYTHON_2.5_LIB = /usr/local/lib/python2.5/config
+
+PYTHON_INC ?= $(PYTHON_$(PYTHON_VERSION)_INC)
+PYTHON_LIB ?= $(PYTHON_$(PYTHON_VERSION)_LIB)
+
+LIBS_PYTHON = $(if $(PYTHON_LIB),-L$(PYTHON_LIB)) -lpython$(PYTHON_VERSION)
+
+# GS Greenmessage
+GREENMESSAGE ?= $(HOME)/greensocs/packages/greenmessage
+
+####################
+# Required when using gsp_param
+####################
+
+# Enable yes/no flags with one of the words bellow
+YES = yes YES Yes 1
+
+# Set this to enable gsp_param
+USE_GREENCONTROL ?= yes
+
+# Set this to debug (tip: define in make command line)
+DEBUG_GREENCONTROL ?= no
+
+# Define tools paths
+GREENBUS ?= $(HOME)/greensocs/gspm/GreenSocs/greenbus
+GREENCONTROL ?= $(HOME)/greensocs/gspm/GreenSocs/greencontrol
+BOOST ?= $(HOME)/greensocs/gspm/Boost/boost
+LUA ?= $(HOME)/greensocs/gspm/PUC-Rio/lua
+
+# Required to use GreenAV SCV Output plugin
+USE_SCV ?= no
+SCV ?= $(HOME)/greensocs/gspm/OSCI/scv/1.0-p2/systemc2.2-gcc4.0
+
+
+
+####################
+# No need to change after here
+####################
+
+# (Do not change) Variables set if using GreenControl
+ifneq ($(strip $(filter $(YES),$(USE_GREENCONTROL))),)
+   DEFINES_DEBUG_GREENCONTROL = $(if $(strip $(filter $(YES),$(DEBUG_GREENCONTROL))),-DGCNF_VERBOSE -DGS_PARAM_VERBOSE)
+   DEFINES_GREENCONTROL = -DUSE_GREENCONTROL $(DEFINES_DEBUG_GREENCONTROL)
+   INCLUDES_GREENCONTROL = -I$(GREENCONTROL)/include -I$(GREENBUS)/include -I$(BOOST)/include -I$(LUA)/include
+   LIBS_GREENCONTROL = -L$(LUA)/lib -llua
+ifneq ($(strip $(filter $(YES),$(USE_SCV))),)
+   DEFINES_GREENCONTROL += -DUSE_SCV
+   INCLUDES_GREENCONTROL += -I$(SCV)/include
+   LIBS_GREENCONTROL += -L$(SCV)/lib -lscv
+endif
+endif
+
+DEFINES  = $(DEFINES_SYSTEMC) $(DEFINES_GREENCONTROL)
+INCLUDES = $(if $(PYTHON_INC),-I$(PYTHON_INC)) -I$(SYSTEMC)/include $(INCLUDES_GREENCONTROL) -I$(GREENMESSAGE)
+LIBS     = -L$(wildcard $(SYSTEMC)/lib-*) -lsystemc $(LIBS_PYTHON) $(LIBS_GREENCONTROL)

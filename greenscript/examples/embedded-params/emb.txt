@@ -1,0 +1,227 @@
+STANDALONE
+Testing DB Access
+=> making parameters <=
+a_boolean                 =>  0
+james                     =>  10
+james2                    =>  10
+jamesh.bad.dog            =>  0
+jamesh2.bad.dog           =>  0
+
+=> reading parameters <=
+10
+0
+OK failed read
+
+=> making array parameters and reading as a list <=
+['zero', 'one', 'two']
+
+=> making array parameters from a list <=
+['helga', 'holga', 'hubert', 'humphrey']
+[]
+
+=> making array parameters from a dict <=
+
+=> reading array parameters as a dict <=
+{'fish': {'names2': ['helga', 'holga', 'hubert', 'humphrey'], 'names': ['helga', 'holga', 'hubert', 'humphrey'], 'names3': ['helga', 'holga', 'hubert', 'humphrey']}}
+
+{'jimmy': [['1', '2', '3'], {'a': '10', 'b': '45'}], 'curly': ['3', '4', '5'], 'larry': '10', 'bob': {'quality': 'terrible'}, 'curly2': ['3', '4', '5'], 'moe': ['trunk', 'ears', {'arabic': {'a': '10', 'b': '20'}, 'french': ['odd', 'really'], 'english': 'ugly'}]}
+
+{'arabic': {'a': '10', 'b': '20'}, 'french': ['odd', 'really'], 'english': 'ugly'}
+[['1', '2', '3'], {'a': '10', 'b': '45'}]
+{'quality': 'terrible'}
+
+a_boolean                 =>  0
+james                     =>  10
+james2                    =>  10
+jamesh.bad.dog            =>  0
+jamesh2.bad.dog           =>  0
+jon.0                     =>  zero
+jon.1                     =>  one
+jon.2                     =>  two
+kate.fish.names.0         =>  helga
+kate.fish.names.1         =>  holga
+kate.fish.names.2         =>  hubert
+kate.fish.names.3         =>  humphrey
+kate.fish.names2.0        =>  helga
+kate.fish.names2.1        =>  holga
+kate.fish.names2.2        =>  hubert
+kate.fish.names2.3        =>  humphrey
+kate.fish.names3.0        =>  helga
+kate.fish.names3.1        =>  holga
+kate.fish.names3.2        =>  hubert
+kate.fish.names3.3        =>  humphrey
+mixup.bob.quality         =>  terrible
+mixup.curly.0             =>  3
+mixup.curly.1             =>  4
+mixup.curly.2             =>  5
+mixup.curly2.0            =>  3
+mixup.curly2.1            =>  4
+mixup.curly2.2            =>  5
+mixup.jimmy.0.0           =>  1
+mixup.jimmy.0.1           =>  2
+mixup.jimmy.0.2           =>  3
+mixup.jimmy.1.a           =>  10
+mixup.jimmy.1.b           =>  45
+mixup.larry               =>  10
+mixup.moe.0               =>  trunk
+mixup.moe.1               =>  ears
+mixup.moe.2.arabic.a      =>  10
+mixup.moe.2.arabic.b      =>  20
+mixup.moe.2.english       =>  ugly
+mixup.moe.2.french.0      =>  odd
+mixup.moe.2.french.1      =>  really
+
+Testing PARAM class
+a_boolean                 =>  0
+james                     =>  10
+james2                    =>  10
+jamesh.bad.dog            =>  0
+jamesh2.bad.dog           =>  0
+jon.0                     =>  zero
+jon.1                     =>  one
+jon.2                     =>  two
+kate.fish.names.0         =>  helga
+kate.fish.names.1         =>  holga
+kate.fish.names.2         =>  hubert
+kate.fish.names.3         =>  humphrey
+kate.fish.names2.0        =>  helga
+kate.fish.names2.1        =>  holga
+kate.fish.names2.2        =>  hubert
+kate.fish.names2.3        =>  humphrey
+kate.fish.names3.0        =>  helga
+kate.fish.names3.1        =>  holga
+kate.fish.names3.2        =>  hubert
+kate.fish.names3.3        =>  humphrey
+mixup.bob.quality         =>  terrible
+mixup.curly.0             =>  3
+mixup.curly.1             =>  4
+mixup.curly.2             =>  5
+mixup.curly2.0            =>  3
+mixup.curly2.1            =>  4
+mixup.curly2.2            =>  5
+mixup.jimmy.0.0           =>  1
+mixup.jimmy.0.1           =>  2
+mixup.jimmy.0.2           =>  3
+mixup.jimmy.1.a           =>  10
+mixup.jimmy.1.b           =>  45
+mixup.larry               =>  10
+mixup.moe.0               =>  trunk
+mixup.moe.1               =>  ears
+mixup.moe.2.arabic.a      =>  10
+mixup.moe.2.arabic.b      =>  20
+mixup.moe.2.english       =>  ugly
+mixup.moe.2.french.0      =>  odd
+mixup.moe.2.french.1      =>  really
+
+=> leaf parameters <=
+10
+0 0_with_addendum
+0 False
+OK failed to append string to bool
+
+=> ordered array parameters <=
+uninitialised <uninitialised param called jon>
+length 3
+now initialised [<uninitialised param called 0>, <uninitialised param called 1>, <uninitialised param called 2>]
+uninitialised <uninitialised param called 0>
+uninitialised <uninitialised param called 1>
+uninitialised <uninitialised param called 2>
+value zero
+value one
+value two
+now initialised zero
+now initialised one
+now initialised two
+[zero, one, two]
+
+Info: test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+helga
+holga
+hubert
+humphrey
+[helga, holga, hubba, humphrey]
+found 4
+not found quisling
+[3, 4, 5]
+[3, 4, 5, <uninitialised param called 3>, <uninitialised param called 4>, <uninitialised param called 5>, <uninitialised param called 6>, <uninitialised param called 7>, <uninitialised param called 8>, <uninitialised param called 9>]
+[23, 32, 45, 54, 65, 56, 76, 67]
+OK failed to iterate over keys
+
+=> ordered array parameters that do not exist <=
+missing array has length: 0
+[]
+
+=> array parameters with names <=
+uninitialised <uninitialised param called mixup>
+<uninitialised param called jimmy>
+now initialised {(jimmy: <uninitialised param called jimmy>)}
+<uninitialised param called moe>
+<uninitialised param called curly>
+<uninitialised param called larry>
+10
+10
+{(larry: 10), (jimmy: <uninitialised param called jimmy>), (curly: <uninitialised param called curly>), (moe: <uninitialised param called moe>)}
+larry = 10
+jimmy = <uninitialised param called jimmy>
+curly = flutter
+moe = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+{(larry: 10), (jimmy: <uninitialised param called jimmy>), (curly: flutter), (moe: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])}
+2
+<uninitialised param called 0>
+<uninitialised param called 1>
+('larry', <gs.param instance at 0x2a95c0ecb0>)
+('jimmy', <gs.param instance at 0x2a95c0ebd8>)
+('curly', <gs.param instance at 0x2a95c0ec68>)
+('moe', <gs.param instance at 0x2a95c0ec20>)
+OK failed to iterate over values
+{(a: 10), (c: [2, 3, 4]), (b: 20), (d: {(a: hello), (c: {(a: [1, 2, 3]), (b: enough)}), (b: goodbye)})}
+
+=> default values: leaves <=
+really
+707
+
+=> default values: ordered arrays <=
+helga
+holga
+hubert
+humphrey
+y
+z
+helga
+holga
+hubert
+humphrey
+y
+z
+[<uninitialised param called 0>, <uninitialised param called 1>, <uninitialised param called 2>, <uninitialised param called 3>, <uninitialised param called 4>, <uninitialised param called 5>, <uninitialised param called 6>, <uninitialised param called 7>, <uninitialised param called 8>, <uninitialised param called 9>, <uninitialised param called 10>, <uninitialised param called 11>]
+> helga
+> holga
+> hubert
+> humphrey
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+
+=> default values: arrays with names <=
+<uninitialised param called jamesh2> <uninitialised param called bad>
+0 45
+
