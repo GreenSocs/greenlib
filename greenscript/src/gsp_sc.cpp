@@ -32,9 +32,9 @@
 //
 // ENDLICENSETEXT
 
-#include "gsp_sc.h"
-#include "gsp_sc_helper.h"
-#include "gs_sc_api_detection.h"
+#include "../include/greenscript/gsp_sc.h"
+#include "../include/greenscript/gsp_sc_helper.h"
+#include "../include/greenscript/gs_sc_api_detection.h"
 
 #include <iostream>
 #include <vector>
@@ -422,7 +422,7 @@ long gsp_sc_get_curr_process_handle()
 #elif SYSTEMC_API == 220
   return (long) sc_get_curr_simcontext()->get_curr_proc_info()->process_handle;
 #else
-#error Unknown SystemC API to call for sc_get_current_process_handle
+//#error Unknown SystemC API to call for sc_get_current_process_handle
 #endif
 }
 
@@ -435,7 +435,7 @@ bool gsp_sc_is_running() {
 #elif SYSTEMC_API == 220
   return sc_is_running();
 #else
-#error Unknown SystemC API to call for sc_is_running
+//#error Unknown SystemC API to call for sc_is_running
 #endif
 }
 

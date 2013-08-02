@@ -37,7 +37,7 @@
 
 #include <Python.h>
 
-#include "greenscript.h"
+#include "../include/greenscript/greenscript.h"
 
 
 ////////// Includes for GreenControl //////////
