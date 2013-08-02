@@ -37,8 +37,10 @@ endif()
 
 set(Boost_ADDITIONAL_VERSIONS 1.34 1.34.0 1.34.1)
 
-find_package( Boost )
-if(Boost_FOUND)
+if(DEFINED ENV{BOOST_ROOT})
+   include_directories($ENV{BOOST_ROOT})
+else()
+   find_package( Boost REQUIRED )
    include_directories(${Boost_INCLUDE_DIRS})
 endif()
 
