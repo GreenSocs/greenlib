@@ -233,6 +233,23 @@ install(DIRECTORY greenreg/doc/     # TODO: doc or docs?
         PATTERN ".svn" EXCLUDE
 )
 
+# Greenmessage
+
+set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenmessage/include/)
+
+install(DIRECTORY greenmessage/include/
+	DESTINATION include
+)
+
+install(DIRECTORY greenmessage/examples/
+	DESTINATION examples/greenmessage
+)
+
+install(DIRECTORY greenmessage/docs/
+	DESTINATION docs/greenmessage
+)
+
+
 # Greensocs Library include directory (for example).
 include_directories(${GreenSocs_INCLUDE_DIRS})
 link_directories(${GreenSocs_LIB_DIRS})
