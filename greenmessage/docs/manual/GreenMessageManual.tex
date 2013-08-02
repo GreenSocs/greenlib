@@ -1,0 +1,292 @@
+\documentclass[12pt,oneside]{gsbook}
+\usepackage{greensocs}
+
+\usepackage{ulem} % allow strikeout/strikethrough text with \sout{}
+
+%\usepackage{array}
+%\usepackage{xspace}
+%\usepackage{fancyvrb}
+
+%%% To make it work with Drupal:
+%%% 1) Delete this package listings references below
+\usepackage{listings}
+\lstset{
+  language=C++,
+  breaklines=true,
+  captionpos=b
+  aboveskip=15pt,
+  basicstyle=\ttfamily \small,
+  stepnumber=5,
+  numbersep=5pt,
+  frame=trbl
+}
+%%% 2) replace text: ``lstlisting'' with ``verbatim''
+%%% 3) remove line that begins with \lstset
+
+
+\def\example#1{\begin{center}\colorbox{lightgrey}{\begin{tabular}{|p{0.6\paperwidth}|}\hline\\#1\\ \\ \hline\end{tabular}}\end{center}}
+
+\newsavebox{\examplebox}
+\newenvironment{exampleenv}{\begin{lrbox}{\examplebox}\begin{minipage}{0.6\paperwidth}}{\end{minipage}\end{lrbox}\example{\usebox{\examplebox}}}
+\newcommand{\tick}{$\sqrt{}$}
+
+\author{Copyright GreenSocs Ltd 2008}
+\title{GreenMessage User Manual}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+
+\chapter{Introduction}
+\label{INTRO}
+
+GreenMessage is a framework to pass messages from one SystemC module
+to another.
+
+This project offers a simple API to support assembling a data
+structure, a so-called message, and send this message to some other module
+in the system that implements a receiver interface for messages.
+
+The message contents are based on properties that map names to
+values. The map of names supports hierarchy. By convention, the
+hierarchy separator is the dot `.´ character. A valid name for a
+property is for example the string \texttt{my\_cpu.cache.size}. The values for
+each property are stored in a type-independent way, and can be
+retrieved as an integral or real number, a boolean, or as a string.
+
+The module that will receive the message is located by name look-up,
+and a \texttt{write} or \texttt{nb\_write} method is invoked to send the message to its
+destination. The receiver module implementation can chose get the
+message delivered to a fifo or it can handle the message directly.  The
+interface is in fact SystemC's \texttt{sc\_fifo\_out\_if<>} with the
+GreenMessage message type as the template's parameter.
+
+The motivation for GreenMessage is to provide a low-level interface
+which can be used as a transport mechanism for user-defined protocols.
+GreenMessage is characterised by
+\begin{itemize}
+\item Interpreted data type with arbitrary payload capability meaning
+re-compilation is not always necessary on protocol change.
+\item Name lookup rather than binding, allowing dynamic and cross-hierarchical
+communications.
+\end{itemize}
+GreenMessage is particularly suited to communications between languages,
+for example between SystemC and an embedded dynamically-typed language
+like Python or Lua.
+
+
+\chapter{Usage}
+\label{USAGE}
+
+All the functionality is defined in the header
+\texttt{<greenmessage/greenmessage.hpp>}. After including this file, some
+names get defined in the namespace \texttt{gs}::\texttt{msg}. They are listed
+below:
+
+
+\section{Class Message}
+
+A message is a mapping of name-$>$value. In fact, this class is
+inherited from std::map, and can use the methods provided by this
+parent to retrieve the values or to iterate over the first level of
+property names. Both key and value accepts numbers and
+strings. Examples:
+
+\begin{lstlisting}
+gs::msg::Message msg;
+msg["command"] = "start";
+msg["repeat"] = 10;
+msg[1] = "test";
+msg[2] = 42.123;
+\end{lstlisting}
+
+The mapping is hierarchical and implemented as a tree. The hierarchy
+can be accessed in two ways: (1) using a dot '.' in the name string or
+(2) use the subscript operator multiple times.
+
+\begin{lstlisting}
+msg["my_cpu.cache"]["size"] = 4096
+msg["my_cpu"]["cache.type"] = "wb";
+\end{lstlisting}
+
+Getting a reference to a branch is a low-cost operation:
+
+\begin{lstlisting}
+gs::msg::Message& my_cache = msg["my_cpu"]["cache"];
+cout << my_cache["size"];   // outputs 4096 that was set above
+\end{lstlisting}
+
+When using methods of the base class, the user's code normally
+needs to indicate to the compiler that this is what is wanted.  The
+base class name is \texttt{children\_map} so the code might look
+like this:
+
+\begin{lstlisting}
+for(Message::children_map::iterator
+    ix = my_message.begin(); ix != my_message.end(); ix++)
+{
+      cout << ix->first << " = " << ix->second << endl;
+}
+\end{lstlisting}
+
+A message object is always in one of two states.  It is either
+a mapping or a value.  Values are the bottom level of the hierarchy.
+For example in the first message constructed in this section,
+\texttt{msg} is a map, but \texttt{msg["command"]} is a value.  In the
+second example listing, \texttt{msg}, \texttt{msg["my\_cpu"]} and
+\texttt{msg["my\_cpu.cache"]} are maps, but \texttt{msg["my\_cpu.cache.size"]}
+and \texttt{msg["my\_cpu.cache.type"]} are values.
+
+The state of a message changes when something is assigned to it or
+an element of its map is created.  Note that accessing a non-existent
+element of the map will cause the element to be created (unless the
+message is constant) and hence will force the state to be a mapping.
+
+Messages whose state is value can be automatically cast
+to most types of variable.  Integers, floating points and strings all
+work.  For example:
+
+\begin{lstlisting}
+gs::msg::Message msg;
+msg["pi"] = "3.14";
+msg["e"] = 2.71;
+msg["zero"] = 0;
+int z = msg["zero"];
+std::string e = msg["e"];
+float p = msg["pi"];
+\end{lstlisting}
+
+The GreenMessage interface passes messages by const reference.  The receiver
+may make a copy of a message, in which case the copy is not constant and
+may be modified.  This copy can be done by simple assignment.  If a
+message FIFO is used (see below) such a copy happens automatically.
+However if user code implements the WriteIf interface directly and
+does not take a copy of incoming messages, it will need to work with
+constant messages.  There are a few differences between constant and
+non-constant messages:
+\begin{itemize}
+\item The operator $[key]$ used to access elements of a message returns
+a const reference for a const message, so as expected the message
+content can not be changed.
+\item The operator $[key]$ creates a new element of a non-const
+message if the key is missing.  But for a const message if the key is
+missing a C++ exception is thrown.
+\item Iteration over a const message must use a
+\texttt{gs::msg::Message::children\_map::const\_iterator} not a normal
+iterator.
+\item The \texttt{find()} method is defined differently for const
+messages.
+\end{itemize}
+
+\subsection{Class Methods}
+\begin{itemize}
+\item\texttt{bool has\_value() const} returns \texttt{true} for a value
+and \texttt{false} for a mapping.
+\item\texttt{gs::Message *find(const key\_type \&k)} where the parameter \texttt{k}
+can be of any type supported as a key, returns 0 if the message is a
+value or if the key is not in the mapping.  Returns a pointer to the sub-message
+with that key, if the key is in the message.
+\item\texttt{bool find(const key\_type \&k) const} where the parameter \texttt{k}
+can be of any type supported as a key, returns false if the message is a
+value or if the key is not in the mapping.  Returns true otherwise.  This
+method is, unlike the other find(), useable for const Messages.
+\item\texttt{void erase(const key\_type \&k)} where the parameter \texttt{k}
+can be of any type supported as a key, will search for a sub-message with that
+key and remove it if one is found.
+\item\texttt{size\_t max\_numerical\_key() const} returns the largest value that can
+be obtained by casting the message's keys to integers.  Defaults to 0.
+\item\texttt{unsigned length\_as\_array() const} tests to see if the message
+contains only the non-negative integers [0, 1, 2, ... $n-1$) as keys.  If this is
+true, $n$ is returned.  Otherwise 0 is returned.  This permits a message
+to be used as an array length $n$ of messages.
+\end{itemize}
+
+\section{Class WriteIf}
+
+This interface contains the method write(Message). The implementation
+depends on the module that receives the message. One option is to send
+the message to a sc\_fifo$<$Message$>$, other option is to implement this
+interface directly in the sc\_module.
+
+The interface is the \texttt{sc\_fifo\_out\_if}, which contains four methods:
+\begin{itemize}
+\item\texttt{void write(const gs::msg::Message \&m)}
+\item\texttt{bool nb\_write(const gs::msg::Message \&m)}
+\item\texttt{int num\_free() const}
+\item\texttt{const sc\_event \&data\_read\_event() const}
+\end{itemize}
+
+\section{Class WriteIfGroup}
+
+This is a group of WriteIf. The group of receivers can be modified
+with the methods \texttt{insert(WriteIf)} and \texttt{erase(WriteIf)}. It is itself a
+WriteIf, and the method \texttt{write(Message)} is delivered to all the
+registered receivers.  The method \texttt{num\_free()} returns the smallest \texttt{num\_free()}
+of any member of the group.  The method \texttt{nb\_write()} will return false unless
+\texttt{num\_free()} is greater than 0 for all members of the group, and not deliver
+the message to any member in this case.  The member \texttt{data\_read\_event()} returns
+the \texttt{data\_read\_event()} of the group member with the smallest \texttt{num\_free()}.
+This should allow WriteIfGroups to be nested in most cases.
+
+\section{Function broadcast()}
+
+This function finds all the existing receivers and returns a WriteIf
+that is in fact a WriteIfGroup.  This group can be copied and
+modified, allowing a selection like ``all minus some''.
+
+
+\section{Function findReceiver(string)}
+
+This function does a look-up in the GreenMessage name registry to find
+an object with the given name that can receive messages. This object
+can be anything that implements the WriteIf interface. A reference
+to the WriteIf is returned, so
+the write method of this interface can be used to send several
+messages to the named receiver.
+
+
+\section{Class receiver\_base}
+
+A receiver module can inherit from this class to register itself in
+the GreenMessage name registry and thus make itself available to the
+function \texttt{findReceiver}.
+ The registration is done in construction time and doesn't
+change during simulation.  The constructor has a single required argument,
+the {\em full} name of the endpoint.
+
+The class contains a static method \texttt{print\_registry} which may be
+useful for debugging problems with finding endpoints.
+
+\section{Class receiver\_proxy}
+
+For cases where an endpoint already exists and the user needs to make it
+visible in the GreenMessage hierarchy under a different name, an object of
+the class \texttt{receiver\_proxy} can be used.
+
+The constructor takes two arguments, a reference to the existing endpoint (any
+object derived from WriteIf) and the full name to be used in the GreenMessage
+registry.  The name may be provided either as a string or a char array.
+
+The class has a method \texttt{std::string registered\_name()} which gives the
+name used in the GreenMessage registry.
+
+\section{Class MessageFifo}
+
+A class derived from \texttt{sc\_fifo<Message>}.  Basically it is a normal
+SystemC FIFO that registers itself as an endpoint in the GreenMessage registry.
+It has the same methods and constructors as an \texttt{sc\_fifo<Message>} with
+one additional constructor:
+\texttt{MessageFifo(const char *prefix, const char *name, int size = 16)}
+which is used when a MessageFifo is instantiated outside an \texttt{sc\_module},
+where the hierarchical prefix to the name must be provided explicitly by
+the user.
+
+\section{Function sendMsg}
+
+A high-level function which takes an endpoint name and a message and does the
+name lookup and the write together.
+
+
+\end{document}
