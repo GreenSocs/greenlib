@@ -189,6 +189,18 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Makefile.defs
         DESTINATION examples/greensignalsocket
 )
 
+# GreenSignalBus
+
+set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greensignalbus/include/)
+
+install(DIRECTORY greensignalbus/include/
+	DESTINATION include
+)
+
+install(DIRECTORY greensignalbus/include/
+	DESTINATION include
+)
+
 # Greenreg
 
 set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenreg/include/)
