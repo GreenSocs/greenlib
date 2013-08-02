@@ -1,0 +1,21 @@
+receiver1: reading fifo for incomming messages
+receiver2: reading fifo for incomming messages
+receiver3: reading fifo for incomming messages
+sender: broadcasting a message: start
+sender: waiting for reply
+receiver3: received a message with command: start
+receiver3: replyed the same msg
+receiver3: reading fifo for incomming messages
+receiver2: received a message with command: start
+receiver2: replyed the same msg
+receiver2: reading fifo for incomming messages
+receiver1: received a message with command: start
+receiver1: replyed the same msg
+receiver1: reading fifo for incomming messages
+sender: read reply. Field `from' is sender
+sender: waiting for reply
+sender: read reply. Field `from' is receiver3
+sender: waiting for reply
+sender: read reply. Field `from' is receiver2
+sender: waiting for reply
+sender: read reply. Field `from' is receiver1

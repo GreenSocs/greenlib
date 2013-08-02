@@ -1,0 +1,26 @@
+receiver: reading fifo for incomming messages
+<> 20
+<> <>
+some found keys jj non-present jj.kk - sender ten.21 
+some found keys jj - - - sender ten.21 
+sender: sending a message to receiver: start
+sender: waiting for reply
+receiver: received a message with command: start
+receiver: replyed the same msg
+sender: read reply. Field `foo' is 123.456000
+sender: read reply. Field `ten' is 57.57 jon james
+sender: read reply.  Field 'squares' contains 0 1 4 9 16 25 36 
+x = ]<>[
+x.y = ]<>[  ]<>[
+x.y.z = ]hello[  ]hello[  ]hello[  ]hello[
+
+
+command ]start[
+foo ]123.456000[
+jj ]<>[
+reply ]sender.fifo_0[
+rowlocks ]<>[
+sender ]sender[
+squares ]<>[
+ten ]<>[
+x ]<>[
