@@ -32,9 +32,9 @@
 //
 // ENDLICENSETEXT
 
-#include "gsp_sc.h"
-#include "gsp_sc_helper.h"
-#include "gs_sc_api_detection.h"
+#include "../include/greenscript/gsp_sc.h"
+#include "../include/greenscript/gsp_sc_helper.h"
+#include "../include/greenscript/gs_sc_api_detection.h"
 
 #include <iostream>
 #include <vector>
