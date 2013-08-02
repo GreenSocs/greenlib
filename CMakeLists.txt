@@ -268,6 +268,22 @@ install(DIRECTORY greenbus/docs/
 	DESTINATION docs/greenbus
 )
 
+# GreenMemory
+
+set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenmemory/include/)
+
+install(DIRECTORY greenmemory/include/
+	DESTINATION include
+)
+
+install(DIRECTORY greenmemory/examples/
+	DESTINATION examples/greenmemory
+)
+
+install(DIRECTORY greenmemory/docs/
+	DESTINATION docs/greenmemory
+)
+
 # Greensocs Library include directory (for example).
 include_directories(${GreenSocs_INCLUDE_DIRS})
 # CXX flags for example or library compilation.
