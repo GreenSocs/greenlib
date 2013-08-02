@@ -42,7 +42,14 @@ if(Boost_FOUND)
    include_directories(${Boost_INCLUDE_DIRS})
 endif()
 
+# Require Python
 
+if(DEFINED ENV{PYTHON_ROOT})
+  include_directories($ENV{PYTHON_ROOT})
+else()
+  find_package(PythonLibs REQUIRED)
+  include_directories(${PYTHON_INCLUDE_DIRS})
+endif()
 
 # GreenSocs library
 
@@ -217,7 +224,6 @@ install(DIRECTORY greenmessage/docs/
 	DESTINATION docs/greenmessage
 )
 
-
 # Greensocs Library include directory (for example).
 include_directories(${GreenSocs_INCLUDE_DIRS})
 # CXX flags for example or library compilation.
@@ -229,6 +235,9 @@ endif(COMPILE_EXAMPLE)
 
 # Compile greenreg library.
 add_subdirectory(greenreg)
+
+# Compile greenscript library
+add_subdirectory(greenscript)
 
 # build a CPack driven installer package
 include (InstallRequiredSystemLibraries)
