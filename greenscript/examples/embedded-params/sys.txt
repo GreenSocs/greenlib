@@ -1,0 +1,453 @@
+in sc_main
+EMBEDDED: adding params for GS
+Testing DB Access
+=> making parameters <=
+gs_module.a_boolean       =>  0
+gs_module.james           =>  10
+gs_module.james2          =>  10
+gs_module.jamesh.bad.dog  =>  0
+gs_module.jamesh2.bad.dog  =>  0
+
+=> reading parameters <=
+10
+0
+OK failed read
+
+=> making array parameters and reading as a list <=
+['zero', 'one', 'two']
+
+=> making array parameters from a list <=
+['helga', 'holga', 'hubert', 'humphrey']
+[]
+
+=> making array parameters from a dict <=
+
+=> reading array parameters as a dict <=
+{'fish': {'names2': ['helga', 'holga', 'hubert', 'humphrey'], 'names': ['helga', 'holga', 'hubert', 'humphrey'], 'names3': ['helga', 'holga', 'hubert', 'humphrey']}}
+
+{'jimmy': [['1', '2', '3'], {'a': '10', 'b': '45'}], 'curly': ['3', '4', '5'], 'larry': '10', 'bob': {'quality': 'terrible'}, 'curly2': ['3', '4', '5'], 'moe': ['trunk', 'ears', {'arabic': {'a': '10', 'b': '20'}, 'french': ['odd', 'really'], 'english': 'ugly'}]}
+
+{'arabic': {'a': '10', 'b': '20'}, 'french': ['odd', 'really'], 'english': 'ugly'}
+[['1', '2', '3'], {'a': '10', 'b': '45'}]
+{'quality': 'terrible'}
+
+gs_module.a_boolean       =>  0
+gs_module.james           =>  10
+gs_module.james2          =>  10
+gs_module.jamesh.bad.dog  =>  0
+gs_module.jamesh2.bad.dog  =>  0
+gs_module.jon.0           =>  zero
+gs_module.jon.1           =>  one
+gs_module.jon.2           =>  two
+gs_module.kate.fish.names.0  =>  helga
+gs_module.kate.fish.names.1  =>  holga
+gs_module.kate.fish.names.2  =>  hubert
+gs_module.kate.fish.names.3  =>  humphrey
+gs_module.kate.fish.names2.0  =>  helga
+gs_module.kate.fish.names2.1  =>  holga
+gs_module.kate.fish.names2.2  =>  hubert
+gs_module.kate.fish.names2.3  =>  humphrey
+gs_module.kate.fish.names3.0  =>  helga
+gs_module.kate.fish.names3.1  =>  holga
+gs_module.kate.fish.names3.2  =>  hubert
+gs_module.kate.fish.names3.3  =>  humphrey
+gs_module.mixup.bob.quality  =>  terrible
+gs_module.mixup.curly.0   =>  3
+gs_module.mixup.curly.1   =>  4
+gs_module.mixup.curly.2   =>  5
+gs_module.mixup.curly2.0  =>  3
+gs_module.mixup.curly2.1  =>  4
+gs_module.mixup.curly2.2  =>  5
+gs_module.mixup.jimmy.0.0  =>  1
+gs_module.mixup.jimmy.0.1  =>  2
+gs_module.mixup.jimmy.0.2  =>  3
+gs_module.mixup.jimmy.1.a  =>  10
+gs_module.mixup.jimmy.1.b  =>  45
+gs_module.mixup.larry     =>  10
+gs_module.mixup.moe.0     =>  trunk
+gs_module.mixup.moe.1     =>  ears
+gs_module.mixup.moe.2.arabic.a  =>  10
+gs_module.mixup.moe.2.arabic.b  =>  20
+gs_module.mixup.moe.2.english  =>  ugly
+gs_module.mixup.moe.2.french.0  =>  odd
+gs_module.mixup.moe.2.french.1  =>  really
+
+EMBEDDED: adding params for SC
+Testing DB Access
+=> making parameters <=
+gs_module.a_boolean       =>  0
+gs_module.james           =>  10
+gs_module.james2          =>  10
+gs_module.jamesh.bad.dog  =>  0
+gs_module.jamesh2.bad.dog  =>  0
+gs_module.jon.0           =>  zero
+gs_module.jon.1           =>  one
+gs_module.jon.2           =>  two
+gs_module.kate.fish.names.0  =>  helga
+gs_module.kate.fish.names.1  =>  holga
+gs_module.kate.fish.names.2  =>  hubert
+gs_module.kate.fish.names.3  =>  humphrey
+gs_module.kate.fish.names2.0  =>  helga
+gs_module.kate.fish.names2.1  =>  holga
+gs_module.kate.fish.names2.2  =>  hubert
+gs_module.kate.fish.names2.3  =>  humphrey
+gs_module.kate.fish.names3.0  =>  helga
+gs_module.kate.fish.names3.1  =>  holga
+gs_module.kate.fish.names3.2  =>  hubert
+gs_module.kate.fish.names3.3  =>  humphrey
+gs_module.mixup.bob.quality  =>  terrible
+gs_module.mixup.curly.0   =>  3
+gs_module.mixup.curly.1   =>  4
+gs_module.mixup.curly.2   =>  5
+gs_module.mixup.curly2.0  =>  3
+gs_module.mixup.curly2.1  =>  4
+gs_module.mixup.curly2.2  =>  5
+gs_module.mixup.jimmy.0.0  =>  1
+gs_module.mixup.jimmy.0.1  =>  2
+gs_module.mixup.jimmy.0.2  =>  3
+gs_module.mixup.jimmy.1.a  =>  10
+gs_module.mixup.jimmy.1.b  =>  45
+gs_module.mixup.larry     =>  10
+gs_module.mixup.moe.0     =>  trunk
+gs_module.mixup.moe.1     =>  ears
+gs_module.mixup.moe.2.arabic.a  =>  10
+gs_module.mixup.moe.2.arabic.b  =>  20
+gs_module.mixup.moe.2.english  =>  ugly
+gs_module.mixup.moe.2.french.0  =>  odd
+gs_module.mixup.moe.2.french.1  =>  really
+sc_module.a_boolean       =>  0
+sc_module.james           =>  10
+sc_module.james2          =>  10
+sc_module.jamesh.bad.dog  =>  0
+sc_module.jamesh2.bad.dog  =>  0
+
+=> reading parameters <=
+10
+0
+OK failed read
+
+=> making array parameters and reading as a list <=
+['zero', 'one', 'two']
+
+=> making array parameters from a list <=
+['helga', 'holga', 'hubert', 'humphrey']
+[]
+
+=> making array parameters from a dict <=
+
+=> reading array parameters as a dict <=
+{'fish': {'names2': ['helga', 'holga', 'hubert', 'humphrey'], 'names': ['helga', 'holga', 'hubert', 'humphrey'], 'names3': ['helga', 'holga', 'hubert', 'humphrey']}}
+
+{'jimmy': [['1', '2', '3'], {'a': '10', 'b': '45'}], 'curly': ['3', '4', '5'], 'larry': '10', 'bob': {'quality': 'terrible'}, 'curly2': ['3', '4', '5'], 'moe': ['trunk', 'ears', {'arabic': {'a': '10', 'b': '20'}, 'french': ['odd', 'really'], 'english': 'ugly'}]}
+
+{'arabic': {'a': '10', 'b': '20'}, 'french': ['odd', 'really'], 'english': 'ugly'}
+[['1', '2', '3'], {'a': '10', 'b': '45'}]
+{'quality': 'terrible'}
+
+gs_module.a_boolean       =>  0
+gs_module.james           =>  10
+gs_module.james2          =>  10
+gs_module.jamesh.bad.dog  =>  0
+gs_module.jamesh2.bad.dog  =>  0
+gs_module.jon.0           =>  zero
+gs_module.jon.1           =>  one
+gs_module.jon.2           =>  two
+gs_module.kate.fish.names.0  =>  helga
+gs_module.kate.fish.names.1  =>  holga
+gs_module.kate.fish.names.2  =>  hubert
+gs_module.kate.fish.names.3  =>  humphrey
+gs_module.kate.fish.names2.0  =>  helga
+gs_module.kate.fish.names2.1  =>  holga
+gs_module.kate.fish.names2.2  =>  hubert
+gs_module.kate.fish.names2.3  =>  humphrey
+gs_module.kate.fish.names3.0  =>  helga
+gs_module.kate.fish.names3.1  =>  holga
+gs_module.kate.fish.names3.2  =>  hubert
+gs_module.kate.fish.names3.3  =>  humphrey
+gs_module.mixup.bob.quality  =>  terrible
+gs_module.mixup.curly.0   =>  3
+gs_module.mixup.curly.1   =>  4
+gs_module.mixup.curly.2   =>  5
+gs_module.mixup.curly2.0  =>  3
+gs_module.mixup.curly2.1  =>  4
+gs_module.mixup.curly2.2  =>  5
+gs_module.mixup.jimmy.0.0  =>  1
+gs_module.mixup.jimmy.0.1  =>  2
+gs_module.mixup.jimmy.0.2  =>  3
+gs_module.mixup.jimmy.1.a  =>  10
+gs_module.mixup.jimmy.1.b  =>  45
+gs_module.mixup.larry     =>  10
+gs_module.mixup.moe.0     =>  trunk
+gs_module.mixup.moe.1     =>  ears
+gs_module.mixup.moe.2.arabic.a  =>  10
+gs_module.mixup.moe.2.arabic.b  =>  20
+gs_module.mixup.moe.2.english  =>  ugly
+gs_module.mixup.moe.2.french.0  =>  odd
+gs_module.mixup.moe.2.french.1  =>  really
+sc_module.a_boolean       =>  0
+sc_module.james           =>  10
+sc_module.james2          =>  10
+sc_module.jamesh.bad.dog  =>  0
+sc_module.jamesh2.bad.dog  =>  0
+sc_module.jon.0           =>  zero
+sc_module.jon.1           =>  one
+sc_module.jon.2           =>  two
+sc_module.kate.fish.names.0  =>  helga
+sc_module.kate.fish.names.1  =>  holga
+sc_module.kate.fish.names.2  =>  hubert
+sc_module.kate.fish.names.3  =>  humphrey
+sc_module.kate.fish.names2.0  =>  helga
+sc_module.kate.fish.names2.1  =>  holga
+sc_module.kate.fish.names2.2  =>  hubert
+sc_module.kate.fish.names2.3  =>  humphrey
+sc_module.kate.fish.names3.0  =>  helga
+sc_module.kate.fish.names3.1  =>  holga
+sc_module.kate.fish.names3.2  =>  hubert
+sc_module.kate.fish.names3.3  =>  humphrey
+sc_module.mixup.bob.quality  =>  terrible
+sc_module.mixup.curly.0   =>  3
+sc_module.mixup.curly.1   =>  4
+sc_module.mixup.curly.2   =>  5
+sc_module.mixup.curly2.0  =>  3
+sc_module.mixup.curly2.1  =>  4
+sc_module.mixup.curly2.2  =>  5
+sc_module.mixup.jimmy.0.0  =>  1
+sc_module.mixup.jimmy.0.1  =>  2
+sc_module.mixup.jimmy.0.2  =>  3
+sc_module.mixup.jimmy.1.a  =>  10
+sc_module.mixup.jimmy.1.b  =>  45
+sc_module.mixup.larry     =>  10
+sc_module.mixup.moe.0     =>  trunk
+sc_module.mixup.moe.1     =>  ears
+sc_module.mixup.moe.2.arabic.a  =>  10
+sc_module.mixup.moe.2.arabic.b  =>  20
+sc_module.mixup.moe.2.english  =>  ugly
+sc_module.mixup.moe.2.french.0  =>  odd
+sc_module.mixup.moe.2.french.1  =>  really
+
+added a Python interpreter
+
+Info: sc_module.gs_param_base_1: Failed to convert array member name to member number!
+
+Info: sc_module.gs_param_base_1: Failed to convert array member name to member number!
+
+Info: sc_module.gs_param_base_1: Failed to convert array member name to member number!
+
+Info: sc_module.gs_param_base_1: Failed to convert array member name to member number!
+
+Info: sc_module.gs_param_base_1: Failed to convert array member name to member number!
+
+Info: sc_module.gs_param_base_1: Failed to convert array member name to member number!
+
+Info: sc_module.gs_param_base_1: Failed to convert array member name to member number!
+
+Info: sc_module.gs_param_base_1: Failed to convert array member name to member number!
+Good Dog, Good Programme
+size of dummy array is 0
+added a SystemC component
+Testing PARAM class
+gs_module.a_boolean       =>  0
+gs_module.james           =>  10
+gs_module.james2          =>  10
+gs_module.jamesh.bad.dog  =>  0
+gs_module.jamesh2.bad.dog  =>  0
+gs_module.jon.0           =>  zero
+gs_module.jon.1           =>  one
+gs_module.jon.2           =>  two
+gs_module.kate.fish.names.0  =>  helga
+gs_module.kate.fish.names.1  =>  holga
+gs_module.kate.fish.names.2  =>  hubert
+gs_module.kate.fish.names.3  =>  humphrey
+gs_module.kate.fish.names2.0  =>  helga
+gs_module.kate.fish.names2.1  =>  holga
+gs_module.kate.fish.names2.2  =>  hubert
+gs_module.kate.fish.names2.3  =>  humphrey
+gs_module.kate.fish.names3.0  =>  helga
+gs_module.kate.fish.names3.1  =>  holga
+gs_module.kate.fish.names3.2  =>  hubert
+gs_module.kate.fish.names3.3  =>  humphrey
+gs_module.mixup.bob.quality  =>  terrible
+gs_module.mixup.curly.0   =>  3
+gs_module.mixup.curly.1   =>  4
+gs_module.mixup.curly.2   =>  5
+gs_module.mixup.curly2.0  =>  3
+gs_module.mixup.curly2.1  =>  4
+gs_module.mixup.curly2.2  =>  5
+gs_module.mixup.jimmy.0.0  =>  1
+gs_module.mixup.jimmy.0.1  =>  2
+gs_module.mixup.jimmy.0.2  =>  3
+gs_module.mixup.jimmy.1.a  =>  10
+gs_module.mixup.jimmy.1.b  =>  45
+gs_module.mixup.larry     =>  10
+gs_module.mixup.moe.0     =>  trunk
+gs_module.mixup.moe.1     =>  ears
+gs_module.mixup.moe.2.arabic.a  =>  10
+gs_module.mixup.moe.2.arabic.b  =>  20
+gs_module.mixup.moe.2.english  =>  ugly
+gs_module.mixup.moe.2.french.0  =>  odd
+gs_module.mixup.moe.2.french.1  =>  really
+sc_module.a_boolean       =>  0
+sc_module.james           =>  10
+sc_module.james2          =>  10
+sc_module.jamesh.bad.dog  =>  0
+sc_module.jamesh2.bad.dog  =>  0
+sc_module.jon.0           =>  zero
+sc_module.jon.1           =>  one
+sc_module.jon.2           =>  two
+sc_module.kate.fish.names  =>  {"helga" "holga" "hubert" "humphrey"}
+sc_module.kate.fish.names.0  =>  helga
+sc_module.kate.fish.names.1  =>  holga
+sc_module.kate.fish.names.2  =>  hubert
+sc_module.kate.fish.names.3  =>  humphrey
+sc_module.kate.fish.names2.0  =>  helga
+sc_module.kate.fish.names2.1  =>  holga
+sc_module.kate.fish.names2.2  =>  hubert
+sc_module.kate.fish.names2.3  =>  humphrey
+sc_module.kate.fish.names3.0  =>  helga
+sc_module.kate.fish.names3.1  =>  holga
+sc_module.kate.fish.names3.2  =>  hubert
+sc_module.kate.fish.names3.3  =>  humphrey
+sc_module.mixup           =>  {
+}
+sc_module.mixup.bob.quality  =>  terrible
+sc_module.mixup.curly.0   =>  3
+sc_module.mixup.curly.1   =>  4
+sc_module.mixup.curly.2   =>  5
+sc_module.mixup.curly2.0  =>  3
+sc_module.mixup.curly2.1  =>  4
+sc_module.mixup.curly2.2  =>  5
+sc_module.mixup.jimmy.0.0  =>  1
+sc_module.mixup.jimmy.0.1  =>  2
+sc_module.mixup.jimmy.0.2  =>  3
+sc_module.mixup.jimmy.1.a  =>  10
+sc_module.mixup.jimmy.1.b  =>  45
+sc_module.mixup.larry     =>  10
+sc_module.mixup.moe.0     =>  trunk
+sc_module.mixup.moe.1     =>  ears
+sc_module.mixup.moe.2.arabic.a  =>  10
+sc_module.mixup.moe.2.arabic.b  =>  20
+sc_module.mixup.moe.2.english  =>  ugly
+sc_module.mixup.moe.2.french.0  =>  odd
+sc_module.mixup.moe.2.french.1  =>  really
+sc_module.no_such_name    =>  {}
+
+=> leaf parameters <=
+10
+0 0_with_addendum
+0 False
+OK failed to append string to bool
+
+=> ordered array parameters <=
+uninitialised <uninitialised param called jon>
+length 3
+now initialised [<uninitialised param called 0>, <uninitialised param called 1>, <uninitialised param called 2>]
+uninitialised <uninitialised param called 0>
+uninitialised <uninitialised param called 1>
+uninitialised <uninitialised param called 2>
+value zero
+value one
+value two
+now initialised zero
+now initialised one
+now initialised two
+[zero, one, two]
+
+Info: gs_module.test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: gs_module.test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: gs_module.test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: gs_module.test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: gs_module.test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: gs_module.test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: gs_module.test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+
+Info: gs_module.test_params_0.gs_param_base_7: Failed to convert array member name to member number!
+helga
+holga
+hubert
+humphrey
+[helga, holga, hubba, humphrey]
+found 4
+not found quisling
+[3, 4, 5]
+[3, 4, 5, <uninitialised param called 3>, <uninitialised param called 4>, <uninitialised param called 5>, <uninitialised param called 6>, <uninitialised param called 7>, <uninitialised param called 8>, <uninitialised param called 9>]
+[23, 32, 45, 54, 65, 56, 76, 67]
+OK failed to iterate over keys
+
+=> ordered array parameters that do not exist <=
+missing array has length: 0
+[]
+
+=> array parameters with names <=
+uninitialised <uninitialised param called mixup>
+<uninitialised param called jimmy>
+now initialised {(jimmy: <uninitialised param called jimmy>)}
+<uninitialised param called moe>
+<uninitialised param called curly>
+<uninitialised param called larry>
+10
+10
+{(larry: 10), (jimmy: <uninitialised param called jimmy>), (curly: <uninitialised param called curly>), (moe: <uninitialised param called moe>)}
+larry = 10
+jimmy = <uninitialised param called jimmy>
+curly = flutter
+moe = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+{(larry: 10), (jimmy: <uninitialised param called jimmy>), (curly: flutter), (moe: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])}
+2
+<uninitialised param called 0>
+<uninitialised param called 1>
+('larry', <gs.param instance at 0x2a95c05a70>)
+('jimmy', <gs.param instance at 0x2a95c05998>)
+('curly', <gs.param instance at 0x2a95c05a28>)
+('moe', <gs.param instance at 0x2a95c059e0>)
+OK failed to iterate over values
+{(a: 10), (c: [2, 3, 4]), (b: 20), (d: {(a: hello), (c: {(a: [1, 2, 3]), (b: enough)}), (b: goodbye)})}
+
+=> default values: leaves <=
+really
+707
+
+=> default values: ordered arrays <=
+helga
+holga
+hubert
+humphrey
+y
+z
+helga
+holga
+hubert
+humphrey
+y
+z
+[<uninitialised param called 0>, <uninitialised param called 1>, <uninitialised param called 2>, <uninitialised param called 3>, <uninitialised param called 4>, <uninitialised param called 5>, <uninitialised param called 6>, <uninitialised param called 7>, <uninitialised param called 8>, <uninitialised param called 9>, <uninitialised param called 10>, <uninitialised param called 11>]
+> helga
+> holga
+> hubert
+> humphrey
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+
+=> default values: arrays with names <=
+<uninitialised param called jamesh2> <uninitialised param called bad>
+0 45
+
+james = 10
+kate[0] = helga
+kate[1] = holga
+kate[2] = hubert
+kate[3] = humphrey
+mixup.bob.quality = terrible
+SystemC: simulation stopped by user.
+sc_main completed simulation and exiting
