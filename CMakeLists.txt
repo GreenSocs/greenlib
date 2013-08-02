@@ -49,7 +49,14 @@ if(Boost_FOUND)
    include_directories(${Boost_INCLUDE_DIRS})
 endif()
 
+# Require Python
 
+if(DEFINED ENV{PYTHON_ROOT})
+  include_directories($ENV{PYTHON_ROOT})
+else()
+  find_package(PythonLibs REQUIRED)
+  include_directories(${PYTHON_INCLUDE_DIRS})
+endif()
 
 # GreenSocs library
 
