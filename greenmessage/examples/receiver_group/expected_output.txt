@@ -1,0 +1,27 @@
+receiver1: reading fifo for incomming messages
+receiver2: reading fifo for incomming messages
+receiver3: reading fifo for incomming messages
+sender: creating a group of receivers by adding members receiver1 and receiver3
+sender: sending a message to the group: start
+sender: waiting for reply
+receiver3: received a message with command: start
+receiver3: replyed the same msg
+receiver3: reading fifo for incomming messages
+receiver1: received a message with command: start
+receiver1: replyed the same msg
+receiver1: reading fifo for incomming messages
+sender: read reply. Field `from' is receiver3
+sender: waiting for reply
+sender: read reply. Field `from' is receiver1
+sender: creating a group of receivers by removing members self and receiver2
+sender: sending a message to the group: stop
+sender: waiting for reply
+receiver3: received a message with command: stop
+receiver3: replyed the same msg
+receiver3: reading fifo for incomming messages
+receiver1: received a message with command: stop
+receiver1: replyed the same msg
+receiver1: reading fifo for incomming messages
+sender: read reply. Field `from' is receiver3
+sender: waiting for reply
+sender: read reply. Field `from' is receiver1
