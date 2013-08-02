@@ -1,0 +1,8 @@
+GREENMESSAGE
+------------
+
+GreenMessage is a framework to pass messages from one SystemC module
+to another.
+
+For more information, please read the user manual from the docs
+folder.

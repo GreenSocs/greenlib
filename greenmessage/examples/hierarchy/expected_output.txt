@@ -1,0 +1,10 @@
+receiver: reading fifo for incomming messages
+sender: sending a message to receiver: start
+sender: waiting for reply
+receiver: received a message with command: start
+receiver: received a configset. First level names:
+receiver:    CPU
+receiver:    cache
+receiver: testing if cache.size parameter exists: cache.size = 10
+receiver: replyed the same msg
+sender: read reply. Field `foo' is 123.456000
