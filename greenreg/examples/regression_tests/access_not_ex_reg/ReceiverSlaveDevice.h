@@ -44,12 +44,12 @@
 
 #include <boost/config.hpp>
 #include <systemc>
-#include <greenreg.h>
-#include <greenreg_socket.h>
+#include <greenreg/greenreg.h>
+#include <greenreg/greenreg_socket.h>
 
 #include "greencontrol/all.h"
 
-#include "greenreg_socket.h"									// DRF Port classes
+#include "greenreg/greenreg_socket/greenreg_socket.h"									// DRF Port classes
 
 #define SHOW(name, msg) \
 { std::printf("@%s /%d (%s): ", sc_core::sc_time_stamp().to_string().c_str(), (unsigned)sc_core::sc_delta_count(), name); std::cout << msg << std::endl; }

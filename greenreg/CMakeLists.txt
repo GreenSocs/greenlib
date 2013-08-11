@@ -1,4 +1,2 @@
 add_subdirectory(lib)
-if(COMPILE_EXAMPLE)
-add_subdirectory(examples)
-endif(COMPILE_EXAMPLE)
+add_subdirectory(examples EXCLUDE_FROM_ALL)
