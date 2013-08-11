@@ -74,7 +74,6 @@ public:
   // forward all master atoms directly to the slave
   virtual bool registerMasterAccess(GS_ATOM& tc)
   {
-    GenericPhase p = tc.second;
     GenericRouterAccess &t = tc.first->getRouterAccess();
     DestinationPort destination = ( *router_port->getInitPort() ).connected_in_ports[router_port->decodeAddress(t.getMAddr())];
     if (delay_MasterAccess == 0)
@@ -89,7 +88,6 @@ public:
   virtual bool registerSlaveAccess(GS_ATOM& tc)
   {
     GenericRouterAccess &t = tc.first->getRouterAccess();
-    GenericPhase p = tc.second;
     SourcePort source = ( *router_port->getTargetPort() ).connected_in_ports[m_masterMap[t.getMID()]];
     if (delay_SlaveAccess == 0)
 	    (*source)->notify(tc); 

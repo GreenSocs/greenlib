@@ -235,7 +235,7 @@ private:
   {
     if(baseAddress_>highAddress_)
       SC_REPORT_ERROR("Address Map", "Base address must be lower than high address.");
-    if(baseAddress_>0xffffffff | highAddress_>0xffffffff)
+    if((baseAddress_>0xffffffff) | (highAddress_>0xffffffff))
       SC_REPORT_ERROR("Address Map", "Addresses must not exceed 32 bits in width.");
     if(portNumber_>=255)
       SC_REPORT_ERROR("Address Map", "Only ;-) 255 targets can be handled.");
