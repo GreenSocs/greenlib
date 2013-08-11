@@ -35,8 +35,8 @@
 // GreenConfig special API
 #include "greencontrol/config_api_config_file_parser.h"  // API Tool to read configuration file(s)
 
-#include "ArrayOwnerModule.h"
-#include "ArrayUserModule.h"
+#include "EArrayOwnerModule.h"
+#include "EArrayUserModule.h"
 
 /// Testbench for the example GreenConfig
 int main(int argc, char *argv[]) {
@@ -53,15 +53,15 @@ int main(int argc, char *argv[]) {
   configTool.parseCommandLine(argc, argv); // parses the command line for --configfile
   configTool.config("extended_array_test.cfg");   // reads in a config file
 
-  ArrayOwnerModule  owner      ("Owner");
-  ArrayUserModule   user       ("User");
+  EArrayOwnerModule  owner      ("Owner");
+  EArrayUserModule   user       ("User");
 
   //ShowSCObjects::showSCObjects();
 
-  sc_report_handler::set_actions(SC_ERROR, SC_ABORT);
-  cout << "------ Simulation start ---------" << endl;
-  sc_start();
-  cout << "------ Simulation stopped ---------" << endl;
+  sc_core::sc_report_handler::set_actions(sc_core::SC_ERROR, sc_core::SC_ABORT);
+  std::cout << "------ Simulation start ---------" << std::endl;
+  sc_core::sc_start();
+  std::cout << "------ Simulation stopped ---------" << std::endl;
   
   return EXIT_SUCCESS; 
   
