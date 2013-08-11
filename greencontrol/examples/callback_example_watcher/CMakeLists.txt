@@ -1,5 +1,7 @@
 SET(EXECUTABLE "callback_example_watcher")
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DUSE_STATIC_CASTS")
+
 ADD_EXECUTABLE(${EXECUTABLE}
 	ObserverModule.cpp
 	ParameterOwnerModule.cpp
