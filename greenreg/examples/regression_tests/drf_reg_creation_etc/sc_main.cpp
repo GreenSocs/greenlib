@@ -47,8 +47,8 @@
 
 #include <boost/config.hpp>
 #include <systemc.h>
-#include <greenreg.h>
-#include <greenreg_socket.h>
+#include <greenreg/greenreg.h>
+#include <greenreg/greenreg_socket.h>
 
 #include "greencontrol/config.h"
 #include "greencontrol/gcnf/apis/configFileApi/configfile_tool.h"  // API Tool to read configuration file(s)

@@ -48,7 +48,7 @@
 
 #include <boost/config.hpp>
 #include <systemc.h>
-#include <greenreg.h>
+#include <greenreg/greenreg.h>
 
 #include "greencontrol/all.h"
 
