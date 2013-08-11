@@ -170,7 +170,6 @@ bool LRU_cache::write(const word_size &data, const addr_size addr) {
   }
   LRU_DETAILED_TRACE("write: word is in line %i", lineToUse);
   
-  bool ret = true;
   // Cache-Miss
   if (lineToUse < 0) {
     LRU_TRACE("write: Cache-Miss");
@@ -179,8 +178,6 @@ bool LRU_cache::write(const word_size &data, const addr_size addr) {
       addr_range_misses++; // Analysis
     }
     lineToUse = getLine(addr);
-    if (lineToUse < 0)
-      ret = false;
   }
   // Cache-Hit
   else {

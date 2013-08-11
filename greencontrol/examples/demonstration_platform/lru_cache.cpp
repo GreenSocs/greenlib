@@ -146,11 +146,8 @@ bool LRU_cache::write(const word_size &data, const addr_size addr) {
   LRU_TRACE("write: word is in line %i", lineToUse);
   
   // if not, getLine
-  bool ret = true;
   if (lineToUse < 0) {
     lineToUse = getLine(addr);
-    if (lineToUse < 0)
-      ret = false;
   }
   
   if (lineToUse > -1) {
