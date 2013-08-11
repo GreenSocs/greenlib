@@ -268,9 +268,9 @@ namespace av {
             default: {
               // get value as unsigned
               uint64_t num=0;
-              sscanf(iter_m->second.c_str(), "%llu", &num);
+              sscanf(iter_m->second.c_str(), "%lu", &num);
               // output single bit if num < 2
-              if (num<2) fprintf(outp_file, "%llu", num);
+              if (num<2) fprintf(outp_file, "%lu", num);
               // output bit sequence otherwise
               else {
                 fprintf(outp_file, "b");

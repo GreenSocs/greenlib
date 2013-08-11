@@ -1,5 +1,7 @@
 SET(EXECUTABLE "demonstration_platform")
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DUSE_STATIC_CASTS")
+
 ADD_EXECUTABLE(${EXECUTABLE}
 	 Cache.cpp
   	 ddr_ram.cpp
