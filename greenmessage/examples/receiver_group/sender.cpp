@@ -32,7 +32,7 @@
 //
 // ENDLICENSETEXT
 
-#include <sender.h>
+#include "sender.h"
 
 
   /// Constructor

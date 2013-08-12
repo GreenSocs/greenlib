@@ -32,7 +32,7 @@
 //
 // ENDLICENSETEXT
 
-#include <receiver.h>
+#include "receiver.h"
 
 
   /// Constructor
