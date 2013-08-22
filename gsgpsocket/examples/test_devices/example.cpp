@@ -56,7 +56,7 @@ int sc_main(int argc, char* argv[])
   gs::ctr::GC_Core       core("ControlCore");
   // GreenConfig Plugin
   gs::cnf::ConfigDatabase cnfdatabase("ConfigDatabase");
-  gs::cnf::ConfigPlugin configPlugin("ConfigPlugin", &cnfdatabase);
+  gs::cnf::ConfigPlugin configPlugin(&cnfdatabase);
 
   
   TestSlave sl("Slave",3);
