@@ -104,7 +104,6 @@ public:
 void sillysort::run()
 {
 
-    clock_t start=clock();
     unsigned long long  pvts=0;
     unsigned long long pvs=0;
     

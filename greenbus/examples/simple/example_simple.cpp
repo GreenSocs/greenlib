@@ -69,7 +69,7 @@ int sc_main(int, char**)
 
   m.init_port(s.target_port);
 
-  sc_start(-1);
+  sc_core::sc_start();
 
   return 0;
 }
