@@ -1,0 +1,6 @@
+add_subdirectory(generic)
+add_subdirectory(mixed)
+add_subdirectory(platform)
+add_subdirectory(register_demo)
+add_subdirectory(simple)
+add_subdirectory(simple_speed_test)

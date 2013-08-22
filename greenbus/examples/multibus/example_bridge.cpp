@@ -49,7 +49,7 @@
 #include "greenbus/transport/genericRouter.h"
 #include "greenbus/protocol/SimpleBus/simpleBusProtocol.h"
 #include "greenbus/scheduler/fixedPriorityScheduler.h"
-#include "greenbus/protocol/PLB/PLB.h"
+#include "greenbus/transport/PLB/PLB.h"
 #include "greenbus/protocol/PLB/PLBBusProtocol.h"
 #include "greenbus/scheduler/dynamicPriorityScheduler.h"
 #include "greenbus/transport/genericBridge.h"

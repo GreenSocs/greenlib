@@ -38,7 +38,6 @@
 
 #include <systemc.h>
 
-#include "platform_globals.h"
 #include "greenbus/transport/PCIe/PCIe.h"
 
 #include "greenbus/api/PCIe/PCIeAPI.h"

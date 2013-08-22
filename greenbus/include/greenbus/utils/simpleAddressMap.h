@@ -181,7 +181,7 @@ public:
       SC_REPORT_ERROR("SimpleAddressMap", "Address must not exceed 32 bits in width.");
     
     lbound=m_addressMap.lower_bound((address_+1)<<1);
-    if(lbound->second == 255 | lbound==m_addressMap.end()){
+    if((lbound->second == 255) | (lbound==m_addressMap.end())){
       GS_TRACE("SimpleAddressMap", "Decode attempt for address 0x%x failed:\n", (unsigned int)address_);
 #ifdef VERBOSE
       dumpMap();

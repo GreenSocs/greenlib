@@ -55,7 +55,7 @@
 #include <deque>
 
 #ifdef GAV_ENABLED
-#  include "greencontrol/gcnf/apis/gs_param/gs_param.h"
+#  include "greencontrol/config.h"
 #  include "greencontrol/gav/plugin/StatCalc.h"
 #  include "greencontrol/gcnf/apis/gs_param/gs_param_GenericTransactionCopy.h"
 #endif
