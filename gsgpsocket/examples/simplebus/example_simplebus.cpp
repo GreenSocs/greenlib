@@ -33,8 +33,8 @@
 
 #include <systemc>
 
-#include "gsgpsocket/examples/simple/sillysort.h"
-#include "gsgpsocket/examples/simple/simplememory.h"
+#include "sillysort.h"
+#include "simplememory.h"
                                         
 //#include "gsgpsocket/transport/genericRouter.h"
 //#include "gsgpsocket/protocol/SimpleBus/simpleBusProtocol.h"
@@ -56,7 +56,7 @@ int sc_main(int, char**)
   gs::ctr::GC_Core       core("ControlCore");
   // GreenConfig Plugin
   gs::cnf::ConfigDatabase cnfdatabase("ConfigDatabase");
-  gs::cnf::ConfigPlugin configPlugin("ConfigPlugin", &cnfdatabase);
+  gs::cnf::ConfigPlugin configPlugin(&cnfdatabase);
 	
   sillysort m1("MasterMark",0x4010, "Call me or I will call you");
   sillysort m2("MasterWolle",0x00ff, "I want a faster bus");
