@@ -4,9 +4,17 @@ project (GREENLIB)
 include(FeatureSummary)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
-# Option for example compilation
 
-option (COMPILE_EXAMPLE "Build Example" OFF)
+# Compile and run the tests
+add_custom_target(check COMMAND make compile_test COMMAND make test)
+
+# Compile the test
+add_custom_target(compile_test)
+enable_testing()
+
+# Test if the compilation/running/diff is good
+add_custom_target(run_test COMMAND make test)
+
 
 # Require SystemC
 
@@ -53,6 +61,19 @@ else()
   include_directories(${PYTHON_INCLUDE_DIRS})
 endif()
 
+# Require Lua
+
+find_package( Lua )
+if(LUA_FOUND)
+  include_directories(${LUA_INCLUDE_DIR})
+  link_directories(${LUA_LIBRARIES})
+elseif(DEFINED ENV{LUA_INCLUDE_HOME} && DEFINED ENV{LUA_LIBRARY_HOME})
+  include_directories($ENV{LUA_INCLUDE_HOME})
+  link_directories($ENV{LUA_LIBRARY_HOME})
+else()
+  message( STATUS "Lua library not found." )
+endif()
+
 # GreenSocs library
 
 set (GreenSocs_INCLUDE_DIRS "")
@@ -68,12 +89,6 @@ install(FILES greencontrol/LICENSE
 
 
 # GreenControl
-
-configure_file(
-    greencontrol/examples/Makefile.defs.in
-    Makefile.defs
-    @ONLY
-)
 
 set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greencontrol/include/)
 
@@ -206,6 +221,7 @@ install(DIRECTORY greensignalbus/include/
 # Greenreg
 
 set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenreg/include/)
+set (GreenSocs_LIB_DIRS ${GreenSocs_LIB_DIRS} ${PROJECT_SOURCE_DIR}/greenreg/lib/libgreebreg.a)
 
 install(DIRECTORY greenreg/include/
         DESTINATION include
@@ -240,7 +256,8 @@ install(DIRECTORY greenmessage/docs/
 
 # Greenscript
 
-set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenscript/include/)
+set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenscript/include/greenscript)
+set (GreenSocs_LIB_DIRS ${GreenSocs_LIB_DIRS} ${PROJECT_SOURCE_DIR}/greenscript/lib/libgreenscript.a)
 
 install(DIRECTORY greenscript/include/
         DESTINATION include
@@ -288,12 +305,22 @@ install(DIRECTORY greenmemory/docs/
 
 # Greensocs Library include directory (for example).
 include_directories(${GreenSocs_INCLUDE_DIRS})
+link_directories(${GreenSocs_LIB_DIRS})
+
 # CXX flags for example or library compilation.
-set(CMAKE_CXX_FLAGS "-g -Wall -DSC_INCLUDE_DYNAMIC_PROCESSES")
-if(COMPILE_EXAMPLE)
-add_subdirectory(greensignalsocket)
-add_subdirectory(greenrouter)
-endif(COMPILE_EXAMPLE)
+set(CMAKE_CXX_FLAGS "-g -Wall -DSC_INCLUDE_DYNAMIC_PROCESSES -D_REENTRANT")
+
+enable_testing()
+
+add_subdirectory(greensignalsocket EXCLUDE_FROM_ALL)
+add_subdirectory(greenmemory EXCLUDE_FROM_ALL)
+add_subdirectory(greenrouter EXCLUDE_FROM_ALL)
+add_subdirectory(greenmessage EXCLUDE_FROM_ALL)
+add_subdirectory(greensignalbus EXCLUDE_FROM_ALL)
+add_subdirectory(greencontrol EXCLUDE_FROM_ALL)
+add_subdirectory(greenbus EXCLUDE_FROM_ALL)
+add_subdirectory(greensocket EXCLUDE_FROM_ALL)
+add_subdirectory(gsgpsocket EXCLUDE_FROM_ALL)
 
 # Compile greenreg library.
 add_subdirectory(greenreg)
