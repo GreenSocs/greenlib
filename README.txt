@@ -24,6 +24,14 @@ If cmake doesn't find Python, maybe specify the python directory this way :
 
 Python: http://python.org/download/
 
+Next step, if for testing the library.
+
+The Lua library is necessary, so please assure, you have this.
+If cmake doesn't find Lua, maybe specify the lua directories this way :
+ #> export LUA_LYBRARY_HOME="/usr/lib/x86_64-linux-gnu/liblua5.2.so"
+ #> export LUA_INCLUDE_HOME="/usr/include/lua5.2/"
+
+Lua: http://www.lua.org/download.html
 
 
 Now we can compile :)
@@ -42,5 +50,17 @@ Now we can compile :)
     where you have defined CMAKE_INSTALL_PREFIX
 
 4 . Enjoy !
+
+If you want to test, you need to do the previous step and after:
+
+1 . Type #> make compile_test
+    This action will result in the compilation of the test
+
+2 . Type #> make test
+    This action will result in the test with the expected_output
+    or to see other problem
+
+3.  You can type #> make check
+    This action will do the last two step in the same time
 
 CMake: http://www.cmake.org/cmake/resources/software.html
