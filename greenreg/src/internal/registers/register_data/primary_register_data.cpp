@@ -59,13 +59,13 @@ primary_register_data::primary_register_data( sc_core::sc_module_name _name,
 		_register.get_width() / 8)
 {
 
-	int reg;
+//	int reg;
 	//unsigned int offset; // warning: unused variable
 	//unsigned int size; // warning: unused variable
 
 	if( _register_container.get_addressing_mode() == INDEXED_ADDRESS)
 	{
-		reg = _register_container.get_next_register_index();
+		 _register_container.get_next_register_index();
 	}
 
 //	std::stringstream ss;
