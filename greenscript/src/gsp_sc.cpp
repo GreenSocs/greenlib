@@ -89,7 +89,7 @@ void gsp_sc_event_bind(PyObject* e, PyObject* obj, event_type type)
     case EVENT_WRITEIF:
       {
         PyObject *r =
-          PyObject_CallMethod(obj, "set_writeif_context", NULL);
+          PyObject_CallMethod(obj, (char*)"set_writeif_context", NULL);
         if(r == NULL) {
           // should never happen:  bug in GreenScript
           PyErr_Print();
@@ -424,6 +424,7 @@ long gsp_sc_get_curr_process_handle()
 #else
 //#error Unknown SystemC API to call for sc_get_current_process_handle
 #endif
+ return (0);
 }
 
 
@@ -437,6 +438,7 @@ bool gsp_sc_is_running() {
 #else
 //#error Unknown SystemC API to call for sc_is_running
 #endif
+ return false;
 }
 
 
@@ -831,7 +833,7 @@ PyObject *gsp_sc_msg_base::__setitem__(PyObject *k, PyObject *v) {
     Py_RETURN_NONE;
   }
   // special case for hierarchical gsp_sc_msg
-  PyObject *retval = PyObject_CallMethod(v, "set_gs_msg_context", NULL);
+  PyObject *retval = PyObject_CallMethod(v, (char*)"set_gs_msg_context", NULL);
   if(retval == NULL) {
     PyErr_Clear();
   } else {

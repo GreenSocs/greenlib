@@ -33,7 +33,7 @@
 // ENDLICENSETEXT
 
 #include <greenscript.h>
-#include <greencontrol/gcnf/apis/gs_param/gs_param.h>
+#include <greencontrol/config.h>
 #include <iostream>
 #include <string>
 
