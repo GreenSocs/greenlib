@@ -34,7 +34,7 @@
 
 #include "../include/greenscript/gsp_sc.h"
 #include "../include/greenscript/gsp_sc_helper.h"
-#include "../include/greenscript/gs_sc_api_detection.h"
+#include "greencontrol/core/gs_sc_api_detection.h"
 
 #include <iostream>
 #include <vector>
@@ -89,7 +89,7 @@ void gsp_sc_event_bind(PyObject* e, PyObject* obj, event_type type)
     case EVENT_WRITEIF:
       {
         PyObject *r =
-          PyObject_CallMethod(obj, "set_writeif_context", NULL);
+          PyObject_CallMethod(obj, (char*)"set_writeif_context", NULL);
         if(r == NULL) {
           // should never happen:  bug in GreenScript
           PyErr_Print();
@@ -419,11 +419,12 @@ long gsp_sc_get_curr_process_handle()
 {
 #if SYSTEMC_API == 210
   return (long) sc_get_curr_process_handle();
-#elif SYSTEMC_API == 220
+#elif SYSTEMC_API == 220 || SYSTEMC_API == 230
   return (long) sc_get_curr_simcontext()->get_curr_proc_info()->process_handle;
 #else
-//#error Unknown SystemC API to call for sc_get_current_process_handle
+#error Unknown SYSTEMC_API to call for sc_get_current_process_handle
 #endif
+ return (0);
 }
 
 
@@ -432,11 +433,12 @@ long gsp_sc_get_curr_process_handle()
 bool gsp_sc_is_running() {
 #if SYSTEMC_API == 210
   return sc_get_curr_simcontext()->is_running();
-#elif SYSTEMC_API == 220
+#elif SYSTEMC_API == 220 || SYSTEMC_API == 230
   return sc_is_running();
 #else
-//#error Unknown SystemC API to call for sc_is_running
+#error Unknown SYSTEMC_API to call for sc_is_running
 #endif
+ return false;
 }
 
 
@@ -831,7 +833,7 @@ PyObject *gsp_sc_msg_base::__setitem__(PyObject *k, PyObject *v) {
     Py_RETURN_NONE;
   }
   // special case for hierarchical gsp_sc_msg
-  PyObject *retval = PyObject_CallMethod(v, "set_gs_msg_context", NULL);
+  PyObject *retval = PyObject_CallMethod(v, (char*)"set_gs_msg_context", NULL);
   if(retval == NULL) {
     PyErr_Clear();
   } else {

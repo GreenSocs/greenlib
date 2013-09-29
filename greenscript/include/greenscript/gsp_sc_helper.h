@@ -36,7 +36,7 @@
 #define GSP_SC_HELPER_H
 
 #include <systemc>
-#include "gs_sc_api_detection.h"
+#include "greencontrol/core/gs_sc_api_detection.h"
 
 
 //////////////////////////////////////////////////

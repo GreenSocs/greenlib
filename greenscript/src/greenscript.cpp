@@ -136,7 +136,7 @@ bool is_simple_filename(const char *path) {
 GreenScriptModule::GreenScriptModule(
   sc_core::sc_module_name name_p, const char* script_filename) :
   sc_core::sc_module(name_p), initialised(true),
-  my_namespace(NULL), gs_module(NULL), sys_path(NULL)
+  my_namespace(NULL), gs_module(NULL), sys_path(NULL), name_py(NULL)
 {
   // set up interpreter and gs module and context object
   GreenScriptController::subscribe();
@@ -194,9 +194,13 @@ GreenScriptModule::GreenScriptModule(
 // desctructor
 GreenScriptModule::~GreenScriptModule() {
   Py_XDECREF(my_namespace);
+  my_namespace = NULL;
   Py_XDECREF(gs_module);
+  gs_module = NULL;
   Py_XDECREF(sys_path);
+  sys_path = NULL;
   Py_XDECREF(name_py);
+  name_py = NULL;
   GreenScriptController::unsubscribe();
 }
 
