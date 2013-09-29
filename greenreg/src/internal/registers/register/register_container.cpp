@@ -160,7 +160,7 @@ int register_container::get_next_register_index()
 {
 	if( m_addressing_mode == INDEXED_ADDRESS)
 	{
-		if( (m_next_register_index + 1) < m_register_input_store.size())	
+		if( (m_next_register_index + 1) < (int)m_register_input_store.size())	
 		{
 			m_next_register_index++;
 			return( m_next_register_index);
