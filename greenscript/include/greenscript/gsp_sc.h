@@ -112,13 +112,13 @@ private:
 
 #ifdef USE_GREENCONTROL
 
-#include "greencontrol/core/gc_core.h"    // Core
-#include "greencontrol/gcnf/plugin/configplugin.h" // ConfigPlugin
-#include "greencontrol/gcnf/plugin/configdatabase.h" // ConfigDatabase to be bound to port of ConfigPlugin
+// GreenControl API
+#include "greencontrol/config.h"
+// API Tool to read configuration file(s)
+#include "greencontrol/gcnf/apis/configFileApi/configfile_tool.h"
 
-#include "greencontrol/gcnf/apis/configFileApi/configfile_tool.h" // API Tool to read configuration file(s)
-#include "greencontrol/gcnf/apis/luaFileApi/luafile_tool.h" // API Tool to read lua configuration file(s)
-#include "greencontrol/gcnf/apis/gs_param/gs_param.h"
+// API Tool to read lua configuration file(s)
+#include "greencontrol/gcnf/apis/luaFileApi/luafile_tool.h"
 
 
 // functions for direct database access //
