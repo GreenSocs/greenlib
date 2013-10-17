@@ -74,6 +74,10 @@ else()
   message( STATUS "Lua library not found." )
 endif()
 
+# Require SWIG
+find_package(SWIG REQUIRED)
+include(${SWIG_USE_FILE})
+
 # GreenSocs library
 
 set (GreenSocs_INCLUDE_DIRS "")
