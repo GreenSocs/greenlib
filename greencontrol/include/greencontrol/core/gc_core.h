@@ -145,6 +145,11 @@ protected:
   
 public:
 
+  /// Get the core_instantiated status.
+  static bool is_core_instantiated() {
+    return access_core_instantiated();
+  }
+
   /// Static function to get access to the Core singleton
   static GC_Core& get_instance() {
     if (access_core_singleton() == NULL) {
