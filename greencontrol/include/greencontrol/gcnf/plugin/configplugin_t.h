@@ -76,11 +76,16 @@ protected:
   }
   
 public:
+
+  /// Get the plugin_instantiated status.
+  static bool is_plugin_instantiated() {
+    return access_plugin_instantiated();
+  }
   
   /// Static function to get access to the Plugin singleton
   static ConfigPlugin& get_instance() {
     if (access_plugin_singleton() == NULL) {
-      assert(!access_plugin_instantiated() && "Config Plugin has already been destroyed. Make sure you destroy the plugin after all confiuration objects (like APIs and parameters).");
+      assert(!access_plugin_instantiated() && "Config Plugin has already been destroyed. Make sure you destroy the plugin after all configuration objects (like APIs and parameters).");
       GCNF_DUMP_N("static ConfigPlugin::get_instance()", "Create not yet existing ConfigPlugin!");
       new ConfigPlugin(); // will register itself with plugin_singleton 
     }
