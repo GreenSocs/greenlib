@@ -731,10 +731,19 @@ gs::cnf::LuaFile_Tool *luareader;
 void gsp_sc_init()
 {
 #ifdef USE_GREENCONTROL
+  if (!gs::ctr::GC_Core::is_core_instantiated())
+  {
+    // XXX: name the module ControlCore.
+    core = new gs::ctr::GC_Core();
+  }
   // Find the system-wide objects (defined in gsp_sc_helper.h)
-  find_or_create_new(core, "ControlCore");
   find_or_create_new(configDb, "ConfigDatabase");
-  find_or_create_new(configPlugin, "ConfigPlugin", configDb);
+
+  if (!gs::cnf::ConfigPlugin::is_plugin_instantiated())
+  {
+    configPlugin = new gs::cnf::ConfigPlugin(configDb);
+  }
+
   find_or_create_new(analysisPlugin, "AnalysisPlugin");
 #endif
 
