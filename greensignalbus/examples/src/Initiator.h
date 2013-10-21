@@ -1,7 +1,7 @@
 #ifndef __INITIATOR_H__
 #define __INITIATOR_H__
 
-#include "green_signal.h"
+#include "greensignalsocket/green_signal.h"
 #include "common.h"
 using namespace gs_generic_signal;
 
