@@ -549,7 +549,7 @@ public:
     // is found by searching with lower_bound the next entry greater or equal the address.
     // If the lower bound itself is the target address that is handled in the if case.
     lbound=m_Memory_AddressMap.lower_bound(address);//old: lower_bound((address+1)<<1);
-    if(lbound->second.outgoing_port == OutgoingPortError | lbound==m_Memory_AddressMap.end()){
+    if((lbound->second.outgoing_port == OutgoingPortError) | (lbound==m_Memory_AddressMap.end())){
       // if address = base address return next map entry
       if (address == lbound->first) {
         lbound=m_Memory_AddressMap.upper_bound(address); // catch the upper bound entry
@@ -580,7 +580,7 @@ public:
     // is found by searching with lower_bound the next entry greater or equal the address.
     // If the lower bound itself is the target address that is handled in the if case.
     lbound=m_IO_AddressMap.lower_bound(address);//old: lower_bound((address+1)<<1);
-    if(lbound->second.outgoing_port == OutgoingPortError | lbound==m_IO_AddressMap.end()){
+    if((lbound->second.outgoing_port == OutgoingPortError) | (lbound==m_IO_AddressMap.end())){
       // if address = base address return next map entry
       if (address == lbound->first) {
         lbound=m_IO_AddressMap.upper_bound(address); // catch the upper bound entry
@@ -770,7 +770,7 @@ protected:
     if(baseAddress_>highAddress_)
       SC_REPORT_ERROR(name(), "Base address must be lower than high address.");
     if (is_IO_map) {
-      if(baseAddress_>0x00000000ffffffffLL | highAddress_>0x00000000ffffffffLL)
+      if((baseAddress_>0x00000000ffffffffLL) | (highAddress_>0x00000000ffffffffLL))
         SC_REPORT_ERROR(name(), "IO Addresses must not exceed 32 bits in width.");
     }
     if(port_pos>=32)
