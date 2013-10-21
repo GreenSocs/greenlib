@@ -4,9 +4,16 @@ project (GREENLIB)
 include(FeatureSummary)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
-# Option for example compilation
 
-option (COMPILE_EXAMPLE "Build Example" OFF)
+# Compile and run the tests
+add_custom_target(check COMMAND make compile_test COMMAND make test)
+
+# Compile the test
+add_custom_target(compile_test)
+enable_testing()
+
+# Test if the compilation/running/diff is good
+add_custom_target(run_test COMMAND make test)
 
 # Require SystemC
 
@@ -185,6 +192,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Makefile.defs
 # Greenreg
 
 set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenreg/include/)
+set (GreenSocs_LIB_DIRS ${GreenSocs_LIB_DIRS} ${PROJECT_SOURCE_DIR}/greenreg/lib/libgreenreg.a)
 
 install(DIRECTORY greenreg/include/
         DESTINATION include
@@ -203,12 +211,13 @@ install(DIRECTORY greenreg/doc/     # TODO: doc or docs?
 
 # Greensocs Library include directory (for example).
 include_directories(${GreenSocs_INCLUDE_DIRS})
+link_directories(${GreenSocs_LIB_DIRS})
+
 # CXX flags for example or library compilation.
-set(CMAKE_CXX_FLAGS "-g -Wall -DSC_INCLUDE_DYNAMIC_PROCESSES")
-if(COMPILE_EXAMPLE)
-add_subdirectory(greensignalsocket)
-add_subdirectory(greenrouter)
-endif(COMPILE_EXAMPLE)
+set(CMAKE_CXX_FLAGS "-g -Wall -DSC_INCLUDE_DYNAMIC_PROCESSES -D_REENTRANT")
+
+add_subdirectory(greensignalsocket EXCLUDE_FROM_ALL)
+add_subdirectory(greenrouter EXCLUDE_FROM_ALL)
 
 # Compile greenreg library.
 add_subdirectory(greenreg)
