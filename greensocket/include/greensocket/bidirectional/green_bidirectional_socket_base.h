@@ -27,7 +27,7 @@
 #include "greensocket/generic/green_socket_bind_checker.h"
 #include "greensocket/generic/green_socket_mm_base.h"
 #include "greensocket/generic/green_socket_default_pool.h"
-#include "greensocket/generic/gs_sc_api_detection.h"
+#include "greencontrol/core/gs_sc_api_detection.h"
 #include "greensocket/utils/gs_msg_output.h"
 
 namespace gs {
