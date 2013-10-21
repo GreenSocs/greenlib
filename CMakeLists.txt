@@ -315,6 +315,7 @@ link_directories(${GreenSocs_LIB_DIRS})
 set(CMAKE_CXX_FLAGS "-g -Wall -DSC_INCLUDE_DYNAMIC_PROCESSES -D_REENTRANT")
 
 enable_testing()
+add_subdirectory(greenmessage EXCLUDE_FROM_ALL)
 
 # Compile greenreg library.
 add_subdirectory(greenreg)
