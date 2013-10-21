@@ -70,15 +70,6 @@ static void show_vector(const std::vector<T> vec, const unsigned int size) {
   std::cout << std::endl;
 }
 
-/// Prints out <size> (not separated) items of a vector (with [] operator) with size information
-template<class T>
-static void show_vector_nosep(const std::vector<T> vec, const unsigned int size) {
-  std::cout << "  vector: size="<< vec.size()<<", show "<< size<<" items" << std::endl << "  ";
-  assert(vec.size() >= size);
-  show_pure_vector(vec, size);
-  std::cout << std::endl;
-}
-
 /// Prints out <size> items of a vector (with [] operator)
 template<class T>
 static void show_pure_vector(const std::vector<T> vec, const unsigned int size) {
@@ -87,6 +78,15 @@ static void show_pure_vector(const std::vector<T> vec, const unsigned int size) 
   for (unsigned int i = 0; i<size; i++) {
     std::cout << vec[i] ;
   }
+}
+
+/// Prints out <size> (not separated) items of a vector (with [] operator) with size information
+template<class T>
+static void show_vector_nosep(const std::vector<T> vec, const unsigned int size) {
+  std::cout << "  vector: size="<< vec.size()<<", show "<< size<<" items" << std::endl << "  ";
+  assert(vec.size() >= size);
+  show_pure_vector(vec, size);
+  std::cout << std::endl;
 }
 
 /// Class which objects return chars when calling next() in the order: 012...890ABC...XYZabc...xyz

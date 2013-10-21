@@ -54,7 +54,7 @@ members px and pn are private.
 #include <boost/assert.hpp>
 #include <boost/checked_delete.hpp>
 #include <boost/throw_exception.hpp>
-#include <boost/detail/shared_count.hpp>
+#include <boost/smart_ptr/detail/shared_count.hpp>
 #include <boost/detail/workaround.hpp>
 
 #include <memory>               // for std::auto_ptr

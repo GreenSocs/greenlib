@@ -92,7 +92,7 @@ public:
 void sillysort::run()
 {
   unsigned char ch1, ch2;
-  int j;
+  unsigned int j;
   unsigned int str_len = strlen((char *)mem);
 
   for (j =0 ; j < str_len; j++ )
