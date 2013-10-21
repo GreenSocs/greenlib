@@ -2,7 +2,7 @@
 #define MULTI_EXAMPLE_H_
 
 #include "tlm.h"
-#include "green_signal.h"
+#include "greensignalsocket/green_signal.h"
 
 using namespace gs_generic_signal;
 GS_GUARD_ONLY_EXTENSION(foo);
