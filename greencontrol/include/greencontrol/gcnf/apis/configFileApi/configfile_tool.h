@@ -343,11 +343,8 @@ protected:
     optind = 0; // reset of getopt!!
     while (1)
       {
-        int this_option_optind = optind ? optind : 1;
-        int option_index = 0;
+	int option_index = 0;
         // avoid compiler warning
-        int a = option_index;
-        a = this_option_optind;
         static struct option long_options[] =
           {
             {"gs_configfile", 1, 0, 'c'},   // '--configfile filename' = '-c filename', expected value: '<filename>'

@@ -110,7 +110,6 @@ public:
    */
   void removePort(gc_port_T* pPort)
   {
-    const char* target_name = NULL;
     cport_address_type target_address;
     ControlService service = NO_SERVICE;
     std::string target_string;
@@ -119,13 +118,12 @@ public:
     {
       target_address = pPort->getParent();
       target_string = pPort->getParentName(); // a temp var is used due to limitations caused by forward template declaration of gc_port
-      target_name = target_string.c_str();    // otherwise target_name won't be filled
       service = pPort->getSupportedControlService();
 
       if(pPort->isPlugin())
-        GC_DUMP_N("ControlAddressMap", "           Plugin ["<<target_name<<"] supporting control service "<<service<<" ("<<getControlServiceString(service).c_str()<<") is removed from core");
+        GC_DUMP_N("ControlAddressMap", "           Plugin ["<<target_string.c_str()<<"] supporting control service "<<service<<" ("<<getControlServiceString(service).c_str()<<") is removed from core");
       else
-        GC_DUMP_N("ControlAddressMap", "           API ["<<target_name<<"] supporting control service "<<service<<" ("<<getControlServiceString(service).c_str()<<") is removed from core");
+        GC_DUMP_N("ControlAddressMap", "           API ["<<target_string.c_str()<<"] supporting control service "<<service<<" ("<<getControlServiceString(service).c_str()<<") is removed from core");
 
       // remove port from internal maps
       if(m_address_service_map.erase(target_address) != 1)
