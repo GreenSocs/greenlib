@@ -173,23 +173,6 @@ public:
     access_core_singleton(this, true);
   }
 
-  /// DEPRECATED Constructor
-  GC_Core_T(const char* n)
-  : m_name("GC_Core")
-  , m_pLogger(NULL)
-  {
-    DEPRECATED_WARNING("GC_Core", "DEPRECATED: GC_Core Constructor with name is deprecated, use without name instead!");
-    GC_DUMP_N(name(), "I am a GC Core.");
-    
-    // ensure singleton
-    if (access_core_singleton() != NULL) {
-      SC_REPORT_FATAL(name(), "Core has already been instantiated! Make sure a manual construction is done before a possible automatic construction.");
-    }
-    assert(access_core_singleton() == NULL && "Core has already been instantiated! Make sure a manual construction is done before a possible automatic construction.");
-    assert(access_core_instantiated() == false && "Core has already been instantiated and destroyed!");
-    access_core_singleton(this, true);
-  }
-  
   
   /// Destructor warns if there are still Plugins or APIs existing
   ~GC_Core_T()
