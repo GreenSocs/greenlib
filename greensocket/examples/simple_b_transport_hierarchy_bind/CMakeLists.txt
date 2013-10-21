@@ -1,0 +1,14 @@
+SET(EXECUTABLE "simple_b_transport_hierarchy_bind")
+
+ADD_EXECUTABLE(${EXECUTABLE}
+        ../simple_b_transport/simple_b_gs_master.cpp
+	../common/simple_b_gs_secure_adapter.cpp
+        ../common/simple_b_gs_secure_slave.cpp
+        ../common/simple_b_gs_slave.cpp
+	simple_b_transport_top.cpp
+)
+target_link_libraries(${EXECUTABLE} ${SystemC_LIBRARIES}  pthread)
+
+add_test(NAME COMPILATION:_${EXECUTABLE} COMMAND ${EXECUTABLE})
+
+add_dependencies(compile_test ${EXECUTABLE})

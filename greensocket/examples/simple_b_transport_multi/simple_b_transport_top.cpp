@@ -57,6 +57,7 @@ for the master.
 #include "simple_b_gs_slave.h"
 #include "simple_b_gs_secure_slave.h"
 #include "simple_b_gs_secure_adapter.h"
+#include "simple_b_gs_secure_adapter.h"
 #include "ExplicitLTTarget.h"
 
 #ifdef USE_GS_MONITOR
