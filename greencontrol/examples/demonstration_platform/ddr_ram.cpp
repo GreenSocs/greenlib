@@ -44,7 +44,7 @@ bool ddr::read(std::vector<gs_uint8> &data, const gs_uint32 addr, const gs_uint3
   if (length==0) return true;
 
   DEMO_TRACE(sc_core::sc_module::name(), "Reading %d bytes from memory address 0x%x, takes %d ns",   
-           length, addr, (read_ws+length>>3)*clk_period);
+           length, addr, ((read_ws+length)>>3)*clk_period);
   wait((read_ws+length)*clk_period, SC_NS);
   if (memory.size() != size.getValue())
     memory.resize(size.getValue(),0);
