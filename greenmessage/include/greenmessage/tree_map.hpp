@@ -188,7 +188,7 @@ namespace gs {
       size_t max = 0;
       typename children_map::const_iterator it = children_map::begin();
       for (; it != children_map::end(); ++it) {
-        if (max < static_cast<int>((*it).first))
+        if (max < static_cast<size_t>((*it).first))
           max = (*it).first;
       }
       return max;
