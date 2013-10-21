@@ -1,4 +1,3 @@
-add_executable(greensignalsocket_simple examples/simple/example.cpp)
-target_link_libraries(greensignalsocket_simple ${SystemC_LIBRARIES} pthread)
-add_executable(greensignalsocket_invext examples/invalidate_ext/example.cpp)
-target_link_libraries(greensignalsocket_invext ${SystemC_LIBRARIES} pthread)
+add_subdirectory(examples/simple)
+add_subdirectory(examples/invalidate_ext)
+add_subdirectory(examples/multi_example)
