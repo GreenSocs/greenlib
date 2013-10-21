@@ -37,7 +37,7 @@
 #include "gsgpsocket/core/tlm_b_if.h"
 #include "gsgpsocket/utils/payload_event_queue.h"
 #include "gsgpsocket/transport/GSGPconfig.h"
-#include "greensocket/generic/gs_sc_api_detection.h"
+#include "greencontrol/core/gs_sc_api_detection.h"
 
 
 #define GSGP_RESET_INSTANCE_SPECIFIC_COMPLETED_EXTENSION(socket, transaction) \
