@@ -33,7 +33,7 @@
 // ENDLICENSETEXT
 
 // Defines GreenScriptModule
-#include <greenscript.h>
+#include <greenscript/greenscript.h>
 
 #include "adder.h"
 
