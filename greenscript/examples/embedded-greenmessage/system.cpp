@@ -33,7 +33,7 @@
 // ENDLICENSETEXT
 
 // Defines GreenScriptModule
-#include <greenscript.h>
+#include <greenscript/greenscript.h>
 
 // Defines the sender_module
 #include "bidir.h"
