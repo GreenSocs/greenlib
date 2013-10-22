@@ -1,472 +1,460 @@
-
-Info: (I804) /IEEE_Std_1666/deprecated: sc_start(double) deprecated, use sc_start(sc_time) or sc_start()
 insert adding entry [ 0x0, 0x10 ] on 0
 insert adding entry [ 0x11, 0xffff ] on 1
 Address check successful.
-
-Info: (I804) /IEEE_Std_1666/deprecated: sc_simulation_time() is deprecated use sc_time_stamp()
-time   0: sillysort: run: Initally memory contains: "As molt example in..."
-time   0: sillysort: run: Got 'A' and 's' from address 0
-time   0: sillysort: run: Got 's' and ' ' from address 1
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 'm' from address 2
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 'o' from address 3
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 'l' from address 4
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 't' from address 5
-time   0: sillysort: run: Got 't' and ' ' from address 6
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and 'e' from address 7
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and 'x' from address 8
-time   0: sillysort: run: Got 'x' and 'a' from address 9
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'x' and 'm' from address 10
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'x' and 'p' from address 11
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'x' and 'l' from address 12
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'x' and 'e' from address 13
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'x' and ' ' from address 14
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'x' and 'i' from address 15
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'x' and 'n' from address 16
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'x' and '.' from address 17
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'x' and '.' from address 18
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'x' and '.' from address 19
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: After another pass memory contains:: "A mols etample in...x"
-time   0: sillysort: run: Got 'A' and ' ' from address 0
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'A' and 'm' from address 1
-time   0: sillysort: run: Got 'm' and 'o' from address 2
-time   0: sillysort: run: Got 'o' and 'l' from address 3
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and 's' from address 4
-time   0: sillysort: run: Got 's' and ' ' from address 5
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 'e' from address 6
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 't' from address 7
-time   0: sillysort: run: Got 't' and 'a' from address 8
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and 'm' from address 9
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and 'p' from address 10
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and 'l' from address 11
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and 'e' from address 12
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and ' ' from address 13
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and 'i' from address 14
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and 'n' from address 15
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and '.' from address 16
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and '.' from address 17
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and '.' from address 18
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: " Amlo esample in...tx"
-time   0: sillysort: run: Got ' ' and 'A' from address 0
-time   0: sillysort: run: Got 'A' and 'm' from address 1
-time   0: sillysort: run: Got 'm' and 'l' from address 2
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'o' from address 3
-time   0: sillysort: run: Got 'o' and ' ' from address 4
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and 'e' from address 5
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and 's' from address 6
-time   0: sillysort: run: Got 's' and 'a' from address 7
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 'm' from address 8
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 'p' from address 9
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 'l' from address 10
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 'e' from address 11
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and ' ' from address 12
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 'i' from address 13
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 'n' from address 14
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and '.' from address 15
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and '.' from address 16
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and '.' from address 17
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: " Alm eoample in...stx"
-time   0: sillysort: run: Got ' ' and 'A' from address 0
-time   0: sillysort: run: Got 'A' and 'l' from address 1
-time   0: sillysort: run: Got 'l' and 'm' from address 2
-time   0: sillysort: run: Got 'm' and ' ' from address 3
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'e' from address 4
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'o' from address 5
-time   0: sillysort: run: Got 'o' and 'a' from address 6
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and 'm' from address 7
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and 'p' from address 8
-time   0: sillysort: run: Got 'p' and 'l' from address 9
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'p' and 'e' from address 10
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'p' and ' ' from address 11
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'p' and 'i' from address 12
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'p' and 'n' from address 13
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'p' and '.' from address 14
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'p' and '.' from address 15
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'p' and '.' from address 16
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: " Al emamole in...pstx"
-time   0: sillysort: run: Got ' ' and 'A' from address 0
-time   0: sillysort: run: Got 'A' and 'l' from address 1
-time   0: sillysort: run: Got 'l' and ' ' from address 2
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and 'e' from address 3
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and 'm' from address 4
-time   0: sillysort: run: Got 'm' and 'a' from address 5
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'm' from address 6
-time   0: sillysort: run: Got 'm' and 'o' from address 7
-time   0: sillysort: run: Got 'o' and 'l' from address 8
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and 'e' from address 9
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and ' ' from address 10
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and 'i' from address 11
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and 'n' from address 12
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and '.' from address 13
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and '.' from address 14
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and '.' from address 15
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: " A elammle in...opstx"
-time   0: sillysort: run: Got ' ' and 'A' from address 0
-time   0: sillysort: run: Got 'A' and ' ' from address 1
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'A' and 'e' from address 2
-time   0: sillysort: run: Got 'e' and 'l' from address 3
-time   0: sillysort: run: Got 'l' and 'a' from address 4
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and 'm' from address 5
-time   0: sillysort: run: Got 'm' and 'm' from address 6
-time   0: sillysort: run: Got 'm' and 'l' from address 7
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'e' from address 8
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and ' ' from address 9
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'i' from address 10
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'n' from address 11
-time   0: sillysort: run: Got 'n' and '.' from address 12
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'n' and '.' from address 13
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'n' and '.' from address 14
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'n' and 'o' from address 15
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: "  Aealmle im...nopstx"
-time   0: sillysort: run: Got ' ' and ' ' from address 0
-time   0: sillysort: run: Got ' ' and 'A' from address 1
-time   0: sillysort: run: Got 'A' and 'e' from address 2
-time   0: sillysort: run: Got 'e' and 'a' from address 3
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'e' and 'l' from address 4
-time   0: sillysort: run: Got 'l' and 'm' from address 5
-time   0: sillysort: run: Got 'm' and 'l' from address 6
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'e' from address 7
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and ' ' from address 8
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'i' from address 9
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'm' from address 10
-time   0: sillysort: run: Got 'm' and '.' from address 11
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and '.' from address 12
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and '.' from address 13
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'n' from address 14
-time   0: sillysort: run: Got 'n' and 'o' from address 15
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: "  Aaelle im...mnopstx"
-time   0: sillysort: run: Got ' ' and ' ' from address 0
-time   0: sillysort: run: Got ' ' and 'A' from address 1
-time   0: sillysort: run: Got 'A' and 'a' from address 2
-time   0: sillysort: run: Got 'a' and 'e' from address 3
-time   0: sillysort: run: Got 'e' and 'l' from address 4
-time   0: sillysort: run: Got 'l' and 'l' from address 5
-time   0: sillysort: run: Got 'l' and 'e' from address 6
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and ' ' from address 7
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and 'i' from address 8
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and 'm' from address 9
-time   0: sillysort: run: Got 'm' and '.' from address 10
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and '.' from address 11
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and '.' from address 12
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'm' and 'm' from address 13
-time   0: sillysort: run: Got 'm' and 'n' from address 14
-time   0: sillysort: run: Got 'n' and 'o' from address 15
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: "  Aaele il...mmnopstx"
-time   0: sillysort: run: Got ' ' and ' ' from address 0
-time   0: sillysort: run: Got ' ' and 'A' from address 1
-time   0: sillysort: run: Got 'A' and 'a' from address 2
-time   0: sillysort: run: Got 'a' and 'e' from address 3
-time   0: sillysort: run: Got 'e' and 'l' from address 4
-time   0: sillysort: run: Got 'l' and 'e' from address 5
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and ' ' from address 6
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and 'i' from address 7
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and 'l' from address 8
-time   0: sillysort: run: Got 'l' and '.' from address 9
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and '.' from address 10
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and '.' from address 11
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and 'm' from address 12
-time   0: sillysort: run: Got 'm' and 'm' from address 13
-time   0: sillysort: run: Got 'm' and 'n' from address 14
-time   0: sillysort: run: Got 'n' and 'o' from address 15
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: "  Aaee il...lmmnopstx"
-time   0: sillysort: run: Got ' ' and ' ' from address 0
-time   0: sillysort: run: Got ' ' and 'A' from address 1
-time   0: sillysort: run: Got 'A' and 'a' from address 2
-time   0: sillysort: run: Got 'a' and 'e' from address 3
-time   0: sillysort: run: Got 'e' and 'e' from address 4
-time   0: sillysort: run: Got 'e' and ' ' from address 5
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'e' and 'i' from address 6
-time   0: sillysort: run: Got 'i' and 'l' from address 7
-time   0: sillysort: run: Got 'l' and '.' from address 8
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and '.' from address 9
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and '.' from address 10
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'l' and 'l' from address 11
-time   0: sillysort: run: Got 'l' and 'm' from address 12
-time   0: sillysort: run: Got 'm' and 'm' from address 13
-time   0: sillysort: run: Got 'm' and 'n' from address 14
-time   0: sillysort: run: Got 'n' and 'o' from address 15
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: "  Aae ei...llmmnopstx"
-time   0: sillysort: run: Got ' ' and ' ' from address 0
-time   0: sillysort: run: Got ' ' and 'A' from address 1
-time   0: sillysort: run: Got 'A' and 'a' from address 2
-time   0: sillysort: run: Got 'a' and 'e' from address 3
-time   0: sillysort: run: Got 'e' and ' ' from address 4
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'e' and 'e' from address 5
-time   0: sillysort: run: Got 'e' and 'i' from address 6
-time   0: sillysort: run: Got 'i' and '.' from address 7
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'i' and '.' from address 8
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'i' and '.' from address 9
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'i' and 'l' from address 10
-time   0: sillysort: run: Got 'l' and 'l' from address 11
-time   0: sillysort: run: Got 'l' and 'm' from address 12
-time   0: sillysort: run: Got 'm' and 'm' from address 13
-time   0: sillysort: run: Got 'm' and 'n' from address 14
-time   0: sillysort: run: Got 'n' and 'o' from address 15
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: "  Aa ee...illmmnopstx"
-time   0: sillysort: run: Got ' ' and ' ' from address 0
-time   0: sillysort: run: Got ' ' and 'A' from address 1
-time   0: sillysort: run: Got 'A' and 'a' from address 2
-time   0: sillysort: run: Got 'a' and ' ' from address 3
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'a' and 'e' from address 4
-time   0: sillysort: run: Got 'e' and 'e' from address 5
-time   0: sillysort: run: Got 'e' and '.' from address 6
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'e' and '.' from address 7
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'e' and '.' from address 8
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'e' and 'i' from address 9
-time   0: sillysort: run: Got 'i' and 'l' from address 10
-time   0: sillysort: run: Got 'l' and 'l' from address 11
-time   0: sillysort: run: Got 'l' and 'm' from address 12
-time   0: sillysort: run: Got 'm' and 'm' from address 13
-time   0: sillysort: run: Got 'm' and 'n' from address 14
-time   0: sillysort: run: Got 'n' and 'o' from address 15
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: "  A ae...eillmmnopstx"
-time   0: sillysort: run: Got ' ' and ' ' from address 0
-time   0: sillysort: run: Got ' ' and 'A' from address 1
-time   0: sillysort: run: Got 'A' and ' ' from address 2
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'A' and 'a' from address 3
-time   0: sillysort: run: Got 'a' and 'e' from address 4
-time   0: sillysort: run: Got 'e' and '.' from address 5
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'e' and '.' from address 6
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'e' and '.' from address 7
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'e' and 'e' from address 8
-time   0: sillysort: run: Got 'e' and 'i' from address 9
-time   0: sillysort: run: Got 'i' and 'l' from address 10
-time   0: sillysort: run: Got 'l' and 'l' from address 11
-time   0: sillysort: run: Got 'l' and 'm' from address 12
-time   0: sillysort: run: Got 'm' and 'm' from address 13
-time   0: sillysort: run: Got 'm' and 'n' from address 14
-time   0: sillysort: run: Got 'n' and 'o' from address 15
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: "   Aa...eeillmmnopstx"
-time   0: sillysort: run: Got ' ' and ' ' from address 0
-time   0: sillysort: run: Got ' ' and ' ' from address 1
-time   0: sillysort: run: Got ' ' and 'A' from address 2
-time   0: sillysort: run: Got 'A' and 'a' from address 3
-time   0: sillysort: run: Got 'a' and '.' from address 4
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'a' and '.' from address 5
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'a' and '.' from address 6
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'a' and 'e' from address 7
-time   0: sillysort: run: Got 'e' and 'e' from address 8
-time   0: sillysort: run: Got 'e' and 'i' from address 9
-time   0: sillysort: run: Got 'i' and 'l' from address 10
-time   0: sillysort: run: Got 'l' and 'l' from address 11
-time   0: sillysort: run: Got 'l' and 'm' from address 12
-time   0: sillysort: run: Got 'm' and 'm' from address 13
-time   0: sillysort: run: Got 'm' and 'n' from address 14
-time   0: sillysort: run: Got 'n' and 'o' from address 15
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: "   A...aeeillmmnopstx"
-time   0: sillysort: run: Got ' ' and ' ' from address 0
-time   0: sillysort: run: Got ' ' and ' ' from address 1
-time   0: sillysort: run: Got ' ' and 'A' from address 2
-time   0: sillysort: run: Got 'A' and '.' from address 3
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'A' and '.' from address 4
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'A' and '.' from address 5
-time   0: sillysort: run: Swapping Characters 
-time   0: sillysort: run: Got 'A' and 'a' from address 6
-time   0: sillysort: run: Got 'a' and 'e' from address 7
-time   0: sillysort: run: Got 'e' and 'e' from address 8
-time   0: sillysort: run: Got 'e' and 'i' from address 9
-time   0: sillysort: run: Got 'i' and 'l' from address 10
-time   0: sillysort: run: Got 'l' and 'l' from address 11
-time   0: sillysort: run: Got 'l' and 'm' from address 12
-time   0: sillysort: run: Got 'm' and 'm' from address 13
-time   0: sillysort: run: Got 'm' and 'n' from address 14
-time   0: sillysort: run: Got 'n' and 'o' from address 15
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: "   ...Aaeeillmmnopstx"
-time   0: sillysort: run: Got ' ' and ' ' from address 0
-time   0: sillysort: run: Got ' ' and ' ' from address 1
-time   0: sillysort: run: Got ' ' and '.' from address 2
-time   0: sillysort: run: Got '.' and '.' from address 3
-time   0: sillysort: run: Got '.' and '.' from address 4
-time   0: sillysort: run: Got '.' and 'A' from address 5
-time   0: sillysort: run: Got 'A' and 'a' from address 6
-time   0: sillysort: run: Got 'a' and 'e' from address 7
-time   0: sillysort: run: Got 'e' and 'e' from address 8
-time   0: sillysort: run: Got 'e' and 'i' from address 9
-time   0: sillysort: run: Got 'i' and 'l' from address 10
-time   0: sillysort: run: Got 'l' and 'l' from address 11
-time   0: sillysort: run: Got 'l' and 'm' from address 12
-time   0: sillysort: run: Got 'm' and 'm' from address 13
-time   0: sillysort: run: Got 'm' and 'n' from address 14
-time   0: sillysort: run: Got 'n' and 'o' from address 15
-time   0: sillysort: run: Got 'o' and 'p' from address 16
-time   0: sillysort: run: Got 'p' and 's' from address 17
-time   0: sillysort: run: Got 's' and 't' from address 18
-time   0: sillysort: run: Got 't' and 'x' from address 19
-time   0: sillysort: run: After another pass memory contains:: "   ...Aaeeillmmnopstx"
-
-Info: (I804) /IEEE_Std_1666/deprecated: You can turn off warnings about
-             IEEE 1666 deprecated features by placing this method call as the
-             first statement in your sc_main() function:
-
-  sc_report_handler::set_actions("/IEEE_Std_1666/deprecated", SC_DO_NOTHING);
-
-
+time 0 s: sillysort: run: Initally memory contains: "As molt example in..."
+time 0 s: sillysort: run: Got 'A' and 's' from address 0
+time 0 s: sillysort: run: Got 's' and ' ' from address 1
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 'm' from address 2
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 'o' from address 3
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 'l' from address 4
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 't' from address 5
+time 0 s: sillysort: run: Got 't' and ' ' from address 6
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and 'e' from address 7
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and 'x' from address 8
+time 0 s: sillysort: run: Got 'x' and 'a' from address 9
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'x' and 'm' from address 10
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'x' and 'p' from address 11
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'x' and 'l' from address 12
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'x' and 'e' from address 13
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'x' and ' ' from address 14
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'x' and 'i' from address 15
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'x' and 'n' from address 16
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'x' and '.' from address 17
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'x' and '.' from address 18
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'x' and '.' from address 19
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: After another pass memory contains:: "A mols etample in...x"
+time 0 s: sillysort: run: Got 'A' and ' ' from address 0
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'A' and 'm' from address 1
+time 0 s: sillysort: run: Got 'm' and 'o' from address 2
+time 0 s: sillysort: run: Got 'o' and 'l' from address 3
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and 's' from address 4
+time 0 s: sillysort: run: Got 's' and ' ' from address 5
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 'e' from address 6
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 't' from address 7
+time 0 s: sillysort: run: Got 't' and 'a' from address 8
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and 'm' from address 9
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and 'p' from address 10
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and 'l' from address 11
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and 'e' from address 12
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and ' ' from address 13
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and 'i' from address 14
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and 'n' from address 15
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and '.' from address 16
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and '.' from address 17
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and '.' from address 18
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: " Amlo esample in...tx"
+time 0 s: sillysort: run: Got ' ' and 'A' from address 0
+time 0 s: sillysort: run: Got 'A' and 'm' from address 1
+time 0 s: sillysort: run: Got 'm' and 'l' from address 2
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'o' from address 3
+time 0 s: sillysort: run: Got 'o' and ' ' from address 4
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and 'e' from address 5
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and 's' from address 6
+time 0 s: sillysort: run: Got 's' and 'a' from address 7
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 'm' from address 8
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 'p' from address 9
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 'l' from address 10
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 'e' from address 11
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and ' ' from address 12
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 'i' from address 13
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 'n' from address 14
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and '.' from address 15
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and '.' from address 16
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and '.' from address 17
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: " Alm eoample in...stx"
+time 0 s: sillysort: run: Got ' ' and 'A' from address 0
+time 0 s: sillysort: run: Got 'A' and 'l' from address 1
+time 0 s: sillysort: run: Got 'l' and 'm' from address 2
+time 0 s: sillysort: run: Got 'm' and ' ' from address 3
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'e' from address 4
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'o' from address 5
+time 0 s: sillysort: run: Got 'o' and 'a' from address 6
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and 'm' from address 7
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and 'p' from address 8
+time 0 s: sillysort: run: Got 'p' and 'l' from address 9
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'p' and 'e' from address 10
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'p' and ' ' from address 11
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'p' and 'i' from address 12
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'p' and 'n' from address 13
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'p' and '.' from address 14
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'p' and '.' from address 15
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'p' and '.' from address 16
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: " Al emamole in...pstx"
+time 0 s: sillysort: run: Got ' ' and 'A' from address 0
+time 0 s: sillysort: run: Got 'A' and 'l' from address 1
+time 0 s: sillysort: run: Got 'l' and ' ' from address 2
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and 'e' from address 3
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and 'm' from address 4
+time 0 s: sillysort: run: Got 'm' and 'a' from address 5
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'm' from address 6
+time 0 s: sillysort: run: Got 'm' and 'o' from address 7
+time 0 s: sillysort: run: Got 'o' and 'l' from address 8
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and 'e' from address 9
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and ' ' from address 10
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and 'i' from address 11
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and 'n' from address 12
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and '.' from address 13
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and '.' from address 14
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and '.' from address 15
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: " A elammle in...opstx"
+time 0 s: sillysort: run: Got ' ' and 'A' from address 0
+time 0 s: sillysort: run: Got 'A' and ' ' from address 1
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'A' and 'e' from address 2
+time 0 s: sillysort: run: Got 'e' and 'l' from address 3
+time 0 s: sillysort: run: Got 'l' and 'a' from address 4
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and 'm' from address 5
+time 0 s: sillysort: run: Got 'm' and 'm' from address 6
+time 0 s: sillysort: run: Got 'm' and 'l' from address 7
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'e' from address 8
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and ' ' from address 9
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'i' from address 10
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'n' from address 11
+time 0 s: sillysort: run: Got 'n' and '.' from address 12
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'n' and '.' from address 13
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'n' and '.' from address 14
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'n' and 'o' from address 15
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: "  Aealmle im...nopstx"
+time 0 s: sillysort: run: Got ' ' and ' ' from address 0
+time 0 s: sillysort: run: Got ' ' and 'A' from address 1
+time 0 s: sillysort: run: Got 'A' and 'e' from address 2
+time 0 s: sillysort: run: Got 'e' and 'a' from address 3
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'e' and 'l' from address 4
+time 0 s: sillysort: run: Got 'l' and 'm' from address 5
+time 0 s: sillysort: run: Got 'm' and 'l' from address 6
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'e' from address 7
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and ' ' from address 8
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'i' from address 9
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'm' from address 10
+time 0 s: sillysort: run: Got 'm' and '.' from address 11
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and '.' from address 12
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and '.' from address 13
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'n' from address 14
+time 0 s: sillysort: run: Got 'n' and 'o' from address 15
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: "  Aaelle im...mnopstx"
+time 0 s: sillysort: run: Got ' ' and ' ' from address 0
+time 0 s: sillysort: run: Got ' ' and 'A' from address 1
+time 0 s: sillysort: run: Got 'A' and 'a' from address 2
+time 0 s: sillysort: run: Got 'a' and 'e' from address 3
+time 0 s: sillysort: run: Got 'e' and 'l' from address 4
+time 0 s: sillysort: run: Got 'l' and 'l' from address 5
+time 0 s: sillysort: run: Got 'l' and 'e' from address 6
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and ' ' from address 7
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and 'i' from address 8
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and 'm' from address 9
+time 0 s: sillysort: run: Got 'm' and '.' from address 10
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and '.' from address 11
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and '.' from address 12
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'm' and 'm' from address 13
+time 0 s: sillysort: run: Got 'm' and 'n' from address 14
+time 0 s: sillysort: run: Got 'n' and 'o' from address 15
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: "  Aaele il...mmnopstx"
+time 0 s: sillysort: run: Got ' ' and ' ' from address 0
+time 0 s: sillysort: run: Got ' ' and 'A' from address 1
+time 0 s: sillysort: run: Got 'A' and 'a' from address 2
+time 0 s: sillysort: run: Got 'a' and 'e' from address 3
+time 0 s: sillysort: run: Got 'e' and 'l' from address 4
+time 0 s: sillysort: run: Got 'l' and 'e' from address 5
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and ' ' from address 6
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and 'i' from address 7
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and 'l' from address 8
+time 0 s: sillysort: run: Got 'l' and '.' from address 9
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and '.' from address 10
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and '.' from address 11
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and 'm' from address 12
+time 0 s: sillysort: run: Got 'm' and 'm' from address 13
+time 0 s: sillysort: run: Got 'm' and 'n' from address 14
+time 0 s: sillysort: run: Got 'n' and 'o' from address 15
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: "  Aaee il...lmmnopstx"
+time 0 s: sillysort: run: Got ' ' and ' ' from address 0
+time 0 s: sillysort: run: Got ' ' and 'A' from address 1
+time 0 s: sillysort: run: Got 'A' and 'a' from address 2
+time 0 s: sillysort: run: Got 'a' and 'e' from address 3
+time 0 s: sillysort: run: Got 'e' and 'e' from address 4
+time 0 s: sillysort: run: Got 'e' and ' ' from address 5
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'e' and 'i' from address 6
+time 0 s: sillysort: run: Got 'i' and 'l' from address 7
+time 0 s: sillysort: run: Got 'l' and '.' from address 8
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and '.' from address 9
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and '.' from address 10
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'l' and 'l' from address 11
+time 0 s: sillysort: run: Got 'l' and 'm' from address 12
+time 0 s: sillysort: run: Got 'm' and 'm' from address 13
+time 0 s: sillysort: run: Got 'm' and 'n' from address 14
+time 0 s: sillysort: run: Got 'n' and 'o' from address 15
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: "  Aae ei...llmmnopstx"
+time 0 s: sillysort: run: Got ' ' and ' ' from address 0
+time 0 s: sillysort: run: Got ' ' and 'A' from address 1
+time 0 s: sillysort: run: Got 'A' and 'a' from address 2
+time 0 s: sillysort: run: Got 'a' and 'e' from address 3
+time 0 s: sillysort: run: Got 'e' and ' ' from address 4
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'e' and 'e' from address 5
+time 0 s: sillysort: run: Got 'e' and 'i' from address 6
+time 0 s: sillysort: run: Got 'i' and '.' from address 7
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'i' and '.' from address 8
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'i' and '.' from address 9
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'i' and 'l' from address 10
+time 0 s: sillysort: run: Got 'l' and 'l' from address 11
+time 0 s: sillysort: run: Got 'l' and 'm' from address 12
+time 0 s: sillysort: run: Got 'm' and 'm' from address 13
+time 0 s: sillysort: run: Got 'm' and 'n' from address 14
+time 0 s: sillysort: run: Got 'n' and 'o' from address 15
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: "  Aa ee...illmmnopstx"
+time 0 s: sillysort: run: Got ' ' and ' ' from address 0
+time 0 s: sillysort: run: Got ' ' and 'A' from address 1
+time 0 s: sillysort: run: Got 'A' and 'a' from address 2
+time 0 s: sillysort: run: Got 'a' and ' ' from address 3
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'a' and 'e' from address 4
+time 0 s: sillysort: run: Got 'e' and 'e' from address 5
+time 0 s: sillysort: run: Got 'e' and '.' from address 6
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'e' and '.' from address 7
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'e' and '.' from address 8
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'e' and 'i' from address 9
+time 0 s: sillysort: run: Got 'i' and 'l' from address 10
+time 0 s: sillysort: run: Got 'l' and 'l' from address 11
+time 0 s: sillysort: run: Got 'l' and 'm' from address 12
+time 0 s: sillysort: run: Got 'm' and 'm' from address 13
+time 0 s: sillysort: run: Got 'm' and 'n' from address 14
+time 0 s: sillysort: run: Got 'n' and 'o' from address 15
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: "  A ae...eillmmnopstx"
+time 0 s: sillysort: run: Got ' ' and ' ' from address 0
+time 0 s: sillysort: run: Got ' ' and 'A' from address 1
+time 0 s: sillysort: run: Got 'A' and ' ' from address 2
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'A' and 'a' from address 3
+time 0 s: sillysort: run: Got 'a' and 'e' from address 4
+time 0 s: sillysort: run: Got 'e' and '.' from address 5
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'e' and '.' from address 6
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'e' and '.' from address 7
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'e' and 'e' from address 8
+time 0 s: sillysort: run: Got 'e' and 'i' from address 9
+time 0 s: sillysort: run: Got 'i' and 'l' from address 10
+time 0 s: sillysort: run: Got 'l' and 'l' from address 11
+time 0 s: sillysort: run: Got 'l' and 'm' from address 12
+time 0 s: sillysort: run: Got 'm' and 'm' from address 13
+time 0 s: sillysort: run: Got 'm' and 'n' from address 14
+time 0 s: sillysort: run: Got 'n' and 'o' from address 15
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: "   Aa...eeillmmnopstx"
+time 0 s: sillysort: run: Got ' ' and ' ' from address 0
+time 0 s: sillysort: run: Got ' ' and ' ' from address 1
+time 0 s: sillysort: run: Got ' ' and 'A' from address 2
+time 0 s: sillysort: run: Got 'A' and 'a' from address 3
+time 0 s: sillysort: run: Got 'a' and '.' from address 4
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'a' and '.' from address 5
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'a' and '.' from address 6
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'a' and 'e' from address 7
+time 0 s: sillysort: run: Got 'e' and 'e' from address 8
+time 0 s: sillysort: run: Got 'e' and 'i' from address 9
+time 0 s: sillysort: run: Got 'i' and 'l' from address 10
+time 0 s: sillysort: run: Got 'l' and 'l' from address 11
+time 0 s: sillysort: run: Got 'l' and 'm' from address 12
+time 0 s: sillysort: run: Got 'm' and 'm' from address 13
+time 0 s: sillysort: run: Got 'm' and 'n' from address 14
+time 0 s: sillysort: run: Got 'n' and 'o' from address 15
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: "   A...aeeillmmnopstx"
+time 0 s: sillysort: run: Got ' ' and ' ' from address 0
+time 0 s: sillysort: run: Got ' ' and ' ' from address 1
+time 0 s: sillysort: run: Got ' ' and 'A' from address 2
+time 0 s: sillysort: run: Got 'A' and '.' from address 3
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'A' and '.' from address 4
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'A' and '.' from address 5
+time 0 s: sillysort: run: Swapping Characters 
+time 0 s: sillysort: run: Got 'A' and 'a' from address 6
+time 0 s: sillysort: run: Got 'a' and 'e' from address 7
+time 0 s: sillysort: run: Got 'e' and 'e' from address 8
+time 0 s: sillysort: run: Got 'e' and 'i' from address 9
+time 0 s: sillysort: run: Got 'i' and 'l' from address 10
+time 0 s: sillysort: run: Got 'l' and 'l' from address 11
+time 0 s: sillysort: run: Got 'l' and 'm' from address 12
+time 0 s: sillysort: run: Got 'm' and 'm' from address 13
+time 0 s: sillysort: run: Got 'm' and 'n' from address 14
+time 0 s: sillysort: run: Got 'n' and 'o' from address 15
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: "   ...Aaeeillmmnopstx"
+time 0 s: sillysort: run: Got ' ' and ' ' from address 0
+time 0 s: sillysort: run: Got ' ' and ' ' from address 1
+time 0 s: sillysort: run: Got ' ' and '.' from address 2
+time 0 s: sillysort: run: Got '.' and '.' from address 3
+time 0 s: sillysort: run: Got '.' and '.' from address 4
+time 0 s: sillysort: run: Got '.' and 'A' from address 5
+time 0 s: sillysort: run: Got 'A' and 'a' from address 6
+time 0 s: sillysort: run: Got 'a' and 'e' from address 7
+time 0 s: sillysort: run: Got 'e' and 'e' from address 8
+time 0 s: sillysort: run: Got 'e' and 'i' from address 9
+time 0 s: sillysort: run: Got 'i' and 'l' from address 10
+time 0 s: sillysort: run: Got 'l' and 'l' from address 11
+time 0 s: sillysort: run: Got 'l' and 'm' from address 12
+time 0 s: sillysort: run: Got 'm' and 'm' from address 13
+time 0 s: sillysort: run: Got 'm' and 'n' from address 14
+time 0 s: sillysort: run: Got 'n' and 'o' from address 15
+time 0 s: sillysort: run: Got 'o' and 'p' from address 16
+time 0 s: sillysort: run: Got 'p' and 's' from address 17
+time 0 s: sillysort: run: Got 's' and 't' from address 18
+time 0 s: sillysort: run: Got 't' and 'x' from address 19
+time 0 s: sillysort: run: After another pass memory contains:: "   ...Aaeeillmmnopstx"
