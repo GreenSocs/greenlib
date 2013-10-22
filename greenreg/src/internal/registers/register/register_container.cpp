@@ -158,19 +158,23 @@ register_container_addressing_mode_e register_container::get_addressing_mode()
 
 int register_container::get_next_register_index()
 {
-	if( m_addressing_mode == INDEXED_ADDRESS)
-	{
-		if( (m_next_register_index + 1) < m_register_input_store.size())	
-		{
-			m_next_register_index++;
-			return( m_next_register_index);
-		} else {
-			std::stringstream ss;
-			ss << "Attempting to add more registers than allocated in indexing mode to container: " << basename() << "\n";
-			GR_ERROR( ss.str().c_str());
-		}
-	}
-	return( -1);
+  if (m_addressing_mode == INDEXED_ADDRESS)
+  {
+    if (((m_next_register_index + 1) >= 0) &&
+  (((unsigned int)(m_next_register_index + 1)) < m_register_input_store.size()))	
+    {
+      m_next_register_index++;
+      return m_next_register_index;
+    }
+    else
+    {
+      std::stringstream ss;
+      ss << "Attempting to add more registers than allocated in indexing mode to container: "
+      << basename() << "\n";
+      GR_ERROR( ss.str().c_str());
+    }
+  }
+  return -1;
 }
 
 } // end namespace gs:reg
