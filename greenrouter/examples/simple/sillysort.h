@@ -27,15 +27,17 @@
 #include <boost/config.hpp> // needed for SystemC 2.1
 #include <systemc>
 
-# include "gsgpsocket/transport/GSGPMasterBlockingSocket.h"
+#include "gsgpsocket/transport/GSGPMasterBlockingSocket.h"
   using namespace gs;
   using namespace gs::gp;
 
 #include <time.h>
-
 #include <iomanip>
-# define SHOW_SC_TIME(msg) std::cout << "time " << std::setw(3) << sc_core::sc_simulation_time() << ": " \
-                                       << std::setw(6) << name() << ": " << msg << std::endl
+
+#define SHOW_SC_TIME(msg) std::cout << "time " << std::setw(3)                 \
+<< sc_core::sc_time_stamp() << ": " << std::setw(6) << name() << ": " << msg   \
+<< std::endl
+
 class sillysort
 : public sc_core::sc_module, 
   public payload_event_queue_output_if<master_atom>
