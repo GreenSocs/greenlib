@@ -49,30 +49,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 namespace gs {
 namespace reg {
 
-primary_register_data::primary_register_data( sc_core::sc_module_name _name,
-	I_register & _register, register_container & _register_container,
-  uint_gr_t _offset, uint_gr_t _data, uint_gr_t _write_mask, uint_gr_t _lock_mask)
-: I_register_data( _register, _write_mask, _lock_mask)
-,sc_core::sc_module( _name)
-,m_data( _register_container.m_register_input_store, 
-		_register_container.get_addressing_mode() == ALIGNED_ADDRESS ? _offset : _offset * 4, 
-		_register.get_width() / 8)
+primary_register_data::primary_register_data(sc_core::sc_module_name _name,
+  I_register & _register,register_container & _register_container,
+  uint_gr_t _offset, uint_gr_t _data, uint_gr_t _write_mask,
+  uint_gr_t _lock_mask):
+I_register_data( _register, _write_mask, _lock_mask),
+sc_core::sc_module( _name),
+m_data(_register_container.m_register_input_store, 
+       _register_container.get_addressing_mode() == ALIGNED_ADDRESS
+       ? _offset : _offset * 4, 
+       _register.get_width() / 8)
 {
-
-	int reg;
-	//unsigned int offset; // warning: unused variable
-	//unsigned int size; // warning: unused variable
-
-	if( _register_container.get_addressing_mode() == INDEXED_ADDRESS)
-	{
-		reg = _register_container.get_next_register_index();
-	}
-
-//	std::stringstream ss;
-//	ss << std::hex << "reg: " << reg << " offset: " << offset << " size: " << size << "\n";
-//	std::cout << ss.str();
-
-	m_data = _data;
+  if( _register_container.get_addressing_mode() == INDEXED_ADDRESS)
+  {
+    _register_container.get_next_register_index();
+  }
+  m_data = _data;
 }
 
 primary_register_data::~primary_register_data()
