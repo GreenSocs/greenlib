@@ -1,0 +1,4 @@
+bar enabled
+This Extension is not supported by this target_signal_socket. Returning 0.
+last value of foo signal 0
+last value of bar signal 15
