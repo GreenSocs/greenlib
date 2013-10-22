@@ -1,0 +1,12 @@
+transport call received from socket0
+bar enabled
+10 ns : last value of bar signal 15
+10 ns : last value of foo signal 0
+10 ns : last value of baa signal 0
+ACK
+transport call received from socket0
+foo enabled
+20 ns : last value of bar signal 15
+20 ns : last value of foo signal 4
+20 ns : last value of baa signal 0
+REQ

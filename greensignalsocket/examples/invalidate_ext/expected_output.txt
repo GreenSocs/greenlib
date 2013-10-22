@@ -1,0 +1,14 @@
+PICS_TXD0 enabled
+last value of PICS_TXD0 signal 11
+PICS_TXD0 enabled
+last value of PICS_TXD0 signal 22
+PIC_TIMER4 enabled
+last value of PIC_TIMER4 signal 33
+PICS_TXD0 enabled
+last value of PICS_TXD0 signal 44
+PIC_TIMER4 enabled
+last value of PIC_TIMER4 signal 55
+PIC_IIC enabled
+last value of PIC_IIC signal 66
+PICS_TXD0 enabled
+last value of PICS_TXD0 signal 77
