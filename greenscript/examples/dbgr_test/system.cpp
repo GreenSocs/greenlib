@@ -33,7 +33,7 @@
 // ENDLICENSETEXT
 
 #include <systemc>
-#include <greenscript.h>
+#include <greenscript/greenscript.h>
 #include <iostream>
 
 
