@@ -95,7 +95,7 @@ void sillysort::run()
 {
   unsigned char ch1, ch2;
   int j;
-  unsigned int str_len = strlen((char *)mem);
+  int str_len = strlen((char *)mem);
 
   for (j =0 ; j < str_len; j++ )
   {
@@ -121,7 +121,7 @@ void sillysort::run()
       }
       
       swaps=0;
-      for (unsigned int i=0; i<str_len-1; i++) 
+      for (int i = 0; i < (str_len - 1); i++) 
       {
          // get the data to our local cache, then run
          transactionHandle t1 = init_port.create_transaction();
