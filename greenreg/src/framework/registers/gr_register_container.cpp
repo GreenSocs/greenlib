@@ -89,21 +89,15 @@ void gr_register_container::create_register( std::string _name, std::string _des
 		GR_FATAL( ss.str().c_str());
 	}
 
-	I_register * reg;
-
 	if( (_type & SINGLE_IO) > 0)
 	{
-		reg = new gr_register_sharedio(
-			*this, _name, _description,
-			_offset, _data, _input_mask,
-			_type, _width, _lock_mask);
+    new gr_register_sharedio(*this, _name, _description, _offset, _data,
+                             _input_mask, _type, _width, _lock_mask);
 	}
 	else if( (_type & SPLIT_IO) > 0)
 	{
-		reg = new gr_register_splitio(
-			*this, _name, _description,
-			_offset, _data, _input_mask,
-			_type, _width, _lock_mask);
+    new gr_register_splitio(*this, _name, _description, _offset, _data,
+                            _input_mask, _type, _width, _lock_mask);
 	}
 	else {
 	  std::stringstream ss;

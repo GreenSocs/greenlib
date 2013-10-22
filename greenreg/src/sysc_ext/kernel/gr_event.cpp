@@ -71,8 +71,8 @@ void gr_event::add_payload_callback( gs::reg_utils::callback_base & _callback) {
 gr_event::gr_event()
   : m_timed(GR_DEFAULT_EVENT_BEHAVIOR) // Change in gr_settings.h, If you change this default manually, also change the default m_events_enabled in I_event_switch.h which mus be consistent!!
   , m_callback_registered( false)
-  , m_delayer(NULL)
   , m_delayed(false)
+  , m_delayer(NULL)
 {
 }
 
@@ -110,7 +110,6 @@ void gr_event::notify_as_callback(transaction_type* const &_transaction)
 {
   transaction_type* tr = _transaction;
   
-  sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
 	callback_storage_type::iterator sit;
 	for( sit = m_callbacks.begin(); sit!= m_callbacks.end(); sit++)
 	{
