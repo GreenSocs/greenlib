@@ -36,10 +36,11 @@ using namespace gs::gp;
 
 #include <iomanip>
 
-//#define SHOW_SC_TIME(module,msg) cout << "time " << std::setw(3) << sc_simulation_time() << ": " << std::setw(6) << #module << ": " << msg << endl
+/*#define SHOW_SC_TIME(module, msg) cout << "time " << std::setw(3) \
+<< sc_time_stamp() << ": " << std::setw(6) << #module << ": " << msg << endl */
 
 #ifndef SHOW_SC_TIME
-# define SHOW_SC_TIME(msg)  // nothing
+#define SHOW_SC_TIME(msg)  // nothing
 #endif
 
 #define CYCLES(x) 3*x, sc_core::SC_NS
