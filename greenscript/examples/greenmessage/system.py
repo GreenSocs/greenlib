@@ -32,7 +32,7 @@
 # 
 # ENDLICENSETEXT
 
-import gs
+import gs_sa as gs
 
 from sender import sender
 from receiver import receiver

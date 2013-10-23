@@ -32,8 +32,7 @@
 #
 # ENDLICENSETEXT
 
-import gs
-
+import gs_sa as gs
 
 class sender:
 
