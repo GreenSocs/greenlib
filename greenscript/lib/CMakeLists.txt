@@ -36,4 +36,5 @@ TARGET_LINK_LIBRARIES(_gsp_sc_sa.so ${SystemC_LIBRARIES}
                                     ${LUA_LIBRARIES})
 
 install(TARGETS _gsp_sc DESTINATION lib)
+install(TARGETS _gsp_sc_sa DESTINATION lib)
 install(TARGETS greenscript DESTINATION lib)
