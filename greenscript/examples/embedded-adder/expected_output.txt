@@ -1,0 +1,34 @@
+g1: gen 20
+g2: gen 100
+disp: time 0 s val is 0
+g1: gen 21
+g2: gen 101
+disp: time 0 s val is 120
+disp: time 0 s val is 122
+g1: gen 22
+g2: gen 102
+disp: time 10 ns val is 124
+g1: gen 23
+g2: gen 103
+disp: time 20 ns val is 126
+g1: gen 24
+g2: gen 104
+disp: time 30 ns val is 128
+g1: gen 25
+g2: gen 105
+disp: time 40 ns val is 130
+g1: gen 26
+g2: gen 106
+disp: time 50 ns val is 132
+g1: gen 27
+g2: gen 107
+disp: time 60 ns val is 134
+g1: gen 28
+g2: gen 108
+disp: time 70 ns val is 136
+g1: gen 29
+g2: gen 109
+disp: time 80 ns val is 138
+g1: gen 30
+g2: gen 110
+disp: time 90 ns val is 140
