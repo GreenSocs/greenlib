@@ -37,7 +37,7 @@
 
 #include <systemc>
 
-#include <greencontrol/gcnf/apis/gs_param/gs_param.h>
+#include <greencontrol/config.h>
 
 
 SC_MODULE(gen)
