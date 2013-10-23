@@ -1,0 +1,99 @@
+cosntructing deriv
+
+deriv calling load
+
+SUB h = 30
+SUB m = hello again
+SUB False
+constructing hier
+
+ADD h = 10
+ADD m = <uninitialised param called message>
+ADD False
+from RUN for deriv 30
+from RUN for hier 10
+['.', '.', '/home/konradf/Documents/greensocs/greenlib/greenscript/lib', '/home/konradf/Documents/greensocs/greenlib/greenscript', '/usr/lib/python27.zip', '/usr/lib/python2.7', '/usr/lib/python2.7/plat-linux2', '/usr/lib/python2.7/lib-tk', '/usr/lib/python2.7/lib-old', '/usr/lib/python2.7/lib-dynload', '/usr/lib/python2.7/site-packages', '/usr/lib/python2.7/site-packages/PIL', '/usr/lib/python2.7/site-packages/gst-0.10', '/usr/lib/python2.7/site-packages/gtk-2.0', '/usr/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg-info']
+['/tmp/py', '.', '.', '/home/konradf/Documents/greensocs/greenlib/greenscript/lib', '/home/konradf/Documents/greensocs/greenlib/greenscript', '/usr/lib/python27.zip', '/usr/lib/python2.7', '/usr/lib/python2.7/plat-linux2', '/usr/lib/python2.7/lib-tk', '/usr/lib/python2.7/lib-old', '/usr/lib/python2.7/lib-dynload', '/usr/lib/python2.7/site-packages', '/usr/lib/python2.7/site-packages/PIL', '/usr/lib/python2.7/site-packages/gst-0.10', '/usr/lib/python2.7/site-packages/gtk-2.0', '/usr/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg-info']
+starting sim
+
+g1: gen 20
+g2: gen 100
+disp: time 0.000000 val is 0
+f
+g1: gen 21
+g2: gen 101
+diff is -80 200
+-> 30 hello again
+adder out 0 100
+disp: time 0.000000 val is 120
+-> 10 hello
+--> ho hum
+g1: gen 22
+g2: gen 102
+adder out 120 100
+disp: time 10.000000 val is 124
+f
+-> 10 hello
+--> ho hum
+g1: gen 23
+g2: gen 103
+adder out 124 100
+disp: time 20.000000 val is 126
+-> 10 hello
+--> ho hum
+f
+--> 12
+g1: gen 24
+g2: gen 104
+adder out 126 100
+diff is -80 200
+-> 30 hello again
+disp: time 30.000000 val is 128
+-> 10 hello
+--> ho hum
+g1: gen 25
+g2: gen 105
+adder out 128 100
+disp: time 40.000000 val is 130
+f
+-> 10 hello
+--> ho hum
+g1: gen 26
+g2: gen 106
+adder out 130 100
+disp: time 50.000000 val is 132
+-> 10 hello
+--> ho hum
+f
+--> 12
+g1: gen 27
+g2: gen 107
+adder out 132 100
+diff is -80 200
+-> 30 hello again
+disp: time 60.000000 val is 134
+-> 10 hello
+--> ho hum
+g1: gen 28
+g2: gen 108
+adder out 134 100
+disp: time 70.000000 val is 136
+f
+-> 10 hello
+--> ho hum
+g1: gen 29
+g2: gen 109
+adder out 136 100
+disp: time 80.000000 val is 138
+-> 10 hello
+--> ho hum
+f
+--> 12
+g1: gen 30
+g2: gen 110
+adder out 138 100
+diff is -80 200
+-> 30 hello again
+disp: time 90.000000 val is 140
+done sim
+
