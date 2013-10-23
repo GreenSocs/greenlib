@@ -1,0 +1,13 @@
+sender : sending a message to receiver: start
+sender : waiting for reply
+receiver : waiting for messages
+receiver : the sender was sender
+receiver : received a configset. Key-values pairs:
+receiver :      CPU =
+receiver :          0 = adder
+receiver :          1 = multiplexor
+receiver :      cache =
+receiver :          size = 10
+receiver : testing if cache.size parameter exists: cache.size =  10
+receiver : replying
+sender : read reply. Field `foo' is 123.456

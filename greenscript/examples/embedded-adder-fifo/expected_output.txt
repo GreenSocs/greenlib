@@ -1,0 +1,46 @@
+g1: gen 20
+g2: gen 100
+adder: waiting for more numbers at input fifos (in1 has 0 ; in2 has 0 )
+g1: gen 21
+g2: gen 101
+adder: waiting for more numbers at input fifos (in1 has 1 ; in2 has 1 )
+adder: waiting for more numbers at input fifos (in1 has 2 ; in2 has 2 )
+g1: gen 22
+g2: gen 102
+adder: writing the 3 last results to output fifo
+adder: waiting for more numbers at input fifos (in1 has 0 ; in2 has 0 )
+disp: time 10 ns val is 120
+disp: time 10 ns val is 122
+disp: time 10 ns val is 124
+g1: gen 23
+g2: gen 103
+adder: waiting for more numbers at input fifos (in1 has 1 ; in2 has 1 )
+g1: gen 24
+g2: gen 104
+adder: waiting for more numbers at input fifos (in1 has 2 ; in2 has 2 )
+g1: gen 25
+g2: gen 105
+adder: writing the 3 last results to output fifo
+adder: waiting for more numbers at input fifos (in1 has 0 ; in2 has 0 )
+disp: time 40 ns val is 126
+disp: time 40 ns val is 128
+disp: time 40 ns val is 130
+g1: gen 26
+g2: gen 106
+adder: waiting for more numbers at input fifos (in1 has 1 ; in2 has 1 )
+g1: gen 27
+g2: gen 107
+adder: waiting for more numbers at input fifos (in1 has 2 ; in2 has 2 )
+g1: gen 28
+g2: gen 108
+adder: writing the 3 last results to output fifo
+adder: waiting for more numbers at input fifos (in1 has 0 ; in2 has 0 )
+disp: time 70 ns val is 132
+disp: time 70 ns val is 134
+disp: time 70 ns val is 136
+g1: gen 29
+g2: gen 109
+adder: waiting for more numbers at input fifos (in1 has 1 ; in2 has 1 )
+g1: gen 30
+g2: gen 110
+adder: waiting for more numbers at input fifos (in1 has 2 ; in2 has 2 )
