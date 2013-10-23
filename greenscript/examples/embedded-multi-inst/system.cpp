@@ -46,7 +46,7 @@ using namespace sc_core;
 #include <greencontrol/core/gc_core.h>    // Core
 
 // GreenConfig
-#include <greencontrol/gcnf/plugin/configplugin.h> // ConfigPlugin
+#include <greencontrol/config.h> // ConfigPlugin
 #include <greencontrol/gcnf/plugin/configdatabase.h> // ConfigDatabase to be bound to port of ConfigPlugin
 #include <greencontrol/gcnf/apis/luaFileApi/luafile_tool.h> // API Tool to read lua configuration file(s)
 
