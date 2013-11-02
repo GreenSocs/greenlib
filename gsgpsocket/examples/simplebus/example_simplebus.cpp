@@ -33,18 +33,12 @@
 
 #include <systemc>
 
-#include "gsgpsocket/examples/simple/sillysort.h"
-#include "gsgpsocket/examples/simple/simplememory.h"
+#include "simple/sillysort.h"
+#include "simple/simplememory.h"
                                         
-//#include "gsgpsocket/transport/genericRouter.h"
-//#include "gsgpsocket/protocol/SimpleBus/simpleBusProtocol.h"
-//#include "gsgpsocket/scheduler/fixedPriorityScheduler.h"
-//#include "gsgpsocket/scheduler/dynamicPriorityScheduler.h"
-               
 #include "greenrouter/genericRouter.h"
 #include "greenrouter/protocol/SimpleBus/simpleBusProtocol.h"
 #include "greenrouter/scheduler/fixedPriorityScheduler.h"
-#include "greenrouter/scheduler/dynamicPriorityScheduler.h"
 
 ////////////////////////////////////////
 // main
