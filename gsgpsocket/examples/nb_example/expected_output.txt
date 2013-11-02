@@ -329,5 +329,3 @@
 @1395 ns /68 (Slave1): master sent ResponseAccepted.
 
 Simulation stopped
-
-The Debugger has exited with status 0.
