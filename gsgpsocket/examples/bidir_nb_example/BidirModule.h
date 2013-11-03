@@ -57,7 +57,7 @@ using namespace gs::gp;
 
 
 #include <iomanip>
-#include "gsgpsocket/examples/nb_example/gs_dump.h"  // needed for GS_DUMP macro if not USE_GPSOCKET
+#include "nb_example/gs_dump.h"  // needed for GS_DUMP macro if not USE_GPSOCKET
 
 
 class BidirModule 

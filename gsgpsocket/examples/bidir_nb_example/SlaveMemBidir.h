@@ -41,7 +41,7 @@ using namespace gs;
 using namespace gs::gp;
 
 #include <iomanip>
-#include "gsgpsocket/examples/nb_example/gs_dump.h"  // needed for GS_DUMP macro if not USE_GPSOCKET
+#include "nb_example/gs_dump.h"  // needed for GS_DUMP macro if not USE_GPSOCKET
 
 #define DELAY(x) 10*x, sc_core::SC_NS
 
