@@ -163,7 +163,6 @@
 @994 ns /28 (Slave): non-blocking notify ResponseError, TLM_WRITE_COMMAND
 
 Warning: Slave: error: phase ResponseError
-In file: TestSlave.h:313
 In process: Slave.fec_0 @ 994 ns
 
 ------ WRITE #3 ----------------------------------------------------
@@ -186,7 +185,6 @@ In process: Slave.fec_0 @ 994 ns
 @1104 ns /32 (Master): got RequestError TLM_WRITE_COMMAND out of local peq
 
 Warning: Master: Oh no, request error.
-In file: TestMaster.h:261
 In process: Master.main_action @ 1104 ns
 
 ------ WRITE #4 ----------------------------------------------------
@@ -255,7 +253,6 @@ In process: Master.main_action @ 1104 ns
 @1651 ns /45 (Master): got DataError TLM_WRITE_COMMAND out of local peq
 
 Warning: Master: Oh no, data error.
-In file: TestMaster.h:293
 In process: Master.main_action @ 1651 ns
 
 ----------------------------------------------------------
@@ -366,7 +363,6 @@ In process: Master.main_action @ 1651 ns
 @1931 ns /65 (Slave): non-blocking notify ResponseError, TLM_READ_COMMAND
 
 Warning: Slave: error: phase ResponseError
-In file: TestSlave.h:313
 In process: Slave.fec_0 @ 1931 ns
 
 ------  READ #3 ----------------------------------------------------
@@ -388,7 +384,6 @@ In process: Slave.fec_0 @ 1931 ns
 @2041 ns /69 (Master): got RequestError TLM_READ_COMMAND out of local peq
 
 Warning: Master: Oh no, request error.
-In file: TestMaster.h:360
 In process: Master.main_action @ 2041 ns
 
 ------  READ #4 ----------------------------------------------------
@@ -410,7 +405,6 @@ In process: Master.main_action @ 2041 ns
 @2151 ns /73 (Master): got RequestError TLM_READ_COMMAND out of local peq
 
 Warning: Master: Oh no, request error.
-In file: TestMaster.h:360
 In process: Master.main_action @ 2151 ns
 
 ----------------------------------------------------------
