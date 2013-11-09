@@ -269,6 +269,9 @@ install(DIRECTORY greenscript/docs/
 include_directories(${GreenSocs_INCLUDE_DIRS})
 link_directories(${GreenSocs_LIB_DIRS})
 
+# Gsgpocket include directory (for example)
+include_directories(".")
+
 # CXX flags for example or library compilation.
 set(CMAKE_CXX_FLAGS "-g -Wall -DSC_INCLUDE_DYNAMIC_PROCESSES -D_REENTRANT")
 
