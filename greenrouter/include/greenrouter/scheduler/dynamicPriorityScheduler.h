@@ -93,7 +93,6 @@ public:
   dynamicPriorityScheduler_b(sc_core::sc_module_name name_, const sc_core::sc_time &t)
     : sc_core::sc_module(name_),
       protocol_scheduler_target("protocol_scheduler_target"),
-      gs::socket::extension_support_base<TRAITS>(),
       m_isPendingWasCalled(false), 
       m_clkPeriod(t)
   {    
@@ -104,7 +103,6 @@ public:
   dynamicPriorityScheduler_b(sc_core::sc_module_name name_, double time, sc_core::sc_time_unit base) 
     : sc_core::sc_module(name_),
       protocol_scheduler_target("protocol_scheduler_target"),
-      gs::socket::extension_support_base<TRAITS>(),
       m_isPendingWasCalled(false),
       m_clkPeriod(time,base)  	
   {
