@@ -43,7 +43,7 @@
 
 #include <iomanip>
 #ifndef SPEEDTEST
-# define SHOW_SC_TIME(msg) std::cout << "time " << std::setw(3) << sc_core::sc_simulation_time() << ": " \
+# define SHOW_SC_TIME(msg) std::cout << "time " << std::setw(3) << sc_core::sc_time_stamp() << ": " \
                                        << std::setw(6) << name() << ": " << msg << std::endl
 #else
 # define SHOW_SC_TIME(msg)  // nothing
