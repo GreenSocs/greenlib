@@ -53,10 +53,10 @@
 int sc_main(int, char**)
 {
   /// GreenControl Core instance
-  gs::ctr::GC_Core       core("ControlCore");
+  gs::ctr::GC_Core       core();
   // GreenConfig Plugin
   gs::cnf::ConfigDatabase cnfdatabase("ConfigDatabase");
-  gs::cnf::ConfigPlugin configPlugin("ConfigPlugin", &cnfdatabase);
+  gs::cnf::ConfigPlugin configPlugin(&cnfdatabase);
 	
   sillysort m1("MasterMark",0x4010, "Call me or I will call you");
   sillysort m2("MasterWolle",0x00ff, "I want a faster bus");
