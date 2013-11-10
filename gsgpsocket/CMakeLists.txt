@@ -8,4 +8,6 @@ add_subdirectory(examples/nb_example/)
 add_subdirectory(examples/simple/)
 add_subdirectory(examples/simplebus/)
 add_subdirectory(examples/test_devices/)
-
+if (${SystemC_VERSION} LESS "2.3.0")
+ add_subdirectory(examples/osci_slave_gp_master_example/)
+endif()
