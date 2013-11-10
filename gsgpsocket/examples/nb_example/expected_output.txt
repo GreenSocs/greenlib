@@ -1,9 +1,3 @@
-
-[Session started at 2008-11-14 08:40:26 +0100.]
-
-             SystemC 2.2.0 --- Jul  9 2007 11:52:11
-        Copyright (c) 1996-2006 by all Contributors
-                    ALL RIGHTS RESERVED
 @0 s /0 (Slave1): memory size: 262144
 @0 s /0 (Slave1.GSGPSlaveSocket): manual configuration
 @0 s /0 (M1.GSGPMasterSocket): manual configuration
@@ -335,5 +329,3 @@
 @1395 ns /68 (Slave1): master sent ResponseAccepted.
 
 Simulation stopped
-
-The Debugger has exited with status 0.
