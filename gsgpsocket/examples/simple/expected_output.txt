@@ -1,319 +1,299 @@
-TODO: Check if ResponseAccepted change is relevant
-[Session started at 2008-11-14 09:12:30 +0100.]
-
-             SystemC 2.2.0 --- Jul  9 2007 11:52:11
-        Copyright (c) 1996-2006 by all Contributors
-                    ALL RIGHTS RESERVED
-
-Info: (I804) /IEEE_Std_1666/deprecated: sc_start(double) deprecated, use sc_start(sc_time) or sc_start()
-
-Info: (I804) /IEEE_Std_1666/deprecated: sc_simulation_time() is deprecated use sc_time_stamp()
-time   0: sillysort: run: start writing "As molt..." to slave
-time   0: simplememory: handle cmd 0x1
-time   0: sillysort: run: finished writing to slave
-time   0: sillysort: run: PV read from slave
-time   0: simplememory: handle cmd 0x2
-time   0: sillysort: run: PV got "As molt..." from slave
-time   0: sillysort: run: start writing "A smolt..." (bytes 1 to 2) to slave
-time   0: simplememory: PVT : RequestValid 
-time   0: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time   0: simplememory: handle cmd 0x1
-time  60: sillysort: run: Slave Accepted Request, sending data.
-time  60: simplememory: PVT : DataValid 
+time 0 s: sillysort: run: start writing "As molt..." to slave
+time 0 s: simplememory: handle cmd 0x1
+time 0 s: sillysort: run: finished writing to slave
+time 0 s: sillysort: run: PV read from slave
+time 0 s: simplememory: handle cmd 0x2
+time 0 s: sillysort: run: PV got "As molt..." from slave
+time 0 s: sillysort: run: start writing "A smolt..." (bytes 1 to 2) to slave
+time 0 s: simplememory: PVT : RequestValid 
+time 0 s: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 0 s: simplememory: handle cmd 0x1
+time 60 ns: sillysort: run: Slave Accepted Request, sending data.
+time 60 ns: simplememory: PVT : DataValid 
 DataValid got  s for address 0x1
-time  60: simplememory: PVT : Response send
-time  60: simplememory: handle cmd 0x1
-time 120: sillysort: run2: (burst done) got data "A smolt..." from slave.
-time 120: sillysort: run: start writing "A msolt..." (bytes 2 to 3) to slave
-time 120: simplememory: PVT : ResponseAccepted 0x1
-time 120: simplememory: PVT : RequestValid 
-time 120: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 120: simplememory: handle cmd 0x1
-time 180: sillysort: run: Slave Accepted Request, sending data.
-time 180: simplememory: PVT : DataValid 
+time 60 ns: simplememory: PVT : Response send
+time 60 ns: simplememory: handle cmd 0x1
+time 120 ns: sillysort: run2: (burst done) got data "A smolt..." from slave.
+time 120 ns: sillysort: run: start writing "A msolt..." (bytes 2 to 3) to slave
+time 120 ns: simplememory: PVT : ResponseAccepted 0x1
+time 120 ns: simplememory: PVT : RequestValid 
+time 120 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 120 ns: simplememory: handle cmd 0x1
+time 180 ns: sillysort: run: Slave Accepted Request, sending data.
+time 180 ns: simplememory: PVT : DataValid 
 DataValid got ms for address 0x2
-time 180: simplememory: PVT : Response send
-time 180: simplememory: handle cmd 0x1
-time 240: sillysort: run2: (burst done) got data "A msolt..." from slave.
-time 240: sillysort: run: start writing "A moslt..." (bytes 3 to 4) to slave
-time 240: simplememory: PVT : ResponseAccepted 0x1
-time 240: simplememory: PVT : RequestValid 
-time 240: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 240: simplememory: handle cmd 0x1
-time 300: sillysort: run: Slave Accepted Request, sending data.
-time 300: simplememory: PVT : DataValid 
+time 180 ns: simplememory: PVT : Response send
+time 180 ns: simplememory: handle cmd 0x1
+time 240 ns: sillysort: run2: (burst done) got data "A msolt..." from slave.
+time 240 ns: sillysort: run: start writing "A moslt..." (bytes 3 to 4) to slave
+time 240 ns: simplememory: PVT : ResponseAccepted 0x1
+time 240 ns: simplememory: PVT : RequestValid 
+time 240 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 240 ns: simplememory: handle cmd 0x1
+time 300 ns: sillysort: run: Slave Accepted Request, sending data.
+time 300 ns: simplememory: PVT : DataValid 
 DataValid got os for address 0x3
-time 300: simplememory: PVT : Response send
-time 300: simplememory: handle cmd 0x1
-time 360: sillysort: run2: (burst done) got data "A moslt..." from slave.
-time 360: sillysort: run: start writing "A molst..." (bytes 4 to 5) to slave
-time 360: simplememory: PVT : ResponseAccepted 0x1
-time 360: simplememory: PVT : RequestValid 
-time 360: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 360: simplememory: handle cmd 0x1
-time 420: sillysort: run: Slave Accepted Request, sending data.
-time 420: simplememory: PVT : DataValid 
+time 300 ns: simplememory: PVT : Response send
+time 300 ns: simplememory: handle cmd 0x1
+time 360 ns: sillysort: run2: (burst done) got data "A moslt..." from slave.
+time 360 ns: sillysort: run: start writing "A molst..." (bytes 4 to 5) to slave
+time 360 ns: simplememory: PVT : ResponseAccepted 0x1
+time 360 ns: simplememory: PVT : RequestValid 
+time 360 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 360 ns: simplememory: handle cmd 0x1
+time 420 ns: sillysort: run: Slave Accepted Request, sending data.
+time 420 ns: simplememory: PVT : DataValid 
 DataValid got ls for address 0x4
-time 420: simplememory: PVT : Response send
-time 420: simplememory: handle cmd 0x1
-time 480: sillysort: run2: (burst done) got data "A molst..." from slave.
-time 480: sillysort: run: start writing "A mols.t.." (bytes 6 to 7) to slave
-time 480: simplememory: PVT : ResponseAccepted 0x1
-time 480: simplememory: PVT : RequestValid 
-time 480: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 480: simplememory: handle cmd 0x1
-time 540: sillysort: run: Slave Accepted Request, sending data.
-time 540: simplememory: PVT : DataValid 
+time 420 ns: simplememory: PVT : Response send
+time 420 ns: simplememory: handle cmd 0x1
+time 480 ns: sillysort: run2: (burst done) got data "A molst..." from slave.
+time 480 ns: sillysort: run: start writing "A mols.t.." (bytes 6 to 7) to slave
+time 480 ns: simplememory: PVT : ResponseAccepted 0x1
+time 480 ns: simplememory: PVT : RequestValid 
+time 480 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 480 ns: simplememory: handle cmd 0x1
+time 540 ns: sillysort: run: Slave Accepted Request, sending data.
+time 540 ns: simplememory: PVT : DataValid 
 DataValid got .t for address 0x6
-time 540: simplememory: PVT : Response send
-time 540: simplememory: handle cmd 0x1
-time 600: sillysort: run2: (burst done) got data "A mols.t.." from slave.
-time 600: sillysort: run: start writing "A mols..t." (bytes 7 to 8) to slave
-time 600: simplememory: PVT : ResponseAccepted 0x1
-time 600: simplememory: PVT : RequestValid 
-time 600: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 600: simplememory: handle cmd 0x1
-time 660: sillysort: run: Slave Accepted Request, sending data.
-time 660: simplememory: PVT : DataValid 
+time 540 ns: simplememory: PVT : Response send
+time 540 ns: simplememory: handle cmd 0x1
+time 600 ns: sillysort: run2: (burst done) got data "A mols.t.." from slave.
+time 600 ns: sillysort: run: start writing "A mols..t." (bytes 7 to 8) to slave
+time 600 ns: simplememory: PVT : ResponseAccepted 0x1
+time 600 ns: simplememory: PVT : RequestValid 
+time 600 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 600 ns: simplememory: handle cmd 0x1
+time 660 ns: sillysort: run: Slave Accepted Request, sending data.
+time 660 ns: simplememory: PVT : DataValid 
 DataValid got .t for address 0x7
-time 660: simplememory: PVT : Response send
-time 660: simplememory: handle cmd 0x1
-time 720: sillysort: run2: (burst done) got data "A mols..t." from slave.
-time 720: sillysort: run: start writing "A mols...t" (bytes 8 to 9) to slave
-time 720: simplememory: PVT : ResponseAccepted 0x1
-time 720: simplememory: PVT : RequestValid 
-time 720: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 720: simplememory: handle cmd 0x1
-time 780: sillysort: run: Slave Accepted Request, sending data.
-time 780: simplememory: PVT : DataValid 
+time 660 ns: simplememory: PVT : Response send
+time 660 ns: simplememory: handle cmd 0x1
+time 720 ns: sillysort: run2: (burst done) got data "A mols..t." from slave.
+time 720 ns: sillysort: run: start writing "A mols...t" (bytes 8 to 9) to slave
+time 720 ns: simplememory: PVT : ResponseAccepted 0x1
+time 720 ns: simplememory: PVT : RequestValid 
+time 720 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 720 ns: simplememory: handle cmd 0x1
+time 780 ns: sillysort: run: Slave Accepted Request, sending data.
+time 780 ns: simplememory: PVT : DataValid 
 DataValid got .t for address 0x8
-time 780: simplememory: PVT : Response send
-time 780: simplememory: handle cmd 0x1
-time 840: sillysort: run2: (burst done) got data "A mols...t" from slave.
-time 840: sillysort: run: PV read from slave
-time 840: simplememory: handle cmd 0x2
-time 840: sillysort: run: PV got "A mols...t" from slave
-time 840: sillysort: run: start writing " Amols...t" (bytes 0 to 1) to slave
-time 840: simplememory: PVT : ResponseAccepted 0x1
-time 840: simplememory: PVT : RequestValid 
-time 840: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 840: simplememory: handle cmd 0x1
-time 900: sillysort: run: Slave Accepted Request, sending data.
-time 900: simplememory: PVT : DataValid 
+time 780 ns: simplememory: PVT : Response send
+time 780 ns: simplememory: handle cmd 0x1
+time 840 ns: sillysort: run2: (burst done) got data "A mols...t" from slave.
+time 840 ns: sillysort: run: PV read from slave
+time 840 ns: simplememory: PVT : ResponseAccepted 0x1
+time 840 ns: simplememory: handle cmd 0x2
+time 840 ns: sillysort: run: PV got "A mols...t" from slave
+time 840 ns: sillysort: run: start writing " Amols...t" (bytes 0 to 1) to slave
+time 840 ns: simplememory: PVT : RequestValid 
+time 840 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 840 ns: simplememory: handle cmd 0x1
+time 900 ns: sillysort: run: Slave Accepted Request, sending data.
+time 900 ns: simplememory: PVT : DataValid 
 DataValid got  A for address 0x0
-time 900: simplememory: PVT : Response send
-time 900: simplememory: handle cmd 0x1
-time 960: sillysort: run2: (burst done) got data " Amols...t" from slave.
-time 960: sillysort: run: start writing " Amlos...t" (bytes 3 to 4) to slave
-time 960: simplememory: PVT : ResponseAccepted 0x1
-time 960: simplememory: PVT : RequestValid 
-time 960: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 960: simplememory: handle cmd 0x1
-time 1020: sillysort: run: Slave Accepted Request, sending data.
-time 1020: simplememory: PVT : DataValid 
+time 900 ns: simplememory: PVT : Response send
+time 900 ns: simplememory: handle cmd 0x1
+time 960 ns: sillysort: run2: (burst done) got data " Amols...t" from slave.
+time 960 ns: sillysort: run: start writing " Amlos...t" (bytes 3 to 4) to slave
+time 960 ns: simplememory: PVT : ResponseAccepted 0x1
+time 960 ns: simplememory: PVT : RequestValid 
+time 960 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 960 ns: simplememory: handle cmd 0x1
+time 1020 ns: sillysort: run: Slave Accepted Request, sending data.
+time 1020 ns: simplememory: PVT : DataValid 
 DataValid got lo for address 0x3
-time 1020: simplememory: PVT : Response send
-time 1020: simplememory: handle cmd 0x1
-time 1080: sillysort: run2: (burst done) got data " Amlos...t" from slave.
-time 1080: sillysort: run: start writing " Amlo.s..t" (bytes 5 to 6) to slave
-time 1080: simplememory: PVT : ResponseAccepted 0x1
-time 1080: simplememory: PVT : RequestValid 
-time 1080: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 1080: simplememory: handle cmd 0x1
-time 1140: sillysort: run: Slave Accepted Request, sending data.
-time 1140: simplememory: PVT : DataValid 
+time 1020 ns: simplememory: PVT : Response send
+time 1020 ns: simplememory: handle cmd 0x1
+time 1080 ns: sillysort: run2: (burst done) got data " Amlos...t" from slave.
+time 1080 ns: sillysort: run: start writing " Amlo.s..t" (bytes 5 to 6) to slave
+time 1080 ns: simplememory: PVT : ResponseAccepted 0x1
+time 1080 ns: simplememory: PVT : RequestValid 
+time 1080 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 1080 ns: simplememory: handle cmd 0x1
+time 1140 ns: sillysort: run: Slave Accepted Request, sending data.
+time 1140 ns: simplememory: PVT : DataValid 
 DataValid got .s for address 0x5
-time 1140: simplememory: PVT : Response send
-time 1140: simplememory: handle cmd 0x1
-time 1200: sillysort: run2: (burst done) got data " Amlo.s..t" from slave.
-time 1200: sillysort: run: start writing " Amlo..s.t" (bytes 6 to 7) to slave
-time 1200: simplememory: PVT : ResponseAccepted 0x1
-time 1200: simplememory: PVT : RequestValid 
-time 1200: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 1200: simplememory: handle cmd 0x1
-time 1260: sillysort: run: Slave Accepted Request, sending data.
-time 1260: simplememory: PVT : DataValid 
+time 1140 ns: simplememory: PVT : Response send
+time 1140 ns: simplememory: handle cmd 0x1
+time 1200 ns: sillysort: run2: (burst done) got data " Amlo.s..t" from slave.
+time 1200 ns: sillysort: run: start writing " Amlo..s.t" (bytes 6 to 7) to slave
+time 1200 ns: simplememory: PVT : ResponseAccepted 0x1
+time 1200 ns: simplememory: PVT : RequestValid 
+time 1200 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 1200 ns: simplememory: handle cmd 0x1
+time 1260 ns: sillysort: run: Slave Accepted Request, sending data.
+time 1260 ns: simplememory: PVT : DataValid 
 DataValid got .s for address 0x6
-time 1260: simplememory: PVT : Response send
-time 1260: simplememory: handle cmd 0x1
-time 1320: sillysort: run2: (burst done) got data " Amlo..s.t" from slave.
-time 1320: sillysort: run: start writing " Amlo...st" (bytes 7 to 8) to slave
-time 1320: simplememory: PVT : ResponseAccepted 0x1
-time 1320: simplememory: PVT : RequestValid 
-time 1320: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 1320: simplememory: handle cmd 0x1
-time 1380: sillysort: run: Slave Accepted Request, sending data.
-time 1380: simplememory: PVT : DataValid 
+time 1260 ns: simplememory: PVT : Response send
+time 1260 ns: simplememory: handle cmd 0x1
+time 1320 ns: sillysort: run2: (burst done) got data " Amlo..s.t" from slave.
+time 1320 ns: sillysort: run: start writing " Amlo...st" (bytes 7 to 8) to slave
+time 1320 ns: simplememory: PVT : ResponseAccepted 0x1
+time 1320 ns: simplememory: PVT : RequestValid 
+time 1320 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 1320 ns: simplememory: handle cmd 0x1
+time 1380 ns: sillysort: run: Slave Accepted Request, sending data.
+time 1380 ns: simplememory: PVT : DataValid 
 DataValid got .s for address 0x7
-time 1380: simplememory: PVT : Response send
-time 1380: simplememory: handle cmd 0x1
-time 1440: sillysort: run2: (burst done) got data " Amlo...st" from slave.
-time 1440: sillysort: run: PV read from slave
-time 1440: simplememory: handle cmd 0x2
-time 1440: sillysort: run: PV got " Amlo...st" from slave
-time 1440: sillysort: run: start writing " Almo...st" (bytes 2 to 3) to slave
-time 1440: simplememory: PVT : ResponseAccepted 0x1
-time 1440: simplememory: PVT : RequestValid 
-time 1440: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 1440: simplememory: handle cmd 0x1
-time 1500: sillysort: run: Slave Accepted Request, sending data.
-time 1500: simplememory: PVT : DataValid 
+time 1380 ns: simplememory: PVT : Response send
+time 1380 ns: simplememory: handle cmd 0x1
+time 1440 ns: sillysort: run2: (burst done) got data " Amlo...st" from slave.
+time 1440 ns: sillysort: run: PV read from slave
+time 1440 ns: simplememory: PVT : ResponseAccepted 0x1
+time 1440 ns: simplememory: handle cmd 0x2
+time 1440 ns: sillysort: run: PV got " Amlo...st" from slave
+time 1440 ns: sillysort: run: start writing " Almo...st" (bytes 2 to 3) to slave
+time 1440 ns: simplememory: PVT : RequestValid 
+time 1440 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 1440 ns: simplememory: handle cmd 0x1
+time 1500 ns: sillysort: run: Slave Accepted Request, sending data.
+time 1500 ns: simplememory: PVT : DataValid 
 DataValid got lm for address 0x2
-time 1500: simplememory: PVT : Response send
-time 1500: simplememory: handle cmd 0x1
-time 1560: sillysort: run2: (burst done) got data " Almo...st" from slave.
-time 1560: sillysort: run: start writing " Alm.o..st" (bytes 4 to 5) to slave
-time 1560: simplememory: PVT : ResponseAccepted 0x1
-time 1560: simplememory: PVT : RequestValid 
-time 1560: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 1560: simplememory: handle cmd 0x1
-time 1620: sillysort: run: Slave Accepted Request, sending data.
-time 1620: simplememory: PVT : DataValid 
+time 1500 ns: simplememory: PVT : Response send
+time 1500 ns: simplememory: handle cmd 0x1
+time 1560 ns: sillysort: run2: (burst done) got data " Almo...st" from slave.
+time 1560 ns: sillysort: run: start writing " Alm.o..st" (bytes 4 to 5) to slave
+time 1560 ns: simplememory: PVT : ResponseAccepted 0x1
+time 1560 ns: simplememory: PVT : RequestValid 
+time 1560 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 1560 ns: simplememory: handle cmd 0x1
+time 1620 ns: sillysort: run: Slave Accepted Request, sending data.
+time 1620 ns: simplememory: PVT : DataValid 
 DataValid got .o for address 0x4
-time 1620: simplememory: PVT : Response send
-time 1620: simplememory: handle cmd 0x1
-time 1680: sillysort: run2: (burst done) got data " Alm.o..st" from slave.
-time 1680: sillysort: run: start writing " Alm..o.st" (bytes 5 to 6) to slave
-time 1680: simplememory: PVT : ResponseAccepted 0x1
-time 1680: simplememory: PVT : RequestValid 
-time 1680: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 1680: simplememory: handle cmd 0x1
-time 1740: sillysort: run: Slave Accepted Request, sending data.
-time 1740: simplememory: PVT : DataValid 
+time 1620 ns: simplememory: PVT : Response send
+time 1620 ns: simplememory: handle cmd 0x1
+time 1680 ns: sillysort: run2: (burst done) got data " Alm.o..st" from slave.
+time 1680 ns: sillysort: run: start writing " Alm..o.st" (bytes 5 to 6) to slave
+time 1680 ns: simplememory: PVT : ResponseAccepted 0x1
+time 1680 ns: simplememory: PVT : RequestValid 
+time 1680 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 1680 ns: simplememory: handle cmd 0x1
+time 1740 ns: sillysort: run: Slave Accepted Request, sending data.
+time 1740 ns: simplememory: PVT : DataValid 
 DataValid got .o for address 0x5
-time 1740: simplememory: PVT : Response send
-time 1740: simplememory: handle cmd 0x1
-time 1800: sillysort: run2: (burst done) got data " Alm..o.st" from slave.
-time 1800: sillysort: run: start writing " Alm...ost" (bytes 6 to 7) to slave
-time 1800: simplememory: PVT : ResponseAccepted 0x1
-time 1800: simplememory: PVT : RequestValid 
-time 1800: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 1800: simplememory: handle cmd 0x1
-time 1860: sillysort: run: Slave Accepted Request, sending data.
-time 1860: simplememory: PVT : DataValid 
+time 1740 ns: simplememory: PVT : Response send
+time 1740 ns: simplememory: handle cmd 0x1
+time 1800 ns: sillysort: run2: (burst done) got data " Alm..o.st" from slave.
+time 1800 ns: sillysort: run: start writing " Alm...ost" (bytes 6 to 7) to slave
+time 1800 ns: simplememory: PVT : ResponseAccepted 0x1
+time 1800 ns: simplememory: PVT : RequestValid 
+time 1800 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 1800 ns: simplememory: handle cmd 0x1
+time 1860 ns: sillysort: run: Slave Accepted Request, sending data.
+time 1860 ns: simplememory: PVT : DataValid 
 DataValid got .o for address 0x6
-time 1860: simplememory: PVT : Response send
-time 1860: simplememory: handle cmd 0x1
-time 1920: sillysort: run2: (burst done) got data " Alm...ost" from slave.
-time 1920: sillysort: run: PV read from slave
-time 1920: simplememory: handle cmd 0x2
-time 1920: sillysort: run: PV got " Alm...ost" from slave
-time 1920: sillysort: run: start writing " Al.m..ost" (bytes 3 to 4) to slave
-time 1920: simplememory: PVT : ResponseAccepted 0x1
-time 1920: simplememory: PVT : RequestValid 
-time 1920: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 1920: simplememory: handle cmd 0x1
-time 1980: sillysort: run: Slave Accepted Request, sending data.
-time 1980: simplememory: PVT : DataValid 
+time 1860 ns: simplememory: PVT : Response send
+time 1860 ns: simplememory: handle cmd 0x1
+time 1920 ns: sillysort: run2: (burst done) got data " Alm...ost" from slave.
+time 1920 ns: sillysort: run: PV read from slave
+time 1920 ns: simplememory: PVT : ResponseAccepted 0x1
+time 1920 ns: simplememory: handle cmd 0x2
+time 1920 ns: sillysort: run: PV got " Alm...ost" from slave
+time 1920 ns: sillysort: run: start writing " Al.m..ost" (bytes 3 to 4) to slave
+time 1920 ns: simplememory: PVT : RequestValid 
+time 1920 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 1920 ns: simplememory: handle cmd 0x1
+time 1980 ns: sillysort: run: Slave Accepted Request, sending data.
+time 1980 ns: simplememory: PVT : DataValid 
 DataValid got .m for address 0x3
-time 1980: simplememory: PVT : Response send
-time 1980: simplememory: handle cmd 0x1
-time 2040: sillysort: run2: (burst done) got data " Al.m..ost" from slave.
-time 2040: sillysort: run: start writing " Al..m.ost" (bytes 4 to 5) to slave
-time 2040: simplememory: PVT : ResponseAccepted 0x1
-time 2040: simplememory: PVT : RequestValid 
-time 2040: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 2040: simplememory: handle cmd 0x1
-time 2100: sillysort: run: Slave Accepted Request, sending data.
-time 2100: simplememory: PVT : DataValid 
+time 1980 ns: simplememory: PVT : Response send
+time 1980 ns: simplememory: handle cmd 0x1
+time 2040 ns: sillysort: run2: (burst done) got data " Al.m..ost" from slave.
+time 2040 ns: sillysort: run: start writing " Al..m.ost" (bytes 4 to 5) to slave
+time 2040 ns: simplememory: PVT : ResponseAccepted 0x1
+time 2040 ns: simplememory: PVT : RequestValid 
+time 2040 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 2040 ns: simplememory: handle cmd 0x1
+time 2100 ns: sillysort: run: Slave Accepted Request, sending data.
+time 2100 ns: simplememory: PVT : DataValid 
 DataValid got .m for address 0x4
-time 2100: simplememory: PVT : Response send
-time 2100: simplememory: handle cmd 0x1
-time 2160: sillysort: run2: (burst done) got data " Al..m.ost" from slave.
-time 2160: sillysort: run: start writing " Al...most" (bytes 5 to 6) to slave
-time 2160: simplememory: PVT : ResponseAccepted 0x1
-time 2160: simplememory: PVT : RequestValid 
-time 2160: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 2160: simplememory: handle cmd 0x1
-time 2220: sillysort: run: Slave Accepted Request, sending data.
-time 2220: simplememory: PVT : DataValid 
+time 2100 ns: simplememory: PVT : Response send
+time 2100 ns: simplememory: handle cmd 0x1
+time 2160 ns: sillysort: run2: (burst done) got data " Al..m.ost" from slave.
+time 2160 ns: sillysort: run: start writing " Al...most" (bytes 5 to 6) to slave
+time 2160 ns: simplememory: PVT : ResponseAccepted 0x1
+time 2160 ns: simplememory: PVT : RequestValid 
+time 2160 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 2160 ns: simplememory: handle cmd 0x1
+time 2220 ns: sillysort: run: Slave Accepted Request, sending data.
+time 2220 ns: simplememory: PVT : DataValid 
 DataValid got .m for address 0x5
-time 2220: simplememory: PVT : Response send
-time 2220: simplememory: handle cmd 0x1
-time 2280: sillysort: run2: (burst done) got data " Al...most" from slave.
-time 2280: sillysort: run: PV read from slave
-time 2280: simplememory: handle cmd 0x2
-time 2280: sillysort: run: PV got " Al...most" from slave
-time 2280: sillysort: run: start writing " A.l..most" (bytes 2 to 3) to slave
-time 2280: simplememory: PVT : ResponseAccepted 0x1
-time 2280: simplememory: PVT : RequestValid 
-time 2280: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 2280: simplememory: handle cmd 0x1
-time 2340: sillysort: run: Slave Accepted Request, sending data.
-time 2340: simplememory: PVT : DataValid 
+time 2220 ns: simplememory: PVT : Response send
+time 2220 ns: simplememory: handle cmd 0x1
+time 2280 ns: sillysort: run2: (burst done) got data " Al...most" from slave.
+time 2280 ns: sillysort: run: PV read from slave
+time 2280 ns: simplememory: PVT : ResponseAccepted 0x1
+time 2280 ns: simplememory: handle cmd 0x2
+time 2280 ns: sillysort: run: PV got " Al...most" from slave
+time 2280 ns: sillysort: run: start writing " A.l..most" (bytes 2 to 3) to slave
+time 2280 ns: simplememory: PVT : RequestValid 
+time 2280 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 2280 ns: simplememory: handle cmd 0x1
+time 2340 ns: sillysort: run: Slave Accepted Request, sending data.
+time 2340 ns: simplememory: PVT : DataValid 
 DataValid got .l for address 0x2
-time 2340: simplememory: PVT : Response send
-time 2340: simplememory: handle cmd 0x1
-time 2400: sillysort: run2: (burst done) got data " A.l..most" from slave.
-time 2400: sillysort: run: start writing " A..l.most" (bytes 3 to 4) to slave
-time 2400: simplememory: PVT : ResponseAccepted 0x1
-time 2400: simplememory: PVT : RequestValid 
-time 2400: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 2400: simplememory: handle cmd 0x1
-time 2460: sillysort: run: Slave Accepted Request, sending data.
-time 2460: simplememory: PVT : DataValid 
+time 2340 ns: simplememory: PVT : Response send
+time 2340 ns: simplememory: handle cmd 0x1
+time 2400 ns: sillysort: run2: (burst done) got data " A.l..most" from slave.
+time 2400 ns: sillysort: run: start writing " A..l.most" (bytes 3 to 4) to slave
+time 2400 ns: simplememory: PVT : ResponseAccepted 0x1
+time 2400 ns: simplememory: PVT : RequestValid 
+time 2400 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 2400 ns: simplememory: handle cmd 0x1
+time 2460 ns: sillysort: run: Slave Accepted Request, sending data.
+time 2460 ns: simplememory: PVT : DataValid 
 DataValid got .l for address 0x3
-time 2460: simplememory: PVT : Response send
-time 2460: simplememory: handle cmd 0x1
-time 2520: sillysort: run2: (burst done) got data " A..l.most" from slave.
-time 2520: sillysort: run: start writing " A...lmost" (bytes 4 to 5) to slave
-time 2520: simplememory: PVT : ResponseAccepted 0x1
-time 2520: simplememory: PVT : RequestValid 
-time 2520: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 2520: simplememory: handle cmd 0x1
-time 2580: sillysort: run: Slave Accepted Request, sending data.
-time 2580: simplememory: PVT : DataValid 
+time 2460 ns: simplememory: PVT : Response send
+time 2460 ns: simplememory: handle cmd 0x1
+time 2520 ns: sillysort: run2: (burst done) got data " A..l.most" from slave.
+time 2520 ns: sillysort: run: start writing " A...lmost" (bytes 4 to 5) to slave
+time 2520 ns: simplememory: PVT : ResponseAccepted 0x1
+time 2520 ns: simplememory: PVT : RequestValid 
+time 2520 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 2520 ns: simplememory: handle cmd 0x1
+time 2580 ns: sillysort: run: Slave Accepted Request, sending data.
+time 2580 ns: simplememory: PVT : DataValid 
 DataValid got .l for address 0x4
-time 2580: simplememory: PVT : Response send
-time 2580: simplememory: handle cmd 0x1
-time 2640: sillysort: run2: (burst done) got data " A...lmost" from slave.
-time 2640: sillysort: run: PV read from slave
-time 2640: simplememory: handle cmd 0x2
-time 2640: sillysort: run: PV got " A...lmost" from slave
-time 2640: sillysort: run: start writing " .A..lmost" (bytes 1 to 2) to slave
-time 2640: simplememory: PVT : ResponseAccepted 0x1
-time 2640: simplememory: PVT : RequestValid 
-time 2640: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 2640: simplememory: handle cmd 0x1
-time 2700: sillysort: run: Slave Accepted Request, sending data.
-time 2700: simplememory: PVT : DataValid 
+time 2580 ns: simplememory: PVT : Response send
+time 2580 ns: simplememory: handle cmd 0x1
+time 2640 ns: sillysort: run2: (burst done) got data " A...lmost" from slave.
+time 2640 ns: sillysort: run: PV read from slave
+time 2640 ns: simplememory: PVT : ResponseAccepted 0x1
+time 2640 ns: simplememory: handle cmd 0x2
+time 2640 ns: sillysort: run: PV got " A...lmost" from slave
+time 2640 ns: sillysort: run: start writing " .A..lmost" (bytes 1 to 2) to slave
+time 2640 ns: simplememory: PVT : RequestValid 
+time 2640 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 2640 ns: simplememory: handle cmd 0x1
+time 2700 ns: sillysort: run: Slave Accepted Request, sending data.
+time 2700 ns: simplememory: PVT : DataValid 
 DataValid got .A for address 0x1
-time 2700: simplememory: PVT : Response send
-time 2700: simplememory: handle cmd 0x1
-time 2760: sillysort: run2: (burst done) got data " .A..lmost" from slave.
-time 2760: sillysort: run: start writing " ..A.lmost" (bytes 2 to 3) to slave
-time 2760: simplememory: PVT : ResponseAccepted 0x1
-time 2760: simplememory: PVT : RequestValid 
-time 2760: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 2760: simplememory: handle cmd 0x1
-time 2820: sillysort: run: Slave Accepted Request, sending data.
-time 2820: simplememory: PVT : DataValid 
+time 2700 ns: simplememory: PVT : Response send
+time 2700 ns: simplememory: handle cmd 0x1
+time 2760 ns: sillysort: run2: (burst done) got data " .A..lmost" from slave.
+time 2760 ns: sillysort: run: start writing " ..A.lmost" (bytes 2 to 3) to slave
+time 2760 ns: simplememory: PVT : ResponseAccepted 0x1
+time 2760 ns: simplememory: PVT : RequestValid 
+time 2760 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 2760 ns: simplememory: handle cmd 0x1
+time 2820 ns: sillysort: run: Slave Accepted Request, sending data.
+time 2820 ns: simplememory: PVT : DataValid 
 DataValid got .A for address 0x2
-time 2820: simplememory: PVT : Response send
-time 2820: simplememory: handle cmd 0x1
-time 2880: sillysort: run2: (burst done) got data " ..A.lmost" from slave.
-time 2880: sillysort: run: start writing " ...Almost" (bytes 3 to 4) to slave
-time 2880: simplememory: PVT : ResponseAccepted 0x1
-time 2880: simplememory: PVT : RequestValid 
-time 2880: simplememory: PVT : Accepted write (in 10) waiting for Data 
-time 2880: simplememory: handle cmd 0x1
-time 2940: sillysort: run: Slave Accepted Request, sending data.
-time 2940: simplememory: PVT : DataValid 
+time 2820 ns: simplememory: PVT : Response send
+time 2820 ns: simplememory: handle cmd 0x1
+time 2880 ns: sillysort: run2: (burst done) got data " ..A.lmost" from slave.
+time 2880 ns: sillysort: run: start writing " ...Almost" (bytes 3 to 4) to slave
+time 2880 ns: simplememory: PVT : ResponseAccepted 0x1
+time 2880 ns: simplememory: PVT : RequestValid 
+time 2880 ns: simplememory: PVT : Accepted write (in 10) waiting for Data 
+time 2880 ns: simplememory: handle cmd 0x1
+time 2940 ns: sillysort: run: Slave Accepted Request, sending data.
+time 2940 ns: simplememory: PVT : DataValid 
 DataValid got .A for address 0x3
-time 2940: simplememory: PVT : Response send
-time 2940: simplememory: handle cmd 0x1
-time 3000: sillysort: run2: (burst done) got data " ...Almost" from slave.
-time 3000: sillysort: run: PV read from slave
-time 3000: simplememory: handle cmd 0x2
-time 3000: sillysort: run: PV got " ...Almost" from slave
-time 3000: simplememory: PVT : ResponseAccepted 0x1
-
-Info: (I804) /IEEE_Std_1666/deprecated: You can turn off warnings about
-             IEEE 1666 deprecated features by placing this method call as the
-             first statement in your sc_main() function:
-
-  sc_report_handler::set_actions("/IEEE_Std_1666/deprecated", SC_DO_NOTHING);
-
-
-
-The Debugger has exited with status 0.
+time 2940 ns: simplememory: PVT : Response send
+time 2940 ns: simplememory: handle cmd 0x1
+time 3 us: sillysort: run2: (burst done) got data " ...Almost" from slave.
+time 3 us: sillysort: run: PV read from slave
+time 3 us: simplememory: PVT : ResponseAccepted 0x1
+time 3 us: simplememory: handle cmd 0x2
+time 3 us: sillysort: run: PV got " ...Almost" from slave
