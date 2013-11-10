@@ -1,0 +1,13 @@
+SET(EXECUTABLE "gsgpsocket_test_devices")
+
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DUSE_GPSOCKET")
+
+ADD_EXECUTABLE(${EXECUTABLE}
+	example.cpp
+)
+target_link_libraries(${EXECUTABLE} ${SystemC_LIBRARIES}  pthread)
+
+add_test(NAME COMPILATION:_${EXECUTABLE} COMMAND  sh -c "./${EXECUTABLE} > tmp && grep -v 'In file:' tmp > executable_output.txt && rm tmp")
+add_test(NAME DIFF:_${EXECUTABLE} COMMAND ${CMAKE_COMMAND} -E compare_files executable_output.txt expected_output.txt)
+
+add_dependencies(compile_test ${EXECUTABLE})
