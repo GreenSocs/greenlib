@@ -39,7 +39,7 @@
 #include <vector>
 #include <algorithm>
 #include <cassert>
-
+#include <cstring>
 
 #define GS_SPARSE_MEM_DEBUG(cmd)
 //#define GS_SPARSE_MEM_DEBUG(cmd) cmd
