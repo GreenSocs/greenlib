@@ -99,7 +99,7 @@ get_block(address_type start_, address_type end_)
   // find the index where the end should be
   int end_i = std::lower_bound(outs.begin(), outs.end(), end) - outs.begin();
   // if in the middle of an interval
-  if (end_i != -1 and end_i != outs.size() and
+  if (end_i != -1 and end_i != static_cast<int>(outs.size()) and
       ins[end_i] < end and end < outs[end_i]) {
     // ajust to the end of that interval
     end = outs[end_i];
@@ -201,7 +201,7 @@ join_pages(int i, address_type start, address_type end)
 
   // merge other existing pages
   int index;
-  for (index=i+1; index < ins.size(); index++) {
+  for (index=i+1; index < static_cast<int>(ins.size()); index++) {
     // merge if that block is contained withing this block
     if (outs[index] <= outs[i]) {
       memcpy(buffers[i]+(ins[index]-ins[i]),
@@ -294,7 +294,7 @@ sparse_mem<PAGE_SIZE,VALUE_TYPE,ADDRESS_TYPE>::
   GS_SPARSE_MEM_DEBUG(std::cout << "in destructor "
                       << buffers.size() << std::endl);
   // delete allocated buffers
-  for (int i=0; i < buffers.size(); i++) {
+  for (unsigned int i=0; i < buffers.size(); i++) {
     GS_SPARSE_MEM_DEBUG(std::cout << "delete_page: at " << i
                         << ", from " << ins[i]
                         << " to " << outs[i]  << std::endl);
