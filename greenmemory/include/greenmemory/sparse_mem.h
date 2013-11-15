@@ -186,6 +186,7 @@ insert_page(int i, address_type addr, address_type end)
   GS_SPARSE_MEM_DEBUG(std::cout << "inset_page: at " << i
                       << ", from " << ins[i]
                       << " to " << outs[i]  << std::endl);
+  return true;
 }
 
 
