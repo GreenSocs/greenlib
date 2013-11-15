@@ -265,6 +265,22 @@ install(DIRECTORY greenscript/docs/
         DESTINATION docs/greenscript
 )
 
+# Greenmemory
+
+set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenmemory/include/)
+
+install(DIRECTORY greenmemory/include/
+        DESTINATION include
+)
+
+install(DIRECTORY greenmemory/examples/
+        DESTINATION examples/memory
+)
+
+install(DIRECTORY greenmemory/docs/
+        DESTINATION docs/greenmemory
+)
+
 # Greensocs Library include directory (for example).
 include_directories(${GreenSocs_INCLUDE_DIRS})
 link_directories(${GreenSocs_LIB_DIRS})
