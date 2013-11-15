@@ -1,0 +1,9 @@
+Searching 5
+mem[5] has 10
+mem[20] has 20
+mem[120] has 43
+get_block 2 to 30
+end get_block 2 to 30
+block[3] has 10
+setting block[3] = 123
+check if changed the memory: mem[5] has 123
