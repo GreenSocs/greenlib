@@ -1,0 +1,183 @@
+\documentclass[12pt,oneside]{gsbook}
+\usepackage{greensocs}
+
+\usepackage{ulem} % allow strikeout/strikethrough text with \sout{}
+
+%\usepackage{array}
+%\usepackage{xspace}
+%\usepackage{fancyvrb}
+
+%%% To make it work with Drupal:
+%%% 1) Delete this package listings references below
+\usepackage{listings}
+\lstset{
+  language=C++,
+  breaklines=true,
+  captionpos=b
+  aboveskip=15pt,
+  basicstyle=\ttfamily \small,
+  stepnumber=5,
+  numbersep=5pt,
+  frame=trbl
+}
+%%% 2) replace text: ``lstlisting'' with ``verbatim''
+%%% 3) remove line that begins with \lstset
+
+
+\def\example#1{\begin{center}\colorbox{lightgrey}{\begin{tabular}{|p{0.6\paperwidth}|}\hline\\#1\\ \\ \hline\end{tabular}}\end{center}}
+
+\newsavebox{\examplebox}
+\newenvironment{exampleenv}{\begin{lrbox}{\examplebox}\begin{minipage}{0.6\paperwidth}}{\end{minipage}\end{lrbox}\example{\usebox{\examplebox}}}
+\newcommand{\tick}{$\sqrt{}$}
+
+\author{Copyright GreenSocs Ltd 2009}
+\title{GreenMemory User Manual}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+
+\chapter{Introduction}
+\label{INTRO}
+
+GreenMemory is an implementation of a sparse memory array to simplify
+the implementation of more complex memories. The size of the array is
+virtually unlimited, so the total size is seen as ``infinite'' and is
+not a parameter.
+
+The array can store any type of elements. The default type of element
+is a byte (\texttt{unsigned char}). Instead of allocating memory for
+one new element at a time, the minimum space allocated is a multiple
+of an element. This multiple is a parameter, called the
+\texttt{page\_size}. Normally the compiler will generate better code
+if the \texttt{page\_size} is a power of 2, but this is not a
+restriction of this implementation.
+
+The type of the address is also a parameter. The default is type
+\texttt{size\_t}, which is the same type used by C library functions
+that handle memory like \texttt{memcpy}.
+
+The syntax to use this sparse array is the same as the built-in C
+arrays. The elements can be read or written with the []
+operator. Additionally, there are two other useful methods: the
+\texttt{has} method queries if an address is already allocated or not;
+while the \texttt{get\_block} is used to assure a range of addresses
+is allocated, and returns a pointer to it. The \texttt{get\_block} is
+used to implement the Direct Memory Access (DMI) interface to
+memories.
+
+
+\chapter{Usage}
+\label{USAGE}
+
+All the functionality is defined in the header
+\texttt{<greenmemory/sparse\_mem.h>}. After including this file, the
+templated class \texttt{sparse\_mem} becomes available in the
+namespace \texttt{gs}::\texttt{mem}. There are 3 template parameters:
+\vspace{5pt}
+
+\textbf{Parameter PAGE\_SIZE} --- The page size is the number of
+elements in each page. The default is 1024 elements. Try to use a
+power of 2, as this may generate more optimized code. This is not a
+restriction, though. A very sparse memory could use a smaller number
+or even 1.
+
+\textbf{Parameter VALUE\_TYPE} --- This is the type of each
+element. The default is a byte, which is represented in C as an
+\texttt{unsigned char}. It can be set to a word, for example, by using
+\texttt{unsigned int}. (Remember that the size in bytes in this
+last example depends on the architecture.)
+
+\textbf{Parameter ADDRESS\_TYPE} --- The default type of
+\texttt{size\_t} is the same used by other C library functions that
+handle memory, so the array could probably access the same range of
+addresses as the host computer. It is normally not necessary to change
+this setting.
+
+\vspace{5pt}
+
+There are also three methods to handle sparse memory objects:
+
+\vspace{5pt}
+
+\textbf{Method operator[](addr)} --- An element is accessed by
+enclosing its address in square brackets just like C built-in arrays.
+
+\textbf{Method has(addr)} --- This method returns a boolean value that
+tells if an address is allocated or not.
+
+\textbf{Method get\_block(addr\_start,addr\_end)} --- Given a range of
+addresses, this method assures that this range is allocated in a
+contiguous chunk of memory and returns a pointer to the first element
+in the range. This operation can be costly if there are many pages
+allocated within the given range, as all the pages will be copied to
+the new contiguous memory area. There is no restriction in the start
+or end addresses, so addresses in the middle of a page are
+accepted. For example, this method can be used to pre-allocate a range
+of addresses that is known to be used in the simulation. Also, the
+pointer returned can be used to access the elements directly, allowing
+the implementation of Direct Memory Access (DMI)
+interfaces. \textbf{Important:} this method may reorganize the pages
+in the memory when getting a range for the first time. So, when doing
+a DMI implementation, it is important to invalidade older DMI pointers
+when getting an address range for the first time (that was not
+alocated before).
+
+\vspace{5pt}
+
+The pointer returned by the \texttt{get\_block} method is a pointer to
+the element type. The typedef to this type is called \texttt{pointer}
+and there are other typedefs to the types given as template
+parameters. Also, the \texttt{page\_size} is stored as a class
+constant:
+
+\vspace{5pt}
+
+\textbf{Type value\_type} --- The type given as the VALUE\_TYPE parameter
+
+\textbf{Type address\_type} --- The type given as the ADDRESS\_TYPE parameter
+
+\textbf{Type pointer} --- The type of a pointer to a \texttt{value\_type}
+
+\textbf{Const page\_size} --- The number given as the PAGE\_SIZE parameter
+
+
+\chapter{Example}
+\label{EXAMPLE}
+
+There is an example in the \texttt{examples} directory. We find some
+more examples bellow of some pitfalls and how to circumvent them.
+
+\begin{lstlisting}
+
+// Declare a default sparse memory object with page_size=1024,
+//   value_type=unsigned char and address_type=size_t
+gs::mem::sparce_mem<> m1;
+
+// Declare a very sparse memory (page_size=1) that store words
+gs::mem::sparce_mem<1, unsigned int> word_mem;
+
+// Store some values
+m1[10] = 65;
+m1[20] = 300;               // Error! overflow a byte, store 44
+word_mem[20] = 300;         // Ok, a valid unsigned int
+
+// Read some values
+cout << m1[10];             // Warning! Probably not what you want.
+                            //   This shows the character 'A'.
+cout << (unsigned) m1[10];  // Ok, shows the number 65
+cout << word_mem[20];       // Ok, shows the number 300
+
+// Pre-allocate a big range, bigger then a page
+m1.get_block(123,5000);
+
+// Access directly by a pointer (for DMI)
+gs::mem::sparce_mem<>::pointer block = m1.get_block(1000,5000);
+block[5] = 10;              // Ok, sets m1[1005] to 10
+\end{lstlisting}
+
+
+
+\end{document}
