@@ -760,7 +760,7 @@ public:
       GCNF_DUMP_N(name(), "getValue: ... got value = "<<th->get_mValue().c_str());
     } else {
       GCNF_DUMP_N(name(), "getPar: ... getting failed (error "<<th->get_mError()<<")!");
-      SC_REPORT_WARNING(name(), "getPar: ... getting value failed!");
+      SC_REPORT_WARNING(name(), std::string("getPar: " + parname + " not found !").c_str());
     }
     
     return th->get_mValue();
