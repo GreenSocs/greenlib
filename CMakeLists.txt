@@ -38,9 +38,9 @@ endif()
 
 set(Boost_ADDITIONAL_VERSIONS 1.34 1.34.0 1.34.1)
 
-find_package( Boost )
+find_package( Boost REQUIRED)
 if(Boost_FOUND)
-   include_directories(${Boost_INCLUDE_DIRS})
+  include_directories(${Boost_INCLUDE_DIRS})
 endif()
 
 # Require Python
