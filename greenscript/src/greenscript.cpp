@@ -98,7 +98,7 @@ namespace GreenScriptController {
 
 std::string path_separator() {
   #ifdef MS_WINDOWS
-    return std::string("\\"};
+    return std::string("\\");
   #else
     return std::string("/");
   #endif
