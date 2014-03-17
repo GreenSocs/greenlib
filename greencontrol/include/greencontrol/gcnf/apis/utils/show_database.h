@@ -3,7 +3,7 @@
 // LICENSETEXT
 //
 //   Copyright (C) 2008 : GreenSocs Ltd
-// 	 http://www.greensocs.com/ , email: info@greensocs.com
+//   http://www.greensocs.com/ , email: info@greensocs.com
 //
 //   Developed by :
 //   
@@ -43,9 +43,8 @@ namespace cnf {
    * @param indentation  If to indent the output according the longest entity
    * @param show_values  If to show the parameter values
    */
-  static inline void show_database(gs::cnf::cnf_api_if *api = NULL, bool indentation = true, bool show_values = true) {
-    struct local {
-      // ----------- begin local function simple ---------------------------
+
+
       static void show_database_simple(gs::cnf::cnf_api_if *api = NULL, bool show_values = true) {
         const unsigned int position_par_name   = 26;
         const unsigned int position_par_val    = 60;
@@ -92,9 +91,7 @@ namespace cnf {
         }
         std::cout << std::endl;
       }
-      // ----------- end local function simple ---------------------------
-    
-      // ----------- begin local function with indentation ---------------
+
       static void show_database_indentation(gs::cnf::cnf_api_if *api = NULL, bool show_values = true) {
         unsigned int position_par_name_indentation_max   = 0;
         unsigned int position_par_val_indentation_max    = 0;
@@ -191,13 +188,23 @@ namespace cnf {
         
         std::cout << std::endl;
       }
+
+
+  static inline void show_database(gs::cnf::cnf_api_if *api = NULL, bool indentation = true, bool show_values = true) {
+    struct local {
+      // ----------- begin local function simple ---------------------------
+
+      // ----------- end local function simple ---------------------------
+    
+      // ----------- begin local function with indentation ---------------
+
       // ----------- begin local function with indentation ---------------
     }; // end struct local
     
     if (indentation)
-      local::show_database_indentation(api, show_values);
+      show_database_indentation(api, show_values);
     else
-      local::show_database_simple(api, show_values);    
+      show_database_simple(api, show_values);    
   }
 
   
