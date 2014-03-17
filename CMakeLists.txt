@@ -232,15 +232,15 @@ install(DIRECTORY greenreg/doc/     # TODO: doc or docs?
 set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greenmessage/include/)
 
 install(DIRECTORY greenmessage/include/
-	DESTINATION include
+    DESTINATION include
 )
 
 install(DIRECTORY greenmessage/examples/
-	DESTINATION examples/greenmessage
+    DESTINATION examples/greenmessage
 )
 
 install(DIRECTORY greenmessage/docs/
-	DESTINATION docs/greenmessage
+    DESTINATION docs/greenmessage
 )
 
 # Greenscript
@@ -293,7 +293,11 @@ add_subdirectory(greenreg)
 add_subdirectory(greenscript)
 
 # build a CPack driven installer package
-include (InstallRequiredSystemLibraries)
+
+if (UNIX)
+    include (InstallRequiredSystemLibraries)
+endif()
+
 set (CPACK_RESOURCE_FILE_LICENSE  
      "${CMAKE_CURRENT_SOURCE_DIR}/greencontrol/LICENSE")
 set (CPACK_PACKAGE_VERSION_MAJOR "1")
