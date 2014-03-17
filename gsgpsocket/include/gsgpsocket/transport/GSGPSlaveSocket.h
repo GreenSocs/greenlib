@@ -42,7 +42,7 @@ namespace gs {
     bool BIDIR, typename SOCK_TYPE>
     class GenericTargetSocket;
     
-    typedef unevenpair<GenericSlaveAccessHandle, GenericPhase> slave_atom;
+    typedef gs::unevenpair<GenericSlaveAccessHandle, GenericPhase> slave_atom;
 
     // ///////// structs for GPSlaveSocket calls ///////////////// //
         
@@ -91,7 +91,7 @@ namespace gs {
         typedef PHASE  phase;
         typedef Handle<TRANSACTION> created_transaction_handle;
         typedef TRANSACTION created_transaction;  
-        typedef unevenpair<accessHandle, phase> atom; // most time this is slave_atom or bidir_atom
+        typedef gs::unevenpair<accessHandle, phase> atom; // most time this is slave_atom or bidir_atom
         typedef CONFIG config_type;
       protected:
         typedef GSGPSlaveSocket<BUSWIDTH, TRANSACTION, CONFIG, PHASE, BIDIR, SOCK_TYPE> my_type;
