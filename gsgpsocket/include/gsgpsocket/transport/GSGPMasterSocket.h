@@ -30,8 +30,8 @@
 namespace gs {
   namespace gp {
     
-    typedef unevenpair<GenericMasterAccessHandle, GenericPhase> master_atom;
-    typedef unevenpair<GenericBidirectionalAccessHandle, GenericPhase> bidir_atom;
+    typedef gs::unevenpair<GenericMasterAccessHandle, GenericPhase> master_atom;
+    typedef gs::unevenpair<GenericBidirectionalAccessHandle, GenericPhase> bidir_atom;
     
     // /////////////////////////////////////////////////////////////////////////////// //
     // //////// Bidir type wrapper struct for Master and Slave sockets /////////////// //
@@ -83,7 +83,7 @@ namespace gs {
       typedef PHASE  phase;
       typedef Handle<TRANSACTION> created_transaction_handle;
       typedef TRANSACTION created_transaction;  
-      typedef unevenpair<accessHandle, phase> atom; // most time this is master_atom or bidir_atom
+      typedef gs::unevenpair<accessHandle, phase> atom; // most time this is master_atom or bidir_atom
       typedef CONFIG config_type;
     protected:
       typedef GSGPMasterSocket<BUSWIDTH, TRANSACTION, CONFIG, PHASE, BIDIR, SOCK_TYPE> my_type;
