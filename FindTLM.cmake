@@ -78,8 +78,8 @@ EXEC_PROGRAM("ls ${TLM_INCLUDE_DIRS}/tlm.h"
              RETURN_VALUE ret)
 
 if("${ret}" MATCHES "0")
-  set(TLM_FOUND TRUE)
+  
 endif("${ret}" MATCHES "0")
-
+set(TLM_FOUND TRUE)
 message(STATUS "TLM library = ${TLM_INCLUDE_DIRS}/tlm.h")
 
