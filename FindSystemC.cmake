@@ -77,9 +77,9 @@ EXEC_PROGRAM("cat ${_SYSTEMC_VERSION_FILE} |grep '#define SC_API_VERSION_STRING'
 set(SystemC_VERSION ${SystemC_MAJOR}.${SystemC_MINOR}.${SystemC_REV})
 
 if("${SystemC_MAJOR}" MATCHES "2")
-  set(SystemC_FOUND TRUE)
-endif("${SystemC_MAJOR}" MATCHES "2")
 
+endif("${SystemC_MAJOR}" MATCHES "2")
+  set(SystemC_FOUND TRUE)
 message(STATUS "SystemC version = ${SystemC_VERSION}")
 
 if(WIN32)
