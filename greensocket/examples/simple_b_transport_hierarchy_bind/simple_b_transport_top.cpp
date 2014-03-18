@@ -86,8 +86,8 @@ SC_MODULE(simple_b_gs_slave_hier)
   
   simple_b_gs_slave_hier(sc_core::sc_module_name name_, bool use_cachable_, bool use_prio_)
     : sc_core::sc_module(name_)
-    , child("child", use_cachable_, use_prio_)
     , socket("socket")
+    , child("child", use_cachable_, use_prio_)
   {
     socket(child.socket);
   }
