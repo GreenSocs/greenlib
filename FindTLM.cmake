@@ -34,7 +34,6 @@ message(STATUS "Searching for TLM")
 
 # The HINTS option should only be used for values computed from the system.
 SET(_TLM_HINTS
-  "[HKEY_LOCAL_MACHINE\\SOFTWARE\\TLM\\2.2;TLMHome]/include"
   $ENV{TLM_HOME}
   ${SYSTEMC_PREFIX}/include
   ${SYSTEMC_PREFIX}/lib
@@ -51,6 +50,9 @@ SET(_TLM_HINTS
   ${CMAKE_INSTALL_PREFIX}/lib-linux
   ${CMAKE_INSTALL_PREFIX}/lib-linux64
   ${CMAKE_INSTALL_PREFIX}/lib-macos
+# For Windows user the library is compiled in Visual Studio and nothing is
+# installed.
+  ${SYSTEMC_PREFIX}/src
   )
 # Hard-coded guesses should still go in PATHS. This ensures that the user
 # environment can always override hard guesses.
