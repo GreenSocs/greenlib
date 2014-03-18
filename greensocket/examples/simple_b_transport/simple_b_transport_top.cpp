@@ -84,8 +84,6 @@ int sc_main(int argc, char** argv){
   gs::av::OutputPlugin_if* myop = gs::av::GAV_Api::getApiInstance(NULL)->get_default_output(gs::av::TXT_FILE_OUT);
 #endif
   
-
-  
   simple_b_gs_secure_adapter* a;
   if (!provoke_bind_error) a=new simple_b_gs_secure_adapter("A");
   simple_b_gs_master m("M");
@@ -95,9 +93,13 @@ int sc_main(int argc, char** argv){
 
   simple_b_gs_secure_slave  s3("S3");
 
-
+#ifdef USE_GS_MONITOR
   GS_BIND_AND_OBSERVE(m.socket0, s0.socket, myop);
   GS_BIND_AND_OBSERVE(m.socket1, s1.socket, myop);
+#else
+  GS_BIND_AND_OBSERVE(m.socket0, s0.socket, NULL);
+  GS_BIND_AND_OBSERVE(m.socket1, s1.socket, NULL);
+#endif
 
   // Example for the other GS_BIND macro, to observe in more then one output plugin
   GS_BIND_AND_DEFINE_MONITOR_PARAM(m.socket2, s2.socket, myparam);
