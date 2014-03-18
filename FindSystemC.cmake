@@ -30,7 +30,6 @@ message(STATUS "Searching for SystemC")
 
 # The HINTS option should only be used for values computed from the system.
 SET(_SYSTEMC_HINTS
-  "[HKEY_LOCAL_MACHINE\\SOFTWARE\\SystemC\\2.2;SystemcHome]/include"
   ${SYSTEMC_PREFIX}/include
   ${SYSTEMC_PREFIX}/lib
   ${SYSTEMC_PREFIX}/lib-linux
@@ -46,6 +45,11 @@ SET(_SYSTEMC_HINTS
   ${CMAKE_INSTALL_PREFIX}/lib-linux
   ${CMAKE_INSTALL_PREFIX}/lib-linux64
   ${CMAKE_INSTALL_PREFIX}/lib-macos
+# For Windows user the library is compiled in Visual Studio and nothing is
+# installed.
+  ${SYSTEMC_PREFIX}/src
+  ${SYSTEMC_PREFIX}/msvc80/SystemC/Debug
+  ${SYSTEMC_PREFIX}/msvc80/SystemC/Release
   )
 # Hard-coded guesses should still go in PATHS. This ensures that the user
 # environment can always override hard guesses.
