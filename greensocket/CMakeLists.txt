@@ -1,3 +1,4 @@
 include_directories(examples/common)
+include_directories(examples/simple_b_transport)
 
 add_subdirectory(examples/simple_b_transport)
