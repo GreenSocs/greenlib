@@ -24,26 +24,13 @@
 #ifndef __CONFIGFILE_TOOL_H__
 #define __CONFIGFILE_TOOL_H__
 
-// if this should use the unix getopt function for the parsing of the command line options
-// or (if not) the boost program_options should be used (don't forget to link the lib boost_program_options!)
-// default: do NOT define this!
-// #define USE_GETOPT
-
-//#define ENABLE_SHORT_COMMAND_LINE_OPTIONS  // enables the short synonyms for the gs_ options
+// enables the short synonyms for the gs_ options
+//#define ENABLE_SHORT_COMMAND_LINE_OPTIONS  
 
 #include <sstream>
-#include "greencontrol/gcnf/plugin/config_globals.h" // may define USE_GETOPT
+#include "greencontrol/gcnf/plugin/config_globals.h"
 
-#ifdef USE_GETOPT
-# include <getopt.h>
-# ifdef ARGC_COPY_SIZE
-#   undef ARGC_COPY_SIZE
-# endif
-# define ARGC_COPY_SIZE 20
-#else
-# include <boost/program_options.hpp>
-#endif
-
+#include <boost/program_options.hpp>
 #include <boost/algorithm/string.hpp> // for trim
 #include <boost/tokenizer.hpp> // for array parsing
 
@@ -58,10 +45,7 @@
 namespace gs {
 namespace cnf {
 
-#ifndef USE_GETOPT
-  namespace po = boost::program_options;
-#endif
-  
+namespace po = boost::program_options;
   
 /// Tool which reads a configuration file and sets parameters and provides configuration of a string representing one line.
 /**
@@ -167,12 +151,10 @@ public:
    * @param argc The argc of main(...).
    * @param argv The argv of main(...).
    */
-  void parseCommandLine(const int argc, const char* const* argv) throw(CommandLineException) {
-#ifdef USE_GETOPT
-    parseCommandLineWithGetOpt(argc, argv);
-#else
+  void parseCommandLine(const int argc, const char* const* argv)
+                                      throw (CommandLineException)
+  {
     parseCommandLineWithBoost(argc, argv);
-#endif
   }
   
   /// Read the file and apply configuration for each line immediately
@@ -251,18 +233,23 @@ public:
   
 protected:
 
-#ifndef USE_GETOPT
-  /// Parses the command line using boost::program_options and extracts the configfile option.
+  /// Parses the command line using boost::program_options and extracts the
+  /// configfile option.
   /**
    * Throws a CommandLineException.
    *
    * @param argc The argc of main(...).
    * @param argv The argv of main(...).
    */
-  void parseCommandLineWithBoost(const int argc, const char* const* argv) throw(CommandLineException) {
-    GCNF_DUMP_N(m_name.c_str(), "Parse command line ("<<argc<<" arguments) with boost program_options");
+  void parseCommandLineWithBoost(const int argc, const char* const* argv)
+                                                   throw(CommandLineException)
+  {
+    GCNF_DUMP_N(m_name.c_str(), "Parse command line ("
+                                << argc
+                                << " arguments) with boost program_options");
 
-    for (int i = 0; i<argc; i++) {
+    for (int i = 0; i<argc; i++)
+    {
       std::cout << "#"<< i << ": "<<argv[i] << std::endl;
     }
     
@@ -270,21 +257,24 @@ protected:
 #ifdef ENABLE_SHORT_COMMAND_LINE_OPTIONS
     desc.add_options()
       ("help,h", "  Command line usage for command line Config parser")
-      ("gs_configfile,c", po::value< std::vector<std::string> >(), "gs_configfile     multiple args possible")
-      ;
+      ("gs_configfile,c", po::value< std::vector<std::string> >()
+                        , "gs_configfile     multiple args possible");
 #else
     desc.add_options()
       ("help", "  Command line usage for command line Config parser")
-      ("gs_configfile", po::value< std::vector<std::string> >(), "gs_configfile     multiple args possible")
-      ;
+      ("gs_configfile", po::value< std::vector<std::string> >()
+                      , "gs_configfile     multiple args possible");
 #endif
     
     po::variables_map vm;
-    //po::store(po::parse_command_line(argc, argv, desc), vm); // without allowing unknown options
-    po::store(po::command_line_parser(argc, const_cast<char**>(argv)).options(desc).allow_unregistered().run(), vm); // allows unknown options
+    po::store(po::command_line_parser(argc,
+              const_cast<char**>(argv)).options(desc).allow_unregistered().run()
+              , vm); // allows unknown options
     
-    if (vm.count("help")) {
-      std::cout << "Config file command line parser: parse option --help " << std::endl;
+    if (vm.count("help"))
+    {
+      std::cout << "Config file command line parser: parse option --help "
+                << std::endl;
       std::cout << "Usage: options_description [options]" << std::endl;
       std::cout << desc;
       return;
@@ -292,130 +282,20 @@ protected:
     
     if (vm.count("gs_configfile"))
     {
-      const std::vector<std::string> *vec = &vm["gs_configfile"].as< std::vector<std::string> >();
-      for (unsigned int i = 0; i < vec->size(); i++) {
-        GCNF_DUMP_N(m_name.c_str(), "Boost program_option gs_configfile with value '"<<vec->at(i).c_str()<<"'");
-        std::cout << m_name.c_str() <<": Parse command line option --gs_configfile " << vec->at(i) << std::endl;
+      const std::vector<std::string> *vec
+                      = &vm["gs_configfile"].as< std::vector<std::string> >();
+      for (unsigned int i = 0; i < vec->size(); i++)
+      {
+        GCNF_DUMP_N(m_name.c_str(),
+                    "Boost program_option gs_configfile with value '"
+                    << vec->at(i).c_str() << "'");
+        std::cout << m_name.c_str()
+                  << ": Parse command line option --gs_configfile "
+                  << vec->at(i) << std::endl;
         config(vec->at(i).c_str());
       }
     }
-
   }
-  
-#else
-  
-  /// Parses the command line  using getopt and extracts the configfile option.
-  /**
-   * Throws a CommandLineException.
-   *
-   * The call getopt changes the used array argv so use a copy of the
-   * command line arguments!
-   *
-   * @param argc The argc of main(...).
-   * @param argv The argv of main(...).
-   */
-  void parseCommandLineWithGetOpt(const int argc, const char* const* argv) throw(CommandLineException) {
-    GCNF_DUMP_N(m_name.c_str(), "Parse command line ("<<argc<<" arguments) with getopt");
- 
-    assert(argc < ARGC_COPY_SIZE); // if this fails, enlarge ARGC_COPY_SIZE
-    
-    // getopt changes the array: use a copy of the command line arguments!
-    // copy **argv to **argv_cop
-    char *argv_cop[ARGC_COPY_SIZE]; // ARGC_COPY_SIZE because argc not allowed in ISO C++
-    for (int i = 0; i < argc; i++) {
-      char *t = new char[strlen(argv[i]) + 1];
-      strncpy(t, argv[i], strlen(argv[i]) + 1); // last character filled with \0
-      //cout << " " << argv[i];
-      argv_cop[i] = t;
-    }
-
-    for (int i = 0; i<argc; i++) {
-      std::cout << "#"<< i << ": "<<argv_cop[i] << std::endl;
-    }
-
-    //
-    // Info for getopt(...) and getopt_long(...):
-    //   "man 3 getopt"
-    //
-    int c;
-    //int digit_optind = 0;
-
-    optind = 0; // reset of getopt!!
-    while (1)
-      {
-	int option_index = 0;
-        // avoid compiler warning
-        static struct option long_options[] =
-          {
-            {"gs_configfile", 1, 0, 'c'},   // '--configfile filename' = '-c filename', expected value: '<filename>'
-            {"help", 0, 0, 'h'},    // '--help' = '-h'
-            {0, 0, 0, 0}
-          };
-        // Avoid error message for not recognized options:
-        opterr = 0;
-#ifdef ENABLE_SHORT_COMMAND_LINE_OPTIONS
-        c = getopt_long (argc, argv_cop, "h:c:",
-                         long_options, &option_index);
-#else
-        c = getopt_long (argc, argv_cop, "",
-                         long_options, &option_index);
-#endif
-        if (c == -1) {
-          //cout << "break"<<endl;
-          break;
-        }
-        
-        switch (c)
-          {
-          
-          case 'c': // -c and --configfile
-            {
-              GCNF_DUMP_N(m_name.c_str(), "Option gs_configfile with value "<<optarg);
-              std::cout << "Config file command line parser: parse option --gs_configfile " << optarg << std::endl<<std::flush;
-              config(optarg);
-              break;
-            }
-            
-          case 'h': // -h and --help
-            {
-              std::cout << "Config file command line parser: parse option --help " << std::endl<<std::flush;
-              std::cout << "  Command line usage for config file command line parser:" <<std::endl;
-              std::cout << std::endl;
-              std::cout << "     Possible Options/Arguments:" << std::endl;
-              std::cout << std::endl;
-              std::cout << "      --gs_configfile filename     multiple args possible" << std::endl;
-              std::cout << std::endl;
-              std::cout << "      --help    This help." << std::endl;
-              std::cout << std::endl<<std::endl<<std::flush;
-              break;
-            }
-
-          case '?':
-            {
-              GCNF_DUMP_N(m_name.c_str(), "Option ? not processed in config file command line parser: "<<optopt);
-              break;
-            }
-
-          default:
-            {
-              //GCNF_DUMP_N(m_name.c_str(), "Option "<<c<<" not processed in config command line parser.");
-              //printf ("?? getopt delivers code %o ??", c);
-            }
-          }
-      }
-    
-    /*
-    if (optind < argc)
-      {
-        std::stringstream ss;
-        while (optind < argc)
-          ss << argv_cop[optind++] << " ";
-        GCNF_DUMP_N(m_name.c_str(), "No config options of ARGV: "<<ss.str().c_str());
-      }
-    */
- 
-  }
-#endif
 
   /// Interprets one input line (string) and returns the pair< param_name, value >
   /**

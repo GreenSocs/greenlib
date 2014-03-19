@@ -22,24 +22,12 @@
 #ifndef __COMMANDLINECONFIGPARSER_H__
 #define __COMMANDLINECONFIGPARSER_H__
 
-// if this should use the unix getopt function for the parsing of the command line options
-// or (if not) the boost program_options should be used (don't forget to link the lib boost_program_options!)
-// default: do NOT define this!
-// #define USE_GETOPT
-
 //#define ENABLE_SHORT_COMMAND_LINE_OPTIONS  // enables the short synonyms for the gs_ options
 
-#include "greencontrol/gcnf/plugin/config_globals.h" // may define USE_GETOPT
+#include "greencontrol/gcnf/plugin/config_globals.h"
 
-#ifdef USE_GETOPT
-# include <getopt.h>
-# ifdef ARGC_COPY_SIZE
-#  undef ARGC_COPY_SIZE
-# endif
-# define ARGC_COPY_SIZE 20
-#else
-# include <boost/program_options.hpp>
-#endif
+
+#include <boost/program_options.hpp>
 
 #include "greencontrol/config.h"
 
@@ -47,9 +35,7 @@
 namespace gs {
 namespace cnf {
 
-#ifndef USE_GETOPT
-  namespace po = boost::program_options;
-#endif
+namespace po = boost::program_options;
 
 /// Command line parser for parameter configuration
 /**
@@ -136,18 +122,15 @@ public:
    * @param argc The argc of main(...).
    * @param argv The argv of main(...).
    */
-  void parse(const int argc, const char* const* argv) throw(CommandLineException) {
-#ifdef USE_GETOPT
-    parseCommandLineWithGetOpt(argc, argv);
-#else
+  void parse(const int argc, const char* const* argv)
+                                                  throw(CommandLineException)
+  {
     parseCommandLineWithBoost(argc, argv);
-#endif
   }
 
 
 private:
 
-#ifndef USE_GETOPT
   /// Parses the command line using boost::program_options.
   /**
    * Throws a CommandLineException.
@@ -198,120 +181,6 @@ private:
     
   }
   
-#else
-
-  /// Parses the command line using getopt.
-  /**
-   * Throws a CommandLineException.
-   *
-   * The call getopt changes the used array argv so use a copy of the
-   * command line arguments!
-   *
-   * @param argc The argc of main(...).
-   * @param argv The argv of main(...).
-   */
-  void parseCommandLineWithGetOpt(const int argc, const char* const* argv) throw(CommandLineException) {
-    GCNF_DUMP_N("CommandLineConfigParser", "Parse command line ("<<argc<<" arguments) with getopt");
-
-    assert(argc < ARGC_COPY_SIZE); // if this fails, enlarge ARGC_COPY_SIZE
-
-    // getopt changes the array: use a copy of the command line arguments!
-    // copy **argv to **argv_cop
-    char *argv_cop[ARGC_COPY_SIZE]; // ARGC_COPY_SIZE because argc not allowed in ISO C++
-    for (int i = 0; i < argc; i++) {
-      char *t = new char[strlen(argv[i]) + 1];
-      strncpy(t, argv[i], strlen(argv[i]) + 1); // last character filled with \0
-      //cout << " " << argv[i];
-      argv_cop[i] = t;
-    }
-
-    //
-    // Info for getopt(...) and getopt_long(...):
-    //   "man 3 getopt"
-    //
-    int c;
-    //int digit_optind = 0;
-
-    optind = 0; // reset of getopt!!
-    while (1)
-      {
-        int option_index = 0;
-        // avoid compiler warning
-        static struct option long_options[] =
-          {
-            {"gs_param", 1, 0, 'p'},   // '--param value' = '-p value', expected value: '<parname>=<parvalue>'
-            {"help", 0, 0, 'h'},    // '--help' = '-h'
-            {0, 0, 0, 0}
-          };
-        
-        // Avoid error message for not recognized options:
-        opterr = 0;
-#ifdef ENABLE_SHORT_COMMAND_LINE_OPTIONS
-        c = getopt_long (argc, argv_cop, "h:p:",
-                         long_options, &option_index);
-#else
-        c = getopt_long (argc, argv_cop, "",
-                         long_options, &option_index);
-#endif
-        if (c == -1) {
-          //std::cout << "break"<<std::endl<<std::flush;
-          break;
-        }
-        
-        switch (c)
-          {
-          
-          case 'p': // -p and --param
-            {
-              GCNF_DUMP_N("CommandLineArgumentParser", "Option gs_param with value "<<optarg);
-              std::cout << "CommandLineArgumentParser: Parse command line argument --gs_param " << optarg << std::endl<<std::flush;
-              parseAndSetParam(optarg);
-              break;
-            }
-            
-          case 'h': // -h and --help
-            {
-              std::cout << "Command line config parser: parse option --help " << std::endl<<std::flush;
-              std::cout << "  Command line usage for command line Config parser:" <<std::endl;
-              std::cout << std::endl;
-              std::cout << "     Possible Options/Arguments:" << std::endl;
-              std::cout << std::endl;
-              std::cout << "      --gs_param parname=value     multiple args possible" << std::endl;
-              std::cout << "      --gs_param \"parname=value\"" << std::endl;
-              std::cout << "      --gs_param parname=\"value\"" << std::endl;
-              std::cout << "          Values with quotes: \'--gs_param parname=\"this is a value string with \\\"quotes\\\"\"\'" << std::endl;
-              std::cout << std::endl;
-              std::cout << "      --help    This help." << std::endl;
-              std::cout << std::endl<<std::endl<<std::flush;
-              break;
-            }
-
-          case '?':
-            {
-              GCNF_DUMP_N("CommandLineConfigParser", "Option ? not processed in config command line parser: "<<optopt);
-              break;
-            }
-
-          default:
-            {
-              //GCNF_DUMP_N("CommandLineConfigParser", "Option "<<c<<" not processed in config command line parser.");
-              //printf ("?? getopt delivers code %o ??", c);
-            }
-          }
-      }
-    
-    /*
-    if (optind < argc)
-      {
-        std::stringstream ss;
-        while (optind < argc)
-          ss << argv[optind++] << " ";
-        GCNF_DUMP_N("CommandLineConfigParser", "No config options of ARGV: "<<ss.str().c_str());
-      }
-    */
-  }
-#endif
-
   /// Parse and set a single parameter.
   /**
    * This method can be called with one command line option argument:
