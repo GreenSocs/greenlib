@@ -1,7 +1,7 @@
 #include "systemc.h"
 #include "Initiator.h"
 #include "Target.h"
-#include "green-signal-bus/genericSignalBus.h"
+#include "greensignalbus/genericSignalBus.h"
 
 int sc_main(int argc, char** argv) {
   Initiator1 initInst1("myInitiator1");
