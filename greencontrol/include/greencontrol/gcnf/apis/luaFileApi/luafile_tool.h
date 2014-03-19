@@ -33,19 +33,10 @@
 
 //#define ENABLE_SHORT_COMMAND_LINE_OPTIONS  // enables the short synonyms for the gs_ options
 
-// if this should use the unix getopt function for the parsing of the command line options
-// or (if not) the boost program_options should be used (don't forget to link the lib boost_program_options!)
-// default: do NOT define this!
-// #define USE_GETOPT
-
 #include "greencontrol/config.h"
-#include "greencontrol/gcnf/plugin/config_globals.h" // may define USE_GETOPT
+#include "greencontrol/gcnf/plugin/config_globals.h"
 
-#ifdef USE_GETOPT
-# include <getopt.h>
-#else
-# include <boost/program_options.hpp>
-#endif
+#include <boost/program_options.hpp>
 
 extern "C" {
 #include <lua.h>
@@ -56,9 +47,8 @@ extern "C" {
 namespace gs {
 namespace cnf {
 
-#ifndef USE_GETOPT
-  namespace po = boost::program_options;
-#endif
+namespace po = boost::program_options;
+
   
   /// Tool which reads a Lua configuration file and sets parameters.
   /**
@@ -159,17 +149,14 @@ namespace cnf {
      * @param argc The argc of main(...).
      * @param argv The argv of main(...).
      */
-    void parseCommandLine(const int argc, const char* const* argv) throw(CommandLineException) {
-#ifdef USE_GETOPT
-      parseCommandLineWithGetOpt(argc, argv);
-#else
+    void parseCommandLine(const int argc, const char* const* argv)
+        throw(CommandLineException)
+    {
       parseCommandLineWithBoost(argc, argv);
-#endif
     }
     
   protected:
     
-#ifndef USE_GETOPT
     /// Parses the command line with boost::program_options and extracts the luafile option.
     /**
      * Throws a CommandLineException.
@@ -217,85 +204,6 @@ namespace cnf {
 
     }
     
-#else
-    
-    /// Parses the command line with getopt and extracts the luafile option.
-    /**
-     * Throws a CommandLineException.
-     *
-     * @param argc The argc of main(...).
-     * @param argv The argv of main(...).
-     */
-    void parseCommandLineWithGetOpt(const int argc, const char* const* argv) throw(CommandLineException) {
-      GCNF_DUMP_N(name(), "Parse command line for --gs_luafile option ("<<argc<<" arguments)");
-
-      // getopt permutes argv array, so copy it to argv_cp
-      const int BUFFER_SIZE = 8192;
-      char argv_buffer[BUFFER_SIZE]; char* buffer_p=argv_buffer;
-      char **argv_cp = new char*[argc];
-      for (int i = 0; i < argc; i++) {
-        size_t len = strlen(argv[i]) + 1; // count \0
-        strncpy(buffer_p, argv[i], len);
-        argv_cp[i] = buffer_p;
-        buffer_p += len;
-      }
-
-      // Check the rare case that BUFFER_SIZE is not enough
-      if (buffer_p - argv_buffer > BUFFER_SIZE) {
-        throw CommandLineException();
-      }
-
-      //configure getopt
-      optind = 0;   // reset of getopt
-      opterr = 0;   // avoid error message for not recognized option
-#ifdef ENABLE_SHORT_COMMAND_LINE_OPTIONS
-      static const char* optstring = "l:h";
-#else
-      static const char* optstring = "";
-#endif
-      static struct option long_options[] = {
-        {"gs_luafile", 1, 0, 'l'}, // '--luafile filename'
-        {"help", 0, 0, 'h'},    // '--help' = '-h'
-        {0, 0, 0, 0}
-      };
-
-      while (1) {
-
-        int c = getopt_long(argc, argv_cp, optstring, long_options, 0);
-        if (c == EOF) break;
-
-        switch (c) {
-          
-        case 'l': // -l and --gs_luafile
-          GCNF_DUMP_N(name(), "Option --gs_luafile with value "<< optarg);
-          std::cout << "Lua file command line parser: parse option --gs_luafile " << optarg << std::endl;
-          config(optarg);
-          break;
-            
-        case 'h': // -h and --help
-          std::cout << "Lua file command line parser: parse option --help " << std::endl;
-          std::cout << "  Command line usage for lua file command line parser:" <<std::endl;
-          std::cout << std::endl;
-          std::cout << "     Possible Options/Arguments:" << std::endl;
-          std::cout << std::endl;
-          std::cout << "      --gs_luafile <filename>" << std::endl;
-          std::cout << "        execute a Lua script and loads all the globals as parameters" << std::endl;
-          std::cout << std::endl;
-          std::cout << "      --help" << std::endl;
-          std::cout << "        this help" << std::endl;
-          std::cout << std::endl;
-          std::cout << std::endl;
-          break;
-
-        case '?':
-        case ':':
-          GCNF_DUMP_N(name(), "Option "<<c<<" not processed in lua file command line parser: "<< optopt);
-          break;
-        }
-      }
-    }
-#endif
-
     /// Config API which is used by this API
     cnf_api_if* mApi;
 

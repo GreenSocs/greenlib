@@ -50,12 +50,7 @@ namespace cnf {
 
   // if to show callback outputs for gs_params
   //#define GS_PARAM_CALLBACK_VERBOSE
-  
-  // if to use getopt in the command option parsers or not (boost_program_options instead)
-  #ifndef USE_BOOST_PROG_OPT
-  # define USE_GETOPT
-  #endif
-  
+
   // if to enable old new param callback behavior which calls not again when a param is implicit and becomes explicit (changed after release 4.0.1)
   //#define GCNF_OLD_NEW_PARAM_CALLBACK_BEHAVIOR_ENABLED
   
