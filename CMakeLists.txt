@@ -275,6 +275,18 @@ install(DIRECTORY greenmemory/docs/
         DESTINATION docs/greenmemory
 )
 
+# Greensignalbus
+
+set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greensignalbus/include/)
+
+install(DIRECTORY greensignalbus/include/
+        DESTINATION include
+)
+
+install(DIRECTORY greensignalbus/examples/
+        DESTINATION examples/signalbus
+)
+
 # Greensocs Library include directory (for example).
 include_directories(${GreenSocs_INCLUDE_DIRS})
 link_directories(${GreenSocs_LIB_DIRS})
@@ -285,6 +297,7 @@ set(CMAKE_CXX_FLAGS "-g -Wall -DSC_INCLUDE_DYNAMIC_PROCESSES -D_REENTRANT")
 add_subdirectory(greensignalsocket EXCLUDE_FROM_ALL)
 add_subdirectory(greenrouter EXCLUDE_FROM_ALL)
 add_subdirectory(greenmemory EXCLUDE_FROM_ALL)
+add_subdirectory(greensignalbus EXCLUDE_FROM_ALL)
 
 # Compile greenreg library.
 add_subdirectory(greenreg)
