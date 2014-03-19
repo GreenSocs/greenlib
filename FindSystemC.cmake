@@ -86,12 +86,12 @@ endif("${SystemC_MAJOR}" MATCHES "2")
   set(SystemC_FOUND TRUE)
 message(STATUS "SystemC version = ${SystemC_VERSION}")
 
+SET(SystemC_LIBRARY_NAME libsystemc.a)
 if(WIN32)
-  SET(SystemC_LIBRARY_NAME, "SystemC.lib")
-else()
-  SET(SystemC_LIBRARY_NAME, "libsystemc.a")
+  SET(SystemC_LIBRARY_NAME SystemC.lib)
 endif()
 
+message(STATUS "Library name = ${SystemC_LIBRARY_NAME}")
 
 FIND_PATH(SystemC_INCLUDE_DIRS
   NAMES systemc.h
