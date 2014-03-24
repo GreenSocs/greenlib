@@ -85,12 +85,6 @@ install(FILES greencontrol/LICENSE
 
 # GreenControl
 
-configure_file(
-    greencontrol/examples/Makefile.defs.in
-    Makefile.defs
-    @ONLY
-)
-
 set (GreenSocs_INCLUDE_DIRS ${GreenSocs_INCLUDE_DIRS} greencontrol/include/)
 
 install(DIRECTORY greencontrol/include/
