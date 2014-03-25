@@ -110,6 +110,6 @@ int sc_main(int argc, char** argv) {
   Device dev("RegisterDevice");
   
   sc_core::sc_start();
-  
+  Sleep(3000);
   return EXIT_SUCCESS;
 }
