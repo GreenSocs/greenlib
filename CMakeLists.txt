@@ -279,6 +279,7 @@ set(CMAKE_CXX_FLAGS "-g -Wall -DSC_INCLUDE_DYNAMIC_PROCESSES -D_REENTRANT")
 add_subdirectory(greensignalsocket EXCLUDE_FROM_ALL)
 add_subdirectory(greenrouter EXCLUDE_FROM_ALL)
 add_subdirectory(greenmemory EXCLUDE_FROM_ALL)
+add_subdirectory(greencontrol EXCLUDE_FROM_ALL)
 
 # Compile greenreg library.
 add_subdirectory(greenreg)
