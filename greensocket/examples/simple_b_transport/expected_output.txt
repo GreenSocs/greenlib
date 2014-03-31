@@ -1,0 +1,144 @@
+S0 using tag 383 for my socket
+S1 using tag 886 for my socket
+M.socket3 is connected to A.t_socket which is of type conf_fwd_target_socket
+  Treats unknown as rejected.
+  Used extensions:
+    priority used as optional.
+    cacheable used as optional.
+  Used phases:
+    BEGIN_REQ used as optional.
+    BEGIN_RESP used as optional.
+    END_REQ used as optional.
+    END_RESP used as optional.
+
+  The priority extension may be used.
+  The cacheable extension may be used.
+bound to callback from M.socket3: Bound to A.t_socket
+M.socket2 is connected to osci_socket_o which is of type plain_osci_socket
+  Treats unknown as rejected.
+  Used extensions:
+    priority used as rejected.
+    cacheable used as rejected.
+  Used phases:
+    BEGIN_REQ used as mandatory.
+    BEGIN_RESP used as mandatory.
+    END_REQ used as mandatory.
+    END_RESP used as mandatory.
+
+  The priority extension must not be used.
+  The cacheable extension must not be used.
+bound to callback from M.socket2: Bound to plain osci
+M.socket1 is connected to S1.socket which is of type conf_fwd_target_socket
+  Treats unknown as rejected.
+  Used extensions:
+    priority used as mandatory.
+    cacheable used as rejected.
+  Used phases:
+    BEGIN_REQ used as optional.
+    BEGIN_RESP used as optional.
+    END_REQ used as optional.
+    END_RESP used as optional.
+
+  The priority extension has to be used.
+  The cacheable extension must not be used.
+bound to callback from M.socket1: Bound to S1.socket
+M.socket0 is connected to S0.socket which is of type conf_fwd_target_socket
+  Treats unknown as rejected.
+  Used extensions:
+    priority used as rejected.
+    cacheable used as mandatory.
+  Used phases:
+    BEGIN_REQ used as optional.
+    BEGIN_RESP used as optional.
+    END_REQ used as optional.
+    END_RESP used as optional.
+
+  The priority extension must not be used.
+  The cacheable extension has to be used.
+bound to callback from M.socket0: Bound to S0.socket
+M.socket3 is connected to A.t_socket which is of type conf_fwd_target_socket
+  Treats unknown as rejected.
+  Used extensions:
+    priority used as mandatory.
+    cacheable used as rejected.
+  Used phases:
+    BEGIN_REQ used as optional.
+    BEGIN_RESP used as optional.
+    END_REQ used as optional.
+    END_RESP used as optional.
+
+  The priority extension has to be used.
+  The cacheable extension must not be used.
+bound to callback from M.socket3: Bound to A.t_socket
+calling b_trans
+S0 got txn (from socket with tag 383)
+  Command:       Write
+  Adress:        0
+  Data  lengtgh: 4
+  Data:          beef0000
+  Cachable:      Yes
+     Expected:   Yes
+  Priority:      N/A
+     Expected:   N/A
+done calling b_trans
+calling b_trans
+S1 got txn (from socket with tag 886)
+  Command:       Write
+  Adress:        1
+  Data  lengtgh: 4
+  Data:          beef0001
+  Cachable:      No
+     Expected:   No
+  Priority:      11
+     Expected:   A priority
+done calling b_trans
+calling b_trans
+S2: Received write request: A = 0x2, D = 0xbeef0002 @ 30 ns
+done calling b_trans
+calling b_trans
+S3 got txn
+  Command:       Write
+  Adress:        3
+  Data  lengtgh: 4
+  Data:          beef0003
+  Secure:      Yes
+     Expected:   Yes
+  Priority:      13
+     Expected:  A priority
+done calling b_trans
+calling b_trans
+S0 got txn (from socket with tag 383)
+  Command:       Write
+  Adress:        0
+  Data  lengtgh: 4
+  Data:          beef0004
+  Cachable:      Yes
+     Expected:   Yes
+  Priority:      N/A
+     Expected:   N/A
+done calling b_trans
+calling b_trans
+S1 got txn (from socket with tag 886)
+  Command:       Write
+  Adress:        1
+  Data  lengtgh: 4
+  Data:          beef0005
+  Cachable:      No
+     Expected:   No
+  Priority:      12
+     Expected:   A priority
+done calling b_trans
+calling b_trans
+S2: Received write request: A = 0x2, D = 0xbeef0006 @ 130 ns
+done calling b_trans
+calling b_trans
+S3 got txn
+  Command:       Write
+  Adress:        3
+  Data  lengtgh: 4
+  Data:          beef0007
+  Secure:      Yes
+     Expected:   Yes
+  Priority:      14
+     Expected:  A priority
+done calling b_trans

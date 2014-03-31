@@ -1,0 +1,16 @@
+calling b_trans
+S: Received write request: A = 0x10, D = 0xbeef0001 @ 0 s
+done calling b_trans @ 60 ns (td= 0 s )
+waiting for 0 s
+calling b_trans
+S: Received read request: A = 0x10 @ 60 ns
+done calling b_trans @ 60 ns (td= 115 ns )
+waiting for 115 ns
+calling b_trans
+S: Received write request: A = 0x20, D = 0xbeef0002 @ 175 ns
+done calling b_trans @ 245 ns (td= 0 s )
+waiting for 0 s
+calling b_trans
+S: Received read request: A = 0x20 @ 245 ns
+done calling b_trans @ 245 ns (td= 130 ns )
+waiting for 130 ns
