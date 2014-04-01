@@ -44,12 +44,12 @@ slightly changed to use the quantum keeper.
 int sc_main(int argc, char** argv){
 
   /// GreenControl Core instance
-  gs::ctr::GC_Core       core("ControlCore");
+  gs::ctr::GC_Core       core();
   
   // GreenConfig Plugin
   gs::cnf::ConfigDatabase* cnfdatabase = new gs::cnf::ConfigDatabase("ConfigDatabase");
   gs::cnf::ConfigPlugin configPlugin(cnfdatabase);  
-  gs::av::GAV_Plugin analysisPlugin("AnalysisPlugin", gs::av::STDOUT_OUT);    
+  gs::av::GAV_Plugin analysisPlugin(gs::av::STDOUT_OUT);    
   
   // Master and Slave
   b_master_qk m("M");
