@@ -290,6 +290,7 @@ add_subdirectory(greenrouter EXCLUDE_FROM_ALL)
 add_subdirectory(greenmemory EXCLUDE_FROM_ALL)
 add_subdirectory(greensocket EXCLUDE_FROM_ALL)
 add_subdirectory(greenmessage EXCLUDE_FROM_ALL)
+add_subdirectory(gsgpsocket EXCLUDE_FROM_ALL)
 
 # Compile greenreg library.
 add_subdirectory(greenreg)
