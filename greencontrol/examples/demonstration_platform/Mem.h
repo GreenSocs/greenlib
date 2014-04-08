@@ -29,7 +29,7 @@
 #include "demo_globals.h"
 
 // SimpleBus API
-#include "greenbus/api/simplebusAPI.h"
+#include "gsgpsocket/apis/simplebusAPI.h"
 
 // GreenControl and GreenConfig
 #include "greencontrol/config.h"

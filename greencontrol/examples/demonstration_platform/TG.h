@@ -32,7 +32,7 @@
 #include "greencontrol/core/helpfunctions.h"
 
 // SimpleBus API
-#include "greenbus/api/simplebusAPI.h"
+#include "gsgpsocket/apis/simplebusAPI.h"
 
 // GreenControl and GreenConfig
 #include "greencontrol/config.h"
