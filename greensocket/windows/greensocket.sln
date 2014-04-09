@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C++ Express 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simple_b_transport", "examples\simple_b_transport.vcproj", "{29E6C6B1-901E-4BBF-9A2A-53B54813B82A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simple_b_transport_hierarchy_bind", "examples\simple_b_transport_hierarchy_bind.vcproj", "{25231AA6-D03A-43B3-A979-573B5C49125E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simple_b_transport_multi", "examples\simple_b_transport_multi.vcproj", "{F815AEE5-38A4-48CA-B96A-387C82B48FFF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simple_quantum_keeper", "examples\simple_quantum_keeper.vcproj", "{20AEEC8B-AF27-44C1-9DC4-6709388BF49C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29E6C6B1-901E-4BBF-9A2A-53B54813B82A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{29E6C6B1-901E-4BBF-9A2A-53B54813B82A}.Debug|Win32.Build.0 = Debug|Win32
+		{29E6C6B1-901E-4BBF-9A2A-53B54813B82A}.Release|Win32.ActiveCfg = Release|Win32
+		{29E6C6B1-901E-4BBF-9A2A-53B54813B82A}.Release|Win32.Build.0 = Release|Win32
+		{25231AA6-D03A-43B3-A979-573B5C49125E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{25231AA6-D03A-43B3-A979-573B5C49125E}.Debug|Win32.Build.0 = Debug|Win32
+		{25231AA6-D03A-43B3-A979-573B5C49125E}.Release|Win32.ActiveCfg = Release|Win32
+		{25231AA6-D03A-43B3-A979-573B5C49125E}.Release|Win32.Build.0 = Release|Win32
+		{F815AEE5-38A4-48CA-B96A-387C82B48FFF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F815AEE5-38A4-48CA-B96A-387C82B48FFF}.Debug|Win32.Build.0 = Debug|Win32
+		{F815AEE5-38A4-48CA-B96A-387C82B48FFF}.Release|Win32.ActiveCfg = Release|Win32
+		{F815AEE5-38A4-48CA-B96A-387C82B48FFF}.Release|Win32.Build.0 = Release|Win32
+		{20AEEC8B-AF27-44C1-9DC4-6709388BF49C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{20AEEC8B-AF27-44C1-9DC4-6709388BF49C}.Debug|Win32.Build.0 = Debug|Win32
+		{20AEEC8B-AF27-44C1-9DC4-6709388BF49C}.Release|Win32.ActiveCfg = Release|Win32
+		{20AEEC8B-AF27-44C1-9DC4-6709388BF49C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
