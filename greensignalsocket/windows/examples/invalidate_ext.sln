@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C++ Express 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "invalidate_ext", "invalidate_ext.vcproj", "{E3EC3D99-5986-4E01-B927-60D4250A0B9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3EC3D99-5986-4E01-B927-60D4250A0B9B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E3EC3D99-5986-4E01-B927-60D4250A0B9B}.Debug|Win32.Build.0 = Debug|Win32
+		{E3EC3D99-5986-4E01-B927-60D4250A0B9B}.Release|Win32.ActiveCfg = Release|Win32
+		{E3EC3D99-5986-4E01-B927-60D4250A0B9B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
