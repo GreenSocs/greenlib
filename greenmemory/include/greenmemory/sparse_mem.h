@@ -99,8 +99,8 @@ get_block(address_type start_, address_type end_)
   // find the index where the end should be
   int end_i = std::lower_bound(outs.begin(), outs.end(), end) - outs.begin();
   // if in the middle of an interval
-  if (end_i != -1 and end_i != static_cast<int>(outs.size()) and
-      ins[end_i] < end and end < outs[end_i]) {
+  if (end_i != -1 && end_i != static_cast<int>(outs.size()) &&
+      ins[end_i] < end && end < outs[end_i]) {
     // ajust to the end of that interval
     end = outs[end_i];
   }
