@@ -1,4 +1,4 @@
-#0: ./testbench_arrays.x
+#0: ./greencontrol_extended_parameter_arrays
 ConfigFile_Api: Applying value of param 'Owner.myTopArr.my2ndArray0.myIntPar0' to '20'
 ConfigFile_Api: Applying value of param 'Owner.myTopArr.my2ndArray0.myIntPar1' to '30'
 ConfigFile_Api: Applying value of param 'Owner.myTopArr.my2ndArray0.myStringPar' to '_I_N_I_T_'
