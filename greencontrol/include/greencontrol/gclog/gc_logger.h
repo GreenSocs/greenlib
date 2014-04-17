@@ -29,7 +29,7 @@
     #ifdef _MSC_VER
       #pragma message("Warning: GCLOG_RETURN is not defined before including GC_Logger.h or gc_transaction.h. Transactions returning from their receivers won't be logged!")
     #else
-      #warning GCLOG_RETURN is not defined before including GC_Logger.h or gc_transaction.h. Transactions returning from their receivers won't be logged!
+      #warning "GCLOG_RETURN is not defined before including GC_Logger.h or gc_transaction.h. Transactions returning from their receivers won't be logged!"
     #endif
   #endif
 #endif
@@ -42,7 +42,7 @@
   #ifdef _MSC_VER
     #pragma message("Warning: GCLOG_RETURN is not defined. Transactions returning from their receivers won't be logged!")
   #else
-    #warning GCLOG_RETURN is not defined. Transactions returning from their receivers won't be logged!
+    #warning "GCLOG_RETURN is not defined. Transactions returning from their receivers won't be logged!"
   #endif
 #endif
 
