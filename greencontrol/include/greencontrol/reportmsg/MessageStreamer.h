@@ -132,9 +132,11 @@ BEGIN_GS_REPORTMSG_NAMESPACE
              const std::string& parent_name) {
       std::string nam;
       std::ostringstream ss;
+      std::vector<std::string> tokens;
+      boost::split(tokens, message_filename, boost::is_any_of("/\\"));
       REPMSG_DUMP_N("MessageStreamer",
                  "out( from module "<<module_name<<", streamer id="<<streamer_id<<", level="<<message_level_to_string(level)<<","<<std::endl
-                 <<"                  filename="<<message_filename<<", line="<<message_line<<", parent_name="<<parent_name<<std::endl
+		    <<"                  filename="<<tokens.back()<<", line="<<message_line<<", parent_name="<<parent_name<<std::endl
                  <<"                  message:  "<< raw_msg_string);
       for (unsigned int fileno = 0; fileno < m_msg_config.size(); fileno++) {
         // check filter
