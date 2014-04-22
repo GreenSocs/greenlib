@@ -157,7 +157,7 @@ public:
     // create Transaction an send it to config plugin
     ControlTransactionHandle th = m_gc_port.createTransaction();
     th->set_mService(CONFIG_SERVICE);
-    th->set_mCmd(CMD_GET_PARAM_LIST);
+    th->set_mCmd(CMD_GET_PARAM_LIST_VEC);
     // Target will be set in the core (with service information)
     th->set_mValue(""); // module
     
