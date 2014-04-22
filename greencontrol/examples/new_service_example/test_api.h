@@ -55,14 +55,6 @@ namespace test {
   {
   public:
 
-    /// Such a function could be used to get access to a User API singleton if needed
-    static gs::ctr::shared_ptr<Test_Api> getApiInstance() 
-    {
-      TEST_DUMP_N("Test_Api", "Static getApiInstance() function not supported");
-    }
-
-  public:
-
     /// Constructor Test_Api
     /**
      * The User API name (given to m_gc_port and m_name) can be chosen arbitraryly!
