@@ -65,7 +65,7 @@ Scml test: Set scml_property parameter 'ScmlOriginalPropertyIP.m_double_prop' = 
 Destructor ScmlOriginalPropertyIP
 
 
-@18446744073709551615 ps /3:  ScmlOriginalPropertyIP scml properties: 
+@1 ps /3:  ScmlOriginalPropertyIP scml properties: 
 
   String m_string_prop: value set by model
   Int    m_int_prop:    101
