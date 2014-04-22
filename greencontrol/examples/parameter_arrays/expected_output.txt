@@ -1,4 +1,4 @@
-#0: ./testbench_arrays.x
+#0: ./greencontrol_parameter_arrays
 ConfigFile_Api: Applying value of param 'Owner.int_arr.init_size' to '10'
 ConfigFile_Api: Applying value of param 'Owner.normal_uint_param' to '10'
 ConfigFile_Api: Applying value of param 'Owner.string_arr' to '{"Hello" "my world"}'
@@ -135,7 +135,6 @@ Owner.gs_param_base_13: init array of parameter Owner.string_arr done
 Owner.gs_param_base_13: Init gs_param_t Owner.string_arr
 
 Warning: Owner.gs_param_base_13: setString for Simple Parameter Arrays is experimental!! Use the lua config file parser or set the values with operator=(vector) or set the members individually with strings or values.
-In file: /Users/schroede/mydev/greensocs_greencontrol/branches/tmp_greencontrol/greencontrol/gcnf/apis/gs_param/gs_param_array.hpp:364
 Owner.gs_param_base_13: setString in array new size (3) not equal existing size (10): resize.
 Owner.gs_param_base_13: resize: size (3) than existing size (10): delete remaining members.
 Owner.gs_param_base_18: Destructing param 'Owner.string_arr.3'.
@@ -273,7 +272,6 @@ User********** Test setting members
 User: set int_arr {0 1 2 3 4 5 6 7 8 9}
 
 Warning: Owner.gs_param_base_1: setString for Simple Parameter Arrays is experimental!! Use the lua config file parser or set the values with operator=(vector) or set the members individually with strings or values.
-In file: /Users/schroede/mydev/greensocs_greencontrol/branches/tmp_greencontrol/greencontrol/gcnf/apis/gs_param/gs_param_array.hpp:364
 In process: User.main_action @ 10 ns
 gs_param: deserialize: string='0'
 gs_param: (int) stream eof and not fail
@@ -406,7 +404,6 @@ User********** Test setting members
 User: set int_arr {0 1 2 3 4 5 6 7 8 9}
 
 Warning: Owner.gs_param_base_1: setString for Simple Parameter Arrays is experimental!! Use the lua config file parser or set the values with operator=(vector) or set the members individually with strings or values.
-In file: /Users/schroede/mydev/greensocs_greencontrol/branches/tmp_greencontrol/greencontrol/gcnf/apis/gs_param/gs_param_array.hpp:364
 In process: User.main_action @ 10 ns
 Owner.gs_param_base_1: setString in array new size (10) not equal existing size (8): resize.
 Owner.gs_param_base_1: resize: size (10) larger than existing size (8): create new members.
@@ -587,7 +584,6 @@ User********** Test reduction of member number
 User: set int_arr {10 12 13 14}
 
 Warning: Owner.gs_param_base_1: setString for Simple Parameter Arrays is experimental!! Use the lua config file parser or set the values with operator=(vector) or set the members individually with strings or values.
-In file: /Users/schroede/mydev/greensocs_greencontrol/branches/tmp_greencontrol/greencontrol/gcnf/apis/gs_param/gs_param_array.hpp:364
 In process: User.main_action @ 10 ns
 Owner.gs_param_base_1: setString in array new size (4) not equal existing size (10): resize.
 Owner.gs_param_base_1: resize: size (4) than existing size (10): delete remaining members.
@@ -772,7 +768,6 @@ User********** Test increasment of member number
 User: set int_arr {"11" "22" "33" "44" "55" "66" "77" "88" "99" "1010" "1111" "1212"}
 
 Warning: Owner.gs_param_base_1: setString for Simple Parameter Arrays is experimental!! Use the lua config file parser or set the values with operator=(vector) or set the members individually with strings or values.
-In file: /Users/schroede/mydev/greensocs_greencontrol/branches/tmp_greencontrol/greencontrol/gcnf/apis/gs_param/gs_param_array.hpp:364
 In process: User.main_action @ 10 ns
 Owner.gs_param_base_1: setString in array new size (12) not equal existing size (4): resize.
 Owner.gs_param_base_1: resize: size (12) larger than existing size (4): create new members.
@@ -997,7 +992,6 @@ User********** Test different set string style
 User: set int_arr {"152" "9154"}
 
 Warning: Owner.gs_param_base_1: setString for Simple Parameter Arrays is experimental!! Use the lua config file parser or set the values with operator=(vector) or set the members individually with strings or values.
-In file: /Users/schroede/mydev/greensocs_greencontrol/branches/tmp_greencontrol/greencontrol/gcnf/apis/gs_param/gs_param_array.hpp:364
 In process: User.main_action @ 10 ns
 Owner.gs_param_base_1: setString in array new size (2) not equal existing size (12): resize.
 Owner.gs_param_base_1: resize: size (2) than existing size (12): delete remaining members.
