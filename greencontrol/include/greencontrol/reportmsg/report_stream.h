@@ -143,14 +143,20 @@ protected:
     m_message_streamer->register_stream_object(*this);
   }
   
-  
+  std::string getNameFile(std::string path) {
+      std::vector<std::string> tokens;
+      boost::split(tokens, m_message_filename, boost::is_any_of("/\\"));
+      return tokens.back();
+  }
+
   /// Ends this message, called by operator <<
   void end_message() {
     if (enabled) {
       assert(!fail());
       REPMSG_DUMP("end message");
+      m_message_filename = getNameFile(m_message_filename);
       // send stream
-      m_message_streamer->out(m_parent_name.c_str(), m_id.c_str(), m_msg_level, 
+      m_message_streamer->out(m_parent_name.c_str(), m_id.c_str(), m_msg_level,
                               str(), m_message_filename, m_message_line, m_parent_name);
     }
     // reset this stream
