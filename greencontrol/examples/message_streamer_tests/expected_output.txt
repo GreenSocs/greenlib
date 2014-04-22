@@ -660,7 +660,6 @@ Info: ModuleA.sysINFO: @20 ns /2: (ModuleA): This is an sc_info!
 
 Warning: ModuleA.sysWARN: @20 ns /2: (ModuleA): This is an sc_warning!
 
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/reportmsg/MessageStreamer.h:168
 In process: ModuleA.main_action @ 20 ns
 @20 ns /2 (MessageStreamer): check fileno 5 (SC_REPORT_ERROR) failed
 @20 ns /2 (MessageStreamer): check fileno 6 (SC_REPORT_FATAL) failed
@@ -679,7 +678,6 @@ In process: ModuleA.main_action @ 20 ns
 
 Error: ModuleA.sysERROR: @20 ns /2: (ModuleA): This is an sc_error!
 
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/reportmsg/MessageStreamer.h:172
 In process: ModuleA.main_action @ 20 ns
 @20 ns /2 (MessageStreamer): check fileno 6 (SC_REPORT_FATAL) failed
 @20 ns /2 (MessageStreamer): check fileno 7 (sc_report_message_file.txt) passed
@@ -728,7 +726,6 @@ Info: ModuleA2.sysINFO: @20 ns /2: (ModuleA2): This is an sc_info!
 
 Warning: ModuleA2.sysWARN: @20 ns /2: (ModuleA2): This is an sc_warning!
 
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/reportmsg/MessageStreamer.h:168
 In process: ModuleA2.main_action @ 20 ns
 @20 ns /2 (MessageStreamer): check fileno 5 (SC_REPORT_ERROR) failed
 @20 ns /2 (MessageStreamer): check fileno 6 (SC_REPORT_FATAL) failed
@@ -747,7 +744,6 @@ In process: ModuleA2.main_action @ 20 ns
 
 Error: ModuleA2.sysERROR: @20 ns /2: (ModuleA2): This is an sc_error!
 
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/reportmsg/MessageStreamer.h:172
 In process: ModuleA2.main_action @ 20 ns
 @20 ns /2 (MessageStreamer): check fileno 6 (SC_REPORT_FATAL) failed
 @20 ns /2 (MessageStreamer): check fileno 7 (sc_report_message_file.txt) passed
