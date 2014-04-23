@@ -6,25 +6,20 @@ Done
 Running test 2 (ControlTransaction_Test)
 
 Warning: GC_Core: DEPRECATED: Don't copy a ControlTransaction! It is dangerous regarding extensions.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/core/gc_transaction.h:463
 
 Warning: GC_Core: DEPRECATED: Don't copy a ControlTransaction! It is dangerous regarding extensions.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/core/gc_transaction.h:463
 
 A warning about activating a NULL pointer should follow:
 
 Warning: ControlTransaction::activateConfig(): Trying to call activateConfig() with a NULL pointer.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/core/gc_transaction.h:384
 
 A warning about activating an already active LogConfig should follow:
 
 Warning: ControlTransaction::activateConfig(): Trying to activate a LogConfig which is already active.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/core/gc_transaction.h:381
 
 A warning about deactivating the default LogConfig should follow:
 
 Warning: ControlTransaction::deactivateConfig(): Trying to deactivate the default LogConfig, which is not allowed.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/core/gc_transaction.h:397
 Done
 Running test 3 (FilterBase_Test)
 
@@ -32,46 +27,38 @@ A warning about creating a filter with too many filter ports should follow.
 That warning should be followed by another warning about adding a NULL pointer:
 
 Warning: FilterBase::createFilterPorts(): Trying to create a filter with 4294967295 FilterPorts. Only up to 100 Ports per Filter are allowed. Defaulting to 100 FilterPorts.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gclog/filter_base.h:142
 
 Warning: FilterBase::addFilter(): Trying to add a NULL pointer. (FilterPort: 0)
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gclog/filter_base.h:94
 
 A warning about creating a filter with too many filter ports should follow.
 That warning should be followed by a message about activate() callback of the Filter_dummy.
 
 Warning: FilterBase::createFilterPorts(): Trying to create a filter with 101 FilterPorts. Only up to 100 Ports per Filter are allowed. Defaulting to 100 FilterPorts.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gclog/filter_base.h:142
 
 The activate() callback of the Filter_dummy is being called.
 
 A warning about a non existing filter port should follow:
 
 Warning: FilterBase::addFilter(): The specified filter port does not exist. (FilterPort: 1)
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gclog/filter_base.h:99
 
 There should be no message about the activate() callback until the next test.
 
 A warning about a non existing filter port should follow:
 
 Warning: FilterBase::addFilter(): The specified filter port does not exist. (FilterPort: 0)
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gclog/filter_base.h:99
 
 A warning about a non existing filter port should follow:
 
 Warning: FilterBase::processFilterPort(): The specified filter port does not exist. (FilterPort: 0)
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gclog/filter_base.h:173
 
 A warning about a non existing filter port should follow:
 
 Warning: FilterBase::addFilter(): The specified filter port does not exist. (FilterPort: 2)
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gclog/filter_base.h:99
 Done
 Running test 4 (CSV_File_Test)
 
 A warning about an invalid filename should follow:
 
 Warning: GC_Logger CSV output module: Filename passed for CSV output is not valid. Using standard filename.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gclog/output/CSV_File.h:70
 Done
 All tests done
