@@ -215,7 +215,7 @@ EnaMod.main_action.STDOUT_OUT_any.top_param_impl_B
 top_param_expl
 top_param_expl_B
 
-@@ s /1 (EnaMod.main_action.STDOUT_OUT_any): remove observation of parameter top_param_expl_B
-@@ s /1 (AnalysisPlugin): Delete created Output Plugins:
+@0 s /1 (EnaMod.main_action.STDOUT_OUT_any): remove observation of parameter top_param_expl_B
+@0 s /1 (AnalysisPlugin): Delete created Output Plugins:
   (id=3) name: EnaMod.main_action.STDOUT_OUT_any
   (id=4) name: EnaMod.main_action.STDOUT_OUT_immediate
