@@ -351,8 +351,8 @@ OM1.gs_param_base_0:              removed parameter callback adapter 4
 ParamCallbAdapt_b: Unregister parameter callback adapter 5 at caller parameter 'OM1.int_param'.
 OM1.gs_param_base_0: param 'OM1.int_param' unregisterParamCallback(ParamCallbAdapt callb=5)
 OM1.gs_param_base_0:              removed parameter callback adapter 5
-ParamCallbAdapt_b: Deleting parameter callback adapter 11 (shared pointer deleted)
 ParamCallbAdapt_b: Deleting parameter callback adapter 10 (shared pointer deleted)
+ParamCallbAdapt_b: Deleting parameter callback adapter 11 (shared pointer deleted)
 ParamCallbAdapt_b: Deleting parameter callback adapter 9 (shared pointer deleted)
 ParamCallbAdapt_b: Deleting parameter callback adapter 8 (shared pointer deleted)
 ParamCallbAdapt_b: Deleting parameter callback adapter 7 (shared pointer deleted)
