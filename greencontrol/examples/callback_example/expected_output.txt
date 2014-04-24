@@ -1,11 +1,14 @@
-
-Warning: GCnf_Api: DEPRECATED: The getNewParamEvent function is deprecated due to performance reasons! Register a callback instead using mApi.REGISTER_NEW_PARAM_CALLBACK(class_name, callback_function);
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:1136
 Owner.gs_param_base_0: Param 'Owner.int_param': create callback for update event
 ParamCallbAdapt_b: Create parameter callback adapter 1 for caller parameter 'Owner.int_param'.
 Owner.gs_param_base_0: registerParamCallback(shared_ptr<ParamCallbAdapt_b>)
 Owner.gs_param_base_0:    param 'Owner.int_param' registerParamCallback(ParamCallbAdapt callb=1, type=post_write)
 Owner.gs_param_base_0:   calback adapter = 1
+
+Warning: (W558) disable() or dont_initialize() called on process with no static sensitivity, it will be orphaned: Observer.event_reactor_param_change
+In file: sc_simcontext.cpp:742
+
+Warning: (W558) disable() or dont_initialize() called on process with no static sensitivity, it will be orphaned: Observer.event_reactor_new_param
+In file: sc_simcontext.cpp:742
 @0 s /0 (Observer): register new parameter callback
 Observer: register callbacks for int_param (twice!) and str_param
 ParamCallbAdapt_b: Create parameter callback adapter 2 for caller parameter 'Owner.int_param'.
@@ -51,8 +54,6 @@ Owner.gs_param_base_0: Make pre_read callbacks
 Owner.gs_param_base_0: Make post read callbacks
    callback function: (new value: 100)
 
-@1002 ns /3 (Observer): Got parameter update event! This should happen when Owner.int_param changed!
-
 Owner: set str_param = 'Hello World!'
 Owner.gs_param_base_1: Make reject_write callbacks
 Owner.gs_param_base_1: Make pre_write callbacks
@@ -96,8 +97,6 @@ Owner.gs_param_base_0: Make pre_read callbacks
 Owner.gs_param_base_0: Make post read callbacks
    callback function: (new value: 200)
 
-@1003 ns /6 (Observer): Got parameter update event! This should happen when Owner.int_param changed!
-
 Owner: set str_param = 'Hello Germany!'
 Owner.gs_param_base_1: Make reject_write callbacks
 Owner.gs_param_base_1: Make pre_write callbacks
@@ -118,8 +117,9 @@ Owner.main_action.gs_param_base_0: Make post read callbacks
 @1003 ns /8 (Observer): New parameter callback method called:
   New parameter 'Owner.no_name_0'
   exlicit of type 'unsigned char'
-
-@1003 ns /8 (Observer): Got new parameter update event! This should happen each time a new parameter is added during runtime!
+@1003 ns /8 (Observer): New parameter callback method called:
+  New parameter 'Owner.no_name_0'
+  exlicit of type 'unsigned char'
 
 Owner: Set the new parameter uchar_param
 Owner.main_action.gs_param_base_0: Make reject_write callbacks
@@ -136,8 +136,9 @@ Owner.main_action.gs_param_base_1: Make post read callbacks
 @1003 ns /10 (Observer): New parameter callback method called:
   New parameter 'Owner.ull_param'
   exlicit of type 'unsigned long long'
-
-@1003 ns /10 (Observer): Got new parameter update event! This should happen each time a new parameter is added during runtime!
+@1003 ns /10 (Observer): New parameter callback method called:
+  New parameter 'Owner.ull_param'
+  exlicit of type 'unsigned long long'
 
 Owner: Set the new parameter ull_param
 Owner.main_action.gs_param_base_1: Make reject_write callbacks
@@ -174,8 +175,6 @@ Owner.gs_param_base_0: Make pre_read callbacks
 Owner.gs_param_base_0: Make post read callbacks
    callback function: (new value: 5000)
 
-@6 us /12 (Observer): Got parameter update event! This should happen when Owner.int_param changed!
-
 @6 us /13 (Manipulator): Set parameter Owner.int_param to value=5001
 Owner.gs_param_base_0: Make reject_write callbacks
 Owner.gs_param_base_0: Make pre_write callbacks
@@ -205,8 +204,6 @@ Owner.gs_param_base_0:    call adapter 4
 Owner.gs_param_base_0: Make pre_read callbacks
 Owner.gs_param_base_0: Make post read callbacks
    callback function: (new value: 5001)
-
-@6 us /13 (Observer): Got parameter update event! This should happen when Owner.int_param changed!
 
 @6 us /14 (Manipulator): Set parameter Owner.int_param to value=5002
 Owner.gs_param_base_0: Make reject_write callbacks
@@ -238,8 +235,6 @@ Owner.gs_param_base_0: Make pre_read callbacks
 Owner.gs_param_base_0: Make post read callbacks
    callback function: (new value: 5002)
 
-@6 us /14 (Observer): Got parameter update event! This should happen when Owner.int_param changed!
-
 ----------------------------
 @6001 ns /16 (Observer): Unregister callback for int_param
 ParamCallbAdapt_b: Unregister parameter callback adapter 2 at caller parameter 'Owner.int_param'.
@@ -270,8 +265,6 @@ Owner.gs_param_base_0: Make pre_read callbacks
 Owner.gs_param_base_0: Make post read callbacks
    callback function: (new value: 6002)
 
-@7 us /17 (Observer): Got parameter update event! This should happen when Owner.int_param changed!
-
 @7 us /18 (Manipulator): Set parameter Owner.str_param to value="SHOW THIS"
 Owner.gs_param_base_1: Make reject_write callbacks
 Owner.gs_param_base_1: Make pre_write callbacks
@@ -300,8 +293,6 @@ Owner.gs_param_base_0: Make pre_write callbacks
 Owner.gs_param_base_0: Make post write callbacks and notify event
 Owner.gs_param_base_0:    call adapter 1
 
-@13 us /21 (Observer): Got parameter update event! This should happen when Owner.int_param changed!
-
 @13 us /22 (Manipulator): Set parameter Owner.str_param to value="NOT OBSERVE THIS"
 Owner.gs_param_base_1: Make reject_write callbacks
 Owner.gs_param_base_1: Make pre_write callbacks
@@ -318,7 +309,7 @@ Owner.gs_param_base_1: Make post read callbacks
 ----------------------------
 Owner.main_action.gs_param_base_1: Make destroy param callbacks
 Owner.main_action.gs_param_base_0: Make destroy param callbacks
-@18446744073709551615 ps /25 (Observer): ~~~ Destructor ObserverModule ~~~
+@101003 ns /25 (Observer): ~~~ Destructor ObserverModule ~~~
 ParamCallbAdapt_b: Unregister parameter callback adapter 5 at caller parameter 'Owner.str_param'.
 Owner.gs_param_base_1: param 'Owner.str_param' unregisterParamCallback(ParamCallbAdapt callb=5)
 Owner.gs_param_base_1:              removed parameter callback adapter 5
