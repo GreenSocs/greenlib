@@ -53,9 +53,8 @@ public:
     m_Api = gs::cnf::GCnf_Api::getApiInstance(this);
     SC_THREAD(main_action);
     
-    m_new_param_event = &m_Api->getNewParamEvent();
+    m_Api->REGISTER_NEW_PARAM_CALLBACK(ObserverModule, config_new_param_callback);
     SC_METHOD(event_reactor_new_param);
-    sensitive << *m_new_param_event;
     dont_initialize();
 
     m_param_change_event = &m_Api->getPar("Owner.int_param")->getUpdateEvent();
