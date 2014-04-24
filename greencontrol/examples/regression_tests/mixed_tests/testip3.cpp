@@ -163,11 +163,6 @@ void TestIP3::main_action() {
   // ///////    Test of local parameter    ///////////////////////////////////
   // /////////////////////////////////////////////////////////////////////////
 
-  // register callback which will be called at construction of local parameter
-  IP3test("register new param event and callback");
-  const sc_event* new_param_event;
-  new_param_event = &gs::cnf::GCnf_Api::getApiInstance(this)->getNewParamEvent();
-
   gs::cnf::GCnf_Api::getApiInstance(this)->REGISTER_NEW_PARAM_CALLBACK(TestIP3, new_param_callback);
   gs::gs_param<string> newpar("Test.newParam", "TestParam should result in new param callback");
   // or deprecated: gs::cnf::GCnf_Api::getApiInstance(this)->addParam("Test.newParam", "TestParam should result in new param callback");
@@ -856,9 +851,6 @@ void TestIP3::main_action() {
   // /////////////////////////////////////////////////////////////////////////
   // ///////    Observer events and callback functions    ////////////////////
   // /////////////////////////////////////////////////////////////////////////
-
-  const sc_event* change_event;
-  change_event = &int_param.getUpdateEvent();
 
   GC_REGISTER_PARAM_CALLBACK(&int_param, TestIP3, config_callback);
 
