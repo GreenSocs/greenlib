@@ -6,9 +6,6 @@ ConfigPluginWatcher :: transport called
 Service name = CONFIG_SERVICE
 ConfigPluginWatcher :: transport called 
 Service name = CONFIG_SERVICE
-
-Warning: GCnf_Api: DEPRECATED: The getNewParamEvent function is deprecated due to performance reasons! Register a callback instead using mApi.REGISTER_NEW_PARAM_CALLBACK(class_name, callback_function);
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:1136
 ConfigPluginWatcher :: transport called 
 Service name = CONFIG_SERVICE
 ConfigPluginWatcher :: transport called 
@@ -18,6 +15,9 @@ ParamCallbAdapt_b: Create parameter callback adapter 1 for caller parameter 'Own
 Owner.gs_param_base_0: registerParamCallback(shared_ptr<ParamCallbAdapt_b>)
 Owner.gs_param_base_0:    param 'Owner.int_param' registerParamCallback(ParamCallbAdapt callb=1, type=post_write)
 Owner.gs_param_base_0:   calback adapter = 1
+
+Warning: (W558) disable() or dont_initialize() called on process with no static sensitivity, it will be orphaned: Observer.event_reactor_new_param
+In file: sc_simcontext.cpp:742
 @0 s /0 (Observer): register new parameter callback
 Observer: register callbacks for int_param (twice!) and str_param
 ConfigPluginWatcher :: transport called 
@@ -148,10 +148,13 @@ Owner.main_action.gs_param_base_0: Make post read callbacks
 ConfigPluginWatcher :: transport called 
 Service name = CONFIG_SERVICE
   exlicit of type 'unsigned char'
+@1003 ns /8 (Observer): New parameter callback method called:
+  New parameter 'Owner.no_name_0'
 ConfigPluginWatcher :: transport called 
 Service name = CONFIG_SERVICE
-
-@1003 ns /8 (Observer): Got new parameter update event! This should happen each time a new parameter is added during runtime!
+  exlicit of type 'unsigned char'
+ConfigPluginWatcher :: transport called 
+Service name = CONFIG_SERVICE
 
 Owner: Set the new parameter uchar_param
 Owner.main_action.gs_param_base_0: Make reject_write callbacks
@@ -172,10 +175,13 @@ Owner.main_action.gs_param_base_1: Make post read callbacks
 ConfigPluginWatcher :: transport called 
 Service name = CONFIG_SERVICE
   exlicit of type 'unsigned long long'
+@1003 ns /10 (Observer): New parameter callback method called:
+  New parameter 'Owner.ull_param'
 ConfigPluginWatcher :: transport called 
 Service name = CONFIG_SERVICE
-
-@1003 ns /10 (Observer): Got new parameter update event! This should happen each time a new parameter is added during runtime!
+  exlicit of type 'unsigned long long'
+ConfigPluginWatcher :: transport called 
+Service name = CONFIG_SERVICE
 
 Owner: Set the new parameter ull_param
 Owner.main_action.gs_param_base_1: Make reject_write callbacks
@@ -366,12 +372,12 @@ Service name = CONFIG_SERVICE
 Owner.main_action.gs_param_base_0: Make destroy param callbacks
 ConfigPluginWatcher :: transport called 
 Service name = CONFIG_SERVICE
-@18446744073709551615 ps /25 (Observer): ~~~ Destructor ObserverModule ~~~
+@101003 ns /25 (Observer): ~~~ Destructor ObserverModule ~~~
 ParamCallbAdapt_b: Unregister parameter callback adapter 5 at caller parameter 'Owner.str_param'.
 Owner.gs_param_base_1: param 'Owner.str_param' unregisterParamCallback(ParamCallbAdapt callb=5)
 Owner.gs_param_base_1:              removed parameter callback adapter 5
-ParamCallbAdapt_b: Deleting parameter callback adapter 4 (shared pointer deleted)
 ParamCallbAdapt_b: Deleting parameter callback adapter 5 (shared pointer deleted)
+ParamCallbAdapt_b: Deleting parameter callback adapter 4 (shared pointer deleted)
 ParamCallbAdapt_b: Deleting parameter callback adapter 3 (shared pointer deleted)
 Owner.gs_param_base_2: Make destroy param callbacks
 ConfigPluginWatcher :: transport called 
