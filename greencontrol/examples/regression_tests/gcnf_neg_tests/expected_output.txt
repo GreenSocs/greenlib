@@ -3,4 +3,4 @@
 Info: ControlAddressMap: insert: Service already exists.
 
 Fatal: ConfigPlugin: Config Plugin has already been instantiated! Make sure a manual construction is done before a possible automatic construction.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/plugin/configplugin_t.h:148
+
