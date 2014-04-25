@@ -42,10 +42,8 @@ void TestIP::timeTest(void)
 {
 //  CTimer timer;
   int numTests;
-  double time;
 
   numTests = 10;
-  time = 0.0;
 //  timer.Init();
 
   for(int j=0;j<numTests;j++)
