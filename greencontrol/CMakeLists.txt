@@ -9,6 +9,7 @@ add_subdirectory(examples/lua_example)
 add_subdirectory(examples/message_streamer_example)
 add_subdirectory(examples/message_streamer_file_example)
 add_subdirectory(examples/message_streamer_tests)
+add_subdirectory(examples/messages_streamer_lua_file_example)
 
 
 # unavailable examples
