@@ -16,6 +16,7 @@ add_subdirectory(examples/scml_example)
 add_subdirectory(examples/systemc_params)
 add_subdirectory(examples/user_api_example)
 add_subdirectory(examples/regression_tests/gclog_unit_tests)
+add_subdirectory(examples/regression_tests/gcnf_neg_tests)
 
 
 # unavailable examples
