@@ -12,4 +12,4 @@ framework and its sub projects.
 
 
 - The files expected_output.txt in the example folders contain
-  reference outputs compiled with SystemC 2.2
+  reference outputs compiled with SystemC 2.3
