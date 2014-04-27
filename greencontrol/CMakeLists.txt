@@ -13,9 +13,11 @@ add_subdirectory(examples/messages_streamer_lua_file_example)
 add_subdirectory(examples/new_service_example)
 add_subdirectory(examples/parameter_arrays)
 add_subdirectory(examples/scml_example)
+add_subdirectory(examples/systemc_params)
 
 
 # unavailable examples
 #add_subdirectory(examples/demonstration_platform)
 #add_subdirectory(examples/gav_demonstration_platform)
 #add_subdirectory(examples/gav_simple)
+
