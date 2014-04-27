@@ -21,6 +21,7 @@ add_subdirectory(examples/regression_tests/hierarchy_precedence_tests)
 add_subdirectory(examples/regression_tests/lock_tests)
 add_subdirectory(examples/regression_tests/mixed_tests)
 add_subdirectory(examples/regression_tests/neg_tests)
+add_subdirectory(examples/regression_tests/used_tests)
 
 
 
