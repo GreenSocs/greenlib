@@ -1,5 +1,7 @@
 add_subdirectory(examples/callback_example)
 add_subdirectory(examples/callback_example_watcher)
+add_subdirectory(examples/environment_var_example)
+
 
 # unavailable examples
 #add_subdirectory(examples/demonstration_platform)
