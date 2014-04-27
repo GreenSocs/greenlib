@@ -5,6 +5,7 @@ add_subdirectory(examples/extended_parameter_arrays)
 add_subdirectory(examples/gav_StatCalc)
 add_subdirectory(examples/gclog_example)
 add_subdirectory(examples/gcnf_private_params)
+add_subdirectory(examples/lua_example)
 
 
 # unavailable examples
