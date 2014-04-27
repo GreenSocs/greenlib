@@ -1,2 +1,5 @@
 add_subdirectory(examples/callback_example)
 add_subdirectory(examples/callback_example_watcher)
+
+# unavailable examples
+#add_subdirectory(examples/demonstration_platform)
