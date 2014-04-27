@@ -12,6 +12,7 @@ add_subdirectory(examples/message_streamer_tests)
 add_subdirectory(examples/messages_streamer_lua_file_example)
 add_subdirectory(examples/new_service_example)
 add_subdirectory(examples/parameter_arrays)
+add_subdirectory(examples/scml_example)
 
 
 # unavailable examples
