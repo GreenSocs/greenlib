@@ -7,3 +7,4 @@ add_subdirectory(examples/gav_StatCalc)
 
 # unavailable examples
 #add_subdirectory(examples/demonstration_platform)
+#add_subdirectory(examples/gav_demonstration_platform)
