@@ -22,6 +22,7 @@ add_subdirectory(examples/regression_tests/lock_tests)
 add_subdirectory(examples/regression_tests/mixed_tests)
 add_subdirectory(examples/regression_tests/neg_tests)
 add_subdirectory(examples/regression_tests/used_tests)
+add_subdirectory(examples/regression_tests/callback_tests)
 
 
 
@@ -29,3 +30,4 @@ add_subdirectory(examples/regression_tests/used_tests)
 #add_subdirectory(examples/demonstration_platform)
 #add_subdirectory(examples/gav_demonstration_platform)
 #add_subdirectory(examples/gav_simple)
+
