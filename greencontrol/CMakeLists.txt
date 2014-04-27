@@ -8,6 +8,7 @@ add_subdirectory(examples/gcnf_private_params)
 add_subdirectory(examples/lua_example)
 add_subdirectory(examples/message_streamer_example)
 add_subdirectory(examples/message_streamer_file_example)
+add_subdirectory(examples/message_streamer_tests)
 
 
 # unavailable examples
