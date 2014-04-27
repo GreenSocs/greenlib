@@ -10,6 +10,7 @@ add_subdirectory(examples/message_streamer_example)
 add_subdirectory(examples/message_streamer_file_example)
 add_subdirectory(examples/message_streamer_tests)
 add_subdirectory(examples/messages_streamer_lua_file_example)
+add_subdirectory(examples/new_service_example)
 
 
 # unavailable examples
