@@ -18,6 +18,7 @@ add_subdirectory(examples/user_api_example)
 add_subdirectory(examples/regression_tests/gclog_unit_tests)
 add_subdirectory(examples/regression_tests/gcnf_neg_tests)
 add_subdirectory(examples/regression_tests/hierarchy_precedence_tests)
+add_subdirectory(examples/regression_tests/lock_tests)
 
 
 # unavailable examples
