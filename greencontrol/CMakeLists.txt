@@ -6,6 +6,7 @@ add_subdirectory(examples/gav_StatCalc)
 add_subdirectory(examples/gclog_example)
 add_subdirectory(examples/gcnf_private_params)
 add_subdirectory(examples/lua_example)
+add_subdirectory(examples/message_streamer_example)
 
 
 # unavailable examples
