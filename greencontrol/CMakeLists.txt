@@ -3,6 +3,7 @@ add_subdirectory(examples/callback_example_watcher)
 add_subdirectory(examples/environment_var_example)
 add_subdirectory(examples/extended_parameter_arrays)
 add_subdirectory(examples/gav_StatCalc)
+add_subdirectory(examples/gclog_example)
 
 
 # unavailable examples
