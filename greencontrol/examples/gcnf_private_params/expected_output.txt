@@ -43,9 +43,54 @@ ModuleTopA.ModuleTests.pub_par
 ModuleTopA.mA_int_param
 
 
+<<<<<<< HEAD
 ***** BEGIN ModuleTop.ModuleA.ModuleTests main_action *****
 
   Test adding public param (deprecated):
+=======
+<<<<<<< HEAD
+7777
+<<<<<<< HEAD
+=======
+***** BEGIN ModuleTop.ModuleA.ModuleTests main_action *****
+
+  Test adding public param (deprecated):
+
+Warning: ModuleTop.ModuleA.__gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:209
+In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
+
+Warning: ModuleTop.ModuleA.__gcnf_api___1: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:521
+In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
+>>>>>>> 62c57ea... greencontrol: update expected_output in gcnf_private_params example
+  Test adding private param (deprecated):
+
+Warning: ModuleTop.ModuleA.__gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:218
+In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
+  Test setting public param (deprecated):
+
+Warning: ModuleTop.ModuleA.__gcnf_api___1: DEPRECATED: setParam is deprecated due to simulation overhead! Use 'getPar("par_name") = value' or 'setInitValue("par_name", "init_value")' instead.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:647
+In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
+  Test setting private param (deprecated):
+
+Warning: ModuleTop.ModuleA.__gcnf_api___0: DEPRECATED: setParam is deprecated due to simulation overhead! Use 'getPar("par_name") = value' or 'setInitValue("par_name", "init_value")' instead.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:287
+In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
+  Test getting public param (deprecated):
+
+Warning: ModuleTop.ModuleA.__gcnf_api___1: DEPRECATED: getParam is deprecated due to simulation overhead! Use 'value = getPar("par_name")' or 'getPar(...)->getValue()' or 'getPar(...)->getString()' instead.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:730
+In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
+    value should be 'value1b': value1b
+  Test getting private param (deprecated):
+
+<<<<<<< HEAD
+Info: ModuleTop.ModuleA.__gcnf_api___0: getPar: ... getting failed!
+    value should be 'value2b': 0
+>>>>>>> 6cd66f8... greencontrol: update expected_output in gcnf_private_params example
 
 Warning: ModuleTop.ModuleA.__gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
 In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
@@ -74,6 +119,11 @@ In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
 Warning: ModuleTop.ModuleA.__gcnf_api___0: DEPRECATED: getParam is deprecated due to simulation overhead! Use 'value = getPar("par_name")' or 'getPar(...)->getValue()' or 'getPar(...)->getString()' instead.
 In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
     value should be 'value2b': value2b
+Warning: ModuleTop.ModuleA.__gcnf_api___0: DEPRECATED: getParam is deprecated due to simulation overhead! Use 'value = getPar("par_name")' or 'getPar(...)->getValue()' or 'getPar(...)->getString()' instead.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:331
+In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
+    value should be 'value2b': value2b
+
   Test passed if value of 'ModuleTop.ModuleA.ModuleTests.myAddTestParamPub' == '1000': 1000
   Test passed if value of 'ModuleTop.ModuleA.ModuleTests.myAddTestParamPriv' == '2000': 2000
   Passed getPar test!
@@ -117,9 +167,25 @@ ModuleTopA.ModuleAB.mAB_int_param
 ModuleTopA.ModuleTests.pub_par
 ModuleTopA.mA_int_param
   Test new param event
+<<<<<<< HEAD
 
 Warning: GCnf_Api: DEPRECATED: The getNewParamEvent function is deprecated due to performance reasons! Register a callback instead using mApi.REGISTER_NEW_PARAM_CALLBACK(class_name, callback_function);
 In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+Warning: GCnf_Api: DEPRECATED: The getNewParamEvent function is deprecated due to performance reasons! Register a callback instead using mApi.REGISTER_NEW_PARAM_CALLBACK(class_name, callback_function);
+In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
+>>>>>>> e840585... expected_output gcnf
+=======
+
+Warning: GCnf_Api: DEPRECATED: The getNewParamEvent function is deprecated due to performance reasons! Register a callback instead using mApi.REGISTER_NEW_PARAM_CALLBACK(class_name, callback_function);
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:512
+In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
+>>>>>>> 62c57ea... greencontrol: update expected_output in gcnf_private_params example
+>>>>>>> 6cd66f8... greencontrol: update expected_output in gcnf_private_params example
 ModuleTop.ModuleA: BEGIN main_action
   ModuleTop.ModuleA.ModuleTests: new param callback
     parname = ModuleTop.ModuleA.tmp_par2
@@ -170,9 +236,57 @@ ModuleTopA.ModuleTests.pub_par
 ModuleTopA.mA_int_param
 
 
+<<<<<<< HEAD
 ***** BEGIN ModuleTopA.ModuleTests main_action *****
 
   Test adding public param (deprecated):
+=======
+<<<<<<< HEAD
+  Test adding private param (deprecated):
+=======
+***** BEGIN ModuleTopA.ModuleTests main_action *****
+
+  Test adding public param (deprecated):
+>>>>>>> 62c57ea... greencontrol: update expected_output in gcnf_private_params example
+
+Warning: ModuleTopA.__gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:209
+In process: ModuleTopA.ModuleTests.main_action @ 0 s
+
+Warning: __gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:521
+In process: ModuleTopA.ModuleTests.main_action @ 0 s
+  ModuleTop.ModuleA.ModuleTests: new param callback
+    parname = ModuleTopA.ModuleTests.myAddedParam1Pub
+    value   = 
+    explicit
+  Test adding private param (deprecated):
+
+Warning: ModuleTopA.__gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:218
+In process: ModuleTopA.ModuleTests.main_action @ 0 s
+  Test setting public param (deprecated):
+
+Warning: __gcnf_api___0: DEPRECATED: setParam is deprecated due to simulation overhead! Use 'getPar("par_name") = value' or 'setInitValue("par_name", "init_value")' instead.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:647
+In process: ModuleTopA.ModuleTests.main_action @ 0 s
+  Test setting private param (deprecated):
+
+Warning: ModuleTopA.__gcnf_api___0: DEPRECATED: setParam is deprecated due to simulation overhead! Use 'getPar("par_name") = value' or 'setInitValue("par_name", "init_value")' instead.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:287
+In process: ModuleTopA.ModuleTests.main_action @ 0 s
+  Test getting public param (deprecated):
+
+Warning: __gcnf_api___0: DEPRECATED: getParam is deprecated due to simulation overhead! Use 'value = getPar("par_name")' or 'getPar(...)->getValue()' or 'getPar(...)->getString()' instead.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:730
+In process: ModuleTopA.ModuleTests.main_action @ 0 s
+    value should be 'value1b': value1b
+  Test getting private param (deprecated):
+
+<<<<<<< HEAD
+Info: ModuleTopA.__gcnf_api___0: getPar: ... getting failed!
+    value should be 'value2b': 0
+>>>>>>> 6cd66f8... greencontrol: update expected_output in gcnf_private_params example
 
 Warning: ModuleTopA.__gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
 In process: ModuleTopA.ModuleTests.main_action @ 0 s
@@ -205,6 +319,7 @@ In process: ModuleTopA.ModuleTests.main_action @ 0 s
 Warning: ModuleTopA.__gcnf_api___0: DEPRECATED: getParam is deprecated due to simulation overhead! Use 'value = getPar("par_name")' or 'getPar(...)->getValue()' or 'getPar(...)->getString()' instead.
 In process: ModuleTopA.ModuleTests.main_action @ 0 s
     value should be 'value2b': value2b
+<<<<<<< HEAD
   ModuleTop.ModuleA.ModuleTests: new param callback
     parname = ModuleTopA.ModuleTests.myAddTestParamPub
     value   = 1000
@@ -212,6 +327,22 @@ In process: ModuleTopA.ModuleTests.main_action @ 0 s
   ModuleTop.ModuleA.ModuleTests: new param callback
     parname = ModuleTopA.ModuleTests.myAddTestParamPub
     value   = 1000
+=======
+>>>>>>> e840585... expected_output gcnf
+=======
+Warning: ModuleTopA.__gcnf_api___0: DEPRECATED: getParam is deprecated due to simulation overhead! Use 'value = getPar("par_name")' or 'getPar(...)->getValue()' or 'getPar(...)->getString()' instead.
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:331
+In process: ModuleTopA.ModuleTests.main_action @ 0 s
+    value should be 'value2b': value2b
+>>>>>>> 62c57ea... greencontrol: update expected_output in gcnf_private_params example
+  ModuleTop.ModuleA.ModuleTests: new param callback
+    parname = ModuleTopA.ModuleTests.myAddTestParamPub
+    value   = 1000
+    implicit
+  ModuleTop.ModuleA.ModuleTests: new param callback
+    parname = ModuleTopA.ModuleTests.myAddTestParamPub
+    value   = 1000
+>>>>>>> 6cd66f8... greencontrol: update expected_output in gcnf_private_params example
     explicit
   Test passed if value of 'ModuleTopA.ModuleTests.myAddTestParamPub' == '1000': 1000
   Test passed if value of 'ModuleTopA.ModuleTests.myAddTestParamPriv' == '2000': 2000
@@ -271,6 +402,10 @@ ModuleTopA.mA_int_param
   Test new param event
 
 Warning: GCnf_Api: DEPRECATED: The getNewParamEvent function is deprecated due to performance reasons! Register a callback instead using mApi.REGISTER_NEW_PARAM_CALLBACK(class_name, callback_function);
+<<<<<<< HEAD
+=======
+In file: /tmp/greencontrol/greencontrol/include/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:512
+>>>>>>> 62c57ea... greencontrol: update expected_output in gcnf_private_params example
 In process: ModuleTopA.ModuleTests.main_action @ 0 s
 ModuleTopA: BEGIN main_action
   ModuleTopA.ModuleTests: new param callback
