@@ -1,4 +1,4 @@
-#0: ./testbench_private_params.x
+#0: ./greencontrol_gcnf_private_params
 
 Info: CommandLine_Tool: ACTIVATE_COMMAND_THREAD is not defined! The command line Thread will not be started!
 ---- Start simulation ----
@@ -48,37 +48,30 @@ ModuleTopA.mA_int_param
   Test adding public param (deprecated):
 
 Warning: ModuleTop.ModuleA.__gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:209
 In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
 
 Warning: ModuleTop.ModuleA.__gcnf_api___1: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:524
 In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
   Test adding private param (deprecated):
 
 Warning: ModuleTop.ModuleA.__gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:218
 In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
   Test setting public param (deprecated):
 
 Warning: ModuleTop.ModuleA.__gcnf_api___1: DEPRECATED: setParam is deprecated due to simulation overhead! Use 'getPar("par_name") = value' or 'setInitValue("par_name", "init_value")' instead.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:650
 In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
   Test setting private param (deprecated):
 
 Warning: ModuleTop.ModuleA.__gcnf_api___0: DEPRECATED: setParam is deprecated due to simulation overhead! Use 'getPar("par_name") = value' or 'setInitValue("par_name", "init_value")' instead.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:287
 In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
   Test getting public param (deprecated):
 
 Warning: ModuleTop.ModuleA.__gcnf_api___1: DEPRECATED: getParam is deprecated due to simulation overhead! Use 'value = getPar("par_name")' or 'getPar(...)->getValue()' or 'getPar(...)->getString()' instead.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:733
 In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
     value should be 'value1b': value1b
   Test getting private param (deprecated):
 
 Warning: ModuleTop.ModuleA.__gcnf_api___0: DEPRECATED: getParam is deprecated due to simulation overhead! Use 'value = getPar("par_name")' or 'getPar(...)->getValue()' or 'getPar(...)->getString()' instead.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:331
 In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
     value should be 'value2b': value2b
   Test passed if value of 'ModuleTop.ModuleA.ModuleTests.myAddTestParamPub' == '1000': 1000
@@ -126,7 +119,6 @@ ModuleTopA.mA_int_param
   Test new param event
 
 Warning: GCnf_Api: DEPRECATED: The getNewParamEvent function is deprecated due to performance reasons! Register a callback instead using mApi.REGISTER_NEW_PARAM_CALLBACK(class_name, callback_function);
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:512
 In process: ModuleTop.ModuleA.ModuleTests.main_action @ 0 s
 ModuleTop.ModuleA: BEGIN main_action
   ModuleTop.ModuleA.ModuleTests: new param callback
@@ -183,11 +175,9 @@ ModuleTopA.mA_int_param
   Test adding public param (deprecated):
 
 Warning: ModuleTopA.__gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:209
 In process: ModuleTopA.ModuleTests.main_action @ 0 s
 
 Warning: __gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:524
 In process: ModuleTopA.ModuleTests.main_action @ 0 s
   ModuleTop.ModuleA.ModuleTests: new param callback
     parname = ModuleTopA.ModuleTests.myAddedParam1Pub
@@ -196,28 +186,23 @@ In process: ModuleTopA.ModuleTests.main_action @ 0 s
   Test adding private param (deprecated):
 
 Warning: ModuleTopA.__gcnf_api___0: DEPRECATED: addParam is deprecated due to simulation overhead! Use 'setInitValue("par_name", "value")' instead or create a gs_param<type> object.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:218
 In process: ModuleTopA.ModuleTests.main_action @ 0 s
   Test setting public param (deprecated):
 
 Warning: __gcnf_api___0: DEPRECATED: setParam is deprecated due to simulation overhead! Use 'getPar("par_name") = value' or 'setInitValue("par_name", "init_value")' instead.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:650
 In process: ModuleTopA.ModuleTests.main_action @ 0 s
   Test setting private param (deprecated):
 
 Warning: ModuleTopA.__gcnf_api___0: DEPRECATED: setParam is deprecated due to simulation overhead! Use 'getPar("par_name") = value' or 'setInitValue("par_name", "init_value")' instead.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:287
 In process: ModuleTopA.ModuleTests.main_action @ 0 s
   Test getting public param (deprecated):
 
 Warning: __gcnf_api___0: DEPRECATED: getParam is deprecated due to simulation overhead! Use 'value = getPar("par_name")' or 'getPar(...)->getValue()' or 'getPar(...)->getString()' instead.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_Api/GCnf_Api_t.h:733
 In process: ModuleTopA.ModuleTests.main_action @ 0 s
     value should be 'value1b': value1b
   Test getting private param (deprecated):
 
 Warning: ModuleTopA.__gcnf_api___0: DEPRECATED: getParam is deprecated due to simulation overhead! Use 'value = getPar("par_name")' or 'getPar(...)->getValue()' or 'getPar(...)->getString()' instead.
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:331
 In process: ModuleTopA.ModuleTests.main_action @ 0 s
     value should be 'value2b': value2b
   ModuleTop.ModuleA.ModuleTests: new param callback
@@ -286,7 +271,6 @@ ModuleTopA.mA_int_param
   Test new param event
 
 Warning: GCnf_Api: DEPRECATED: The getNewParamEvent function is deprecated due to performance reasons! Register a callback instead using mApi.REGISTER_NEW_PARAM_CALLBACK(class_name, callback_function);
-In file: /Users/schroede/mydev/greensocs_greencontrol/greencontrol/gcnf/apis/GCnf_private_Api/gcnf_private_api_t.h:512
 In process: ModuleTopA.ModuleTests.main_action @ 0 s
 ModuleTopA: BEGIN main_action
   ModuleTopA.ModuleTests: new param callback
@@ -366,6 +350,37 @@ ModuleTopA.ModuleTests.myAddedParam1Pub
 ModuleTopA.ModuleTests.pub_par
 ModuleTopA.mA_int_param
 
+
+ *** Param List of ModuleTopA.ModuleAA ***:
+vector: size=27
+ModuleTopA.ModuleAA.int_param2
+ModuleTopA.ModuleAA.priv_runtime_param
+ModuleTopA.ModuleAA.mB_int_param
+ModuleTopA.ModuleAB.ModuleABA.int_param
+ModuleTopA.ModuleAB.int_param2
+ModuleTopA.ModuleTests.int_param2
+ModuleTopA.ModuleTests.mA_int_param
+ModuleTopA.ModuleTests.myAddTestParamPriv
+ModuleTopA.ModuleTests.myAddedParam2Priv
+ModuleTopA.ModuleTests.tmp_new_par_test
+ModuleTopA.ModuleTests.tmp_new_par_test2
+ModuleTopA.ModuleTests.tmp_par
+ModuleTopA.int_param2
+ModuleTopA.tmp_par
+ModuleTopA.tmp_par2
+ModulePub.int_param
+ModuleTop.ModuleA.ModuleAB.mAB_int_param
+ModuleTop.ModuleA.ModuleTests.myAddTestParamPub
+ModuleTop.ModuleA.ModuleTests.myAddedParam1Pub
+ModuleTop.ModuleA.ModuleTests.pub_par
+ModuleTop.ModuleA.mA_int_param
+ModuleTop.my_top_int_param
+ModuleTopA.ModuleAB.mAB_int_param
+ModuleTopA.ModuleTests.myAddTestParamPub
+ModuleTopA.ModuleTests.myAddedParam1Pub
+ModuleTopA.ModuleTests.pub_par
+ModuleTopA.mA_int_param
+
   ModuleTopA.ModuleTests: new param callback
     parname = ModuleTop.normal_pub_runtime_param
     value   = 42
@@ -391,71 +406,8 @@ ModuleTopA.ModuleTests.myAddedParam1Pub
 ModuleTopA.ModuleTests.pub_par
 ModuleTopA.mA_int_param
 
-
- *** Param List of ModuleTopA.ModuleAA ***:
-vector: size=28
-ModuleTopA.ModuleAA.int_param2
-ModuleTopA.ModuleAA.priv_runtime_param
-ModuleTopA.ModuleAA.mB_int_param
-ModuleTopA.ModuleAB.ModuleABA.int_param
-ModuleTopA.ModuleAB.int_param2
-ModuleTopA.ModuleTests.int_param2
-ModuleTopA.ModuleTests.mA_int_param
-ModuleTopA.ModuleTests.myAddTestParamPriv
-ModuleTopA.ModuleTests.myAddedParam2Priv
-ModuleTopA.ModuleTests.tmp_new_par_test
-ModuleTopA.ModuleTests.tmp_new_par_test2
-ModuleTopA.ModuleTests.tmp_par
-ModuleTopA.int_param2
-ModuleTopA.tmp_par
-ModuleTopA.tmp_par2
-ModulePub.int_param
-ModuleTop.ModuleA.ModuleAB.mAB_int_param
-ModuleTop.ModuleA.ModuleTests.myAddTestParamPub
-ModuleTop.ModuleA.ModuleTests.myAddedParam1Pub
-ModuleTop.ModuleA.ModuleTests.pub_par
-ModuleTop.ModuleA.mA_int_param
-ModuleTop.my_top_int_param
-ModuleTop.normal_pub_runtime_param
-ModuleTopA.ModuleAB.mAB_int_param
-ModuleTopA.ModuleTests.myAddTestParamPub
-ModuleTopA.ModuleTests.myAddedParam1Pub
-ModuleTopA.ModuleTests.pub_par
-ModuleTopA.mA_int_param
-
   ModuleTopA.ModuleTests: spawned method called: one or more new parameter(s) added
   ModuleTop.ModuleA.ModuleTests: spawned method called: one or more new parameter(s) added
-
- *** Param List of ModuleTopA ***:
-vector: size=26
-ModuleTopA.ModuleAA.mB_int_param
-ModuleTopA.ModuleAB.ModuleABA.int_param
-ModuleTopA.ModuleAB.int_param2
-ModuleTopA.ModuleTests.int_param2
-ModuleTopA.ModuleTests.mA_int_param
-ModuleTopA.ModuleTests.myAddTestParamPriv
-ModuleTopA.ModuleTests.myAddedParam2Priv
-ModuleTopA.ModuleTests.tmp_new_par_test
-ModuleTopA.ModuleTests.tmp_new_par_test2
-ModuleTopA.ModuleTests.tmp_par
-ModuleTopA.int_param2
-ModuleTopA.tmp_par
-ModuleTopA.tmp_par2
-ModulePub.int_param
-ModuleTop.ModuleA.ModuleAB.mAB_int_param
-ModuleTop.ModuleA.ModuleTests.myAddTestParamPub
-ModuleTop.ModuleA.ModuleTests.myAddedParam1Pub
-ModuleTop.ModuleA.ModuleTests.pub_par
-ModuleTop.ModuleA.mA_int_param
-ModuleTop.my_top_int_param
-ModuleTop.normal_pub_runtime_param
-ModuleTopA.ModuleAB.mAB_int_param
-ModuleTopA.ModuleTests.myAddTestParamPub
-ModuleTopA.ModuleTests.myAddedParam1Pub
-ModuleTopA.ModuleTests.pub_par
-ModuleTopA.mA_int_param
-
-ModuleTopA: END main_action
 
  *** Param List of ModuleTop.ModuleA ***:
 vector: size=26
@@ -487,6 +439,37 @@ ModuleTopA.ModuleTests.pub_par
 ModuleTopA.mA_int_param
 
 ModuleTop.ModuleA: END main_action
+
+ *** Param List of ModuleTopA ***:
+vector: size=26
+ModuleTopA.ModuleAA.mB_int_param
+ModuleTopA.ModuleAB.ModuleABA.int_param
+ModuleTopA.ModuleAB.int_param2
+ModuleTopA.ModuleTests.int_param2
+ModuleTopA.ModuleTests.mA_int_param
+ModuleTopA.ModuleTests.myAddTestParamPriv
+ModuleTopA.ModuleTests.myAddedParam2Priv
+ModuleTopA.ModuleTests.tmp_new_par_test
+ModuleTopA.ModuleTests.tmp_new_par_test2
+ModuleTopA.ModuleTests.tmp_par
+ModuleTopA.int_param2
+ModuleTopA.tmp_par
+ModuleTopA.tmp_par2
+ModulePub.int_param
+ModuleTop.ModuleA.ModuleAB.mAB_int_param
+ModuleTop.ModuleA.ModuleTests.myAddTestParamPub
+ModuleTop.ModuleA.ModuleTests.myAddedParam1Pub
+ModuleTop.ModuleA.ModuleTests.pub_par
+ModuleTop.ModuleA.mA_int_param
+ModuleTop.my_top_int_param
+ModuleTop.normal_pub_runtime_param
+ModuleTopA.ModuleAB.mAB_int_param
+ModuleTopA.ModuleTests.myAddTestParamPub
+ModuleTopA.ModuleTests.myAddedParam1Pub
+ModuleTopA.ModuleTests.pub_par
+ModuleTopA.mA_int_param
+
+ModuleTopA: END main_action
 ---- End simulation ----
 
 from toplevel: getParams(ModuleTop.ModuleA.*)
