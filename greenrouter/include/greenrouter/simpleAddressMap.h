@@ -545,7 +545,7 @@ class SimpleAddressMap
 
   @return target port number
 
-  @note on error, m_max_port is returned
+  @note on error, m_max_port is returned, success is false..
 
  -------------------------------------------------------------------------- */
 
@@ -553,6 +553,7 @@ class SimpleAddressMap
  decode                                                ///< decode
  //( Map_address_t decode_address                        ///< address to decode
  ( payload_type& txn,                        ///< address to decode
+   bool &success,
  gs::socket::config<TRAITS>* conf           /// conf of the socket from which the trnx is coming. 
                                             /// This value is ignored here, and used when address map is extension based
  , unsigned int from                /// portId of the socket from which the trnx is coming
@@ -561,7 +562,8 @@ class SimpleAddressMap
    static std::vector<Port_id_t> targetId(1);
    Map_address_t decode_address = txn.get_address(); 
    Port_id_t port_id ( m_max_port  );
-   bool      success ( false       );
+
+   success = false;
 
    for ( Map_iterator_t i = m_address_map.begin (); i != m_address_map.end (); i++ )
    {
@@ -572,15 +574,6 @@ class SimpleAddressMap
 
        break;
      }
-   }
-
-   if ( ! success )
-   {
-     cout << "requested address: 0x" << hex << decode_address << endl;
-
-     dumpMap ( true );
-
-     SC_REPORT_ERROR ( __FUNCTION__, "address not in map" );
    }
 
    targetId[0] = port_id;

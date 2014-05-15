@@ -309,20 +309,34 @@ public:
   void b_tr(unsigned int from, payload_type& txn, sc_core::sc_time& time)
   {
     protocol_port[m_protocol_port_index]->before_b_transport(from, txn, time);
-    GS_DUMP("forwarding PV transaction from master index"<<from<<" to slave at address="<<txn.get_address());
+    GS_DUMP("forwarding PV transaction from master index"
+            << from << " to slave at address=" << txn.get_address());
 
     //get the config of initiator 'from' (through target socket of bus)
     gs::socket::config<TRAITS> tmp_conf = target_socket.get_recent_config(from);
 
-    std::vector<unsigned int> targetIdVec = decodeAddress(txn, &tmp_conf, from);
-    for (unsigned int i = 0; i < targetIdVec.size(); ++i) {
-      Port_id_t tar_port_num = targetIdVec[i];
-      if ( tar_port_num == m_addressMap->get_max_port() )
+    bool decode_ok = false;
+    std::vector<unsigned int> targetIdVec = decodeAddress(txn, decode_ok,
+                                                          &tmp_conf, from);
+
+    if (!decode_ok)
+    {
+      (txn.*SET_RESP_CALL)(ADDR_ERR_RESP);
+    }
+    else
+    {
+      for (unsigned int i = 0; i < targetIdVec.size(); ++i)
       {
+        Port_id_t tar_port_num = targetIdVec[i];
+        if (tar_port_num == m_addressMap->get_max_port())
+        {
           (txn.*SET_RESP_CALL)(ADDR_ERR_RESP);
+        }
+        else
+        {
+          init_socket[tar_port_num]->b_transport(txn, time);
+        }
       }
-      else
-         init_socket[tar_port_num]->b_transport(txn, time);    
     }
   }
 
@@ -335,19 +349,29 @@ public:
     //get the config of initiator 'from' (through target socket of bus)
     gs::socket::config<TRAITS> tmp_conf = target_socket.get_recent_config(from);
 
-    std::vector<unsigned int> targetIdVec = decodeAddress(txn, &tmp_conf, from);
-    for (unsigned int i = 0; i < targetIdVec.size(); ++i) {
-      Port_id_t tar_port_num = targetIdVec[i];
-      if ( tar_port_num == m_addressMap->get_max_port() )
+    bool decode_ok = false;
+    std::vector<unsigned int> targetIdVec = decodeAddress(txn, decode_ok,
+                                                          &tmp_conf, from);
+
+    if (decode_ok)
+    {
+      for (unsigned int i = 0; i < targetIdVec.size(); ++i)
       {
+        Port_id_t tar_port_num = targetIdVec[i];
+        if (tar_port_num == m_addressMap->get_max_port())
+        {
           (txn.*SET_RESP_CALL)(ADDR_ERR_RESP);
           ph = tlm::END_REQ;
           return tlm::TLM_UPDATED;
+        }
+        else
+        {
+          return protocol_port[m_protocol_port_index]->registerMasterAccess(
+                                                           from, txn, ph, time);
+        }
       }
-      else
-          return protocol_port[m_protocol_port_index]->registerMasterAccess(from, txn, ph, time);
     }
-    //Control should not reach here: adding these for warning free compilation
+
     (txn.*SET_RESP_CALL)(ADDR_ERR_RESP);
     ph = tlm::END_REQ;
     return tlm::TLM_UPDATED;
@@ -411,7 +435,13 @@ public:
     //get the config of initiator 'from' (through target socket of bus)
     gs::socket::config<TRAITS> tmp_conf = target_socket.get_recent_config(from);
 
-    Port_id_t tar_port_num = decodeAddress(trans, &tmp_conf, from)[0];
+    bool decode_ok = false;
+    Port_id_t tar_port_num = decodeAddress(trans, decode_ok, &tmp_conf,
+                                           from)[0];
+    if (!decode_ok)
+    {
+      return false;
+    }
 
     // dont know what is this call for??
     protocol_port[m_protocol_port_index]->get_direct_mem_ptr(from, trans, dmi_data);
@@ -467,9 +497,9 @@ public:
    * GenericRouter_if's decodeAddress function.
    */
   //--------------------------------------------------------------------------
-  virtual std::vector<unsigned int>& decodeAddress(payload_type& txn, gs::socket::config<TRAITS>* conf = 0, unsigned int from = 0)
+  virtual std::vector<unsigned int>& decodeAddress(payload_type& txn, bool &decode_ok, gs::socket::config<TRAITS>* conf = 0, unsigned int from = 0)
   {
-    return m_addressMap->decode(txn, conf, from);
+    return m_addressMap->decode(txn, decode_ok, conf, from);
   }
 
   virtual unsigned int getRouterID(){

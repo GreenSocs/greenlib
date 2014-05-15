@@ -70,9 +70,12 @@ class ExtensionMap {
 
  typedef typename TRAITS::tlm_payload_type payload_type;
     virtual std::vector<Port_id_t>& 
-    decode (payload_type& txn, gs::socket::config<TRAITS>* tmp_conf, unsigned int from) {
+    decode (payload_type& txn, bool &success,
+            gs::socket::config<TRAITS>* tmp_conf, unsigned int from) {
       tlm::tlm_extension_base* ext = 0;
       gs::ext::gs_extension_base* gs_ext = 0;
+
+      success = false;
       
       //for all the extensions present in this config, check which is present in
       //payload. Then broadcast this payload to all the targets that accept this
@@ -88,6 +91,7 @@ class ExtensionMap {
               continue;
             gs_ext = (gs::ext::extension_cast()[j](ext));
             if (gs_ext && gs_ext->is_valid()) { //if the extension 'j' is validated one
+              success = true;
               return m_AddressMap[j];
              // for (unsigned int i=0; i<m_AddressMap[j].size(); ++i) {
              //   //broadcast to all the targets that accept extension 'j'

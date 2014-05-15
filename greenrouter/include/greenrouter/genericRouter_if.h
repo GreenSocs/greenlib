@@ -63,7 +63,7 @@ public:
   virtual init_socket_type* getInitPort() =0;
   virtual target_socket_type* getTargetPort() =0;
   virtual bidir_socket_type* getBiDirSocket() =0;
-  virtual std::vector<unsigned int>& decodeAddress(payload_type& txn, gs::socket::config<TRAITS>* conf = 0, unsigned int from = 0) =0;
+  virtual std::vector<unsigned int>& decodeAddress(payload_type& txn, bool& decode_status, gs::socket::config<TRAITS>* conf = 0, unsigned int from = 0) =0;
   virtual unsigned int getRouterID() =0;
   virtual unsigned int getCurrentNumRouters()=0;
   

@@ -59,13 +59,30 @@ public:
     if (i_sock) i_sock->set_config(conf);
   }
   
-  virtual sync_enum_type registerMasterAccess(unsigned int from, payload_type& txn, phase_type& ph, sc_core::sc_time& time){
+  virtual sync_enum_type registerMasterAccess(unsigned int from,
+                                              payload_type& txn, phase_type& ph,
+                                              sc_core::sc_time& time)
+  {
     sender_ids_type* send_ids=t_sock->template get_extension<sender_ids_type>(txn);
     if (send_ids->value.size()<=router_id) send_ids->value.resize(router_id+1);
     send_ids->value[router_id]=from; //gotta set it every time, since we are protocol agnostic
-    return (*i_sock)[router_port->decodeAddress(txn)[0]]->nb_transport_fw(txn, ph, time);
-    //return (*i_sock)[router_port->decodeAddress(txn.get_address())]->nb_transport_fw(txn, ph, time);
+
+    bool decode_ok = false;
+    Port_id_t tar_port_num = router_port->decodeAddress(txn, decode_ok)[0];
+
+    if (decode_ok)
+    {
+      return (*i_sock)[tar_port_num]->nb_transport_fw(txn, ph, time);
+    }
+    else
+    {
+      /*
+       * FIXME: Need to update the txn..
+       */
+      return tlm::TLM_UPDATED;
+    }
   }
+
   virtual sync_enum_type registerSlaveAccess(unsigned int, payload_type& txn, phase_type& ph, sc_core::sc_time& time){
     sender_ids_type* send_ids=t_sock->template get_extension<sender_ids_type>(txn);
     return (*t_sock)[send_ids->value[router_id]]->nb_transport_bw(txn, ph, time);

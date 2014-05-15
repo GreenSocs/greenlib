@@ -154,7 +154,6 @@ public:
     }
     else {
       // this is a master who is in the data handshake phase, so forward the data to the slave
-      //DestinationPort destination = ( *router_port->getInitPort() ).connected_in_ports[router_port->decodeAddress(ah->getMAddr())];
       txn_states* txn_sts;
       bool has_txn_sts=ext_base_type::get_extension<txn_states>(txn_sts, trans);
       assert(has_txn_sts);
@@ -162,19 +161,30 @@ public:
         tlm::tlm_phase ph=phase;
         sc_core::sc_time ti;
         GS_DUMP("send "<<ph<<" to target at 0x"<<std::hex<<trans.get_address());
-        switch( (*i_sock)[router_port->decodeAddress(trans)[0]]->nb_transport_fw(trans, ph, ti)){
-          case tlm::TLM_ACCEPTED: break;
-          case tlm::TLM_UPDATED:
-            //assert(0); //can only be BEGIN_DATA or END_RESP. None can be updated
-            //can only be an ignorable phase
-            m_bw_peq.notify(trans, ph, ti, 0);
+
+        bool decode_ok = false;
+        Port_id_t tar_port_num = router_port->decodeAddress(trans,
+                                                            decode_ok)[0];
+        if (decode_ok)
+        {
+          switch((*i_sock)[tar_port_num]->nb_transport_fw(trans, ph, ti))
+          {
+            case tlm::TLM_ACCEPTED:
             break;
-          case tlm::TLM_COMPLETED:
-            txn_sts->value[router_id]|=0x4;          
-            if (phase==BEGIN_DATA){
-              ph=END_DATA;
+            case tlm::TLM_UPDATED:
+              //can only be BEGIN_DATA or END_RESP. None can be updated
+              //can only be an ignorable phase
               m_bw_peq.notify(trans, ph, ti, 0);
-            }
+            break;
+            case tlm::TLM_COMPLETED:
+              txn_sts->value[router_id] |= 0x4;
+              if (phase == BEGIN_DATA)
+              {
+                ph = END_DATA;
+                m_bw_peq.notify(trans, ph, ti, 0);
+              }
+            break;
+          }
         }
       }
       else
@@ -279,8 +289,18 @@ public:
       GS_DUMP("Forwarding ignorable phase "<<ph<<" to target");
       sender_ids_type* send_ids=ext_base_type::get_extension<sender_ids_type>(txn);
       if (send_ids->value.size()<=router_id) send_ids->value.resize(router_id+1);
-      send_ids->value[router_id]=from;    
-      return (*i_sock)[router_port->decodeAddress(txn)[0]]->nb_transport_fw(txn, ph, time);
+      send_ids->value[router_id]=from;
+      bool decode_ok;
+      Port_id_t tar_port_num = router_port->decodeAddress(txn, decode_ok)[0];
+      if (decode_ok)
+      {
+        return (*i_sock)[tar_port_num]->nb_transport_fw(txn, ph, time);
+      }
+      else
+      {
+        //XXX: not sure this is good.
+        return tlm::TLM_ACCEPTED;
+      }
     }
     GS_DUMP("Ignoring ignorable phase "<<ph<<" because the txn was already completed by the target.");
     return tlm::TLM_ACCEPTED;
@@ -301,22 +321,34 @@ public:
       tlm::tlm_phase ph=tp.second;
       sc_core::sc_time ti;
       GS_DUMP("send "<<ph<<" to target at 0x"<<std::hex<<tp.first->get_address());
-      switch( (*i_sock)[router_port->decodeAddress(*(tp.first))[0]]->nb_transport_fw(*tp.first, ph, ti)){
-        case tlm::TLM_ACCEPTED: break;
-        case tlm::TLM_UPDATED:
-          m_bw_peq.notify(*tp.first, ph, ti, 0);
-          break;
-        case tlm::TLM_COMPLETED:
-          if ((tp.first->get_command()==tlm::TLM_WRITE_COMMAND && has_write_resp) || tp.first->get_command()==tlm::TLM_READ_COMMAND)
-            m_bw_peq.notify(*tp.first, m_begin_resp, ti, 0);
-          else
-            m_bw_peq.notify(*tp.first, m_end_req, ti, 0);
-          txn_states* txn_sts;
-          bool has_txn_sts=ext_base_type::get_extension<txn_states>(txn_sts, *tp.first);
-          assert(has_txn_sts);
-          txn_sts->value[router_id]|=0x4;
+
+      bool decode_ok;
+      Port_id_t tar_port_num = router_port->decodeAddress(*(tp.first),
+                                                          decode_ok)[0];
+
+      if (decode_ok)
+      {
+        switch( (*i_sock)[tar_port_num]->nb_transport_fw(*tp.first, ph, ti)){
+          case tlm::TLM_ACCEPTED: break;
+          case tlm::TLM_UPDATED:
+            m_bw_peq.notify(*tp.first, ph, ti, 0);
+            break;
+          case tlm::TLM_COMPLETED:
+            if ((tp.first->get_command()==tlm::TLM_WRITE_COMMAND && has_write_resp) || tp.first->get_command()==tlm::TLM_READ_COMMAND)
+              m_bw_peq.notify(*tp.first, m_begin_resp, ti, 0);
+            else
+              m_bw_peq.notify(*tp.first, m_end_req, ti, 0);
+            txn_states* txn_sts;
+            bool has_txn_sts=ext_base_type::get_extension<txn_states>(txn_sts, *tp.first);
+            assert(has_txn_sts);
+            txn_sts->value[router_id]|=0x4;
+        }
+        return true;
       }
-      return true;
+      else
+      {
+        return false;
+      }
     }
     return false;
   }
