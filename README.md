@@ -2,6 +2,8 @@
 
 # GreenLib
 
+[![Join the chat at https://gitter.im/GreenSocs/greenlib](https://badges.gitter.im/GreenSocs/greenlib.svg)](https://gitter.im/GreenSocs/greenlib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Overview
 
 **Productivity library for SystemC modelling**
